@@ -1,0 +1,84 @@
+a           { color: #3333ff; text-decoration: none; font-family: verdana; }
+a:visited   { color: #3333ff; text-decoration: none; font-family: verdana; }
+a:active    { color: #3333ff; text-decoration: none; font-family: verdana; }
+a:hover     { color: #3333ff; text-decoration: underline; font-family: verdana; }
+
+body {
+    font-size: 66%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;  
+    color: #333;
+    background: #fff url(/images/grgrad.gif) repeat-x;
+}
+
+th { font-weight: bold; text-align: left; }
+td { text-align: left; }
+ul { margin: 4px 0px; }
+
+/* containers */
+#header { margin-right: auto; margin-left: auto; width: 700px; }
+#content { margin-right: auto; margin-left: auto; margin-bottom: 10px; width: 700px; }
+#primary_panel { width: 73%; float: right; }
+#primary_panel_full { width: 100%; float: right; }
+#secondary_panel { width: 25%; float: left; }
+#footer { font-size: .9em; margin-right: auto; margin-left: auto; background: #fff; width: 690px; border: 1px solid #bbb; border-radius: 6px 6px; padding: 5px; }
+#styleLinks { margin-right: 15px; float: left; }
+#user { float: left; } 
+#search { font-size: .9em; margin-right: auto; margin-left: auto; margin-top: 5px; background: #fff; width: 700px; text-align: center; }
+#search form { margin: 2px; display: inline; }
+#found_links { padding-bottom: 10px; }
+#copyright { width: 25%; float: right; text-align: right; }
+
+/* forms */
+.form { background: #f6f6f6; border: 1px solid #bbb; padding: 10px 5px 10px 5px; border-radius: 6px 6px; margin-bottom: 1em; }
+label {  text-align: right; float: left; vertical-align: top; width: 7em; margin-right: 1em; color: #666; clear: both; }
+label.inline { float: none; vertical-align: middle; }
+label.page { float: none; width: auto; color: #666; vertical-align: middle; }
+input.error, select.error, textarea.error { background: yellow; }
+fieldset { background: #f6f6f6; margin: 1.5em 0 0 0; padding: 0; border: 1px solid #bbb; border-radius: 6px 6px; } 
+fieldset ol { padding: 1em 1em 0 1em; list-style: none; }  
+fieldset li { padding-bottom: 1em; }  
+fieldset.submit { border-style: none; background: #fff; }
+legend { margin-left: 1em; color: #333; font-weight: bold; } 
+input[type="text"], input[type="password"], textarea, select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 1em; color: #333; }
+
+/* pagination */
+div.pagination { padding:3px; margin:3px; text-align:center; }
+div.pagination a { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #ddd; text-decoration: none; color: #aaa; }
+div.pagination a:hover, div.pagination a:active { margin-right: 2px; border: 1px solid #f93; }
+div.pagination span.current { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #e0e0e0; font-weight: bold; background-color: #f0f0f0; color: #aaa; }
+div.pagination span.disabled { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #f3f3f3; color: #ccc; }
+
+#errors li { font-weight: bold; color: #930; text-align: center; }
+
+div.links a { line-height: 140%; color: #3333ff; font-size: .9em; }
+div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
+
+.left { float: left; padding: 1px; }
+.right { float: right; }
+.clear { clear: both; }
+
+.notice { font-weight: bold; color: #930; text-align: center; padding: 10px 5px 10px 5px; }
+.submit { text-align: right; }
+.submit input { font-size: 1.2em; font-weight: bold; }
+.dataOn { background-color: #f6f6f6; text-align: center; }
+.dataOff { background-color: #fff; text-align: center; }
+.reminder_overdue { color: red; }
+.reminder_due { font-weight: bold; color: orange; }
+.reminder_future { color: green; }
+.summary_data { color: #666; font-weight: bold; font-size: 2em; }
+ul.due li { display:inline; }
+ul.due li:after { content: ", "; }
+
+.box { margin-bottom: 10px; border: 1px solid #bbb; border-radius: 6px; }
+.box_header { border-bottom: 1px solid #bbb; background: #ddd; font-weight: bold; font-size: 1.2em; padding: 5px; }
+.box_content { padding: 5px; }
+.box_buttons { padding: 5px; text-align: right; }
+.dashboard { margin-bottom: 10px; border: 1px solid #bbb; padding: 5px; background: #ddd; border-radius: 6px; }
+
+.deposit_amount { font-weight: bold; }
+.expense_amount { }
+.transfer_amount { font-style: italic; }
+.milestone_time {  border: 0px; font-size: 1.4em; background: #fff; }

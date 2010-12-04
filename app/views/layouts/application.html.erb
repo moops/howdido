@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+    <title>brainpad</title>
+    <%= stylesheet_link_tag 'jquery-ui-1.8.5.custom', 'lavalamp', 'jquery.tooltip', 'visualize', 'visualize-light', 'howdido' %>
+    <% if protect_against_forgery? %>
+      <script type='text/javascript'>
+        //<![CDATA[
+          window._auth_token_name = "#{request_forgery_protection_token}";
+          window._auth_token = "#{form_authenticity_token}";
+        //]]>
+        </script>
+    <% end %>
+    <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.8.5.custom.min', 'jquery.lavalamp.1.3.3-min', 'jquery.easing.1.3', 'jquery.validate', 'jquery.tooltip', 'excanvas', 'jquery.visualize', 'application' %>
+</head>
+
+<body>
+    <div id="header"></div>
+    <ul id="lavaLamp">
+        <li><%= link_to('races',      races_path ) %></li>
+        <li><%= link_to('athletes',   athletes_path ) %></li>
+    </ul>
+    
+    <!-- main content -->
+    
+    <div id="content">
+        <% if flash[:notice] %>
+            <div class="notice"><%=h flash[:notice] %></div><p/>
+        <% end %>
+        <%= yield %></div>
+    
+    <!-- end main content -->
+    
+    <div id="footer">
+        <div id="copyright">
+            &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
+            all rights reserved<br>
+            email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a></div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>

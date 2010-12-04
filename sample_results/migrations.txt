@@ -1,0 +1,54 @@
+class CreateResults < ActiveRecord::Migration
+   def self.up
+      create_table :results do |t|
+         t.column :name, :string
+         t.column :div, :string
+         t.column :gun_time, :string
+         t.column :chip_time, :string
+         t.column :event_id, :integer
+         t.column :bib, :integer 
+         t.column :gender, :integer
+         t.column :created_at, :datetime
+         t.column :updated_at, :datetime
+      end
+  end
+
+   def self.down
+      drop_table :results
+   end
+end
+
+
+class CreateEvents < ActiveRecord::Migration
+   def self.up
+      create_table :events do |t|
+         t.column :name, :string
+         t.column :start, :date
+         t.column :type, :integer
+         t.column :created_at, :datetime
+         t.column :updated_at, :datetime
+      end
+  end
+
+   def self.down
+      drop_table :events
+   end
+end
+
+
+class CreateSplits < ActiveRecord::Migration
+   def self.up
+      create_table :splits do |t|
+         t.column :name, :string
+         t.column :time, :string
+         t.column :result_id, :integer
+         t.column :created_at, :datetime
+         t.column :updated_at, :datetime
+      end
+  end
+
+   def self.down
+      drop_table :splits
+   end
+end
+
