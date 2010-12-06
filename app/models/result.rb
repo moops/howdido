@@ -1,6 +1,8 @@
 class Result < ActiveRecord::Base
   belongs_to :race
   belongs_to :athlete
+  
+  attr_accessor :grade
 
   def summary_xml
     # results = Result.find(:all, :conditions => ['race_id = ?', self.race_id])

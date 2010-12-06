@@ -2,13 +2,16 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>City</th>
   </tr>
 
 <% @athletes.each do |athlete| %>
   <tr>
+    <td><%=h athlete.first_name %></td>
+    <td><%=h athlete.last_name %></td>
+    <td><%=h athlete.city %></td>
     <td><%= link_to 'Show', athlete %></td>
     <td><%= link_to 'Edit', edit_athlete_path(athlete) %></td>
     <td><%= link_to 'Destroy', athlete, :confirm => 'Are you sure?', :method => :delete %></td>

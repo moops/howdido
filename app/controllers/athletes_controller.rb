@@ -14,7 +14,12 @@ class AthletesController < ApplicationController
   # GET /athletes/1.xml
   def show
     @athlete = Athlete.find(params[:id])
-
+    
+    @race_summaries = Hash.new
+    for race in @athlete.races do
+      @race_summaries[race.name] = @athlete.race_summary(race)
+    end
+    logger.info("@race_summaries[#{@race_summaries.inspect}]")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @athlete }

@@ -1,5 +1,48 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>First name:</b>
+  <%=h @athlete.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @athlete.last_name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @athlete.city %>
+</p>
 
 <%= link_to 'Edit', edit_athlete_path(@athlete) %> |
 <%= link_to 'Back', athletes_path %>
+
+<p>
+<b>races:</b>
+
+<table class="vis">
+	<caption>races for <%=h @athlete.name %></caption>
+	<thead>
+	<tr>
+	  <td></td>
+	  <th scope="col">everyone</th>
+	  <th scope="col">gender</th>
+	  <th scope="col">div</th>
+	  <th scope="col">me</th>
+	</tr>
+	</thead>
+	<tbody>
+	    <% @race_summaries.each {|race_name, race_summary| %>
+		<tr>
+	      <th scope="row"><%=h race_name %></th>
+
+		  <td><%= race_summary['everyone'] %></td>
+	      <td><%= race_summary['gender'] %></td>
+	      <td><%= race_summary['div'] %></td>
+	      <td><%= race_summary['me'] %></td>
+	    </tr>
+		<% } %>
+	</tbody>
+</table>
+

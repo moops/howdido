@@ -2,9 +2,8 @@
 
 # mark in compassion tri
 one:
-  id: 1
-  athlete_id: 2
-  race_id: 1
+  athlete: mark
+  race: compassion
   overall_place: 24
   bib: 235
   div: M4049
@@ -13,9 +12,8 @@ one:
 
 # allan in compassion tri
 two:
-  id: 2
-  athlete_id: 3
-  race_id: 1
+  athlete: allan
+  race: compassion
   overall_place: 1
   bib: 110
   div: M3039
@@ -24,9 +22,8 @@ two:
 
 # marcus in compassion tri
 three:
-  id: 3
-  athlete_id: 4
-  race_id: 1
+  athlete: marcus
+  race: compassion
   overall_place: 14
   bib: 146
   div: M5059
@@ -35,9 +32,8 @@ three:
 
 # bertrand in compassion tri
 four:
-  id: 4
-  athlete_id: 5
-  race_id: 1
+  athlete: bertrand
+  race: compassion
   overall_place: 10
   bib: 111
   div: M3039
@@ -46,9 +42,8 @@ four:
 
 # mark in chemainus
 five:
-  id: 5
-  athlete_id: 2
-  race_id: 2
+  athlete: mark
+  race: chemainus
   overall_place: 19
   bib: 746
   div: M4049
@@ -57,9 +52,8 @@ five:
   
 # gary in compassion tri
 six:
-  id: 6
-  athlete_id: 6
-  race_id: 1
+  athlete: gary
+  race: compassion
   overall_place: 2
   bib: 747
   div: M4049
@@ -68,9 +62,18 @@ six:
 
 # gary in chemainus
 seven:
-  id: 7
-  athlete_id: 6
-  race_id: 2
+  athlete: gary
+  race: chemainus
+  overall_place: 6
+  bib: 746
+  div: M4049
+  div_place: 3
+  gun_time: 1806
+  
+# gary in chemainus
+eight:
+  athlete: gary
+  race: stewart
   overall_place: 6
   bib: 746
   div: M4049

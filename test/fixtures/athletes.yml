@@ -1,7 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  id: 1
+adam:
   first_name: adam
   last_name: lawrence
   city: Victoria
@@ -9,40 +8,35 @@ one:
   birth_date: 1969-07-09
   accurate_birth_date: true
 
-two:
-  id: 2
+mark:
   first_name: mark
   last_name: ritchie
   city: Victoria
   gender: 10
   birth_date: 1965-01-01
 
-three:
-  id: 3
+allan:
   first_name: allan
   last_name: boos
   city: Victoria
   gender: 10
   birth_date: 1975-01-01
 
-four:
-  id: 4
+marcus:
   first_name: marcus
   last_name: durrant
   city: Sidney
   gender: 11
   birth_date: 1960-01-01
 
-five:
-  id: 5
+bertrand:
   first_name: bertrand
   last_name: bozek
   city: Saanich
   gender: 10
   birth_date: 1975-10-01
 
-six:
-  id: 6
+gary:
   first_name: gary
   last_name: duncan
   city: Victoria

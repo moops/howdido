@@ -31,3 +31,4 @@ gem 'mysql2'
 # end
 
 # gem 'will_paginate', '>= 2.3.12'
+gem 'mongrel', '>=1.1.5'
