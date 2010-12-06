@@ -1,5 +1,66 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Race on:</b>
+  <%=h @race.race_on %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @race.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @race.location %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%=h @race.distance.description %>
+</p>
+
 
 <%= link_to 'Edit', edit_race_path(@race) %> |
 <%= link_to 'Back', races_path %>
+
+<% if @race.results.empty? %>
+  <h1>load results</h1>
+  <% form_tag(load_results_url(:race_id => @race), :multipart => true) do %>
+    <p><label for="datafile">Select File</label> : <%= file_field_tag('datafile') %></p>
+  <p><label for="first_name_index">first name</label> : <%= text_field_tag('first_name_index') %></p>
+  <p><label for="last_name_index">last name</label> : <%= text_field_tag('last_name_index') %></p>
+  <p><label for="city_index">city</label> : <%= text_field_tag('city_index') %></p>
+  <p><label for="age_index">age</label> : <%= text_field_tag('age_index') %></p>
+  <p><label for="bib_index">bib</label> : <%= text_field_tag('bib_index') %></p>
+  <p><label for="div_index">division</label> : <%= text_field_tag('div_index') %></p>
+  <p><label for="div_place_index">division place</label> : <%= text_field_tag('div_place_index') %></p>
+  <p><label for="overall_place_index">overall place</label> : <%= text_field_tag('overall_place_index') %></p>
+    <p><label for="gun_time_index">gun time</label> : <%= text_field_tag('gun_time_index') %></p>
+    <p><label for="chip_time_index">chip time</label> : <%= text_field_tag('chip_time_index') %></p>
+    <p><label for="penalty_time_index">penalty time</label> : <%= text_field_tag('penalty_time_index') %></p>
+    <%= submit_tag "Upload" %>
+  <% end %>
+<% else %>
+  <table>
+    <tr>
+      <th>Place</th>
+    <th>Athlete</th>
+      <th>City</th>
+      <th>Bib</th>
+      <th>Div</th>
+      <th>Div place</th>
+    </tr>
+  <% @race.results.each do |r| %>
+    <tr>
+      <td><%=h r.overall_place %></td>
+    <td><%=h "#{r.athlete.first_name} #{r.athlete.last_name}" %></td>
+      <td><%=h r.athlete.city %></td>
+      <td><%=h r.bib %></td>
+      <td><%=h r.div %></td>
+      <td><%=h r.div_place %></td>
+  </tr>
+  <% end %>
+  </table>
+<% end %>
+
