@@ -46,9 +46,9 @@ five:
   race: chemainus
   overall_place: 19
   bib: 746
-  div: M4049
+  div: M2029
   div_place: 7
-  gun_time: 1819
+  gun_time: 1233
   
 # gary in compassion tri
 six:
@@ -68,9 +68,9 @@ seven:
   bib: 746
   div: M4049
   div_place: 3
-  gun_time: 1806
+  gun_time: 872
   
-# gary in chemainus
+# gary in stewart
 eight:
   athlete: gary
   race: stewart
@@ -78,4 +78,4 @@ eight:
   bib: 746
   div: M4049
   div_place: 3
-  gun_time: 1806
+  gun_time: 2948

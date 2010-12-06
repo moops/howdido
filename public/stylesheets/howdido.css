@@ -82,3 +82,6 @@ ul.due li:after { content: ", "; }
 .expense_amount { }
 .transfer_amount { font-style: italic; }
 .milestone_time {  border: 0px; font-size: 1.4em; background: #fff; }
+
+/* charts */
+.vis { display: none; }

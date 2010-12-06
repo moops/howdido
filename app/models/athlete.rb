@@ -6,17 +6,43 @@ class Athlete < ActiveRecord::Base
   
   def race_summary(race)
     h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
+    num_results = 0
+    num_results_in_gender = 0
+    num_results_in_div = 0
     my_result = Result.where("race_id = :race and athlete_id = :ath", {:race => race.id, :ath => id}).first
-    logger.info("my_result[#{my_result.inspect}]")
+    logger.info("my_result for #{race.name} [#{my_result.inspect}]")
     for result in race.results do
-      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
-      result.grade= (result.gun_time / w.factor) * 100 if w
-      h['everyone'] += result.grade if result.grade
-      h['gender'] += result.grade if result.athlete.gender = gender and result.grade
-      h['div'] += result.grade if result.div = my_result.div and result.grade
-      h['me'] += result.grade if result.id = my_result.id and result.grade
+      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => result.athlete.age(race.race_on), :gender => result.athlete.gender, :dist => race.distance}).first
+      
+      result.grade= (w.factor / result.gun_time) * 100 if w
+
+      if result.grade
+        num_results += 1
+        h['everyone'] += result.grade
+        if result.athlete.gender == gender
+          num_results_in_gender += 1
+          h['gender'] += result.grade
+        end
+        if result.div == my_result.div
+          num_results_in_div += 1
+          h['div'] += result.grade
+        end
+        if result.id == my_result.id
+          h['me'] += result.grade
+        end
+      end
     end
-    logger.info("h[#{h.inspect}]")
+    num_results = race.results.size
+    h['everyone'] /= num_results if num_results > 0
+    h['gender'] /= num_results_in_gender if num_results_in_gender > 0
+    h['div'] /= num_results_in_div if num_results_in_div > 0
+    
+    h['everyone'] = h['everyone'].to_i
+    h['gender'] = h['gender'].to_i
+    h['div'] = h['div'].to_i
+    h['me'] = h['me'].to_i
+    
+    logger.info("summary built for #{race.name} [#{h.inspect}]")
     h
   end
   
@@ -51,9 +77,9 @@ class Athlete < ActiveRecord::Base
     end
   end
   
-  def age
-    age = Date.today.year - birth_date.year
-    age -= 1 if (Date.today.yday < birth_date.yday)
+  def age(on = Date.today)
+    age = on.year - birth_date.year
+    age -= 1 if (on.yday < birth_date.yday)
     age
   end
   
