@@ -4,6 +4,7 @@ Howdido::Application.routes.draw do
   resources :results
 
   resources :races
+  match 'races/:id/load' => 'results#load', :as => :load_results
 
   resources :athletes
 

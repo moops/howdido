@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <%= f.label :race_on %><%= f.text_field :race_on, :class => 'calendar' %><br/>
+  <%= f.label :name %><%= f.text_field :name %><br/>
+  <%= f.label :location %><%= f.text_field :location %><br/>
+  <%= f.label :race_type %><%= f.select(:race_type, @race_types.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %><br/>
+  <%= f.label :distance %><%= f.select(:distance, @distances.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

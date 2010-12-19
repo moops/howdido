@@ -18,22 +18,19 @@
 <%= link_to 'Edit', edit_athlete_path(@athlete) %> |
 <%= link_to 'Back', athletes_path %>
 
-<p>
-<b>races:</b>
-
-<table class="vis">
-	<caption>races for <%=h @athlete.name %></caption>
+<table class="vis recent_run_summaries">
+	<caption>recent running races for <%=h @athlete.name %></caption>
 	<thead>
 	<tr>
 	  <td></td>
 	  <th scope="col">everyone</th>
-	  <th scope="col">gender</th>
-	  <th scope="col">div</th>
+	  <th scope="col"><%= @athlete.gender.description %></th>
+	  <th scope="col">division</th>
 	  <th scope="col">me</th>
 	</tr>
 	</thead>
 	<tbody>
-	    <% @race_summaries.each {|race_name, race_summary| %>
+	    <% @recent_run_summaries.each {|race_name, race_summary| %>
 		<tr>
 	      <th scope="row"><%=h race_name %></th>
 
@@ -43,6 +40,28 @@
 	      <td><%= race_summary['me'] %></td>
 	    </tr>
 		<% } %>
+	</tbody>
+</table>
+
+<table class="vis recent_run_grades">
+	<caption>recent running races for <%=h @athlete.name %></caption>
+	<thead>
+	<tr>
+	  <td></td>
+	  <% @recent_run_grades[0].each {|race_name| %>
+	  <th scope="col"><%= race_name %></th>
+	  <% } %>
+	</tr>
+	</thead>
+	<tbody>
+	    
+		<tr>
+		  <th scope="row">grades</th>
+		  <% @recent_run_grades[1].each {|grade| %>
+		  <td><%= grade %></td>
+		  <% } %>
+		</tr>
+		
 	</tbody>
 </table>
 

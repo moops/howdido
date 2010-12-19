@@ -1,3 +1,31 @@
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function() {
+    new Highcharts.Chart({
+      chart: { type: "scatter", renderTo: "results_chart" },
+      title: { text: "Results by Age" },
+	  credits: { enabled: false },
+	  tooltip: { formatter: function() { return this.point.name + ' ' + seconds_to_time(this.y); } },
+      yAxis: { title: { text: "Minutes" } },
+      series: [
+	  {
+		name: "male",
+		data: [
+		<% @race.results.male.each do |result| %>
+		  <%= "{ name: '#{result.athlete.name}', x: #{result.athlete.age}, y: #{result.gun_time} }," %>
+		<% end %>
+		]
+      },{
+		name: 'female',
+		data: [
+		<% @race.results.female.each do |result| %>
+		  <%= "{ name: '#{result.athlete.name}', x: #{result.athlete.age}, y: #{result.gun_time} }," %>
+		<% end %>
+		]
+      }]
+    });
+  });
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -42,25 +70,6 @@
     <%= submit_tag "Upload" %>
   <% end %>
 <% else %>
-  <table>
-    <tr>
-      <th>Place</th>
-    <th>Athlete</th>
-      <th>City</th>
-      <th>Bib</th>
-      <th>Div</th>
-      <th>Div place</th>
-    </tr>
-  <% @race.results.each do |r| %>
-    <tr>
-      <td><%=h r.overall_place %></td>
-    <td><%=h "#{r.athlete.first_name} #{r.athlete.last_name}" %></td>
-      <td><%=h r.athlete.city %></td>
-      <td><%=h r.bib %></td>
-      <td><%=h r.div %></td>
-      <td><%=h r.div_place %></td>
-  </tr>
-  <% end %>
-  </table>
+  <div id="results_chart" style="width:560px; height:300px;"></div>
 <% end %>
 

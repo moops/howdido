@@ -2,6 +2,9 @@ class Result < ActiveRecord::Base
   belongs_to :race
   belongs_to :athlete
   
+  scope :male, joins(:athlete) & Athlete.male
+  scope :female, joins(:athlete) & Athlete.female
+  
   attr_accessor :grade
 
   def summary_xml

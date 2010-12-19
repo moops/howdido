@@ -14,7 +14,7 @@ Place Div/Tot Div   Name                     Time    Pace
    10   3/14  M3034 Jeremy Watts               30:06  3:46 
    11   1/7   M1619 Ben Kingstone              30:23  3:48 
    12   5/15  M2529 Ming Kang                  30:25  3:49 
-   13   2/10  M4549 Greg Leiman                30:46  3:51 
+   13   2/10  M4549 Gary Duncan                30:46  3:51 
    14   6/15  M2529 Matt Cecill                31:15  3:55 
    15   4/14  M3034 Jeff Hunt                  31:23  3:56 
    16   7/15  M2529 Chris Callendar            31:23  3:56 

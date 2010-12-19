@@ -102,11 +102,19 @@ class ResultsController < ApplicationController
     end 
 
     data_found = false
-    params[:datafile].readlines.each do |l|
+    
+    logger.info("loading results...")
+    
+    params[:datafile].read.each do |l|
+      
+      logger.info("reading results line #{l}")
+      
       line = l.split(' ')
       if data_found
+        logger.info("data found")
         first_name = line[first_name_index].downcase
         last_name = line[last_name_index].downcase
+        logger.info("building result for #{first_name} #{last_name}")
         #find and update or create athlete
         a = Athlete.find_by_first_name_and_last_name(first_name, last_name)
         unless a
@@ -123,6 +131,7 @@ class ResultsController < ApplicationController
           a.guess_gender(line[div_index])
           a.guess_birth_date(race.race_on, line[div_index]) unless age_index
         end
+        logger.info("saving athlete #{a.inspect}")
         a.save
         
         #create result
@@ -147,7 +156,7 @@ class ResultsController < ApplicationController
         r.penalty_time = get_time(line[penalty_time_index]) if penalty_time_index
         r.save
       end
-      data_found = line[0] == '=====' unless data_found
+      data_found = data_header?(line) unless data_found
     end
 
     respond_to do |format|
@@ -164,6 +173,18 @@ class ResultsController < ApplicationController
       time += (p.to_i * (60**i))
     end
     time
+  end
+  
+  private 
+  
+  def data_header?(line)
+    logger.info("is this a header line? #{line}")
+    something_else_found = false
+    line.each do |l| 
+      something_else_found = !(l =~ /^=+$/)
+    end
+    logger.info("is this a header line? #{!something_else_found and !line.empty?}")
+    !something_else_found and !line.empty?
   end
   
 end

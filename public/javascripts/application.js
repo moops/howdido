@@ -116,6 +116,17 @@ jQuery(document).ready(function() {
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
-  jQuery("table.vis").visualize();
+  jQuery("table.recent_run_summaries").visualize();
+  jQuery("table.recent_run_grades").visualize({type: 'line'});
   
 });
+
+function seconds_to_time(s) {
+  	hours = parseInt(s / 3600);
+	s = s - (hours * 3600);
+  	minutes = parseInt(s / 60);
+	seconds = s - (minutes * 60);
+	if (minutes < 10) minutes = '0' + minutes;
+	if (seconds < 10) seconds = '0' + seconds;
+	return hours + ':' + minutes + ':' + seconds;
+  }

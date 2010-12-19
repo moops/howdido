@@ -12,4 +12,5 @@ class Race < ActiveRecord::Base
     end
     h
   end
+  
 end

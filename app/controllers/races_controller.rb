@@ -3,7 +3,7 @@ class RacesController < ApplicationController
   # GET /races.xml
   def index
     @races = Race.all
-    logger.info("@races[#{@races.inspect}]")
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @races }
@@ -25,7 +25,8 @@ class RacesController < ApplicationController
   # GET /races/new.xml
   def new
     @race = Race.new
-
+    @race_types = Lookup.list_for('race_type')
+    @distances = Lookup.list_for('race_dist')
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @race }
@@ -40,7 +41,10 @@ class RacesController < ApplicationController
   # POST /races
   # POST /races.xml
   def create
-    @race = Race.new(params[:race])
+    h = params[:race]
+    h['race_type'] = Lookup.find(h['race_type'].to_i)
+    h['distance'] = Lookup.find(h['distance'].to_i)
+    @race = Race.new(h)
 
     respond_to do |format|
       if @race.save
