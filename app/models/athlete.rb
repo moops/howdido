@@ -2,22 +2,19 @@ class Athlete < ActiveRecord::Base
   has_many :results
   has_many :races, :through => :results
   
+  belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
+  
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
   
-  belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
-  
-  # returns: [[race names],[grades]]
-  # example: [["Esquimalt 8km", "Stewart Mountain", "Chemainus Twilight Shuffle", "race for pace"], [75, 97, 96, 64]]
+  # returns: [[race name,grade]]
+  # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
   def recent_run_grades(limit=10)
-    grades = [[],[]]
-    recent_races = races.where("race_type = 3").order("race_on desc").limit(limit)
+    grades = []
+    recent_races = races.where("race_type = 3").order("race_on").limit(limit)
     for race in recent_races do
-      grades[0] << race.race_on
-      grades[1] << grade(race).to_i
+      grades << [race.name, race.race_on, grade(race).to_i]
     end
-    grades[0].reverse!
-    grades[1].reverse!
     grades
   end
   
@@ -76,7 +73,11 @@ class Athlete < ActiveRecord::Base
   
   def grade(race)
     my_result = Result.where("race_id = :race and athlete_id = :ath", {:race => race.id, :ath => id}).first
+    logger.info("my_result: #{my_result.inspect}")
     w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age(race.race_on), :gender => gender, :dist => race.distance}).first
+    logger.info("grade: (#{w.factor} / #{my_result.gun_time}) * 100")
+    gr = ((w.factor/my_result.gun_time) * 100).to_s
+    logger.info("grade: #{gr}")
     (w.factor / my_result.gun_time) * 100
   end
   

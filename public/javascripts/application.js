@@ -116,8 +116,6 @@ jQuery(document).ready(function() {
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
-  jQuery("table.recent_run_summaries").visualize();
-  jQuery("table.recent_run_grades").visualize({type: 'line'});
   
 });
 

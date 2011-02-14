@@ -1,3 +1,52 @@
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function() {
+  	
+	var recentRunGradesChart = new Highcharts.Chart({
+      chart: { defaultSeriesType: "line", renderTo: "recent_run_grades" },
+      title: { text: '<%= "recent running grades for #{@athlete.name}" %>' },
+	  credits: { enabled: false },
+	  legend: { enabled: false },
+	  tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
+	  xAxis: { 
+	    title: { text: "race" },
+		categories: [
+		<% @recent_run_grades.each do |grade| %>
+		  <%= "'#{grade[0]}', " %>
+		<% end %>
+		]
+      },
+      yAxis: { title: { text: "grade" }, min: 0, max: 100 },
+      series: [{
+		data: [
+		  <% @recent_run_grades.each do |grade| %>
+			<%= "{ name: '#{grade[1]}', y: #{grade[2]} }," %>
+		  <% end %>
+		]
+      }]
+    });
+	
+    var recentRunSummariesChart = new Highcharts.Chart({
+      chart: { defaultSeriesType: "column", renderTo: "recent_run_summaries" },
+      title: { text: '<%= "recent running races for #{@athlete.name}" %>' },
+	  credits: { enabled: false },
+	  xAxis: { 
+		categories: ['everyone', 'gender', 'division', 'me']
+      },
+      yAxis: { title: { text: 'grade' }, min: 0, max: 100 },
+      series: [
+	  <% @recent_run_summaries.each do |race_name, race_summary| %>
+	    {
+		  name: '<%= race_name %>',
+		  data: [<%= "#{race_summary['everyone']},#{race_summary['gender']},#{race_summary['div']},#{race_summary['me']}" %>]
+        },
+	  <% end %>
+	  ]
+    });
+	
+  });
+</script>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -18,50 +67,8 @@
 <%= link_to 'Edit', edit_athlete_path(@athlete) %> |
 <%= link_to 'Back', athletes_path %>
 
-<table class="vis recent_run_summaries">
-	<caption>recent running races for <%=h @athlete.name %></caption>
-	<thead>
-	<tr>
-	  <td></td>
-	  <th scope="col">everyone</th>
-	  <th scope="col"><%= @athlete.gender.description %></th>
-	  <th scope="col">division</th>
-	  <th scope="col">me</th>
-	</tr>
-	</thead>
-	<tbody>
-	    <% @recent_run_summaries.each {|race_name, race_summary| %>
-		<tr>
-	      <th scope="row"><%=h race_name %></th>
+<div id="recent_run_grades" style="width:560px; height:300px;"></div>
 
-		  <td><%= race_summary['everyone'] %></td>
-	      <td><%= race_summary['gender'] %></td>
-	      <td><%= race_summary['div'] %></td>
-	      <td><%= race_summary['me'] %></td>
-	    </tr>
-		<% } %>
-	</tbody>
-</table>
+<p/>
 
-<table class="vis recent_run_grades">
-	<caption>recent running races for <%=h @athlete.name %></caption>
-	<thead>
-	<tr>
-	  <td></td>
-	  <% @recent_run_grades[0].each {|race_name| %>
-	  <th scope="col"><%= race_name %></th>
-	  <% } %>
-	</tr>
-	</thead>
-	<tbody>
-	    
-		<tr>
-		  <th scope="row">grades</th>
-		  <% @recent_run_grades[1].each {|grade| %>
-		  <td><%= grade %></td>
-		  <% } %>
-		</tr>
-		
-	</tbody>
-</table>
-
+<div id="recent_run_summaries" style="width:560px; height:300px;"></div>
