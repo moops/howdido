@@ -6,3 +6,23 @@ http://www.filamentgroup.com/lab/update_to_jquery_visualize_accessible_charts_wi
 highcharts
 http://highcharts.com/
 
+
+work flow:
+
+admin: 
+-login
+-upload results
+
+public:
+-find a race
+-claim a result
+-howdido in that race
+-register
+
+user:
+-login
+-upload a race
+-howdido for multiple races
+-add comments for a result
+
+
