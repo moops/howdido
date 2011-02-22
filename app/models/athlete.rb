@@ -4,6 +4,10 @@ class Athlete < ActiveRecord::Base
   
   belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
   
+  validates_presence_of :user_name
+  
+  attr_accessor :auth_profile
+  
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
   

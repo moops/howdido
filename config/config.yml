@@ -1,0 +1,10 @@
+development:
+  authenticate: false
+  auth_host: http://localhost:3004
+  
+test:
+  authenticate: false
+  
+production:
+  authenticate: true
+  auth_host: http://raceweb-auth.heroku.com

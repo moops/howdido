@@ -1,0 +1,27 @@
+<h3>login required</h3>
+       
+<div class="form">
+
+    <% if flash[:notice] %>
+        <div class="notice"><%=h flash[:notice] %></div>
+    <% end %>
+       
+    <% form_tag(:action => 'authenticate') do %>
+       
+    <table cellpadding="3" cellspacing="0" border="0">
+        <tr>
+            <td><%= label(:person, :user_name) %></td>
+            <td><%= text_field('person', 'user_name', :size => '15', :class => 'text') %></td></tr>
+      
+        <tr>
+            <td><%= label(:person, :password) %></td>
+            <td><%= password_field('person', 'password', :size => '15', :class => 'text') %></td></tr>
+      
+        <tr>
+            <td>&nbsp;</td>
+            <td class="submit"><%= submit_tag('login') %></td></tr>
+      
+    </table>
+      
+    <% end %>
+</div>

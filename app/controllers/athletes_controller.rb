@@ -1,4 +1,7 @@
 class AthletesController < ApplicationController
+  
+  before_filter :authorize
+  
   # GET /athletes
   # GET /athletes.xml
   def index

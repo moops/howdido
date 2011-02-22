@@ -3,6 +3,7 @@
 adam:
   first_name: adam
   last_name: lawrence
+  user_name: adam
   city: Victoria
   gender: 10
   birth_date: 1969-07-09
@@ -11,6 +12,7 @@ adam:
 mark:
   first_name: mark
   last_name: ritchie
+  user_name: mark
   city: Victoria
   gender: 11
   birth_date: 1985-01-01
@@ -18,6 +20,7 @@ mark:
 allan:
   first_name: allan
   last_name: boos
+  user_name: allan
   city: Victoria
   gender: 10
   birth_date: 1975-01-01
@@ -25,6 +28,7 @@ allan:
 marcus:
   first_name: marcus
   last_name: durrant
+  user_name: marcus
   city: Sidney
   gender: 11
   birth_date: 1960-01-01
@@ -32,6 +36,7 @@ marcus:
 bertrand:
   first_name: bertrand
   last_name: bozek
+  user_name: bertrand
   city: Saanich
   gender: 10
   birth_date: 1975-10-01
@@ -39,6 +44,7 @@ bertrand:
 gary:
   first_name: gary
   last_name: duncan
+  user_name: gary
   city: Victoria
   gender: 10
   birth_date: 1959-05-25
