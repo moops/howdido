@@ -129,4 +129,27 @@ class Athlete < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
   
+  def self.authenticate(name, password)
+    profile = nil
+    resp = nil
+    url = "#{APP_CONFIG['auth_host']}/users/find.xml?user_name=#{name}&password=#{password}"
+    logger.debug("Athlete.authenticate: authenticating with url[#{url}]...")
+    open(url) do |http|
+      resp = http.read
+    end
+    logger.debug("Athlete.authenticate: resp[#{resp}]...")
+    
+    if !resp.empty?
+      root = REXML::Document.new(resp).root
+      user = Athlete.find_by_user_name(root.elements["user-name"].text)
+      if user
+        name = (root.elements["name"].text) if root.elements["name"].text
+        authority = (root.elements["authority"].text.to_i) if root.elements["authority"].text
+        born_on = (Date.parse(root.elements["born-on"].text)) if root.elements["born-on"].text
+        profile = AuthProfile.new(user.id, name, authority, born_on)
+      end
+    end
+    profile
+  end
+  
 end
