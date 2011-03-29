@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'rexml/document'
+
 class Athlete < ActiveRecord::Base
   has_many :results
   has_many :races, :through => :results

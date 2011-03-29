@@ -1,6 +1,6 @@
 development:
-  authenticate: false
-  auth_host: http://localhost:3004
+  authenticate: true
+  auth_host: http://localhost:3002
   
 test:
   authenticate: false

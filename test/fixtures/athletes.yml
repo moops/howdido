@@ -6,7 +6,7 @@ adam:
   user_name: adam
   city: Victoria
   gender: 10
-  birth_date: 1969-07-09
+  born_on: 1969-07-09
   accurate_birth_date: true
 
 mark:
@@ -15,7 +15,7 @@ mark:
   user_name: mark
   city: Victoria
   gender: 11
-  birth_date: 1985-01-01
+  born_on: 1985-01-01
 
 allan:
   first_name: allan
@@ -23,7 +23,7 @@ allan:
   user_name: allan
   city: Victoria
   gender: 10
-  birth_date: 1975-01-01
+  born_on: 1975-01-01
 
 marcus:
   first_name: marcus
@@ -31,7 +31,7 @@ marcus:
   user_name: marcus
   city: Sidney
   gender: 11
-  birth_date: 1960-01-01
+  born_on: 1960-01-01
 
 bertrand:
   first_name: bertrand
@@ -39,7 +39,7 @@ bertrand:
   user_name: bertrand
   city: Saanich
   gender: 10
-  birth_date: 1975-10-01
+  born_on: 1975-10-01
 
 gary:
   first_name: gary
@@ -47,5 +47,5 @@ gary:
   user_name: gary
   city: Victoria
   gender: 10
-  birth_date: 1959-05-25
+  born_on: 1959-05-25
   accurate_birth_date: true

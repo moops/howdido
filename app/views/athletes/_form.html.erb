@@ -10,6 +10,13 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= f.label :first_name %><%= f.text_field :first_name %><br/>
+  <%= f.label :last_name %><%= f.text_field :last_name %><br/>
+  <%= f.label :user_name %><%= f.text_field :user_name %><br/>
+  <%= f.label :gender %><%= f.select(:gender, @genders.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %><br/>
+  <%= f.label :city %><%= f.text_field :city %><br/>
+  <%= f.label :born_on %><%= f.text_field :born_on, :class => 'calendar' %><br/>
 
   <div class="actions">
     <%= f.submit %>

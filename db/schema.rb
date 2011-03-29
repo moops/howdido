@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20101202191037) do
     t.string   "user_name"
     t.string   "city"
     t.integer  "gender"
-    t.date     "birth_date"
+    t.date     "born_on"
     t.boolean  "accurate_birth_date", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,6 +1,6 @@
 class AthletesController < ApplicationController
   
-  before_filter :authorize
+  before_filter :authorize, :only => :show
   
   # GET /athletes
   # GET /athletes.xml
@@ -32,6 +32,7 @@ class AthletesController < ApplicationController
   # GET /athletes/new.xml
   def new
     @athlete = Athlete.new
+    @genders = Lookup.list_for('gender')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +48,7 @@ class AthletesController < ApplicationController
   # POST /athletes
   # POST /athletes.xml
   def create
+    params[:athlete][:gender] = Lookup.find(params[:athlete][:gender])
     @athlete = Athlete.new(params[:athlete])
 
     respond_to do |format|

@@ -6,7 +6,7 @@ class CreateAthletes < ActiveRecord::Migration
       t.string :user_name
       t.string :city
       t.integer :gender
-      t.date :birth_date
+      t.date :born_on
       t.boolean :accurate_birth_date, :default => false
       
       t.timestamps

@@ -7,6 +7,8 @@ Howdido::Application.routes.draw do
   match 'races/:id/load' => 'results#load', :as => :load_results
 
   resources :athletes
+  
+  match 'login' => 'login#index', :as => :login
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

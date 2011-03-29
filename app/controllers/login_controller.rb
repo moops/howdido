@@ -8,7 +8,7 @@ class LoginController < ApplicationController
     
     if APP_CONFIG['authenticate']
       logger.debug("LoginController.authenticate: authenticating...")
-      auth_profile = Person.authenticate(params[:person][:user_name], params[:person][:password])
+      auth_profile = Athlete.authenticate(params[:person][:user_name], params[:person][:password])
     else #not authenticating, just use the param as the user_name
       logger.debug("LoginController.authenticate: not authenticating just use user_name param...")
       user = Athlete.find_by_user_name(params[:person][:user_name])
@@ -23,11 +23,11 @@ class LoginController < ApplicationController
         session[:return_to] = nil
         redirect_to(temp)
       else
-        redirect_to links_path
+        redirect_to athlete_path(Athlete.find(auth_profile.user_id))
       end
     else
       flash[:notice] = 'Login failed!' 
-      redirect_to :action => 'index'
+      redirect_to races_path
     end
   end
 
