@@ -3,10 +3,16 @@ class CreateResults < ActiveRecord::Migration
     create_table :results do |t|
       t.integer :athlete_id
       t.integer :race_id
+      t.string :first_name
+      t.string :last_name
+      t.string :city
+      t.integer :age
+      t.integer :gender
       t.integer :overall_place
       t.integer :gun_time 
       t.integer :chip_time
       t.integer :penalty_time
+      t.integer :points
       t.string :bib
       t.string :div
       t.integer :div_place

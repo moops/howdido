@@ -12,57 +12,19 @@
 
 ActiveRecord::Schema.define(:version => 20101202191037) do
 
-  create_table "athletes", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "user_name"
-    t.string   "city"
-    t.integer  "gender"
-    t.date     "born_on"
-    t.boolean  "accurate_birth_date", :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "athletes" because of following ArgumentError
+#   invalid date
 
-  create_table "lookups", :force => true do |t|
-    t.integer  "category"
-    t.string   "code"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "lookups" because of following ArgumentError
+#   invalid date
 
-  create_table "races", :force => true do |t|
-    t.date     "race_on"
-    t.string   "name"
-    t.string   "location"
-    t.integer  "race_type"
-    t.float    "distance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "races" because of following ArgumentError
+#   invalid date
 
-  create_table "results", :force => true do |t|
-    t.integer  "athlete_id"
-    t.integer  "race_id"
-    t.integer  "overall_place"
-    t.integer  "gun_time"
-    t.integer  "chip_time"
-    t.integer  "penalty_time"
-    t.string   "bib"
-    t.string   "div"
-    t.integer  "div_place"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "results" because of following ArgumentError
+#   invalid date
 
-  create_table "wavas", :force => true do |t|
-    t.integer  "age"
-    t.integer  "gender"
-    t.integer  "distance"
-    t.float    "factor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "wavas" because of following ArgumentError
+#   invalid date
 
 end

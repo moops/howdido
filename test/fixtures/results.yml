@@ -2,7 +2,10 @@
 
 # mark in compassion tri
 one:
-  athlete: mark
+  first_name: mark
+  last_name: ritchie
+  city: Victoria
+  gender: 11
   race: compassion
   overall_place: 24
   bib: 235
@@ -12,7 +15,10 @@ one:
 
 # allan in compassion tri
 two:
-  athlete: allan
+  first_name: allan
+  last_name: boos
+  city: Victoria
+  gender: 10
   race: compassion
   overall_place: 1
   bib: 110
@@ -22,7 +28,10 @@ two:
 
 # marcus in compassion tri
 three:
-  athlete: marcus
+  first_name: marcus
+  last_name: durrant
+  city: Sidney
+  gender: 11
   race: compassion
   overall_place: 14
   bib: 146
@@ -33,6 +42,10 @@ three:
 # bertrand in compassion tri
 four:
   athlete: bertrand
+  first_name: bertrand
+  last_name: bozek
+  city: Saanich
+  gender: 10
   race: compassion
   overall_place: 10
   bib: 111
@@ -42,7 +55,10 @@ four:
 
 # mark in chemainus
 five:
-  athlete: mark
+  first_name: mark
+  last_name: ritchie
+  city: Victoria
+  gender: 11
   race: chemainus
   overall_place: 19
   bib: 746
@@ -53,6 +69,10 @@ five:
 # gary in compassion tri
 six:
   athlete: gary
+  first_name: gary
+  last_name: duncan
+  city: Victoria
+  gender: 10
   race: compassion
   overall_place: 2
   bib: 747
@@ -63,6 +83,10 @@ six:
 # gary in chemainus
 seven:
   athlete: gary
+  first_name: gary
+  last_name: duncan
+  city: Victoria
+  gender: 10
   race: chemainus
   overall_place: 6
   bib: 746
@@ -73,6 +97,10 @@ seven:
 # gary in stewart
 eight:
   athlete: gary
+  first_name: gary
+  last_name: duncan
+  city: Victoria
+  gender: 10
   race: stewart
   overall_place: 6
   bib: 746

@@ -1,51 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 adam:
-  first_name: adam
-  last_name: lawrence
-  user_name: adam
-  city: Victoria
-  gender: 10
-  born_on: 1969-07-09
-  accurate_birth_date: true
-
-mark:
-  first_name: mark
-  last_name: ritchie
-  user_name: mark
-  city: Victoria
-  gender: 11
-  born_on: 1985-01-01
-
-allan:
-  first_name: allan
-  last_name: boos
-  user_name: allan
-  city: Victoria
-  gender: 10
-  born_on: 1975-01-01
-
-marcus:
-  first_name: marcus
-  last_name: durrant
-  user_name: marcus
-  city: Sidney
-  gender: 11
-  born_on: 1960-01-01
+  auth_user_id: 585460615
 
 bertrand:
-  first_name: bertrand
-  last_name: bozek
-  user_name: bertrand
-  city: Saanich
-  gender: 10
-  born_on: 1975-10-01
+  auth_user_id: 492362561
 
 gary:
-  first_name: gary
-  last_name: duncan
-  user_name: gary
-  city: Victoria
-  gender: 10
-  born_on: 1959-05-25
-  accurate_birth_date: true
+  auth_user_id: 980444000
