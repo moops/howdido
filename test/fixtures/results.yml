@@ -40,8 +40,7 @@ three:
   gun_time: 3614
 
 # bertrand in compassion tri
-four:
-  athlete: bertrand
+bertrand_in_compassion:
   first_name: bertrand
   last_name: bozek
   city: Saanich
@@ -67,8 +66,7 @@ five:
   gun_time: 1233
   
 # gary in compassion tri
-six:
-  athlete: gary
+gary_in_compassion:
   first_name: gary
   last_name: duncan
   city: Victoria
@@ -81,8 +79,7 @@ six:
   gun_time: 3603
 
 # gary in chemainus
-seven:
-  athlete: gary
+gary_in_chemainus:
   first_name: gary
   last_name: duncan
   city: Victoria
@@ -95,8 +92,7 @@ seven:
   gun_time: 872
   
 # gary in stewart
-eight:
-  athlete: gary
+gary_in_stewart:
   first_name: gary
   last_name: duncan
   city: Victoria

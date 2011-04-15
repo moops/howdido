@@ -2,8 +2,8 @@ require 'open-uri'
 require 'rexml/document'
 
 class Athlete < ActiveRecord::Base
-  has_many :results
-  has_many :races, :through => :results
+  has_and_belongs_to_many :results
+  has_and_belongs_to_many :races
   
   belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
   

@@ -1,7 +1,6 @@
 class CreateResults < ActiveRecord::Migration
   def self.up
     create_table :results do |t|
-      t.integer :athlete_id
       t.integer :race_id
       t.string :first_name
       t.string :last_name

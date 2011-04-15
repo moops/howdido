@@ -1,6 +1,6 @@
 class Result < ActiveRecord::Base
   belongs_to :race
-  belongs_to :athlete
+  has_and_belongs_to_many :athletes
   
   scope :male, joins(:athlete) & Athlete.male
   scope :female, joins(:athlete) & Athlete.female
