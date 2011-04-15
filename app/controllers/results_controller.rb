@@ -94,6 +94,7 @@ class ResultsController < ApplicationController
     gun_time_index = params[:gun_time_index].to_i unless params[:gun_time_index].empty?
     chip_time_index = params[:chip_time_index].to_i unless params[:chip_time_index].empty?
     penalty_time_index = params[:penalty_time_index].to_i unless params[:penalty_time_index].empty?
+    points_index = params[:points_index].to_i unless params[:points_index].empty?
     age_index = params[:age_index].to_i unless params[:age_index].empty?
     if params[:div_place_index].empty?
       div_places = Hash.new
@@ -115,31 +116,25 @@ class ResultsController < ApplicationController
         first_name = line[first_name_index].downcase
         last_name = line[last_name_index].downcase
         logger.info("building result for #{first_name} #{last_name}")
-        #find and update or create athlete
-        a = Athlete.find_by_first_name_and_last_name(first_name, last_name)
-        unless a
-          a = Athlete.new
-          a.first_name = first_name
-          a.last_name = last_name
-        end
-        #set age
-        if age_index
-          a.birth_date = race_on << (line[age_index].to_i.*12)
-        end
-        a.city = line[city_index] if city_index
-        if div_index
-          a.guess_gender(line[div_index])
-          a.guess_birth_date(race.race_on, line[div_index]) unless age_index
-        end
-        logger.info("saving athlete #{a.inspect}")
-        a.save
         
         #create result
         r = Result.new
-        r.athlete = a if a 
+        #r.athlete = a if a 
+        r.first_name = line[first_name_index].downcase
+        r.last_name = line[last_name_index].downcase
+        r.city = line[city_index] if city_index
+        if age_index
+          r.age = line[age_index].to_i
+        end
+        
+        if div_index
+          r.div = line[div_index]
+          r.guess_gender(line[div_index])
+          r.guess_age(line[div_index]) unless age_index
+        end
+        
         r.race = race if race 
         r.overall_place = line[overall_place_index] if overall_place_index
-        r.div = line[div_index] if div_index 
         # use or calculate div_place
         if div_place_index
           r.div_place = line[div_place_index]
@@ -154,6 +149,7 @@ class ResultsController < ApplicationController
         r.gun_time = get_time(line[gun_time_index]) if gun_time_index
         r.chip_time = get_time(line[chip_time_index]) if chip_time_index
         r.penalty_time = get_time(line[penalty_time_index]) if penalty_time_index
+        r.points = line[points_index] if points_index
         r.save
       end
       data_found = data_header?(line) unless data_found

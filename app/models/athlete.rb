@@ -88,46 +88,6 @@ class Athlete < ActiveRecord::Base
     (w.factor / my_result.gun_time) * 100
   end
   
-  def guess_birth_date(race_on, div)
-    logger.info("guessing birth date for #{first_name} #{last_name} with div #{div}")
-    a = nil
-    # M5054
-    if div[/^[mMfF][0-9]{4}$/]
-      if div[1,2].to_i < 2
-        # M0119 use upper age
-        a = div[3,2].to_i
-      else
-        # use mid point
-        a = (div[1,2].to_i + (div[3,2].to_i + 1)) / 2
-      end
-    # M50+
-    elsif div[/^[mMfF][0-9]{2}\+$/]
-      a = div[1,2].to_i
-    # M-U20
-    elsif div[/^[mMfF]-U[0-9]{2}$/]
-      a = (div[3,2].to_i) - 1
-    end
-    logger.info("guessing birth date a #{a}")
-    self.birth_date = race_on << (a.floor*12)
-    logger.info("guessing birth date #{self.inspect}")
-  end
-  
-  def guess_gender(div)
-    if div[/^[mM]/]
-      self.gender = Lookup.code_for('gender','m')
-    elsif div[/^[fF]/]
-      self.gender = Lookup.code_for('gender','f')
-    else
-      self.gender = Lookup.code_for('gender','o')
-    end
-  end
-  
-  def age(on = Date.today)
-    age = on.year - birth_date.year
-    age -= 1 if (on.yday < birth_date.yday)
-    age
-  end
-  
   def name
     "#{first_name} #{last_name}"
   end

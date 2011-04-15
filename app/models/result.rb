@@ -67,4 +67,44 @@ class Result < ActiveRecord::Base
     }
 
   end
+
+  def guess_gender(div)
+    if div[/^[mM]/]
+      self.gender = Lookup.code_for('gender','m')
+    elsif div[/^[fF]/]
+      self.gender = Lookup.code_for('gender','f')
+    else
+      self.gender = Lookup.code_for('gender','o')
+    end
+  end
+  
+  def guess_age(div)
+    logger.info("guessing age with div #{div}")
+    a = nil
+    # M5054
+    if div[/^[mMfF][0-9]{4}$/]
+      if div[1,2].to_i < 2
+        # M0119 use upper age
+        a = div[3,2].to_i
+      else
+        # use mid point
+        a = (div[1,2].to_i + (div[3,2].to_i + 1)) / 2
+      end
+    # M50+
+    elsif div[/^[mMfF][0-9]{2}\+$/]
+      a = div[1,2].to_i
+    # M-U20
+    elsif div[/^[mMfF]-U[0-9]{2}$/]
+      a = (div[3,2].to_i) - 1
+    end
+    logger.info("guessed #{a} for div #{div}")
+    self.age = a
+    a
+  end
+  
+  def age(on = Date.today)
+    age = on.year - birth_date.year
+    age -= 1 if (on.yday < birth_date.yday)
+    age
+  end
 end
