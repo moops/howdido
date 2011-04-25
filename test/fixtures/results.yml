@@ -6,6 +6,7 @@ one:
   last_name: ritchie
   city: Victoria
   gender: 11
+  age: 42
   race: compassion
   overall_place: 24
   bib: 235
@@ -19,6 +20,7 @@ two:
   last_name: boos
   city: Victoria
   gender: 10
+  age: 35
   race: compassion
   overall_place: 1
   bib: 110
@@ -32,6 +34,7 @@ three:
   last_name: durrant
   city: Sidney
   gender: 11
+  age: 55
   race: compassion
   overall_place: 14
   bib: 146
@@ -45,6 +48,7 @@ bertrand_in_compassion:
   last_name: bozek
   city: Saanich
   gender: 10
+  age: 35
   race: compassion
   overall_place: 10
   bib: 111
@@ -58,6 +62,7 @@ five:
   last_name: ritchie
   city: Victoria
   gender: 11
+  age: 25
   race: chemainus
   overall_place: 19
   bib: 746
@@ -71,6 +76,7 @@ gary_in_compassion:
   last_name: duncan
   city: Victoria
   gender: 10
+  age: 45
   race: compassion
   overall_place: 2
   bib: 747
@@ -84,6 +90,7 @@ gary_in_chemainus:
   last_name: duncan
   city: Victoria
   gender: 10
+  age: 45
   race: chemainus
   overall_place: 6
   bib: 746
@@ -97,6 +104,7 @@ gary_in_stewart:
   last_name: duncan
   city: Victoria
   gender: 10
+  age: 45
   race: stewart
   overall_place: 6
   bib: 746

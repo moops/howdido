@@ -2,8 +2,8 @@ class Result < ActiveRecord::Base
   belongs_to :race
   has_and_belongs_to_many :athletes
   
-  scope :male, joins(:athlete) & Athlete.male
-  scope :female, joins(:athlete) & Athlete.female
+  scope :male, where('gender = 10')
+  scope :female, where('gender = 11')
   
   attr_accessor :grade
 
@@ -102,9 +102,9 @@ class Result < ActiveRecord::Base
     a
   end
   
-  def age(on = Date.today)
-    age = on.year - birth_date.year
-    age -= 1 if (on.yday < birth_date.yday)
-    age
-  end
+  #def age(on = Date.today)
+  #  age = on.year - birth_date.year
+  #  age -= 1 if (on.yday < birth_date.yday)
+  #  age
+  #end
 end
