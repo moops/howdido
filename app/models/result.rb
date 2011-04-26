@@ -102,6 +102,15 @@ class Result < ActiveRecord::Base
     a
   end
   
+  def grade
+    logger.info("my_result: #{self.inspect}")
+    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
+    logger.info("grade: (#{w.factor} / #{gun_time}) * 100")
+    gr = ((w.factor/gun_time) * 100).to_s
+    logger.info("grade: #{gr}")
+    (w.factor / gun_time) * 100
+  end
+  
   #def age(on = Date.today)
   #  age = on.year - birth_date.year
   #  age -= 1 if (on.yday < birth_date.yday)
