@@ -1,9 +1,30 @@
+<script>
+  $(function() {
+    $("#slider").slider({
+      min: 8, 
+      max: 75,
+      slide: function(event, ui) {
+        $(#val).html(ui.value);
+      }
+    });
+  });
+</script>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>grade:</b>
   <%=h @result.grade %>
 </p>
+
+what if my age was:<br/>
+<div id="slider"></div>
+what if my gender was:<br/>
+<input type="radio" name="gender" value="10" <%= @result.gender == 10 ? 'checked=\"true\"' %>> male<br/>
+<input type="radio" name="gender" value="11" <%= @result.gender == 11 ? 'checked=\"true\"' %>> female<br/>
+
+<div id="val"></div>
 
 
 <%= link_to 'Edit', edit_result_path(@result) %> |

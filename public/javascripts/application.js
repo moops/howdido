@@ -113,6 +113,7 @@ jQuery(document).ready(function() {
   ajaxLinks(); 
     
   jQuery("#lavaLamp").lavaLamp({ fx: "easeOutBack", speed: 700});
+  jQuery(".accordian").accordian();
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
@@ -120,11 +121,11 @@ jQuery(document).ready(function() {
 });
 
 function seconds_to_time(s) {
-  	hours = parseInt(s / 3600);
-	s = s - (hours * 3600);
-  	minutes = parseInt(s / 60);
-	seconds = s - (minutes * 60);
-	if (minutes < 10) minutes = '0' + minutes;
-	if (seconds < 10) seconds = '0' + seconds;
-	return hours + ':' + minutes + ':' + seconds;
+    hours = parseInt(s / 3600);
+    s = s - (hours * 3600);
+    minutes = parseInt(s / 60);
+    seconds = s - (minutes * 60);
+    if (minutes < 10) minutes = '0' + minutes;
+    if (seconds < 10) seconds = '0' + seconds;
+    return hours + ':' + minutes + ':' + seconds;
   }

@@ -16,9 +16,9 @@ class Athlete < ActiveRecord::Base
   # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
   def recent_run_grades(limit=10)
     grades = []
-    recent_races = races.where("race_type = 3").order("race_on").limit(limit)
-    for race in recent_races do
-      grades << [race.name, race.race_on, grade(race).to_i]
+    recent_results = results.where("race.race_type = 3").order("race.race_on").limit(limit)
+    for race in recent_results do
+      grades << [result.race.name, result.race.race_on, result.grade]
     end
     grades
   end
@@ -41,10 +41,6 @@ class Athlete < ActiveRecord::Base
     my_result = Result.where("race_id = :race and athlete_id = :ath", {:race => race.id, :ath => id}).first
     #logger.info("my_result for #{race.name} [#{my_result.inspect}]")
     for result in race.results do
-      #logger.info("finding wava for #{result.athlete.first_name} #{result.athlete.last_name} with #{race.race_on}")
-      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => result.athlete.age(race.race_on), :gender => result.athlete.gender, :dist => race.distance}).first
-      
-      result.grade= (w.factor / result.gun_time) * 100 if w
 
       if result.grade
         num_results += 1
@@ -71,19 +67,7 @@ class Athlete < ActiveRecord::Base
     h['gender'] = h['gender'].to_i
     h['div'] = h['div'].to_i
     h['me'] = h['me'].to_i
-    
-    #logger.info("summary built for #{race.name} [#{h.inspect}]")
     h
-  end
-  
-  def grade(race)
-    my_result = Result.where("race_id = :race and athlete_id = :ath", {:race => race.id, :ath => id}).first
-    logger.info("my_result: #{my_result.inspect}")
-    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age(race.race_on), :gender => gender, :dist => race.distance}).first
-    logger.info("grade: (#{w.factor} / #{my_result.gun_time}) * 100")
-    gr = ((w.factor/my_result.gun_time) * 100).to_s
-    logger.info("grade: #{gr}")
-    (w.factor / my_result.gun_time) * 100
   end
   
   def name
