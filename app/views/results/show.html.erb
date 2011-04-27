@@ -1,11 +1,9 @@
-<script>
-  $(function() {
-    $("#slider").slider({
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function() {
+	jQuery("#ageSlider").slider({
       min: 8, 
       max: 75,
-      slide: function(event, ui) {
-        $(#val).html(ui.value);
-      }
+	  value: <%= @result.age %>
     });
   });
 </script>
@@ -19,10 +17,10 @@
 </p>
 
 what if my age was:<br/>
-<div id="slider"></div>
+<div id="ageSlider"></div>
 what if my gender was:<br/>
-<input type="radio" name="gender" value="10" <%= @result.gender == 10 ? 'checked=\"true\"' %>> male<br/>
-<input type="radio" name="gender" value="11" <%= @result.gender == 11 ? 'checked=\"true\"' %>> female<br/>
+<input type="radio" name="gender" value="10" <%= @result.gender == 10 ? 'checked=\"true\"' : '' %>> male<br/>
+<input type="radio" name="gender" value="11" <%= @result.gender == 11 ? 'checked=\"true\"' : '' %>> female<br/>
 
 <div id="val"></div>
 
