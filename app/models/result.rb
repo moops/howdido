@@ -107,6 +107,10 @@ class Result < ActiveRecord::Base
     (w.factor / gun_time) * 100
   end
   
+  def div_winner
+    Result.where("div = '#{div}'").order('overall_place').first
+  end
+  
   #def age(on = Date.today)
   #  age = on.year - birth_date.year
   #  age -= 1 if (on.yday < birth_date.yday)

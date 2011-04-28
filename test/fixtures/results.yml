@@ -1,7 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# mark in compassion tri
-one:
+mark_in_compassion:
   first_name: mark
   last_name: ritchie
   city: Victoria
@@ -14,8 +11,7 @@ one:
   div_place: 4
   gun_time: 3624
 
-# allan in compassion tri
-two:
+allan_in_compassion:
   first_name: allan
   last_name: boos
   city: Victoria
@@ -27,9 +23,21 @@ two:
   div: M3039
   div_place: 1
   gun_time: 3601
+  
+allan_in_chemainus:
+  first_name: allan
+  last_name: boos
+  city: Victoria
+  gender: 10
+  age: 35
+  race: chemainus
+  overall_place: 1
+  bib: 110
+  div: M2029
+  div_place: 1
+  gun_time: 1100
 
-# marcus in compassion tri
-three:
+marcus_in_compassion:
   first_name: marcus
   last_name: durrant
   city: Sidney
@@ -42,7 +50,6 @@ three:
   div_place: 3
   gun_time: 3614
 
-# bertrand in compassion tri
 bertrand_in_compassion:
   first_name: bertrand
   last_name: bozek
@@ -56,8 +63,7 @@ bertrand_in_compassion:
   div_place: 4
   gun_time: 3610
 
-# mark in chemainus
-five:
+mark_in_chemainus:
   first_name: mark
   last_name: ritchie
   city: Victoria
@@ -70,7 +76,6 @@ five:
   div_place: 7
   gun_time: 1233
   
-# gary in compassion tri
 gary_in_compassion:
   first_name: gary
   last_name: duncan
@@ -84,7 +89,6 @@ gary_in_compassion:
   div_place: 3
   gun_time: 3603
 
-# gary in chemainus
 gary_in_chemainus:
   first_name: gary
   last_name: duncan
@@ -98,7 +102,6 @@ gary_in_chemainus:
   div_place: 3
   gun_time: 872
   
-# gary in stewart
 gary_in_stewart:
   first_name: gary
   last_name: duncan

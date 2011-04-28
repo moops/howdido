@@ -1,9 +1,29 @@
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+  google.load('visualization', '1', {packages:['gauge']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Label');
+    data.addColumn('number', 'Value');
+    data.addRows(2);
+    data.setValue(0, 0, 'grade');
+    data.setValue(0, 1, <%=number_with_precision(@result.grade, :precision => 2) %>);
+    data.setValue(1, 0, 'percent');
+    data.setValue(1, 1, <%=number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %>);
+
+    var chart = new google.visualization.Gauge(document.getElementById('guages'));
+    var options = {width: 400, height: 120, redFrom: 90, redTo: 100,
+        yellowFrom:75, yellowTo: 90, minorTicks: 5};
+    chart.draw(data, options);
+  }
+</script>
 <script type="text/javascript" charset="utf-8">
   jQuery(document).ready(function() {
-	jQuery("#ageSlider").slider({
+    jQuery("#ageSlider").slider({
       min: 8, 
       max: 75,
-	  value: <%= @result.age %>
+      value: <%= @result.age %>
     });
   });
 </script>
@@ -12,9 +32,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>grade:</b>
-  <%=h @result.grade %>
+  age graded score:
+  <b><%=number_with_precision(@result.grade, :precision => 2) %></b><br/>
+  <%=h @result.div %> winner finished in
+  <b><%=number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
 </p>
+
+<div id='guages'></div>
 
 what if my age was:<br/>
 <div id="ageSlider"></div>
