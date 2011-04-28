@@ -17,7 +17,7 @@
 
 <body>
     <div id="header">
-    	<% if @user %>
+      <% if @user %>
             logged in as <%= @user.auth_profile.name %>.
             <%= link_to('log out', {:controller => "login", :action => "logout"}, {:title => 'get me out of here', :id => 'logoutlink'}) %>
         <% end %>

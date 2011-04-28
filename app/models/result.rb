@@ -111,6 +111,10 @@ class Result < ActiveRecord::Base
     Result.where("div = '#{div}'").order('overall_place').first
   end
   
+  def wavas
+    Wava.where('distance = :dist', {:dist => race.distance}).all 
+  end
+  
   #def age(on = Date.today)
   #  age = on.year - birth_date.year
   #  age -= 1 if (on.yday < birth_date.yday)

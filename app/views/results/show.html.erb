@@ -1,33 +1,53 @@
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <script type='text/javascript'>
+
+  var gunTime = <%= @result.gun_time %>;
+  var maleWavaFactors = new Array();
+  var femaleWavaFactors = new Array();
+  <% for wava in @result.wavas %>
+    <% if wava.gender == 10 %>
+      maleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
+    <% end %>
+    <% if wava.gender == 11 %>
+      femaleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
+    <% end %>
+  <% end %>
+
   google.load('visualization', '1', {packages:['gauge']});
   google.setOnLoadCallback(drawChart);
+
+
+  jQuery(document).ready(function() {
+  
+    jQuery("#ageSlider").slider({
+      min: 8, 
+      max: 75,
+      value: <%= @result.age %>,
+      slide: function(event, ui) {
+        $("#age").val( ui.value );
+        //drawChart(
+        //  maleWavaFactors[ui.value] / gunTime * 100, 
+        //  <%=number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %>);
+      }
+    });
+    $("#age").val($("#ageSlider").slider("value"));
+  });
+  
   function drawChart() {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Label');
     data.addColumn('number', 'Value');
     data.addRows(2);
     data.setValue(0, 0, 'grade');
-    data.setValue(0, 1, <%=number_with_precision(@result.grade, :precision => 2) %>);
+    data.setValue(0, 1, <%= number_with_precision(@result.grade, :precision => 2) %>);
     data.setValue(1, 0, 'percent');
-    data.setValue(1, 1, <%=number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %>);
-
+    data.setValue(1, 1, <%= number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %>);
     var chart = new google.visualization.Gauge(document.getElementById('guages'));
-    var options = {width: 400, height: 120, redFrom: 90, redTo: 100,
-        yellowFrom:75, yellowTo: 90, minorTicks: 5};
+    var options = {width: 400, height: 120, redFrom: 90, redTo: 100, yellowFrom:75, yellowTo: 90, minorTicks: 5};
     chart.draw(data, options);
   }
+    
 </script>
-<script type="text/javascript" charset="utf-8">
-  jQuery(document).ready(function() {
-    jQuery("#ageSlider").slider({
-      min: 8, 
-      max: 75,
-      value: <%= @result.age %>
-    });
-  });
-</script>
-
 
 <p id="notice"><%= notice %></p>
 
@@ -40,7 +60,7 @@
 
 <div id='guages'></div>
 
-what if my age was:<br/>
+what if my age was:<input type="text" id="age" style="border:0; color:#f6931f; font-weight:bold;" /><br/>
 <div id="ageSlider"></div>
 what if my gender was:<br/>
 <input type="radio" name="gender" value="10" <%= @result.gender == 10 ? 'checked=\"true\"' : '' %>> male<br/>
