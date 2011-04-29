@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110415233127) do
 
   create_table "athletes", :force => true do |t|
-    t.integer  "auth_user_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

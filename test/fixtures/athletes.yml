@@ -1,14 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 adam:
-  auth_user_id: 585460615
+  user_id: 585460615
 
 bertrand:
-  auth_user_id: 492362561
+  user_id: 492362561
   races: compassion
   results: bertrand_in_compassion
 
 gary:
-  auth_user_id: 980444000
+  user_id: 980444000
   races: compassion, chemainus, stewart
   results: gary_in_compassion, gary_in_chemainus, gary_in_stewart

@@ -97,4 +97,8 @@ class Athlete < ActiveRecord::Base
     profile
   end
   
+  def user
+    @user ||= User.find(user_id) unless user_id.blank?
+  end
+  
 end

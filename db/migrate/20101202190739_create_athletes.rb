@@ -1,7 +1,7 @@
 class CreateAthletes < ActiveRecord::Migration
   def self.up
     create_table :athletes do |t|
-      t.integer :auth_user_id
+      t.integer :user_id
       t.timestamps
     end
   end
