@@ -108,7 +108,7 @@ class Result < ActiveRecord::Base
   end
   
   def div_winner
-    Result.where("div = '#{div}'").order('overall_place').first
+    Result.where(:race_id => race, :div => div).order(:overall_place).first
   end
   
   def wavas

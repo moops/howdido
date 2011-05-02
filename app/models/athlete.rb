@@ -13,10 +13,14 @@ class Athlete < ActiveRecord::Base
   # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
   def recent_run_grades(limit=10)
     grades = []
-    recent_results = results.where("race.race_type = 3").order("race.race_on").limit(limit)
-    for race in recent_results do
-      grades << [result.race.name, result.race.race_on, result.grade]
+    logger.info("results: #{results.inspect}")
+    for result in results do
+      logger.info("result: #{result.race.inspect}")
+      if (result.race.race_type.id == 3)
+        grades << [result.race.name, result.race.race_on, result.grade]
+      end
     end
+    logger.info("grades: #{grades.inspect}")
     grades
   end
   
@@ -68,11 +72,13 @@ class Athlete < ActiveRecord::Base
   end
   
   def name
-    "#{first_name} #{last_name}"
+    @user ||= User.find(user_id)
+    "#{@user.first_name} #{@user.last_name}"
   end
   
   def self.authenticate(name, password)
     @user ||= User.find(:first, :params => { :user_name => name, :password => password }) unless name.blank? or password.blank?
+    logger.info("### athlete.authenticate @user: #{@user.inspect}")
     profile = nil
     if @user
       profile = AuthProfile.new(@user.id, @user.user_name, @user.authority, @user.born_on)
