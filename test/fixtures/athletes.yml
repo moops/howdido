@@ -5,10 +5,8 @@ adam:
 
 bertrand:
   user_id: 492362561
-  races: compassion
   results: bertrand_in_compassion
 
 gary:
   user_id: 980444000
-  races: compassion, chemainus, stewart
   results: gary_in_compassion, gary_in_chemainus, gary_in_stewart

@@ -1,9 +1,6 @@
 class Athlete < ActiveRecord::Base
   has_and_belongs_to_many :results
-  has_many :races, :through => :results
-  
-  belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
-  
+    
   attr_accessor :auth_profile
   
   scope :male, where("gender = 10")
@@ -25,12 +22,12 @@ class Athlete < ActiveRecord::Base
   def recent_run_summaries(limit=5)
     summaries = Hash.new
     for result in results.joins(:race).where('race_type = 3').order("race_on desc").limit(limit).all do
-      summaries[result.race.name] = race_summary(result)
+      summaries[result.race.name] = run_summary(result)
     end
     summaries
   end
   
-  def race_summary(my_result)
+  def run_summary(my_result)
     race = my_result.race
     logger.info("###myresult: #{my_result.inspect}")
     h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
