@@ -1,6 +1,6 @@
 class Athlete < ActiveRecord::Base
   has_and_belongs_to_many :results
-  has_and_belongs_to_many :races
+  has_many :races, :through => :results
   
   belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
   
@@ -13,14 +13,10 @@ class Athlete < ActiveRecord::Base
   # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
   def recent_run_grades(limit=10)
     grades = []
-    logger.info("results: #{results.inspect}")
-    for result in results do
+    for result in results.joins(:race).where('race_type = 3').all do
       logger.info("result: #{result.race.inspect}")
-      if (result.race.race_type.id == 3)
-        grades << [result.race.name, result.race.race_on, result.grade]
-      end
+      grades << [result.race.name, result.race.race_on, result.grade]
     end
-    logger.info("grades: #{grades.inspect}")
     grades
   end
   
@@ -28,25 +24,26 @@ class Athlete < ActiveRecord::Base
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
   def recent_run_summaries(limit=5)
     summaries = Hash.new
-    for race in races.where("race_type = 3").order("race_on desc").limit(limit) do
-      summaries[race.name] = race_summary(race)
+    for result in results.joins(:race).where('race_type = 3').order("race_on desc").limit(limit).all do
+      summaries[result.race.name] = race_summary(result)
     end
     summaries
   end
   
-  def race_summary(race)
+  def race_summary(my_result)
+    race = my_result.race
+    logger.info("###myresult: #{my_result.inspect}")
     h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
     num_results = 0
     num_results_in_gender = 0
     num_results_in_div = 0
-    my_result = Result.where("race_id = :race and athlete_id = :ath", {:race => race.id, :ath => id}).first
-    #logger.info("my_result for #{race.name} [#{my_result.inspect}]")
+
     for result in race.results do
 
       if result.grade
         num_results += 1
         h['everyone'] += result.grade
-        if result.athlete.gender == gender
+        if result.gender == gender
           num_results_in_gender += 1
           h['gender'] += result.grade
         end
@@ -74,6 +71,11 @@ class Athlete < ActiveRecord::Base
   def name
     @user ||= User.find(user_id)
     "#{@user.first_name} #{@user.last_name}"
+  end
+  
+  def gender
+    @user ||= User.find(user_id)
+    @user.gender
   end
   
   def self.authenticate(name, password)
