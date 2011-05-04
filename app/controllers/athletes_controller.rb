@@ -48,8 +48,12 @@ class AthletesController < ApplicationController
   # POST /athletes
   # POST /athletes.xml
   def create
-    params[:athlete][:gender] = Lookup.find(params[:athlete][:gender])
-    @athlete = Athlete.new(params[:athlete])
+    params[:gender] = Lookup.find(params[:gender]) unless params[:gender].blank?
+    logger.info("### #{params.inspect}")
+    @user = User.new({:first_name => params[:first_name], :user_name => params[:user_name], :last_name => params[:last_name], :born_on => params[:born_on]})
+    @user.save
+    logger.info("### #{@user.inspect}")
+    @athlete = Athlete.new({:user_id => @user.id})
 
     respond_to do |format|
       if @athlete.save
