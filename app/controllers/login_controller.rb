@@ -2,28 +2,35 @@ class LoginController < ApplicationController
     
   def index
     # show login screen
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
   end
 
   def authenticate
     
+    name = params[:person][:user_name]
+    password = params[:person][:password]
+    athlete = nil
+    
     if APP_CONFIG['authenticate']
       logger.debug("LoginController.authenticate: authenticating...")
-      auth_profile = Athlete.authenticate(params[:person][:user_name], params[:person][:password])
-    else #not authenticating, just use the param as the user_name
-      logger.debug("LoginController.authenticate: not authenticating just use user_name param...")
-      user = Athlete.find_by_user_name(params[:person][:user_name])
-      auth_profile = AuthProfile.new(user.id, params[:person][:user_name], 1, Date.parse('1970-01-01')) if user.id
+      user = User.find(:first, :params => { :user_name => name, :password => password }) unless name.blank? or password.blank?
+      athlete = Athlete.find_by_user_id(user.id) unless user == nil
+    else #not authenticating, just use adam as the user_name - debug only
+      logger.debug("LoginController.authenticate: not authenticating just use adam...")
+      athlete ||= Athlete.find_by_user_id(585460615)
     end
 
-    if auth_profile
-      logger.debug("LoginController.authenticate: auth profile[#{auth_profile.inspect}]")
-      session[:user] = auth_profile
+    if athlete
+      logger.debug("LoginController.authenticate: user[#{athlete.inspect}]")
+      session[:user] = athlete
       if session[:return_to]
         temp = session[:return_to]
         session[:return_to] = nil
         redirect_to(temp)
       else
-        redirect_to athlete_path(Athlete.find(auth_profile.user_id))
+        redirect_to athlete_path(athlete.id)
       end
     else
       flash[:notice] = 'Login failed!' 
@@ -34,7 +41,7 @@ class LoginController < ApplicationController
   def logout
     reset_session
     flash[:notice] = 'Logged out' 
-    redirect_to :action => 'index' 
+    redirect_to races_path 
   end
   
 end

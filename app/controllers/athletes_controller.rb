@@ -17,11 +17,14 @@ class AthletesController < ApplicationController
   # GET /athletes/1.xml
   def show
     @athlete = Athlete.find(params[:id])
-    
+    logger.info("@user: #{@user.inspect}")
     @recent_run_summaries = @athlete.recent_run_summaries
     @recent_run_grades = @athlete.recent_run_grades
     
+    
+    
     logger.info("@recent_run_grades: #{@recent_run_grades.inspect}")
+    logger.info("@user: #{@user.inspect}")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @athlete }
@@ -37,6 +40,7 @@ class AthletesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @athlete }
+      format.js { render :layout => false }
     end
   end
 
@@ -49,10 +53,10 @@ class AthletesController < ApplicationController
   # POST /athletes.xml
   def create
     params[:gender] = Lookup.find(params[:gender]) unless params[:gender].blank?
-    logger.info("### #{params.inspect}")
-    @user = User.new({:first_name => params[:first_name], :user_name => params[:user_name], :last_name => params[:last_name], :born_on => params[:born_on]})
+    logger.info("###1 #{@user.inspect}")
+    @user = User.new({:first_name => params[:first_name], :user_name => params[:user_name], :last_name => params[:last_name], :born_on => params[:born_on], :password => params[:password], :authority => 1})
     @user.save
-    logger.info("### #{@user.inspect}")
+    logger.info("###2 #{@user.inspect}")
     @athlete = Athlete.new({:user_id => @user.id})
 
     respond_to do |format|

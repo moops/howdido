@@ -3,6 +3,8 @@ class Athlete < ActiveRecord::Base
     
   attr_accessor :auth_profile
   
+  validates_presence_of :user_id
+  
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
   
@@ -66,23 +68,19 @@ class Athlete < ActiveRecord::Base
   end
   
   def name
-    @user ||= User.find(user_id)
-    "#{@user.first_name} #{@user.last_name}"
+    "#{user.first_name} #{user.last_name}"
   end
   
   def gender
-    @user ||= User.find(user_id)
-    @user.gender
+    user.gender
   end
   
-  def self.authenticate(name, password)
-    @user ||= User.find(:first, :params => { :user_name => name, :password => password }) unless name.blank? or password.blank?
-    logger.info("### athlete.authenticate @user: #{@user.inspect}")
-    profile = nil
-    if @user
-      profile = AuthProfile.new(@user.id, @user.user_name, @user.authority, @user.born_on)
-    end
-    profile
+  def user_name
+    user.user_name
+  end
+  
+  def born_on
+    user.born_on
   end
   
   def user

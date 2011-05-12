@@ -3,11 +3,20 @@ class ApplicationController < ActionController::Base
   
   def authorize
     if session[:user]
-      @user = Athlete.find(session[:user].user_id)
+      logger.info("authorize - found a session user: #{session[:user].inspect}")
+      @user = Athlete.find(session[:user].id)
       @user.auth_profile = session[:user]
     else
-      session[:return_to] = request.request_uri
-      redirect_to :controller => 'login' 
+      logger.info("authorize - no session user found, force login")
+      #session[:return_to] = request.request_uri
+      #redirect_to :controller => 'login'
+      respond_to do |format|
+        format.html {logger.info('why you html?')}
+        format.js { 
+          logger.info('calling login index as js')
+          render('login/index', :layout => false) }
+      end
+      logger.info('never get here do you?')
       return false
     end
   end

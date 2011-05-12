@@ -1,13 +1,15 @@
 <%= form_tag(athletes_path, :method => "post") do %>
-  
-  <%= label_tag :first_name %><%= text_field_tag :first_name %><br/>
-  <%= label_tag :last_name %><%= text_field_tag :last_name %><br/>
-  <%= label_tag :user_name %><%= text_field_tag :user_name %><br/>
-  <%= label_tag :gender %><%= select_tag(:gender, @genders.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %><br/>
-  <%= label_tag :city %><%= text_field_tag :city %><br/>
-  <%= label_tag :born_on %><%= text_field_tag :born_on, '', {:class => 'calendar'} %><br/>
+<fieldset>   
+    <ol>   
+    <li><%= label_tag :first_name %><%= text_field_tag :first_name %></li>
+    <li><%= label_tag :last_name %><%= text_field_tag :last_name %></li>
+    <li><%= label_tag :user_name %><%= text_field_tag :user_name %></li>
+    <li><%= label_tag :gender %><%= select_tag(:gender, @genders.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
+    <li><%= label_tag :city %><%= text_field_tag :city %></li>
+    <li><%= label_tag :born_on %><%= text_field_tag :born_on, '', {:class => 'calendar'} %></li>
+    <li><%= label_tag :password %><%= password_field_tag :password %></li>
+    <li><%= label_tag :confirm_password %><%= password_field_tag :confirm_password %></li></ol></fieldset> 
 
-  <div class="actions">
-    <%= submit_tag %>
-  </div>
+  <fieldset class="submit">
+    <%= submit_tag %></fieldset>
 <% end %>
