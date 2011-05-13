@@ -1,4 +1,6 @@
 Howdido::Application.routes.draw do
+  resources :user_sessions
+
   resources :lookups
 
   resources :results
@@ -9,6 +11,8 @@ Howdido::Application.routes.draw do
   resources :athletes
   
   match 'login' => 'login#index', :as => :login
+  
+  root :to => "races#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

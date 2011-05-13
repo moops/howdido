@@ -1,7 +1,7 @@
 class CreateResults < ActiveRecord::Migration
   def self.up
     create_table :results do |t|
-      t.integer :race_id
+      t.references :race
       t.string :first_name
       t.string :last_name
       t.string :city

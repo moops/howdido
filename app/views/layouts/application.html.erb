@@ -16,20 +16,21 @@
 </head>
 
 <body>
-	
-	<!-- hidden elements -->
-	<div id="login_form" style="display:none;"></div>
-	<div id="register_form" style="display:none;"></div>
+  
+  <!-- hidden elements -->
+  <div id="login_form" style="display:none;"></div>
+  <div id="register_form" style="display:none;"></div>
 
     <div id="header">
-      <% if @user %>
-            logged in as <%= @user.auth_profile.name %>.
-            <%= link_to('log out', {:controller => "login", :action => "logout"}, {:title => 'get me out of here', :id => 'logoutlink'}) %>
-        <% else %>
-			<%= link_to('login', login_path, :class => 'get') %>
-  			<%= link_to('register', new_athlete_path, :class => 'get') %>
-		<% end %>
+      <% if session[:user_session] %>
+        logged in as <%= session[:user_session].name %>.
+        <%= link_to('log out', user_session_path(session[:user_session].id), {:title => 'get me out of here', :id => 'logoutlink', :method => :delete, :confirm => 'are you sure?'}) %>
+      <% else %>
+        <%= link_to('login', new_user_session_path, :class => 'get') %>
+        <%= link_to('register', new_athlete_path, :class => 'get') %>
+      <% end %>
     </div>
+    
     <ul id="lavaLamp">
         <li><%= link_to('races',      races_path ) %></li>
         <li><%= link_to('athletes',   athletes_path ) %></li>

@@ -17,11 +17,8 @@ class AthletesController < ApplicationController
   # GET /athletes/1.xml
   def show
     @athlete = Athlete.find(params[:id])
-    logger.info("@user: #{@user.inspect}")
     @recent_run_summaries = @athlete.recent_run_summaries
     @recent_run_grades = @athlete.recent_run_grades
-    
-    
     
     logger.info("@recent_run_grades: #{@recent_run_grades.inspect}")
     logger.info("@user: #{@user.inspect}")

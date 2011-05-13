@@ -1,8 +1,7 @@
 class Athlete < ActiveRecord::Base
   has_and_belongs_to_many :results
-    
-  attr_accessor :auth_profile
-  
+  has_many :sessions, :class_name => 'UserSession'
+      
   validates_presence_of :user_id
   
   scope :male, where("gender = 10")

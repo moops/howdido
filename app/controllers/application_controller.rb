@@ -2,12 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def authorize
-    if session[:user]
-      logger.info("authorize - found a session user: #{session[:user].inspect}")
-      @user = Athlete.find(session[:user].id)
-      @user.auth_profile = session[:user]
-    else
-      logger.info("authorize - no session user found, force login")
+    unless session[:user_session]
+      logger.info("authorize - no user_session found, force login")
       #session[:return_to] = request.request_uri
       #redirect_to :controller => 'login'
       respond_to do |format|
