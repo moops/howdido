@@ -24,6 +24,9 @@ class AthletesController < ApplicationController
     logger.info("@user: #{@user.inspect}")
     respond_to do |format|
       format.html # show.html.erb
+      format.js { 
+        logger.info('js. redirecting...') 
+      }
       format.xml  { render :xml => @athlete }
     end
   end
@@ -47,23 +50,18 @@ class AthletesController < ApplicationController
   end
 
   # POST /athletes
-  # POST /athletes.xml
   def create
     params[:gender] = Lookup.find(params[:gender]) unless params[:gender].blank?
-    logger.info("###1 #{@user.inspect}")
     @user = User.new({:first_name => params[:first_name], :user_name => params[:user_name], :last_name => params[:last_name], :born_on => params[:born_on], :password => params[:password], :authority => 1})
     @user.save
-    logger.info("###2 #{@user.inspect}")
     @athlete = Athlete.new({:user_id => @user.id})
-
-    respond_to do |format|
-      if @athlete.save
-        format.html { redirect_to(@athlete, :notice => 'Athlete was successfully created.') }
-        format.xml  { render :xml => @athlete, :status => :created, :location => @athlete }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @athlete.errors, :status => :unprocessable_entity }
-      end
+    
+    if @athlete.save
+      # sign in
+      session[:user_session] = UserSession.create(:athlete => @athlete, :name => @user.user_name, :born_on => @user.born_on, :authority => @user.authority, :login_at => Time.now)
+      redirect_to(@athlete) }
+    else
+      render :action => "new" }
     end
   end
 

@@ -1,13 +1,7 @@
-<%= form_tag(:action => :create) do %>
-       
-  <fieldset>   
-    <ol>   
-    <li><%= label(:person, :user_name) %>
-        <%= text_field_tag('user_name', '', :size => '15', :class => 'text') %></li>
-      
-    <li><%= label(:person, :password) %>
-        <%= password_field_tag('password', '', :size => '15', :class => 'text') %></li></ol></fieldset>
-  <fieldset class="submit">  
-    <%= submit_tag('login') %></fieldset>
-      
+<%= form_tag('/user_sessions', :remote => true, :style => 'display:inline') do %>
+  <%= label_tag(:user_name, nil, :class => 'inline') %>
+  <%= text_field_tag('user_name', '', :size => '15') %>
+  <%= label_tag(:password, nil, :class => 'inline') %>
+  <%= password_field_tag('password', '', :size => '15') %>
+  <%= submit_tag('sign in') %>  
 <% end %>

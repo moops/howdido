@@ -19,6 +19,7 @@ ul { margin: 4px 0px; }
 
 /* containers */
 #header { margin-right: auto; margin-left: auto; width: 700px; }
+#user_session { margin-right: auto; margin-left: auto; width: 700px; }
 #content { margin-right: auto; margin-left: auto; margin-bottom: 10px; width: 700px; }
 #primary_panel { width: 73%; float: right; }
 #primary_panel_full { width: 100%; float: right; }

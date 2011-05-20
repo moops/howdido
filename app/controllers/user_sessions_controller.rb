@@ -16,12 +16,12 @@ class UserSessionsController < ApplicationController
 
     if athlete
       session[:user_session] = UserSession.create(:athlete => athlete, :name => user.user_name, :born_on => user.born_on, :authority => user.authority, :login_at => Time.now)
-      
+      # where do we go after login?
       session[:return_to] = athlete_path(athlete.id) unless session[:return_to]
-      redirect_to(session[:return_to])
+      # redirect_to(session[:return_to])
     else
       flash[:notice] = 'Login failed!' 
-      redirect_to races_path
+      # redirect_to races_path
     end
   end
   

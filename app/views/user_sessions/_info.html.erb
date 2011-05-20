@@ -1,0 +1,7 @@
+<% if session[:user_session] %>
+  logged in as <%= session[:user_session].name %>.
+  <%= link_to('log out', user_session_path(session[:user_session].id), {:title => 'get me out of here', :id => 'logoutlink', :method => :delete, :confirm => 'are you sure?'}) %>
+<% else %>
+  <%= render(:partial => 'user_sessions/form') %>
+  <%= link_to('register', new_athlete_path, :class => 'get') %>
+<% end %>
