@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
-    <title>brainpad</title>
+    <title>how'd i do</title>
     <%= stylesheet_link_tag 'jquery-ui-1.8.5.custom', 'lavalamp', 'jquery.tooltip', 'howdido' %>
     <% if protect_against_forgery? %>
       <script type='text/javascript'>
@@ -19,11 +19,19 @@
   
     <!-- hidden elements -->
     <div id="register_form" style="display:none;"></div>
+	<div id="notice" style="display:none;"><%= flash[:notice] %></div>
 
     <div id="user_session">
-      <%= render(:partial => 'user_sessions/info') %>
+      <% if session[:user_session] %>
+		logged in as <%= session[:user_session].name %>.
+		<%= link_to('log out', user_session_path(session[:user_session].id), {:title => 'get me out of here', :id => 'logoutlink', :method => :delete, :confirm => 'are you sure?'}) %>
+	  <% else %>
+		<%= render(:partial => 'user_sessions/form') %>
+		<%= link_to('register', new_athlete_path, :class => 'get') %>
+	  <% end %>
     </div>
         
+	<%= link_to('gary', athlete_path(980444000)) %>	
     <ul id="lavaLamp">
         <li><%= link_to('races',    races_path ) %></li>
         <li><%= link_to('athletes', athletes_path ) %></li>
@@ -33,7 +41,10 @@
     
     <div id="content">
         <% if flash[:notice] %>
-            <div class="notice"><%=h flash[:notice] %></div><p/>
+			
+			<script type='text/javascript'>
+				jQuery('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
+			</script>
         <% end %>
         <%= yield %></div>
     

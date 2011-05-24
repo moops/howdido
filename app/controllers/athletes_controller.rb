@@ -59,9 +59,9 @@ class AthletesController < ApplicationController
     if @athlete.save
       # sign in
       session[:user_session] = UserSession.create(:athlete => @athlete, :name => @user.user_name, :born_on => @user.born_on, :authority => @user.authority, :login_at => Time.now)
-      redirect_to(@athlete) }
+      redirect_to(@athlete)
     else
-      render :action => "new" }
+      render :action => "new"
     end
   end
 

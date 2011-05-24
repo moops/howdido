@@ -31,6 +31,7 @@ ul { margin: 4px 0px; }
 #search form { margin: 2px; display: inline; }
 #found_links { padding-bottom: 10px; }
 #copyright { width: 25%; float: right; text-align: right; }
+#notice { font-weight: bold; color: #930; text-align: center; padding: 10px 5px 10px 5px; }
 
 /* forms */
 .form { background: #f6f6f6; border: 1px solid #bbb; padding: 10px 5px 10px 5px; border-radius: 6px 6px; margin-bottom: 1em; }
@@ -61,7 +62,6 @@ div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
 .right { float: right; }
 .clear { clear: both; }
 
-.notice { font-weight: bold; color: #930; text-align: center; padding: 10px 5px 10px 5px; }
 .submit { text-align: right; }
 .submit input { font-size: 1.2em; font-weight: bold; }
 .dataOn { background-color: #f6f6f6; text-align: center; }
