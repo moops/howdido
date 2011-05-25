@@ -1,0 +1,3 @@
+jQuery('#notice')
+  .html("<%= escape_javascript(flash[:notice]) %>")
+  .dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });

@@ -16,6 +16,10 @@ class AthletesController < ApplicationController
   # GET /athletes/1
   # GET /athletes/1.xml
   def show
+    if session[:user_session].athlete_id.to_s != params[:id]
+      redirect_to(athlete_path(session[:user_session].athlete_id))
+      return
+    end
     @athlete = Athlete.find(params[:id])
     @recent_run_summaries = @athlete.recent_run_summaries
     @recent_run_grades = @athlete.recent_run_grades
@@ -24,9 +28,6 @@ class AthletesController < ApplicationController
     logger.info("@user: #{@user.inspect}")
     respond_to do |format|
       format.html # show.html.erb
-      format.js { 
-        logger.info('js. redirecting...') 
-      }
       format.xml  { render :xml => @athlete }
     end
   end

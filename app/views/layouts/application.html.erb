@@ -19,19 +19,17 @@
   
     <!-- hidden elements -->
     <div id="register_form" style="display:none;"></div>
-	<div id="notice" style="display:none;"><%= flash[:notice] %></div>
+    <div id="notice" style="display:none;"><%= flash[:notice] %></div>
 
     <div id="user_session">
-      <% if session[:user_session] %>
-		logged in as <%= session[:user_session].name %>.
-		<%= link_to('log out', user_session_path(session[:user_session].id), {:title => 'get me out of here', :id => 'logoutlink', :method => :delete, :confirm => 'are you sure?'}) %>
-	  <% else %>
-		<%= render(:partial => 'user_sessions/form') %>
-		<%= link_to('register', new_athlete_path, :class => 'get') %>
-	  <% end %>
+    <% if session[:user_session] %>
+      <%= render(:partial => 'user_sessions/info') %>
+    <% else %>
+      <%= render(:partial => 'user_sessions/form') %>
+    <% end %>
     </div>
         
-	<%= link_to('gary', athlete_path(980444000)) %>	
+  <%= link_to('gary', athlete_path(980444000)) %> 
     <ul id="lavaLamp">
         <li><%= link_to('races',    races_path ) %></li>
         <li><%= link_to('athletes', athletes_path ) %></li>
@@ -40,13 +38,13 @@
     <!-- main content -->
     
     <div id="content">
-        <% if flash[:notice] %>
-			
-			<script type='text/javascript'>
-				jQuery('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
-			</script>
-        <% end %>
-        <%= yield %></div>
+      <% if flash[:notice] %>
+        <script type='text/javascript'>
+          jQuery('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
+        </script>
+      <% end %>
+      
+      <%= yield %></div>
     
     <!-- end main content -->
     
