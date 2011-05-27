@@ -1,0 +1,3 @@
+jQuery('#claim_link_<%= @participation.result.id %>').html("<%= escape_javascript(@participation.participation_type) %>");
+
+jQuery('#participation_form').dialog("close");

@@ -37,12 +37,14 @@ class ParticipationsController < ApplicationController
   end
 
   # POST /participations
+  # POST /participations.js
   # POST /participations.xml
   def create
     @participation = Participation.new(params[:participation])
 
     respond_to do |format|
       if @participation.save
+        format.js   { logger.info("creating participation with JS") }
         format.html { redirect_to(race_path(@participation.result.race), :notice => 'result has been claimed.') }
         format.xml  { render :xml => @participation, :status => :created, :location => @participation }
       else

@@ -27,9 +27,12 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1
   # DELETE /user_sessions/1.js
   def destroy
-    @session = UserSession.find(params[:id])
-    @session.logout_at = Time.now
-    @session.save
+    begin
+      @session = UserSession.find(params[:id])
+      @session.logout_at = Time.now
+      @session.save
+    rescue ActiveRecord::RecordNotFound
+    end
     
     reset_session 
     render :logout

@@ -1,4 +1,4 @@
-<%= form_for(@participation) do |f| %>
+<%= form_for(@participation, :remote => true) do |f| %>
   <%= f.hidden_field(:athlete_id, :value => @participation.athlete.id) %>
   <%= f.hidden_field(:result_id, :value => @participation.result.id) %>
   <fieldset> 
