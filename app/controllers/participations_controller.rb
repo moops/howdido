@@ -43,7 +43,7 @@ class ParticipationsController < ApplicationController
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to(@participation, :notice => 'Participation was successfully created.') }
+        format.html { redirect_to(race_path(@participation.result.race), :notice => 'result has been claimed.') }
         format.xml  { render :xml => @participation, :status => :created, :location => @participation }
       else
         format.html { render :action => "new" }

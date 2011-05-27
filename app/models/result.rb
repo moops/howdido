@@ -1,5 +1,7 @@
 class Result < ActiveRecord::Base
+  
   belongs_to :race
+  has_many :participations
   has_many :athletes, :through => :participations
   
   scope :male, where('gender = 10')

@@ -14,6 +14,9 @@ class RacesController < ApplicationController
   # GET /races/1.xml
   def show
     @race = Race.find(params[:id])
+    if session[:user_session]
+      @results = Athlete.find(session[:user_session].athlete_id).results
+    end
 
     respond_to do |format|
       format.html # show.html.erb

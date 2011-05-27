@@ -1,4 +1,6 @@
 class Athlete < ActiveRecord::Base
+  
+  has_many :participations
   has_many :results, :through => :participations
   has_many :sessions, :class_name => 'UserSession'
       
