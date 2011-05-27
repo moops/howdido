@@ -26,6 +26,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new
     @participation.athlete = Athlete.find(params[:athlete])
     @participation.result = Result.find(params[:result])
+    @participation_types = Lookup.list_for('participation_type')
     respond_to do |format|
       format.js # new.js.erb
     end

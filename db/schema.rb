@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
   create_table "participations", :force => true do |t|
     t.integer  "athlete_id"
     t.integer  "result_id"
-    t.string   "participation_type"
+    t.integer  "participation_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

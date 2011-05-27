@@ -1,4 +1,5 @@
 class Race < ActiveRecord::Base
+  
   has_many :results
   
   belongs_to :distance, :class_name => 'Lookup', :foreign_key => 'distance'

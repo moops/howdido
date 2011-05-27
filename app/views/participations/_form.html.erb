@@ -3,7 +3,9 @@
   <%= f.hidden_field(:result_id, :value => @participation.result.id) %>
   <fieldset> 
     <ol>   
-      <li><%= f.label(:participation_type) %><%= f.text_field(:participation_type) %></li></ol></fieldset> 
+      <li>
+        <%= f.label(:participation_type) %>
+        <%= f.select(:participation_type, @participation_types.collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li></ol></fieldset> 
   <fieldset class="submit">
     <%= f.submit('claim it')%></fieldset>
 <% end %>
