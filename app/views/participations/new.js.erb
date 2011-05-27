@@ -1,0 +1,3 @@
+jQuery('#participation_form')
+    .html("<%= escape_javascript(render(:partial => 'form')) %>")
+    .dialog({ autoOpen: true, width: 500, title: 'claim a result', modal: true, show: 'fade' });

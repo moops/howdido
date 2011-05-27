@@ -1,4 +1,6 @@
 Howdido::Application.routes.draw do
+  resources :participations
+
   resources :user_sessions
 
   resources :lookups

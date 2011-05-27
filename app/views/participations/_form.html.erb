@@ -1,0 +1,11 @@
+<%= form_for(@participation) do |f| %>
+  participation: <%= @participation.inspect %><br/>
+  athlete: <%= @participation.athlete.inspect %><br/>
+  <%= f.hidden_field(:athlete_id, :value => @participation.athlete.id) %>
+  <%= f.hidden_field(:result_id, :value => @participation.result.id) %>
+  <fieldset> 
+    <ol>   
+      <li><%= f.label(:participation_type) %><%= f.text_field(:participation_type) %></li></ol></fieldset> 
+  <fieldset class="submit">
+    <%= submit_tag %></fieldset>
+<% end %>

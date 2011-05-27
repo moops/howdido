@@ -1,6 +1,6 @@
 class Result < ActiveRecord::Base
   belongs_to :race
-  has_and_belongs_to_many :athletes
+  has_many :athletes, :through => :participations
   
   scope :male, where('gender = 10')
   scope :female, where('gender = 11')

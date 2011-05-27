@@ -1,5 +1,5 @@
 class Athlete < ActiveRecord::Base
-  has_and_belongs_to_many :results
+  has_many :results, :through => :participations
   has_many :sessions, :class_name => 'UserSession'
       
   validates_presence_of :user_id
