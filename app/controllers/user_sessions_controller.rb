@@ -36,6 +36,5 @@ class UserSessionsController < ApplicationController
     
     reset_session 
     render :logout
-    # redirect_to races_path 
   end
 end

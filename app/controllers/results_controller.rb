@@ -106,7 +106,7 @@ class ResultsController < ApplicationController
     
     logger.info("loading results...")
     
-    params[:datafile].read.each do |l|
+    params[:datafile].read.each_line do |l|
       
       logger.info("reading results line #{l}")
       

@@ -5,4 +5,5 @@ module ApplicationHelper
    seconds_in_last_minute = s - m.minutes.seconds
    "#{m}:#{seconds_in_last_minute}"
   end
+  
 end
