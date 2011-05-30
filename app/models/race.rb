@@ -15,4 +15,8 @@ class Race < ActiveRecord::Base
     h
   end
   
+  def finisher_count
+    results.size
+  end
+  
 end
