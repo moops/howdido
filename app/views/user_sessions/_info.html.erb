@@ -1,4 +1,5 @@
 logged in as <%= session[:user_session].name %>.
+<%= link_to('my races', athlete_path(session[:user_session].athlete_id) ) %> |
 <%= link_to('log out', user_session_path(session[:user_session].id), {:title => 'get me out of here', :id => 'logoutlink', :class => 'delete'}) %>
 
 <script type="text/javascript">

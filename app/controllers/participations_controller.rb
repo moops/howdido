@@ -43,13 +43,14 @@ class ParticipationsController < ApplicationController
   def create
     @participation = Participation.new(params[:participation])
     
-    result = Result.find(params[:participation][:result_id].to_i)
-    for p in Participation.where(:athlete_id => params[:participation][:athlete_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
-      if p.result.race.id = result.race.id
+    #result = Result.find(params[:participation][:result_id].to_i)
+    #for p in Participation.where(:athlete_id => params[:participation][:athlete_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
+    #  if p.result.race.id = result.race.id
         # you can't be 'me' in more than one result
-        return false
-      end
-    end
+    #    logger.info('you can\'t be \'me\' in more than one result')
+    #    return false
+    #  end
+    #end
 
     respond_to do |format|
       if @participation.save

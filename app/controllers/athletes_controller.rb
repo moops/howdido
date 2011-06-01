@@ -16,6 +16,7 @@ class AthletesController < ApplicationController
   # GET /athletes/1
   # GET /athletes/1.xml
   def show
+    # redirect to your own page if trying to view someone else's
     if session[:user_session].athlete_id.to_s != params[:id]
       redirect_to(athlete_path(session[:user_session].athlete_id))
       return
