@@ -111,11 +111,12 @@ jQuery(document).ready(function() {
   });
 
   ajaxLinks(); 
-    
+      
   jQuery("#lavaLamp").lavaLamp({ fx: "easeOutBack", speed: 700});
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
+  jQuery(".accordion").accordion({autoHeight: false});
   
 });
 
