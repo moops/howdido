@@ -4,6 +4,8 @@ class Result < ActiveRecord::Base
   has_many :participations
   has_many :athletes, :through => :participations
   
+  # belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
+  
   scope :male, where('gender = 10')
   scope :female, where('gender = 11')
   
@@ -72,11 +74,11 @@ class Result < ActiveRecord::Base
 
   def guess_gender(div)
     if div[/^[mM]/]
-      self.gender = Lookup.code_for('gender','m')
+      self.gender = Lookup.code_for('gender','m').id
     elsif div[/^[fF]/]
-      self.gender = Lookup.code_for('gender','f')
+      self.gender = Lookup.code_for('gender','f').id
     else
-      self.gender = Lookup.code_for('gender','o')
+      self.gender = Lookup.code_for('gender','o').id
     end
   end
   

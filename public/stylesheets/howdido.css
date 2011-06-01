@@ -79,6 +79,11 @@ ul.due li:after { content: ", "; }
 .box_buttons { padding: 5px; text-align: right; }
 .dashboard { margin-bottom: 10px; border: 1px solid #bbb; padding: 5px; background: #ddd; border-radius: 6px; }
 
+.race_summary { margin-bottom: 10px; border: 1px solid #bbb; border-radius: 6px; }
+.race_summary > header { border-bottom: 1px solid #bbb; background: #ddd; font-weight: bold; font-size: 1.2em; padding: 5px; }
+.race_summary > .content { padding: 5px; }
+.race_summary > buttons { padding: 5px; text-align: right; }
+
 .deposit_amount { font-weight: bold; }
 .expense_amount { }
 .transfer_amount { font-style: italic; }

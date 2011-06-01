@@ -19,4 +19,10 @@ class Race < ActiveRecord::Base
     results.size
   end
   
+  def description
+    (race_type ? race_type.description : '') << 
+    (distance ? '(' << distance.description << ')' : '')  <<  
+    (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
+  end
+  
 end
