@@ -19,7 +19,6 @@ class Athlete < ActiveRecord::Base
         grades << [p.result.race.name, p.result.race.race_on, p.result.grade]
       end
     end
-    logger.info("recent_run_grades: #{grades.inspect}")
     grades
   end
   
@@ -38,7 +37,6 @@ class Athlete < ActiveRecord::Base
   
   def run_summary(my_result)
     race = my_result.race
-    logger.info("###myresult: #{my_result.inspect}")
     h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
     num_results = 0
     num_results_in_gender = 0
@@ -75,16 +73,26 @@ class Athlete < ActiveRecord::Base
   end
   
   def participations_by_race(participation_type='me')
-    
+    p_map = Hash.new
+    p_list = Array.new
     if participation_type == 'me'
-      return participations.me
+      p_list = participations.me
     elsif participation_type == 'friend'
-      return participations.friend
+      p_list = participations.friend
     elsif participation_type == 'rival'
-      return participations.rival
+      p_list = participations.rival
     elsif participation_type == 'other'
-      return participations.other
+      p_list = participations.other
     end
+    p_list.each do |p|
+      race = p.result.race
+      if p_map.include?(race)
+        p_map[race] << p
+      else
+        p_map[race] = [p]
+      end
+    end
+    p_map
   end
   
   def name

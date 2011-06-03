@@ -65,17 +65,19 @@
 
   <% ['friend','rival','other'].each do |type| %>
 	  <h3><a href="#"><%= type.pluralize %></a></h3>
-	  <div>
-	  	<table cellspacing="0" cellpadding="5">
-	      <tr><th>name</th><th>time</th><th>grade</th></tr>
-		  <% @athlete.participations_by_race(type).each do |p| %>
-		    <tr>
-			  <td><%= p.result.name %></td>
-			  <td><%= seconds_to_time(p.result.gun_time) %></td>
-			  <td><%= number_to_percentage(p.result.grade) %></td>
-			</tr>
-	      <% end %>
-		  </table>
+	  <div>	      
+		  <% @athlete.participations_by_race(type).each do |race,p_list| %>
+			<b><%= "#{race.name} - #{race.race_on}" %></b>
+			<table cellspacing="0" cellpadding="5">
+		    <tr><th>name</th><th>time</th><th>grade</th></tr>
+		    <% p_list.each do |p| %>
+				  <tr>
+			      <td><%= p.result.name %></td>
+			      <td><%= seconds_to_time(p.result.gun_time) %></td>
+			      <td><%= number_to_percentage(p.result.grade) %></td></tr>
+				<% end %>
+			</table>
+	    <% end %>
 	  </div>
   <% end %>
 
