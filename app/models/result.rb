@@ -119,6 +119,10 @@ class Result < ActiveRecord::Base
     Wava.where('distance = :dist', {:dist => race.distance}).all 
   end
   
+  def name
+    "#{first_name} #{last_name}"
+  end
+  
   #def age(on = Date.today)
   #  age = on.year - birth_date.year
   #  age -= 1 if (on.yday < birth_date.yday)

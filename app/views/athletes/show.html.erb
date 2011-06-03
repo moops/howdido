@@ -53,11 +53,30 @@
   <%=h @athlete.name %>
 </p>
 
-<%= link_to 'Edit', edit_athlete_path(@athlete) %> |
-<%= link_to 'Back', athletes_path %>
-
-<div id="recent_run_grades" style="width:560px; height:300px;"></div>
+<div id="recent_run_grades" style="width:700px; height:300px;"></div>
 
 <p/>
 
-<div id="recent_run_summaries" style="width:560px; height:300px;"></div>
+<div id="recent_run_summaries" style="width:700px; height:300px;"></div>
+
+<p/>
+
+<div class="accordion">
+
+  <% ['friend','rival','other'].each do |type| %>
+	  <h3><a href="#"><%= type.pluralize %></a></h3>
+	  <div>
+	  	<table cellspacing="0" cellpadding="5">
+	      <tr><th>name</th><th>time</th><th>grade</th></tr>
+		  <% @athlete.participations_by_race(type).each do |p| %>
+		    <tr>
+			  <td><%= p.result.name %></td>
+			  <td><%= seconds_to_time(p.result.gun_time) %></td>
+			  <td><%= number_to_percentage(p.result.grade) %></td>
+			</tr>
+	      <% end %>
+		  </table>
+	  </div>
+  <% end %>
+
+</div>

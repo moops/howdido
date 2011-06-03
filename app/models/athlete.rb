@@ -13,10 +13,13 @@ class Athlete < ActiveRecord::Base
   # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
   def recent_run_grades(limit=10)
     grades = []
-    for result in results.joins(:race).where('race_type = 3').all do
-      logger.info("result: #{result.race.inspect}")
-      grades << [result.race.name, result.race.race_on, result.grade]
+    run = Lookup.code_for('race_type', 'run')
+    for p in participations.me.all do
+      if p.result.race.race_type == run
+        grades << [p.result.race.name, p.result.race.race_on, p.result.grade]
+      end
     end
+    logger.info("recent_run_grades: #{grades.inspect}")
     grades
   end
   
@@ -24,8 +27,11 @@ class Athlete < ActiveRecord::Base
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
   def recent_run_summaries(limit=5)
     summaries = Hash.new
-    for result in results.joins(:race).where('race_type = 3').order("race_on desc").limit(limit).all do
-      summaries[result.race.name] = run_summary(result)
+    run = Lookup.code_for('race_type', 'run')
+    for p in participations.me.limit(limit).all do
+      if p.result.race.race_type == run
+        summaries[p.result.race.name] = run_summary(p.result)
+      end
     end
     summaries
   end
@@ -66,6 +72,19 @@ class Athlete < ActiveRecord::Base
     h['div'] = h['div'].to_i
     h['me'] = h['me'].to_i
     h
+  end
+  
+  def participations_by_race(participation_type='me')
+    
+    if participation_type == 'me'
+      return participations.me
+    elsif participation_type == 'friend'
+      return participations.friend
+    elsif participation_type == 'rival'
+      return participations.rival
+    elsif participation_type == 'other'
+      return participations.other
+    end
   end
   
   def name

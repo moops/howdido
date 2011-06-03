@@ -11,4 +11,8 @@ class Participation < ActiveRecord::Base
   scope :friend, where("participation_type = 33")
   scope :rival, where("participation_type = 34")
   scope :other, where("participation_type = 35")
+  
+  def summary
+    "#{result.name}, race: #{result.race.name}, time #{result.gun_time} grade: #{result.grade}"
+  end
 end
