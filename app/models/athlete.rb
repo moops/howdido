@@ -10,8 +10,8 @@ class Athlete < ActiveRecord::Base
   scope :female, where("gender = 11")
   
   # returns: [[race name,grade]]
-  # example: [["Esquimalt 8km", 75], ["Stewart Mountain", 97], ["Chemainus Twilight Shuffle", 64], ["race for pace", 90]]
-  def recent_run_grades(limit=10)
+  # example: [["Esquimalt 8km", "2009-04-25", 75], ["Stewart Mountain", "2009-04-25", 97], ["Chemainus Twilight Shuffle", "2009-04-25", 64]]
+  def run_grades(limit=10)
     grades = []
     run = Lookup.code_for('race_type', 'run')
     for p in participations.me.all do

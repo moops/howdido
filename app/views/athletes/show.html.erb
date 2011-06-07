@@ -10,7 +10,7 @@
     xAxis: { 
       title: { text: "race" },
       categories: [
-      <% @recent_run_grades.each do |grade| %>
+      <% @run_grades.each do |grade| %>
         <%= "'#{grade[0]}', " %>
       <% end %>
       ]
@@ -18,7 +18,7 @@
     yAxis: { title: { text: "grade" }, min: 0, max: 100 },
     series: [{
       data: [
-        <% @recent_run_grades.each do |grade| %>
+        <% @run_grades.each do |grade| %>
         <%= "{ name: '#{grade[1]}', y: #{grade[2]} }," %>
         <% end %>
       ]
@@ -52,6 +52,9 @@
   <b>name:</b>
   <%=h @athlete.name %>
 </p>
+
+<%= select_tag(:races, participation_options_in_race_order(@athlete), { :multiple => true }) %>
+
 
 <div id="recent_run_grades" style="width:700px; height:300px;"></div>
 

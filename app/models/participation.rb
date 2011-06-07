@@ -15,4 +15,10 @@ class Participation < ActiveRecord::Base
   def summary
     "#{result.name}, race: #{result.race.name}, time #{result.gun_time} grade: #{result.grade}"
   end
+  
+  def self.sort_by_race_on(participations)
+    participations.sort! { |a,b|
+      a.result.race.race_on <=> b.result.race.race_on
+    }
+  end
 end
