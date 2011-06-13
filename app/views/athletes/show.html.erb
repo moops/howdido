@@ -64,11 +64,15 @@
 
 <p/>
 
-<div class="accordion">
+<div class="tabs">
+	<ul>
+    <% ['friend','rival','other'].each do |type| %>
+    <li><a href="#<%= type %>"><%= type.pluralize %></a></li>
+    <% end %>
+	</ul>
 
   <% ['friend','rival','other'].each do |type| %>
-	  <h3><a href="#"><%= type.pluralize %></a></h3>
-	  <div>	      
+	  <div id="<%= type %>">	      
 		  <% @athlete.participations_by_race(type).each do |race,p_list| %>
 			<b><%= "#{race.name} - #{race.race_on}" %></b>
 			<table cellspacing="0" cellpadding="5">

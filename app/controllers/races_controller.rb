@@ -2,7 +2,7 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.xml
   def index
-    @races = Race.all
+    @races = Race.page(params[:page]).per(2)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,7 @@ class RacesController < ApplicationController
   def show
     @race = Race.find(params[:id])
     @user_participations = current_user ? Athlete.find(current_user.athlete_id).participations : nil
+    @results = @race.results.order(:overall_place).page(params[:page]).per(25)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -22,7 +22,7 @@ class AthletesController < ApplicationController
       return
     end
     @athlete = Athlete.find(params[:id])
-    @recent_run_summaries = @athlete.recent_run_summaries
+    @recent_run_summaries = @athlete.run_summaries
     @run_grades = @athlete.run_grades
     
     logger.info("@run_grades: #{@run_grades.inspect}")

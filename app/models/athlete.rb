@@ -24,7 +24,7 @@ class Athlete < ActiveRecord::Base
   
   # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
-  def recent_run_summaries(limit=5)
+  def run_summaries(limit=5)
     summaries = Hash.new
     run = Lookup.code_for('race_type', 'run')
     for p in participations.me.limit(limit).all do
