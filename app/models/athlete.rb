@@ -9,22 +9,9 @@ class Athlete < ActiveRecord::Base
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
   
-  # returns: [[race name,grade]]
-  # example: [["Esquimalt 8km", "2009-04-25", 75], ["Stewart Mountain", "2009-04-25", 97], ["Chemainus Twilight Shuffle", "2009-04-25", 64]]
-  def run_grades(limit=10)
-    grades = []
-    run = Lookup.code_for('race_type', 'run')
-    for p in participations.me.all do
-      if p.result.race.race_type == run
-        grades << [p.result.race.name, p.result.race.race_on, p.result.grade]
-      end
-    end
-    grades
-  end
-  
   # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
-  def run_summaries(limit=5)
+  def run_summaries(limit=25)
     summaries = Hash.new
     run = Lookup.code_for('race_type', 'run')
     for p in participations.me.limit(limit).all do
@@ -69,6 +56,7 @@ class Athlete < ActiveRecord::Base
     h['gender'] = h['gender'].to_i
     h['div'] = h['div'].to_i
     h['me'] = h['me'].to_i
+    h['date'] = race.race_on
     h
   end
   

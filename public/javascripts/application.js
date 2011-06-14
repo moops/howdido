@@ -117,7 +117,7 @@ jQuery(document).ready(function() {
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
   jQuery(".accordion").accordion({autoHeight: false});
-	jQuery(".tabs").tabs({event: 'mouseover'});
+  jQuery(".tabs").tabs({event: 'mouseover'});
   
 });
 

@@ -22,10 +22,9 @@ class AthletesController < ApplicationController
       return
     end
     @athlete = Athlete.find(params[:id])
-    @recent_run_summaries = @athlete.run_summaries
-    @run_grades = @athlete.run_grades
+    @run_summaries = @athlete.run_summaries
+    logger.info("@run_summaries: #{@run_summaries.inspect}")
     
-    logger.info("@run_grades: #{@run_grades.inspect}")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @athlete }
