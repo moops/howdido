@@ -1,0 +1,30 @@
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: howdido_development
+  pool: 5
+  username: postgres
+  password: 
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: howdido_test
+  pool: 5
+  username: postgres
+  password: 
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: howdido_production
+  pool: 5
+  username: postgres
+  password: 
+  host: localhost
