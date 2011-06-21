@@ -12,14 +12,12 @@ class Athlete < ActiveRecord::Base
   # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
   def run_summaries(limit=25)
-    summaries = Hash.new
+    summaries = Array.new
     run = Lookup.code_for('race_type', 'run')
-    for p in participations.me.limit(limit).all do
-      if p.result.race.race_type == run
-        summaries[p.result.race.name] = run_summary(p.result)
-      end
+    for p in participations.me.run.limit(limit).all do
+      summaries << run_summary(p.result)
     end
-    summaries
+    summaries.sort { |a,b| a['date'] <=> b['date']}
   end
   
   def run_summary(my_result)
@@ -57,6 +55,7 @@ class Athlete < ActiveRecord::Base
     h['div'] = h['div'].to_i
     h['me'] = h['me'].to_i
     h['date'] = race.race_on
+    h['name'] = race.name
     h
   end
   

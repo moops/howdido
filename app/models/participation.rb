@@ -12,6 +12,8 @@ class Participation < ActiveRecord::Base
   scope :rival, where("participation_type = 34")
   scope :other, where("participation_type = 35")
   
+  scope :run, joins(:result => :race).where("races.race_type = 3")
+  
   def summary
     "#{result.name}, race: #{result.race.name}, time #{result.gun_time} grade: #{result.grade}"
   end

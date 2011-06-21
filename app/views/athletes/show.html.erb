@@ -4,11 +4,11 @@
   var race_dates = [];
   var my_grades = [];
   var summaries = [];
-  <% @run_summaries.each do |race_name, summary| %>
+  <% @run_summaries.each do |summary| %>
     race_dates.push('<%= "#{summary['date']}" %>');
-    my_grades.push(<%= "{ name: '#{race_name}', y: #{summary['me']} }" %>);
-    summaries.push(<%= "{ name: '#{race_name}', data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}" %>);
-    runs.push(<%= "{ name:'#{race_name}', date:'#{summary['date']}', me:'#{summary['me']}', div:'#{summary['div']}', gender:'#{summary['gender']}', everyone:'#{summary['everyone']}'}" %>);
+    my_grades.push(<%= "{ name: '#{summary['name']}', y: #{summary['me']} }" %>);
+    summaries.push(<%= "{ name: '#{summary['name']}', data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}" %>);
+    runs.push(<%= "{ name:'#{summary['name']}', date:'#{summary['date']}', me:'#{summary['me']}', div:'#{summary['div']}', gender:'#{summary['gender']}', everyone:'#{summary['everyone']}'}" %>);
   <% end %>
   
   jQuery(document).ready(function() {
@@ -21,10 +21,10 @@
       tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
       xAxis: { 
         title: { text: "race" },
-        labels: { rotation: 90, align: 'left'},
+        //labels: { rotation: 90, align: 'left'},
         categories: race_dates
       },
-      yAxis: { title: { text: "grade" } },
+      yAxis: { title: { text: "grade" }, min: 0, max: 100  },
       series: [{data: my_grades}]
     });
 
@@ -43,7 +43,7 @@
       var newCategories = [];
       //iterate selected options
       jQuery("select#races option:selected").each(function () {
-        var selectedOption = $(this).text()
+        var selectedOption = $(this).text();
         //find the grade for the current selected option
         jQuery.each(runs, function(index, value) {
           if(selectedOption == value.name) {
