@@ -81,12 +81,12 @@
 
 <div class="tabs">
   <ul>
-    <% ['friend','rival','other'].each do |type| %>
+    <% ['me', 'friend','rival','other'].each do |type| %>
     <li><a href="#<%= type %>"><%= type.pluralize %></a></li>
     <% end %>
   </ul>
 
-  <% ['friend','rival','other'].each do |type| %>
+  <% ['me', 'friend','rival','other'].each do |type| %>
     <div id="<%= type %>">        
       <% @athlete.participations_by_race(type).each do |race,p_list| %>
       <b><%= "#{race.name} - #{race.race_on}" %></b>
@@ -94,7 +94,7 @@
         <tr><th>name</th><th>time</th><th>grade</th></tr>
         <% p_list.each do |p| %>
           <tr>
-            <td><%= p.result.name %></td>
+            <td><%= link_to(p.result.name, result_path(p.result)) %></td>
             <td><%= seconds_to_time(p.result.gun_time) %></td>
             <td><%= number_to_percentage(p.result.grade) %></td></tr>
         <% end %>
