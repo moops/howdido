@@ -25,4 +25,22 @@ class Race < ActiveRecord::Base
     (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
   end
   
+  def winner(div = nil, gender = 10)
+    if div
+      winner_rank = results.where('div = ?', div).minimum('overall_place')
+    else
+      winner_rank = results.minimum('overall_place')
+    end
+    results.where('overall_place = ?', winner_rank).first
+  end
+  
+  def gender_winner(gender = 10)
+    if gender
+      winner_rank = results.where('gender = ?', gender).minimum('overall_place')
+    else
+      winner_rank = results.male.minimum('overall_place')
+    end
+    results.where('overall_place = ?', winner_rank).first
+  end
+  
 end

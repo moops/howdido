@@ -1,7 +1,10 @@
-<script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <script type='text/javascript'>
 
+  var oaWinnerTime = <%= @result.race.winner.gun_time %>;
+  var divWinnerTime = <%= @result.race.winner(@result.div).gun_time %>;
+  var genderWinnerTime = <%= @result.race.gender_winner(@result.gender).gun_time %>;
   var gunTime = <%= @result.gun_time %>;
+  var distance = <%= @result.race.distance.code.to_f %>;
   var maleWavaFactors = new Array();
   var femaleWavaFactors = new Array();
   <% for wava in @result.wavas %>
@@ -14,6 +17,32 @@
   <% end %>
 
   jQuery(document).ready(function() {
+  
+    var paper = new Raphael(document.getElementById('winner_ratio'), 700, 44);
+    var container = paper.rect(2, 2, 696, 40);
+    container.attr({stroke: '#999', 'stroke-width': 4, 'stroke-linejoin': 'round'});
+    
+    var bar = paper.rect(4, 4, 250, 36);
+    bar.attr({gradient: '90-#526c7a-#64a0c1', 'stroke-width': 0, 'stroke-opacity': 0});
+    bar.animate({width: 650 * (oaWinnerTime / gunTime)}, 500, 'bounce');
+    var t = paper.text(100, 20, "you were at " + Math.round((oaWinnerTime / gunTime) * distance * 100) / 100 + " km").attr({fill: "#fff"});
+    
+    jQuery("#winner_type").change(function( objEvent ) {
+      var width;
+      if (objEvent.target.value === 'oa') {
+        width = 650 * (oaWinnerTime / gunTime);
+        dist = (oaWinnerTime / gunTime) * distance;
+      } else if (objEvent.target.value === 'div') {
+        width = 650 * (divWinnerTime / gunTime);
+        dist = (divWinnerTime / gunTime) * distance;
+      } else if (objEvent.target.value === 'gender') {
+        width = 650 * (genderWinnerTime / gunTime);
+        dist = (genderWinnerTime / gunTime) * distance;
+      }
+      bar.animate({width: width}, 500, 'bounce');
+      t.attr({text: "you were at " + Math.round(dist * 100) / 100 + " km"});
+    });
+ 
   
     var my_guage = Raphael.fn.speedometer("my_guage",200,200);
     my_guage.setOptions({
@@ -38,15 +67,14 @@
       max: 75,
       value: <%= @result.age %>,
       change: function(event, ui) {
-        $("#age").val( ui.value );
-          my_guage.accelerate(maleWavaFactors[ui.value] / gunTime * 100);
-          my_guage.scrollTo(maleWavaFactors[ui.value] / gunTime * 100 * 10);
-          //winner_guage.accelerate(ui.value);
-          //winner_guage.scrollTo(ui.value * 10);
+        jQuery("#age").val( ui.value );
+        my_guage.accelerate(maleWavaFactors[ui.value] / gunTime * 100);
+        my_guage.scrollTo(maleWavaFactors[ui.value] / gunTime * 100 * 10);
+        //winner_guage.accelerate(ui.value);
+        //winner_guage.scrollTo(ui.value * 10);
       }
     });
-    $("#age").val($("#ageSlider").slider("value"));
-
+    jQuery("#age").val($("#ageSlider").slider("value"));
   });
     
 </script>
@@ -59,6 +87,15 @@
   <%=h @result.div %> winner finished in
   <b><%=number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
 </p>
+
+where was I when the 
+  <select id="winner_type">
+    <option value="oa">overall winner</option>
+    <option value="gender">gender winner</option>
+    <option value="div"><%= @result.div %> winner</option>
+  </select> 
+finished?
+<div id="winner_ratio"></div>
 
 <div id="my_guage" style="float:left;"></div>
 <div id="winner_guage" style="float:left;"></div>
