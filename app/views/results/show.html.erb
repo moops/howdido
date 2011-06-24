@@ -24,6 +24,9 @@
     
     var bar = paper.rect(4, 4, 250, 36);
     bar.attr({gradient: '90-#526c7a-#64a0c1', 'stroke-width': 0, 'stroke-opacity': 0});
+    
+    var ticks = paper.path("M88 4L88 10M175 4L175 15M263 4L263 10M350 4L350 20M438 4L438 10M525 4L525 15M613 4L613 10").attr({stroke: "#ddd"});
+    
     bar.animate({width: 650 * (oaWinnerTime / gunTime)}, 500, 'bounce');
     var t = paper.text(100, 20, "you were at " + Math.round((oaWinnerTime / gunTime) * distance * 100) / 100 + " km").attr({fill: "#fff"});
     
