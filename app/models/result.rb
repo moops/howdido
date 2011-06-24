@@ -115,6 +115,16 @@ class Result < ActiveRecord::Base
     Result.where(:race_id => race, :div => div).order(:overall_place).first
   end
   
+  def future_time_for_same_grade(years = 1)
+    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+    (w.factor / grade) * 100
+  end
+  
+  def future_grade_with_same_time(years = 1)
+    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+    (w.factor / gun_time) * 100
+  end
+  
   def wavas
     Wava.where('distance = :dist', {:dist => race.distance}).all 
   end

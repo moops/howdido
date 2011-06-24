@@ -28,7 +28,7 @@
     var ticks = paper.path("M88 4L88 10M175 4L175 15M263 4L263 10M350 4L350 20M438 4L438 10M525 4L525 15M613 4L613 10").attr({stroke: "#ddd"});
     
     bar.animate({width: 650 * (oaWinnerTime / gunTime)}, 500, 'bounce');
-    var t = paper.text(100, 20, "you were at " + Math.round((oaWinnerTime / gunTime) * distance * 100) / 100 + " km").attr({fill: "#fff"});
+    var t = paper.text(100, 20, "you were at " + Math.round((oaWinnerTime / gunTime) * distance * 100) / 100 + " km").attr({fill: "#fff",'font-size': 16});
     
     jQuery("#winner_type").change(function( objEvent ) {
       var width;
@@ -90,6 +90,22 @@
   <%=h @result.div %> winner finished in
   <b><%=number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
 </p>
+
+<div class="box" style="float:left;">
+	<div class="box_header">next year</div>
+	<div class="box_content">
+		same time will be a <b><%= number_with_precision(@result.future_grade_with_same_time, :precision => 2) %></b><p/>
+	  for the same grade, i need to run <b><%= seconds_to_time(@result.future_time_for_same_grade) %></b>
+	</div>
+</div>
+<div class="box" style="float:left;">
+  <div class="box_header">in 5 years</div>
+  <div class="box_content">
+  	same time will be a <b><%= number_with_precision(@result.future_grade_with_same_time(5), :precision => 2) %></b><p/>
+    for the same grade, i need to run <b><%= seconds_to_time(@result.future_time_for_same_grade(5)) %></b>
+	</div>
+</div>
+<div style="clear:both;"/>
 
 where was I when the 
   <select id="winner_type">

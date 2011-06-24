@@ -7,7 +7,7 @@ Raphael.fn.speedometer = function(id,width,height){
         //start and endangles are a little buggy
         startNumber:0, endNumber:10, numNumbers:10, startAngle:-20, endAngle:200, 
         height:height, width:width,
-        odometerText:"MPH",rumbleMagnitude:1,rumble:false
+        rumbleMagnitude:1,rumble:false
     };
     //object scope options
     var h = width*0.5,
@@ -197,22 +197,15 @@ Raphael.fn.speedometer = function(id,width,height){
                                     displayY+displayHeight-12*weight,
                                     4*weight);
             decimal.attr({fill:"#fff","stroke-width":4*weight,"stroke":"#000"});
-            
-            //odometer label    
-            var text = paper.text(h,displayY + displayHeight + 15*weight,o.odometerText);
-            text.attr({"fill":o.color1,"font-size":14*weight});
 
             return{
-                scrollTo:function(value){
-                    for (i=0;i<numbers.length;i++)
-                        numbers[i].reset();
-                        
-                    setInterval(function(){
-                        if (value-- > 0)
-                            numbers[digitCount-1].add();
-                        else
-                            clearInterval(this);
-                    },10)               
+                scrollTo:function(val){	
+                    val = Math.round(val*10)/10;
+										numbers[digitCount-1].value(Math.floor((val%10)/1));
+										numbers[digitCount-2].value(Math.floor((val%100)/10));
+										numbers[digitCount-3].value(Math.floor(val/100));
+										numbers[digitCount-4].value(Math.floor(val/1000));  
+                                   
                 }
             }
         }       

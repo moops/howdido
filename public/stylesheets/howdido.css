@@ -73,7 +73,7 @@ div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
 ul.due li { display:inline; }
 ul.due li:after { content: ", "; }
 
-.box { margin-bottom: 10px; border: 1px solid #bbb; border-radius: 6px; }
+.box { margin-bottom: 10px; margin-right: 10px; border: 1px solid #bbb; border-radius: 6px; }
 .box_header { border-bottom: 1px solid #bbb; background: #ddd; font-weight: bold; font-size: 1.2em; padding: 5px; }
 .box_content { padding: 5px; }
 .box_buttons { padding: 5px; text-align: right; }
