@@ -83,7 +83,6 @@ class Result < ActiveRecord::Base
   end
   
   def guess_age(div)
-    logger.info("guessing age with div #{div}")
     a = nil
     # M5054
     if div[/^[mMfF][0-9]{4}$/]
@@ -111,6 +110,10 @@ class Result < ActiveRecord::Base
     (w.factor / gun_time) * 100
   end
   
+  def points
+    return (141113 * (race.distance.code.to_f ** 1.0689) / gun_time);
+  end
+  
   def div_winner
     Result.where(:race_id => race, :div => div).order(:overall_place).first
   end
@@ -133,9 +136,4 @@ class Result < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
   
-  #def age(on = Date.today)
-  #  age = on.year - birth_date.year
-  #  age -= 1 if (on.yday < birth_date.yday)
-  #  age
-  #end
 end

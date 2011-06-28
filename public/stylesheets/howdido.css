@@ -27,7 +27,6 @@ ul { margin: 4px 0px; }
 #footer { font-size: .9em; margin-right: auto; margin-left: auto; background: #fff; width: 690px; border: 1px solid #bbb; border-radius: 6px 6px; padding: 5px; }
 #styleLinks { margin-right: 15px; float: left; }
 #user { float: left; } 
-#search { font-size: .9em; margin-right: auto; margin-left: auto; margin-top: 5px; background: #fff; width: 700px; text-align: center; }
 #search form { margin: 2px; display: inline; }
 #found_links { padding-bottom: 10px; }
 #copyright { width: 25%; float: right; text-align: right; }
