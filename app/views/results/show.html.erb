@@ -15,9 +15,14 @@
       femaleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
     <% end %>
   <% end %>
+	var futureAges = [];
+	for (var i=1; i<=(75-<%= @result.age %>); i++) {
+		futureAges.push(i);
+	}
 
   jQuery(document).ready(function() {
   
+	  //linear "where was i?" guage 
     var paper = new Raphael(document.getElementById('winner_ratio'), 700, 44);
     var container = paper.rect(2, 2, 696, 40);
     container.attr({stroke: '#999', 'stroke-width': 4, 'stroke-linejoin': 'round'});
@@ -45,8 +50,9 @@
       bar.animate({width: width}, 500, 'bounce');
       t.attr({text: "you were at " + Math.round(dist * 100) / 100 + " km"});
     });
+		//end linear "where was i?" guage 
  
-  
+    //spedometer guage
     var my_guage = Raphael.fn.speedometer("my_guage",200,200);
     my_guage.setOptions({
       startNumber:0,
@@ -78,6 +84,32 @@
       }
     });
     jQuery("#age").val($("#ageSlider").slider("value"));
+		//end spedometer guage
+		
+		//future box
+		function future (years) {
+      var gender = <%= @result.gender %>;
+      var w;
+      if (gender == 10) {
+        w = maleWavaFactors[<%= @result.age %> + years];
+      } else {
+        w = femaleWavaFactors[<%= @result.age %> + years];
+      }
+      var futureTime = seconds_to_time((w / <%= @result.grade %>) * 100);
+      var futureGrade = round((w / <%= @result.gun_time %>) * 100, 100);
+      jQuery("#futureTime").html("<b>" + futureTime + "</b>");
+      jQuery("#futureGrade").html("<b>" + futureGrade + "</b>");
+    }
+		
+		jQuery("#future").change(function(event) {
+			future(parseInt(event.target.value));
+		});
+		future(1);
+		jQuery.each(futureAges, function(index, value) { 
+			jQuery('#future').append("<option>" + value + "</option>");
+		});
+		//end future box
+		
   });
     
 </script>
@@ -85,27 +117,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  age graded score:
-  <b><%=number_with_precision(@result.grade, :precision => 2) %></b><br/>
+	time: <b><%=seconds_to_time(@result.gun_time) %></b><br/>
+  age grade: <b><%=number_with_precision(@result.grade, :precision => 2) %></b><br/>
   <%=h @result.div %> winner finished in
   <b><%=number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
 </p>
 
-<div class="box" style="float:left;">
-	<div class="box_header">next year</div>
-	<div class="box_content">
-		same time will be a <b><%= number_with_precision(@result.future_grade_with_same_time, :precision => 2) %></b><p/>
-	  for the same grade, i need to run <b><%= seconds_to_time(@result.future_time_for_same_grade) %></b>
-	</div>
-</div>
-<div class="box" style="float:left;">
-  <div class="box_header">in 5 years</div>
+<div class="box">
+  <div class="box_header">in <select id="future"></select> years</div>
   <div class="box_content">
-  	same time will be a <b><%= number_with_precision(@result.future_grade_with_same_time(5), :precision => 2) %></b><p/>
-    for the same grade, i need to run <b><%= seconds_to_time(@result.future_time_for_same_grade(5)) %></b>
-	</div>
+  	<ul>
+  	<li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i need to run <div id="futureTime" style="display:inline;"></div><br/></li>
+    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
+		</ul>
+  </div>
 </div>
-<div style="clear:both;"/>
 
 where was I when the 
   <select id="winner_type">

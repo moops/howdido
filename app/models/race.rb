@@ -7,6 +7,14 @@ class Race < ActiveRecord::Base
   
   scope :running, where("race_type = 3")
   
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+  
   def results_by_division
     h = Hash.new
     for r in results do

@@ -1,8 +1,11 @@
 class RacesController < ApplicationController
+  
+  helper_method :sort_column, :sort_direction
+  
   # GET /races
   # GET /races.xml
   def index
-    @races = Race.page(params[:page]).per(2)
+    @races = Race.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(2)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -85,5 +88,15 @@ class RacesController < ApplicationController
       format.html { redirect_to(races_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def sort_column
+    Race.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
