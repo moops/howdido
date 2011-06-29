@@ -11,7 +11,6 @@ class CreateResults < ActiveRecord::Migration
       t.integer :gun_time 
       t.integer :chip_time
       t.integer :penalty_time
-      t.integer :points
       t.string :bib
       t.string :div
       t.integer :div_place

@@ -94,7 +94,6 @@ class ResultsController < ApplicationController
     gun_time_index = params[:gun_time_index].to_i unless params[:gun_time_index].empty?
     chip_time_index = params[:chip_time_index].to_i unless params[:chip_time_index].empty?
     penalty_time_index = params[:penalty_time_index].to_i unless params[:penalty_time_index].empty?
-    points_index = params[:points_index].to_i unless params[:points_index].empty?
     age_index = params[:age_index].to_i unless params[:age_index].empty?
     if params[:div_place_index].empty?
       div_places = Hash.new
@@ -149,7 +148,6 @@ class ResultsController < ApplicationController
         r.gun_time = get_time(line[gun_time_index]) if gun_time_index
         r.chip_time = get_time(line[chip_time_index]) if chip_time_index
         r.penalty_time = get_time(line[penalty_time_index]) if penalty_time_index
-        r.points = line[points_index] if points_index
         r.save
       end
       data_found = data_header?(line) unless data_found

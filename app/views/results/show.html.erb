@@ -117,11 +117,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  time: <b><%=seconds_to_time(@result.gun_time) %></b><br/>
+	name: <b><%= @result.name %></b><br/>
+	race: <b><%= @result.race.name %></b><br/>
+  time: <b><%= seconds_to_time(@result.gun_time) %></b><br/>
   age grade: <b><%= number_with_precision(@result.grade, :precision => 2) %></b><br/>
   points: <b><%= number_with_precision(@result.points, :precision => 2) %></b><br/>
   <%=h @result.div %> winner finished in
-  <b><%=number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
+  <b><%= number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
 </p>
 
 <div class="box">

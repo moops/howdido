@@ -91,12 +91,11 @@
       <% @athlete.participations_by_race(type).each do |race,p_list| %>
       <b><%= "#{race.name} - #{race.race_on}" %></b>
       <table cellspacing="0" cellpadding="5">
-        <tr><th>name</th><th>time</th><th>grade</th></tr>
+        <tr><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th><th colspan="2">&nbsp;</th></tr></tr>
         <% p_list.each do |p| %>
           <tr>
-            <td><%= link_to(p.result.name, result_path(p.result)) %></td>
-            <td><%= seconds_to_time(p.result.gun_time) %></td>
-            <td><%= number_to_percentage(p.result.grade) %></td></tr>
+            <%= render(:partial => 'results/result_row', :locals => { :result => p.result }) %>
+					</tr>
         <% end %>
       </table>
       <% end %>
