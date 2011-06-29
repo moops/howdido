@@ -4,3 +4,4 @@ x 20110628 - add points to result show
 x 20110629 - change 'mark as' link to icon
 x 20110629 - add location to race search
 x 20110629 - stripe the result rows on race show page
+x 20110629 - replace accordion with toggle result list on race show page

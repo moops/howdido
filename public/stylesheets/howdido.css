@@ -58,6 +58,7 @@ div.links a { line-height: 140%; color: #3333ff; font-size: .9em; }
 div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
 
 tr.stripe { background-color: #eee; }
+.toggle_label { float:right; font-weight: normal; }
 
 .left { float: left; padding: 1px; }
 .right { float: right; }
@@ -74,7 +75,7 @@ tr.stripe { background-color: #eee; }
 ul.due li { display:inline; }
 ul.due li:after { content: ", "; }
 
-.box { margin-bottom: 10px; margin-right: 10px; border: 1px solid #bbb; border-radius: 6px; }
+.box { margin-bottom: 10px; border: 1px solid #bbb; border-radius: 6px; margin-top: 10px; }
 .box_header { border-bottom: 1px solid #bbb; background: #ddd; font-weight: bold; font-size: 1.2em; padding: 5px; }
 .box_content { padding: 5px; }
 .box_buttons { padding: 5px; text-align: right; }
