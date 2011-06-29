@@ -1,3 +1,6 @@
 - 20110611 - change accordion to ajax tabs on race show page. chart and results list.
 x 20110620 - add search, sort and pagination to race list
 x 20110628 - add points to result show
+x 20110629 - change 'mark as' link to icon
+x 20110629 - add location to race search
+x 20110629 - stripe the result rows on race show page

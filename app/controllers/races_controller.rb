@@ -5,7 +5,7 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.xml
   def index
-    @races = Race.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(2)
+    @races = Race.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
     
     respond_to do |format|
       format.html # index.html.erb

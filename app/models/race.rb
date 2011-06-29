@@ -9,7 +9,7 @@ class Race < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where('name LIKE ?', "%#{search}%")
+      where('UPPER(name) LIKE ? or UPPER(location) LIKE ?', "%#{search.upcase}%", "%#{search.upcase}%")
     else
       scoped
     end

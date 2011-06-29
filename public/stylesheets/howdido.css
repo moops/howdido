@@ -57,6 +57,8 @@ div.pagination span.disabled { padding: 2px 5px 2px 5px; margin-right: 2px; bord
 div.links a { line-height: 140%; color: #3333ff; font-size: .9em; }
 div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
 
+tr.stripe { background-color: #eee; }
+
 .left { float: left; padding: 1px; }
 .right { float: right; }
 .clear { clear: both; }
