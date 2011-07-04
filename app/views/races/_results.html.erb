@@ -1,0 +1,17 @@
+<table width="100%" cellpadding="4" cellspacing="0">
+  <tr>
+    <th><%= sortable('last_name', 'name', true) %></th>
+    <th><%= sortable('overall_place', 'rank', true) %></th>
+    <th><%= sortable('div', 'div', true) %></th>
+    <th><%= sortable('points', 'points', true) %></th>
+    <th><%= sortable('grade', 'grade', true) %></th>
+    <th colspan="2">&nbsp;</th></tr>
+<% @results.each do |result| %>
+  <tr class="<%= cycle('normal', 'stripe') %>">
+    <%= render(:partial => 'results/result_row', :locals => { :result => result }) %>
+    <td><div id="claim_link_<%= result.id %>"><%= claim_result_link(result) %></div></td>
+    <td><div id="claims_<%= result.id %>"><%= result_claims(result) %></div></td>
+  </tr>
+<% end %>
+</table>
+<%= paginate @results %>

@@ -18,11 +18,12 @@ class RacesController < ApplicationController
   def show
     @race = Race.find(params[:id])
     @user_participations = current_user ? Athlete.find(current_user.athlete_id).participations : nil
-    @results = @race.results.order(:overall_place).page(params[:page]).per(25)
+    @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page]).per(25)
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @race }
+      format.js
     end
   end
 
@@ -92,11 +93,21 @@ class RacesController < ApplicationController
   
   private
   
+  # used in index action to sort races list
   def sort_column
     Race.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
   
   def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
+  # used in show action to sort results list
+  def results_sort_column
+    Result.column_names.include?(params[:sort]) ? params[:sort] : "overall_place"
+  end
+  
+  def results_sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
