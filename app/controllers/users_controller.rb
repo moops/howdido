@@ -55,12 +55,11 @@ class UsersController < ApplicationController
     @user.authority= 1
     
     if @user.save
-      logger.debug("signing in...")
       # sign in
+      session[:user_id] = @user.id
       session[:user_session] = UserSession.create(:user_id => @user.id, :login_at => Time.now)
       redirect_to(@user)
     else
-      logger.debug("WTF: #{@user.inspect}")
       render "new"
     end
   end
