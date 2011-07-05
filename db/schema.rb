@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110526193907) do
 
-  create_table "athletes", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "lookups", :force => true do |t|
     t.integer  "category"
     t.string   "code"
@@ -27,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
   end
 
   create_table "participations", :force => true do |t|
-    t.integer  "athlete_id"
+    t.integer  "user_id"
     t.integer  "result_id"
     t.integer  "participation_type"
     t.datetime "created_at"
@@ -55,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.integer  "gun_time"
     t.integer  "chip_time"
     t.integer  "penalty_time"
-    t.integer  "points"
     t.string   "bib"
     t.string   "div"
     t.integer  "div_place"
@@ -64,12 +57,24 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
   end
 
   create_table "user_sessions", :force => true do |t|
-    t.integer  "athlete_id"
-    t.string   "name"
-    t.date     "born_on"
-    t.integer  "authority"
+    t.integer  "user_id"
     t.datetime "login_at"
     t.datetime "logout_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.integer  "gender"
+    t.integer  "authority"
+    t.date     "born_on"
+    t.string   "city"
+    t.datetime "last_login_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "wavas", :force => true do |t|

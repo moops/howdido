@@ -1,5 +1,5 @@
 class UserSession < ActiveRecord::Base
 
-  belongs_to :athlete
+  belongs_to :user
     
 end

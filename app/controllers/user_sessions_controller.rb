@@ -6,16 +6,13 @@ class UserSessionsController < ApplicationController
   # POST /user_sessions.js
   def create
     
-    unless params[:user_name].blank? or params[:password].blank?
-      user = User.find(:first, :params => { :user_name => params[:user_name], :password => params[:password] })
-    end
-    
-    athlete = Athlete.find_by_user_id(user.id) unless user == nil
+    user = User.authenticate(params[:email], params[:password])
 
-    if athlete
-      session[:user_session] = UserSession.create(:athlete => athlete, :name => user.user_name, :born_on => user.born_on, :authority => user.authority, :login_at => Time.now)
+    if user
+      session[:user_id] = user.id
+      session[:user_session] = UserSession.create(:user_id => user.id, :login_at => Time.now)
       # where do we go after login?
-      session[:return_to] = athlete_path(athlete.id) unless session[:return_to]
+      session[:return_to] = user_path(user.id) unless session[:return_to]
       render :login
     else
       flash[:notice] = 'who are you talking about?'

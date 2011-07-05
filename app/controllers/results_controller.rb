@@ -118,7 +118,7 @@ class ResultsController < ApplicationController
         
         #create result
         r = Result.new
-        #r.athlete = a if a 
+        #r.user = a if a 
         r.first_name = line[first_name_index].downcase
         r.last_name = line[last_name_index].downcase
         r.city = line[city_index] if city_index

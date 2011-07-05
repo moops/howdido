@@ -1,0 +1,43 @@
+quinn:
+  first_name: quinn
+  last_name: lawrence
+  email: quinn
+  # hashed from 'quinn_pass'
+  password_hash: $2a$10$lerMXsbiT3Du5ovHHu5Y5eY0Pd8FlIgQKGAoFqKf57momjFgflipG
+  password_salt: $2a$10$lerMXsbiT3Du5ovHHu5Y5e
+  gender: 10
+  authority: 1
+  born_on: <%= 15.years.ago.to_date.to_s(:db) %>
+  
+adam:
+  first_name: adam
+  last_name: lawrence
+  email: adam
+  # hashed from 'adam_pass'
+  password_hash: $2a$10$MuZ/FSYjDkIim0zFodiV1OjpgDRzKSpnHQtykmm.JQSVGq3JE7BJS
+  password_salt: $2a$10$MuZ/FSYjDkIim0zFodiV1O
+  gender: 10
+  authority: 1
+  born_on: <%= 41.years.ago.to_date.to_s(:db) %>
+
+bertrand:
+  first_name: bertrand
+  last_name: bozek
+  email: bertrand
+  # hashed from 'bertrand_pass'
+  password_hash: $2a$10$lzFOAR.0Ztj1HBwvp.YblOvqnVi2aSJx4sJKVI5l.gmPeoqx3SJta
+  password_salt: $2a$10$lzFOAR.0Ztj1HBwvp.YblO
+  gender: 10
+  authority: 1
+  born_on: <%= 49.years.ago.to_date.to_s(:db) %>
+
+gary:
+  first_name: gary
+  last_name: duncan
+  email: gary
+  # hashed from 'gary_pass'
+  password_hash: $2a$10$pUxncicY.4pl.xeYOCZ2NuMePPu2LfT6gw818JEUrQNFvFp13cKU2
+  password_salt: $2a$10$pUxncicY.4pl.xeYOCZ2Nu
+  gender: 10
+  authority: 1
+  born_on: <%= 55.years.ago.to_date.to_s(:db) %>

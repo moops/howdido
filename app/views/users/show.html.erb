@@ -15,7 +15,7 @@
     
     var runGradesChart = new Highcharts.Chart({
       chart: { defaultSeriesType: "line", renderTo: "run_grades_chart" },
-      title: { text: '<%= "running grades for #{@athlete.name}" %>' },
+      title: { text: '<%= "running grades for #{@user.name}" %>' },
       credits: { enabled: false },
       legend: { enabled: false },
       tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
@@ -30,7 +30,7 @@
 
     var runSummariesChart = new Highcharts.Chart({
       chart: { defaultSeriesType: "column", renderTo: "run_summaries" },   
-      title: { text: '<%= "running races for #{@athlete.name}" %>' },    
+      title: { text: '<%= "running races for #{@user.name}" %>' },    
       credits: { enabled: false },    
       xAxis: {     
       categories: ['everyone', 'gender', 'division', 'me'] },    
@@ -64,10 +64,10 @@
 
 <p>
   <b>name:</b>
-  <%=h @athlete.name %>
+  <%=h @user.name %>
 </p>
 
-<%= select_tag(:races, participation_options_in_race_order(@athlete), { :multiple => true, :id => 'races'}) %>
+<%= select_tag(:races, participation_options_in_race_order(@user), { :multiple => true, :id => 'races'}) %>
 <button id="redraw">redraw chart</button>
 
 
@@ -88,14 +88,14 @@
 
   <% ['me', 'friend','rival','other'].each do |type| %>
     <div id="<%= type %>">        
-      <% @athlete.participations_by_race(type).each do |race,p_list| %>
+      <% @user.participations_by_race(type).each do |race,p_list| %>
       <b><%= "#{race.name} - #{race.race_on}" %></b>
       <table cellspacing="0" cellpadding="5">
         <tr><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th><th colspan="2">&nbsp;</th></tr></tr>
         <% p_list.each do |p| %>
           <tr>
             <%= render(:partial => 'results/result_row', :locals => { :result => p.result }) %>
-					</tr>
+          </tr>
         <% end %>
       </table>
       <% end %>

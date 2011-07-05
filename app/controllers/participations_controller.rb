@@ -24,7 +24,7 @@ class ParticipationsController < ApplicationController
   # GET /participations/new.js
   def new
     @participation = Participation.new
-    @participation.athlete = Athlete.find(params[:athlete])
+    @participation.user = User.find(params[:user])
     @participation.result = Result.find(params[:result])
     @participation_types = Lookup.list_for('participation_type')
     respond_to do |format|
@@ -44,7 +44,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new(params[:participation])
     
     #result = Result.find(params[:participation][:result_id].to_i)
-    #for p in Participation.where(:athlete_id => params[:participation][:athlete_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
+    #for p in Participation.where(:user_id => params[:participation][:user_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
     #  if p.result.race.id = result.race.id
         # you can't be 'me' in more than one result
     #    logger.info('you can\'t be \'me\' in more than one result')

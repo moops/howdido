@@ -17,7 +17,7 @@ class RacesController < ApplicationController
   # GET /races/1.xml
   def show
     @race = Race.find(params[:id])
-    @user_participations = current_user ? Athlete.find(current_user.athlete_id).participations : nil
+    @user_participations = current_user ? current_user.participations : nil
     @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page]).per(25)
 
     respond_to do |format|

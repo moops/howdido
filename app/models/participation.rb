@@ -1,6 +1,6 @@
 class Participation < ActiveRecord::Base
 
-  belongs_to :athlete
+  belongs_to :user
   belongs_to :result
   
   belongs_to :type, :class_name => 'Lookup', :foreign_key => 'participation_type'

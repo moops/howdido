@@ -1,8 +1,8 @@
 <%= form_tag('/user_sessions', :remote => true, :style => 'display:inline', :id => 'user_session_form') do %>
-  <%= label_tag(:user_name, nil, :class => 'inline') %>
-  <%= text_field_tag('user_name', '', :size => '15') %>
+  <%= label_tag(:email, nil, :class => 'inline') %>
+  <%= text_field_tag('email', '', :size => '15') %>
   <%= label_tag(:password, nil, :class => 'inline') %>
   <%= password_field_tag('password', '', :size => '15') %>
   <%= submit_tag('sign in') %>  
 <% end %>
-<%= link_to('register', new_athlete_path, :class => 'get') %>
+<%= link_to('register', new_user_path, :class => 'get') %>

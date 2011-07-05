@@ -18,7 +18,7 @@ class Race < ActiveRecord::Base
   def results_by_division
     h = Hash.new
     for r in results do
-      h[r.div] = { "gun" => r.gun_time, "ath" => r.athlete.first_name }
+      h[r.div] = { "gun" => r.gun_time, "ath" => r.user.first_name }
     end
     h
   end

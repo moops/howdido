@@ -1,19 +1,19 @@
 gary_in_compassion:
   participation_type: 32
-  athlete: gary
+  user: gary
   result: gary_in_compassion
 
 gary_in_chemainus:
   participation_type: 32
-  athlete: gary
+  user: gary
   result: gary_in_chemainus
   
 gary_in_stewart:
   participation_type: 32
-  athlete: gary
+  user: gary
   result: gary_in_stewart
   
 bertrand_in_compassion:
   participation_type: 32
-  athlete: bertrand
+  user: bertrand
   result: bertrand_in_compassion
