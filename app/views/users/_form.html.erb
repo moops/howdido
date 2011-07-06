@@ -1,8 +1,8 @@
 <%= form_for(@user, :remote => true) do |f| %>
 <fieldset>   
     <ol>   
-    <li><%= f.label :first_name %><%= f.text_field :first_name %></li>
-    <li><%= f.label :last_name %><%= f.text_field :last_name %></li>
+    <li><%= f.label :first_name %><%= f.text_field :first_name, :class => 'required' %></li>
+    <li><%= f.label :last_name %><%= f.text_field :last_name, :class => 'required' %></li>
     <li><%= f.label :email %><%= f.text_field :email %></li>
     <li><%= f.label :gender %><%= f.select(:gender, Lookup.list_for('gender').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
     <li><%= f.label :city %><%= f.text_field :city %></li>

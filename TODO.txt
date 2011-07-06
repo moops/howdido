@@ -7,3 +7,5 @@ x 20110629 - stripe the result rows on race show page
 x 20110629 - replace accordion with toggle result list on race show page
 x 20110701 - make result list pagination links ajax on race show page
 - 20110701 - allow sorting by calculated fields (points and grade) on race show page
+x 20110704 - bring authentication back in house
+- 20110705 - validation on create user popup form
