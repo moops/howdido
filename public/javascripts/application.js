@@ -90,7 +90,6 @@ function buildFormDialog(name) {
 
 //validate a form
 function validate(form_id, rules) {
-  alert('validating now');
   jQuery('#' + form_id).validate({
         errorPlacement: function(error, element) {
           jQuery(element).attr('title', jQuery(error).html());

@@ -1,5 +1,6 @@
 class RacesController < ApplicationController
   
+  load_and_authorize_resource
   helper_method :sort_column, :sort_direction
   
   # GET /races
@@ -16,7 +17,6 @@ class RacesController < ApplicationController
   # GET /races/1
   # GET /races/1.xml
   def show
-    @race = Race.find(params[:id])
     @user_participations = current_user ? current_user.participations : nil
     @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page]).per(25)
 
@@ -30,7 +30,6 @@ class RacesController < ApplicationController
   # GET /races/new
   # GET /races/new.xml
   def new
-    @race = Race.new
     @race_types = Lookup.list_for('race_type')
     @distances = Lookup.list_for('race_dist')
     respond_to do |format|
@@ -41,16 +40,11 @@ class RacesController < ApplicationController
 
   # GET /races/1/edit
   def edit
-    @race = Race.find(params[:id])
   end
 
   # POST /races
   # POST /races.xml
   def create
-    h = params[:race]
-    h['race_type'] = Lookup.find(h['race_type'].to_i)
-    h['distance'] = Lookup.find(h['distance'].to_i)
-    @race = Race.new(h)
 
     respond_to do |format|
       if @race.save
@@ -66,7 +60,6 @@ class RacesController < ApplicationController
   # PUT /races/1
   # PUT /races/1.xml
   def update
-    @race = Race.find(params[:id])
 
     respond_to do |format|
       if @race.update_attributes(params[:race])
@@ -82,7 +75,6 @@ class RacesController < ApplicationController
   # DELETE /races/1
   # DELETE /races/1.xml
   def destroy
-    @race = Race.find(params[:id])
     @race.destroy
 
     respond_to do |format|

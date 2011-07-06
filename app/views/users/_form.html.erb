@@ -1,16 +1,16 @@
 <%= form_for(@user) do |f| %>
   
 <fieldset>   
-    <ol>   
-    <li><%= f.label :first_name %><%= f.text_field :first_name %></li>
-    <li><%= f.label :last_name %><%= f.text_field :last_name %></li>
-    <li><%= f.label :email %><%= f.text_field :email %></li>
-    <li><%= f.label :gender %><%= f.select(:gender, Lookup.list_for('gender').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
-    <li><%= f.label :city %><%= f.text_field :city %></li>
-    <li><%= f.label :born_on %><%= f.text_field :born_on, :class => 'calendar' %></li>
-    <li><%= f.label :password %><%= f.password_field :password %></li>
-    <li><%= f.label :password_confirmation %><%= f.password_field :password_confirmation %></li></ol></fieldset> 
+  <ol>   
+  <li><%= f.label :first_name %><%= f.text_field :first_name %></li>
+  <li><%= f.label :last_name %><%= f.text_field :last_name %></li>
+  <li><%= f.label :email %><%= f.text_field :email %></li>
+  <li><%= f.label :gender %><%= f.select(:gender, Lookup.list_for('gender').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
+  <li><%= f.label :city %><%= f.text_field :city %></li>
+  <li><%= f.label :born_on %><%= f.text_field :born_on, :class => 'calendar' %></li>
+  <li><%= f.label :password %><%= f.password_field :password %></li>
+  <li><%= f.label :password_confirmation %><%= f.password_field :password_confirmation %></li>
 
-  <fieldset class="submit">
-    <%= f.submit %></fieldset>
+<fieldset class="submit">
+  <%= f.submit %></fieldset>
 <% end %>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  
-  before_filter :authorize, :only => :show
-  
+
+  # authorize_resource
+    
   # GET /users
   # GET /users.xml
   def index
@@ -16,11 +16,18 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
+  
     @user = current_user
     @run_summaries = @user.run_summaries
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+        if @user.participations.any?
+          # show.html.erb
+        else
+          redirect_to(:root, :notice => 'you have no participations')
+        end
+      }
       format.xml  { render :xml => @user }
     end
   end
@@ -45,7 +52,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
-    @user.authority= 1
+    @user.roles=(['athlete'])
     
     if @user.save
       # sign in

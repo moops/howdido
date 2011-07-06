@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender
+  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender, :roles
   attr_accessor :password
   before_save :encrypt_password
   
@@ -18,8 +18,25 @@ class User < ActiveRecord::Base
   
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
+  scope :with_role, lambda { |role| {:conditions => "authority & #{2**ROLES.index(role.to_s)} > 0"} }
   
-  ROLES = %w[admin user]
+  ROLES = %w[admin athlete]
+  
+  def roles=(roles)
+    self.authority = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  end
+
+  def roles
+    ROLES.reject { |r| ((authority || 0) & 2**ROLES.index(r)).zero? }
+  end
+
+  def role?(role)
+    roles.include? role.to_s
+  end
+  
+  def role_symbols
+    roles.map(&:to_sym)
+  end
   
   # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}

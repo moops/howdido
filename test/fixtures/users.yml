@@ -6,6 +6,7 @@ quinn:
   password_hash: $2a$10$lerMXsbiT3Du5ovHHu5Y5eY0Pd8FlIgQKGAoFqKf57momjFgflipG
   password_salt: $2a$10$lerMXsbiT3Du5ovHHu5Y5e
   gender: 10
+  # admin
   authority: 1
   born_on: <%= 15.years.ago.to_date.to_s(:db) %>
   
@@ -17,7 +18,8 @@ adam:
   password_hash: $2a$10$MuZ/FSYjDkIim0zFodiV1OjpgDRzKSpnHQtykmm.JQSVGq3JE7BJS
   password_salt: $2a$10$MuZ/FSYjDkIim0zFodiV1O
   gender: 10
-  authority: 1
+  # admin and athlete
+  authority: 3
   born_on: <%= 41.years.ago.to_date.to_s(:db) %>
 
 bertrand:
@@ -28,7 +30,8 @@ bertrand:
   password_hash: $2a$10$lzFOAR.0Ztj1HBwvp.YblOvqnVi2aSJx4sJKVI5l.gmPeoqx3SJta
   password_salt: $2a$10$lzFOAR.0Ztj1HBwvp.YblO
   gender: 10
-  authority: 1
+  # athlete
+  authority: 2
   born_on: <%= 49.years.ago.to_date.to_s(:db) %>
 
 gary:
@@ -39,5 +42,6 @@ gary:
   password_hash: $2a$10$pUxncicY.4pl.xeYOCZ2NuMePPu2LfT6gw818JEUrQNFvFp13cKU2
   password_salt: $2a$10$pUxncicY.4pl.xeYOCZ2Nu
   gender: 10
-  authority: 1
+  # athlete
+  authority: 2
   born_on: <%= 55.years.ago.to_date.to_s(:db) %>
