@@ -53,7 +53,13 @@ class UsersController < ApplicationController
       session[:user_session] = @user.session.id
       redirect_to(@user)
     else
-      render "new"
+      msg = ''
+      if @user.errors.any?  
+        @user.errors.full_messages.each do |m|
+          msg = msg << m
+        end
+      end
+      redirect_to(:root, :notice => 'user creation failed because: ' << msg)
     end
   end
 

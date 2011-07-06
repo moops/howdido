@@ -1,8 +1,26 @@
 jQuery('#register_form')
     .html("<%= escape_javascript(render(:partial => 'form')) %>")
     .dialog({ autoOpen: true, width: 500, title: 'register', modal: true, show: 'fade' });
-	
+    
 jQuery("input.calendar").datepicker();
 jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
-ajaxLinks();
-validate('new_user');
+
+
+validate('new_user', {
+    'user[first_name]': "required",
+    'user[last_name]': "required",
+    'user[email]': {
+        required: true,
+        email: true
+    },
+    'user[born_on]': "required",
+    'user[password]': {
+       required: true,
+       minlength: 5
+    },
+    'user[password_confirmation]': {
+      minlength: 5,
+      equalTo: '#user_password'
+    }
+});
+

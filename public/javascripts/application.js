@@ -89,12 +89,14 @@ function buildFormDialog(name) {
 }
 
 //validate a form
-function validate(form_id) {
+function validate(form_id, rules) {
+  alert('validating now');
   jQuery('#' + form_id).validate({
         errorPlacement: function(error, element) {
           jQuery(element).attr('title', jQuery(error).html());
           jQuery(element).tooltip();
-        }
+        },
+        rules: rules
   });
 }
 
@@ -132,5 +134,5 @@ function seconds_to_time(s) {
 }
 
 function round(n,r) {
-	return Math.round(n*r) / r;
+    return Math.round(n*r) / r;
 }
