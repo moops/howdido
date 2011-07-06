@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :current_user
+  helper_method :current_user, :current_user_session
   
   after_filter :store_last_good_page
   
@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user_session ||= UserSession.find(session[:user_session]) if session[:user_session]
+    @current_user ||= @current_user_session.user
   end
   
 end

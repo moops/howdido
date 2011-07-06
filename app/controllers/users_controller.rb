@@ -16,14 +16,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    # redirect to your own page if trying to view someone else's
-    if session[:user_session].user_id.to_s != params[:id]
-      redirect_to(user_path(session[:user_session].user_id))
-      return
-    end
-    @user = User.find(params[:id])
+    @user = current_user
     @run_summaries = @user.run_summaries
-    logger.info("@run_summaries: #{@run_summaries.inspect}")
     
     respond_to do |format|
       format.html # show.html.erb
@@ -50,14 +44,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    # params[:user][:gender] = Lookup.find(params[:user][:gender]) unless params[:user][:gender].blank?
     @user = User.new(params[:user])
     @user.authority= 1
     
     if @user.save
       # sign in
-      session[:user_id] = @user.id
-      session[:user_session] = UserSession.create(:user_id => @user.id, :login_at => Time.now)
+      @user.session= UserSession.create(:user_id => @user.id, :login_at => Time.now, :logout_at => nil, :count => 1)
+      session[:user_session] = @user.session.id
       redirect_to(@user)
     else
       render "new"

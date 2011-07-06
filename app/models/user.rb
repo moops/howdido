@@ -6,16 +6,19 @@ class User < ActiveRecord::Base
   
   has_many :participations
   has_many :results, :through => :participations
-  has_many :sessions, :class_name => 'UserSession'
+  has_one :session, :class_name => 'UserSession'
       
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :email
+  validates_uniqueness_of :email
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
+  
+  ROLES = %w[admin user]
   
   # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
   # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}

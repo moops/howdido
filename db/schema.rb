@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
 
   create_table "user_sessions", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "count"
     t.datetime "login_at"
     t.datetime "logout_at"
   end

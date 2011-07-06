@@ -1,7 +1,9 @@
 gary_one:
   user: gary
+  count: 2
   login_at: "2011-04-22 17:20:00"
   logout_at: "2011-04-22 18:30:00"
 gary_two:
-  user: gary
+  user: adam
+  count: 25
   login_at: "2011-05-12 10:20:00"

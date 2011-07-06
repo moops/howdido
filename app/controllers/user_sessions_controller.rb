@@ -9,8 +9,12 @@ class UserSessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
 
     if user
-      session[:user_id] = user.id
-      session[:user_session] = UserSession.create(:user_id => user.id, :login_at => Time.now)
+      user.session= UserSession.new(:user_id => user.id) unless user.session
+      user.session.login_at= Time.now
+      user.session.logout_at= nil
+      user.session.count= (user.session.count or 0) + 1
+      user.session.save
+      session[:user_session] = user.session.id
       # where do we go after login?
       session[:return_to] = user_path(user.id) unless session[:return_to]
       render :login
@@ -25,9 +29,9 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1.js
   def destroy
     begin
-      @session = UserSession.find(params[:id])
-      @session.logout_at = Time.now
-      @session.save
+      @user_session = UserSession.find(params[:id])
+      @user_session.logout_at = Time.now
+      @user_session.save
     rescue ActiveRecord::RecordNotFound
     end
     

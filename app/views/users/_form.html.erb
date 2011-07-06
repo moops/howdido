@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for(@user, :remote => true) do |f| %>
 <fieldset>   
     <ol>   
     <li><%= f.label :first_name %><%= f.text_field :first_name %></li>
@@ -13,3 +13,4 @@
   <fieldset class="submit">
     <%= f.submit %></fieldset>
 <% end %>
+
