@@ -15,13 +15,13 @@ class UserSessionsController < ApplicationController
       user.session.count= (user.session.count or 0) + 1
       user.session.save
       session[:user_session] = user.session.id
-      # where do we go after login?
-      session[:return_to] = user_path(user.id) unless session[:return_to]
-      render :login
     else
       flash[:notice] = 'who are you talking about?'
-      render :login_fail
     end
+    
+    # where do we go after login?
+    session[:return_to] = user_path(user.id) unless session[:return_to]
+    redirect_to(session[:return_to])
   end
   
   # logout
@@ -36,6 +36,6 @@ class UserSessionsController < ApplicationController
     end
     
     reset_session 
-    render :logout
+    redirect_to :root
   end
 end

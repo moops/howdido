@@ -106,12 +106,14 @@ class Result < ActiveRecord::Base
   end
   
   def grade
-    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
-    (w.factor / gun_time) * 100
+    if race.distance
+      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
+      (w.factor / gun_time) * 100
+    end
   end
   
   def points
-    return (141113 * (race.distance.code.to_f ** 1.0689) / gun_time);
+    return (141113 * (race.distance.code.to_f ** 1.0689) / gun_time) if race.distance;
   end
   
   def div_winner
