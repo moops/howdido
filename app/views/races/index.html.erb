@@ -19,8 +19,11 @@
   <tr>
     <td><%= link_to(race.name, race) %></td>
     <td><%= race.location %></td>
-    <td><%= race.distance.description if race.distance %></td>
+    <td><%= Lookup.find_by_id(race.distance.to_i).description if race.distance %></td>
     <td><%= race.race_on %></td>
+    <% if can? :edit, race %>
+      <td><%= link_to 'edit', edit_race_path(race) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -29,5 +32,5 @@
 <br />
 
 <% if can? :create, @race %>
-  <%= link_to 'New Race', new_race_path %>
+  <%= link_to 'Add a race', new_race_path %>
 <% end %>

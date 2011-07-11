@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # authorize_resource
+  load_and_authorize_resource
     
   # GET /users
   # GET /users.xml
@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    @user = User.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,12 +45,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
   def create
-    @user = User.new(params[:user])
     @user.roles=(['athlete'])
     
     if @user.save
@@ -73,7 +70,6 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -89,7 +85,6 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|

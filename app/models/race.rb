@@ -2,9 +2,6 @@ class Race < ActiveRecord::Base
   
   has_many :results
   
-  belongs_to :distance, :class_name => 'Lookup', :foreign_key => 'distance'
-  belongs_to :race_type, :class_name => 'Lookup', :foreign_key => 'race_type'
-  
   scope :running, where("race_type = 3")
   
   def self.search(search)
@@ -28,8 +25,8 @@ class Race < ActiveRecord::Base
   end
   
   def description
-    (race_type ? race_type.description : '') << 
-    (distance ? '(' << distance.description << ')' : '')  <<  
+    (race_type ? Lookup.find_by_id(race_type).description : '') << 
+    (distance ? '(' << Lookup.find_by_id(distance.to_i).description << ')' : '')  <<  
     (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
   end
   

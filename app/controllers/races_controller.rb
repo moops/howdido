@@ -30,8 +30,7 @@ class RacesController < ApplicationController
   # GET /races/new
   # GET /races/new.xml
   def new
-    @race_types = Lookup.list_for('race_type')
-    @distances = Lookup.list_for('race_dist')
+  
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @race }

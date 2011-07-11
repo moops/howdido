@@ -9,4 +9,5 @@ x 20110701 - make result list pagination links ajax on race show page
 - 20110701 - allow sorting by calculated fields (points and grade) on race show page
 x 20110704 - bring authentication back in house
 x 20110706 - validation on create user popup form
-- 20110706 - authorization
+x 20110711 - authorization
+- 20110711 - how to handle race distance in a single field (int foreign key to lookup vs float)
