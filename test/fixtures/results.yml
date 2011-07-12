@@ -114,3 +114,1612 @@ gary_in_stewart:
   div: M4049
   div_place: 3
   gun_time: 2948
+
+#
+# results for 11_11_tzouhalem
+#
+
+results_010:
+  race: 11_tzouhalem
+  first_name: shane
+  last_name: ruljancich
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '10'
+  overall_place: '1'
+  gun_time: '3592'
+  div: M3039
+  div_place: '1'
+results_011:
+  race: 11_tzouhalem
+  first_name: shawn
+  last_name: nelson
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '10'
+  overall_place: '2'
+  gun_time: '3631'
+  div: M2029
+  div_place: '1'
+results_012:
+  race: 11_tzouhalem
+  first_name: andrew
+  last_name: pape-salmon
+  club: Prairie_Inn_Harriers
+  age: '45'
+  gender: '10'
+  overall_place: '3'
+  gun_time: '3854'
+  div: M4049
+  div_place: '1'
+results_013:
+  race: 11_tzouhalem
+  first_name: logan
+  last_name: roots
+  age: '25'
+  gender: '10'
+  overall_place: '4'
+  gun_time: '3956'
+  div: M2029
+  div_place: '2'
+results_014:
+  race: 11_tzouhalem
+  first_name: byron
+  last_name: trajan
+  club: Westwood_Running_Club
+  age: '35'
+  gender: '10'
+  overall_place: '5'
+  gun_time: '4008'
+  div: M3039
+  div_place: '2'
+results_015:
+  race: 11_tzouhalem
+  first_name: james
+  last_name: rolfe
+  age: '25'
+  gender: '10'
+  overall_place: '6'
+  gun_time: '4024'
+  div: M2029
+  div_place: '3'
+results_016:
+  race: 11_tzouhalem
+  first_name: travis
+  last_name: pirozzini
+  club: Westwood_Running_Club
+  age: '25'
+  gender: '10'
+  overall_place: '7'
+  gun_time: '4067'
+  div: M2029
+  div_place: '4'
+results_017:
+  race: 11_tzouhalem
+  first_name: care
+  last_name: wakely
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '11'
+  overall_place: '8'
+  gun_time: '4088'
+  div: F2029
+  div_place: '1'
+results_018:
+  race: 11_tzouhalem
+  first_name: garth
+  last_name: campbell
+  club: Prairie
+  age: '55'
+  gender: '10'
+  overall_place: '9'
+  gun_time: '4119'
+  div: M5059
+  div_place: '1'
+results_019:
+  race: 11_tzouhalem
+  first_name: jeremy
+  last_name: lawrence
+  club: Prairie
+  age: '35'
+  gender: '10'
+  overall_place: '10'
+  gun_time: '4144'
+  div: M3039
+  div_place: '3'
+results_020:
+  race: 11_tzouhalem
+  first_name: jean-francois
+  last_name: gagne
+  club: Prairie
+  age: '35'
+  gender: '10'
+  overall_place: '11'
+  gun_time: '4159'
+  div: M3039
+  div_place: '4'
+results_021:
+  race: 11_tzouhalem
+  first_name: duncan
+  last_name: coo
+  age: '45'
+  gender: '10'
+  overall_place: '12'
+  gun_time: '4165'
+  div: M4049
+  div_place: '2'
+results_022:
+  race: 11_tzouhalem
+  first_name: sean
+  last_name: chester
+  club: Prairie_Inn_Harriers
+  age: '25'
+  gender: '10'
+  overall_place: '13'
+  gun_time: '4189'
+  div: M2029
+  div_place: '5'
+results_023:
+  race: 11_tzouhalem
+  first_name: dave
+  last_name: harvey
+  age: '35'
+  gender: '10'
+  overall_place: '14'
+  gun_time: '4191'
+  div: M3039
+  div_place: '5'
+results_024:
+  race: 11_tzouhalem
+  first_name: gary
+  last_name: duncan
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '10'
+  overall_place: '15'
+  gun_time: '4250'
+  div: M5059
+  div_place: '2'
+results_025:
+  race: 11_tzouhalem
+  first_name: sean
+  last_name: reilly
+  club: Westwood_Running_Club
+  age: '35'
+  gender: '10'
+  overall_place: '16'
+  gun_time: '4252'
+  div: M3039
+  div_place: '6'
+results_026:
+  race: 11_tzouhalem
+  first_name: andrea
+  last_name: gibson
+  age: '35'
+  gender: '11'
+  overall_place: '17'
+  gun_time: '4268'
+  div: F3039
+  div_place: '1'
+results_027:
+  race: 11_tzouhalem
+  first_name: john
+  last_name: higgin
+  age: '35'
+  gender: '10'
+  overall_place: '18'
+  gun_time: '4276'
+  div: M3039
+  div_place: '7'
+results_028:
+  race: 11_tzouhalem
+  first_name: christopher
+  last_name: wood
+  age: '35'
+  gender: '10'
+  overall_place: '19'
+  gun_time: '4286'
+  div: M3039
+  div_place: '8'
+results_029:
+  race: 11_tzouhalem
+  first_name: jordan
+  last_name: brietzke
+  age: '25'
+  gender: '10'
+  overall_place: '20'
+  gun_time: '4367'
+  div: M2029
+  div_place: '6'
+results_030:
+  race: 11_tzouhalem
+  first_name: ben
+  last_name: forsyth
+  age: '35'
+  gender: '10'
+  overall_place: '21'
+  gun_time: '4419'
+  div: M3039
+  div_place: '9'
+results_031:
+  race: 11_tzouhalem
+  first_name: claire
+  last_name: morgan
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '11'
+  overall_place: '22'
+  gun_time: '4448'
+  div: F3039
+  div_place: '2'
+results_032:
+  race: 11_tzouhalem
+  first_name: jessalyn
+  last_name: o'donnell
+  club: Aspire_Running
+  age: '35'
+  gender: '11'
+  overall_place: '23'
+  gun_time: '4460'
+  div: F3039
+  div_place: '3'
+results_033:
+  race: 11_tzouhalem
+  first_name: darbykai
+  last_name: standrick
+  age: '25'
+  gender: '11'
+  overall_place: '24'
+  gun_time: '4468'
+  div: F2029
+  div_place: '2'
+results_034:
+  race: 11_tzouhalem
+  first_name: alex
+  last_name: counsell
+  club: Westwood_Running_Club
+  age: '25'
+  gender: '10'
+  overall_place: '25'
+  gun_time: '4469'
+  div: M2029
+  div_place: '7'
+results_035:
+  race: 11_tzouhalem
+  first_name: antonia
+  last_name: harvey
+  age: '35'
+  gender: '11'
+  overall_place: '26'
+  gun_time: '4473'
+  div: F3039
+  div_place: '4'
+results_036:
+  race: 11_tzouhalem
+  first_name: larry
+  last_name: nylen
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '10'
+  overall_place: '27'
+  gun_time: '4512'
+  div: M5059
+  div_place: '3'
+results_037:
+  race: 11_tzouhalem
+  first_name: fraser
+  last_name: rankin
+  age: '25'
+  gender: '10'
+  overall_place: '28'
+  gun_time: '4616'
+  div: M2029
+  div_place: '8'
+results_038:
+  race: 11_tzouhalem
+  first_name: kerry
+  last_name: marc
+  age: '45'
+  gender: '10'
+  overall_place: '29'
+  gun_time: '4632'
+  div: M4049
+  div_place: '3'
+results_039:
+  race: 11_tzouhalem
+  first_name: norm
+  last_name: olsen
+  club: Bastion_Running_Club
+  age: '45'
+  gender: '10'
+  overall_place: '30'
+  gun_time: '4669'
+  div: M4049
+  div_place: '4'
+results_040:
+  race: 11_tzouhalem
+  first_name: adam
+  last_name: mcquaig
+  club: Frontrunners_Victoria
+  age: '25'
+  gender: '10'
+  overall_place: '31'
+  gun_time: '4703'
+  div: M2029
+  div_place: '9'
+results_041:
+  race: 11_tzouhalem
+  first_name: louise
+  last_name: proulx
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '11'
+  overall_place: '32'
+  gun_time: '4741'
+  div: F5059
+  div_place: '1'
+results_042:
+  race: 11_tzouhalem
+  first_name: richard
+  last_name: bellizz
+  club: Frontrunners_Westshore
+  age: '45'
+  gender: '10'
+  overall_place: '33'
+  gun_time: '4754'
+  div: M4049
+  div_place: '5'
+results_043:
+  race: 11_tzouhalem
+  first_name: jenesa
+  last_name: tomich
+  age: '35'
+  gender: '11'
+  overall_place: '34'
+  gun_time: '4755'
+  div: F3039
+  div_place: '5'
+results_044:
+  race: 11_tzouhalem
+  first_name: simon
+  last_name: timmer
+  age: '80'
+  gender: '10'
+  overall_place: '35'
+  gun_time: '4778'
+  div: M6099
+  div_place: '1'
+results_045:
+  race: 11_tzouhalem
+  first_name: pete
+  last_name: langelo
+  club: CeeVacs_Road_Runners
+  age: '55'
+  gender: '10'
+  overall_place: '36'
+  gun_time: '4838'
+  div: M5059
+  div_place: '4'
+results_046:
+  race: 11_tzouhalem
+  first_name: dominick
+  last_name: nadeau
+  age: '19'
+  gender: '10'
+  overall_place: '37'
+  gun_time: '4855'
+  div: M0119
+  div_place: '1'
+results_047:
+  race: 11_tzouhalem
+  first_name: mark
+  last_name: jackman
+  club: Island_Road_Racers
+  age: '80'
+  gender: '10'
+  overall_place: '38'
+  gun_time: '4937'
+  div: M6099
+  div_place: '2'
+results_048:
+  race: 11_tzouhalem
+  first_name: nicole
+  last_name: barrett
+  age: '25'
+  gender: '11'
+  overall_place: '39'
+  gun_time: '4959'
+  div: F2029
+  div_place: '3'
+results_049:
+  race: 11_tzouhalem
+  first_name: brad
+  last_name: coleman
+  age: '45'
+  gender: '10'
+  overall_place: '40'
+  gun_time: '4969'
+  div: M4049
+  div_place: '6'
+results_050:
+  race: 11_tzouhalem
+  first_name: john
+  last_name: durkin
+  club: Westwood_Running_Club
+  age: '80'
+  gender: '10'
+  overall_place: '41'
+  gun_time: '4984'
+  div: M6099
+  div_place: '3'
+results_051:
+  race: 11_tzouhalem
+  first_name: john
+  last_name: ingram
+  club: Comox_Valley_Road_Runners
+  age: '80'
+  gender: '10'
+  overall_place: '42'
+  gun_time: '4987'
+  div: M6099
+  div_place: '4'
+results_052:
+  race: 11_tzouhalem
+  first_name: kaylee
+  last_name: beales
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '11'
+  overall_place: '43'
+  gun_time: '5018'
+  div: F2029
+  div_place: '4'
+results_053:
+  race: 11_tzouhalem
+  first_name: mark
+  last_name: wyatt
+  age: '55'
+  gender: '10'
+  overall_place: '44'
+  gun_time: '5043'
+  div: M5059
+  div_place: '5'
+results_054:
+  race: 11_tzouhalem
+  first_name: drew
+  last_name: hopper
+  club: Bon_Rouge_Bistro
+  age: '35'
+  gender: '10'
+  overall_place: '45'
+  gun_time: '5067'
+  div: M3039
+  div_place: '10'
+results_055:
+  race: 11_tzouhalem
+  first_name: benjamin
+  last_name: thompson
+  age: '35'
+  gender: '10'
+  overall_place: '46'
+  gun_time: '5075'
+  div: M3039
+  div_place: '11'
+results_056:
+  race: 11_tzouhalem
+  first_name: darren
+  last_name: rinaldi
+  club: Westwood_Running_Club
+  age: '35'
+  gender: '10'
+  overall_place: '47'
+  gun_time: '5105'
+  div: M3039
+  div_place: '12'
+results_057:
+  race: 11_tzouhalem
+  first_name: james
+  last_name: langley
+  age: '55'
+  gender: '10'
+  overall_place: '48'
+  gun_time: '5129'
+  div: M5059
+  div_place: '6'
+results_058:
+  race: 11_tzouhalem
+  first_name: tami
+  last_name: beales
+  club: ROC_Nanaimo
+  age: '55'
+  gender: '11'
+  overall_place: '49'
+  gun_time: '5152'
+  div: F5059
+  div_place: '2'
+results_059:
+  race: 11_tzouhalem
+  first_name: claire
+  last_name: flewelling
+  age: '35'
+  gender: '11'
+  overall_place: '50'
+  gun_time: '5166'
+  div: F3039
+  div_place: '6'
+results_060:
+  race: 11_tzouhalem
+  first_name: laura
+  last_name: wear
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '11'
+  overall_place: '51'
+  gun_time: '5169'
+  div: F3039
+  div_place: '7'
+results_061:
+  race: 11_tzouhalem
+  first_name: kirsten
+  last_name: hagen
+  club: Victoria_Flatliners
+  age: '35'
+  gender: '11'
+  overall_place: '52'
+  gun_time: '5176'
+  div: F3039
+  div_place: '8'
+results_062:
+  race: 11_tzouhalem
+  first_name: kevin
+  last_name: lamport
+  age: '45'
+  gender: '10'
+  overall_place: '53'
+  gun_time: '5190'
+  div: M4049
+  div_place: '7'
+results_063:
+  race: 11_tzouhalem
+  first_name: trevor
+  last_name: fraser
+  age: '35'
+  gender: '10'
+  overall_place: '54'
+  gun_time: '5219'
+  div: M3039
+  div_place: '13'
+results_064:
+  race: 11_tzouhalem
+  first_name: franck
+  last_name: germain
+  club: Prairie_Inn_Harriers
+  age: '45'
+  gender: '10'
+  overall_place: '55'
+  gun_time: '5234'
+  div: M4049
+  div_place: '8'
+results_065:
+  race: 11_tzouhalem
+  first_name: marion
+  last_name: bryan
+  club: Comox_Valley_Road_Runners
+  age: '35'
+  gender: '11'
+  overall_place: '56'
+  gun_time: '5239'
+  div: F3039
+  div_place: '9'
+results_066:
+  race: 11_tzouhalem
+  first_name: shawn
+  last_name: daniels
+  age: '35'
+  gender: '11'
+  overall_place: '57'
+  gun_time: '5262'
+  div: F3039
+  div_place: '10'
+results_067:
+  race: 11_tzouhalem
+  first_name: frank
+  last_name: wille
+  age: '55'
+  gender: '10'
+  overall_place: '58'
+  gun_time: '5316'
+  div: M5059
+  div_place: '7'
+results_068:
+  race: 11_tzouhalem
+  first_name: ben
+  last_name: dezwart
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '10'
+  overall_place: '59'
+  gun_time: '5356'
+  div: M2029
+  div_place: '10'
+results_069:
+  race: 11_tzouhalem
+  first_name: iain
+  last_name: morrison
+  age: '25'
+  gender: '10'
+  overall_place: '60'
+  gun_time: '5411'
+  div: M2029
+  div_place: '11'
+results_070:
+  race: 11_tzouhalem
+  first_name: robyn
+  last_name: dicesare
+  club: Comox_Valley_Roadrunners
+  age: '45'
+  gender: '11'
+  overall_place: '61'
+  gun_time: '5462'
+  div: F4049
+  div_place: '1'
+results_071:
+  race: 11_tzouhalem
+  first_name: valerie
+  last_name: bell
+  club: Prairie_Inn_Harriers
+  age: '45'
+  gender: '11'
+  overall_place: '62'
+  gun_time: '5469'
+  div: F4049
+  div_place: '2'
+results_072:
+  race: 11_tzouhalem
+  first_name: james
+  last_name: strickland
+  age: '45'
+  gender: '10'
+  overall_place: '63'
+  gun_time: '5561'
+  div: M4049
+  div_place: '9'
+results_073:
+  race: 11_tzouhalem
+  first_name: jaime
+  last_name: whaler
+  age: '55'
+  gender: '11'
+  overall_place: '64'
+  gun_time: '5578'
+  div: F5059
+  div_place: '3'
+results_074:
+  race: 11_tzouhalem
+  first_name: lisa
+  last_name: perry
+  club: Comox_Valley_Road_Runners
+  age: '45'
+  gender: '11'
+  overall_place: '65'
+  gun_time: '5621'
+  div: F4049
+  div_place: '3'
+results_075:
+  race: 11_tzouhalem
+  first_name: karen
+  last_name: sibley
+  club: Comox_Valley_Road_Runners
+  age: '55'
+  gender: '11'
+  overall_place: '66'
+  gun_time: '5642'
+  div: F5059
+  div_place: '4'
+results_076:
+  race: 11_tzouhalem
+  first_name: tina
+  last_name: hein
+  age: '45'
+  gender: '11'
+  overall_place: '67'
+  gun_time: '5767'
+  div: F4049
+  div_place: '4'
+results_077:
+  race: 11_tzouhalem
+  first_name: cathie
+  last_name: dias
+  club: Victoria_Flatliners
+  age: '55'
+  gender: '11'
+  overall_place: '68'
+  gun_time: '5859'
+  div: F5059
+  div_place: '5'
+results_078:
+  race: 11_tzouhalem
+  first_name: ken
+  last_name: armour
+  age: '55'
+  gender: '10'
+  overall_place: '69'
+  gun_time: '5967'
+  div: M5059
+  div_place: '8'
+results_079:
+  race: 11_tzouhalem
+  first_name: jarrod
+  last_name: rousseau
+  age: '35'
+  gender: '10'
+  overall_place: '70'
+  gun_time: '5979'
+  div: M3039
+  div_place: '14'
+results_080:
+  race: 11_tzouhalem
+  first_name: vee
+  last_name: dion
+  club: Comox_Valley_Road_Runners
+  age: '35'
+  gender: '11'
+  overall_place: '71'
+  gun_time: '6030'
+  div: F3039
+  div_place: '11'
+results_081:
+  race: 11_tzouhalem
+  first_name: chris
+  last_name: lamothe
+  age: '35'
+  gender: '10'
+  overall_place: '72'
+  gun_time: '6030'
+  div: M3039
+  div_place: '15'
+results_082:
+  race: 11_tzouhalem
+  first_name: rachel
+  last_name: moore
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '11'
+  overall_place: '73'
+  gun_time: '6161'
+  div: F3039
+  div_place: '12'
+results_083:
+  race: 11_tzouhalem
+  first_name: louis
+  last_name: nadeau
+  age: '45'
+  gender: '10'
+  overall_place: '74'
+  gun_time: '6244'
+  div: M4049
+  div_place: '10'
+results_084:
+  race: 11_tzouhalem
+  first_name: mike
+  last_name: simmons
+  age: '35'
+  gender: '10'
+  overall_place: '75'
+  gun_time: '6267'
+  div: M3039
+  div_place: '16'
+results_085:
+  race: 11_tzouhalem
+  first_name: cam
+  last_name: campbell
+  age: '55'
+  gender: '10'
+  overall_place: '76'
+  gun_time: '6294'
+  div: M5059
+  div_place: '9'
+results_086:
+  race: 11_tzouhalem
+  first_name: colleen
+  last_name: vanderheide
+  club: Ceevacs_Road_Runners
+  age: '55'
+  gender: '11'
+  overall_place: '77'
+  gun_time: '6341'
+  div: F5059
+  div_place: '6'
+results_087:
+  race: 11_tzouhalem
+  first_name: leo
+  last_name: rolfe
+  club: Comox_Valley_Road_Runners
+  age: '55'
+  gender: '10'
+  overall_place: '78'
+  gun_time: '6387'
+  div: M5059
+  div_place: '10'
+results_088:
+  race: 11_tzouhalem
+  first_name: rosa
+  last_name: mikaloff
+  age: '35'
+  gender: '11'
+  overall_place: '79'
+  gun_time: '6414'
+  div: F3039
+  div_place: '13'
+results_089:
+  race: 11_tzouhalem
+  first_name: sue
+  last_name: spencer
+  age: '55'
+  gender: '11'
+  overall_place: '80'
+  gun_time: '6448'
+  div: F5059
+  div_place: '7'
+results_090:
+  race: 11_tzouhalem
+  first_name: kathleen
+  last_name: birney
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '11'
+  overall_place: '81'
+  gun_time: '6472'
+  div: F5059
+  div_place: '8'
+results_091:
+  race: 11_tzouhalem
+  first_name: wendy
+  last_name: williams
+  club: CeeVacs_Road_Runners
+  age: '45'
+  gender: '11'
+  overall_place: '82'
+  gun_time: '6627'
+  div: F4049
+  div_place: '5'
+results_092:
+  race: 11_tzouhalem
+  first_name: henry
+  last_name: brilz
+  age: '55'
+  gender: '10'
+  overall_place: '83'
+  gun_time: '6867'
+  div: M5059
+  div_place: '11'
+results_093:
+  race: 11_tzouhalem
+  first_name: debby
+  last_name: funk
+  age: '55'
+  gender: '11'
+  overall_place: '84'
+  gun_time: '6871'
+  div: F5059
+  div_place: '9'
+results_094:
+  race: 11_tzouhalem
+  first_name: nancy
+  last_name: chave
+  age: '55'
+  gender: '11'
+  overall_place: '85'
+  gun_time: '6878'
+  div: F5059
+  div_place: '10'
+
+#
+# results for 11_westwood
+#
+
+results_095:
+  race: 11_westwood
+  first_name: shawn
+  last_name: nelson
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '10'
+  overall_place: '1'
+  gun_time: '6471'
+  div: M2029
+  div_place: '1'
+results_096:
+  race: 11_westwood
+  first_name: stefan
+  last_name: jakobsen
+  club: RoC_and_Frontrunners
+  age: '35'
+  gender: '10'
+  overall_place: '2'
+  gun_time: '6595'
+  div: M3039
+  div_place: '1'
+results_097:
+  race: 11_westwood
+  first_name: andrew
+  last_name: pape-salmon
+  club: Prairie_Inn_Harriers
+  age: '45'
+  gender: '10'
+  overall_place: '3'
+  gun_time: '6697'
+  div: M4049
+  div_place: '1'
+results_098:
+  race: 11_westwood
+  first_name: travis
+  last_name: pirozzini
+  club: Westwood_Running_Club
+  age: '25'
+  gender: '10'
+  overall_place: '4'
+  gun_time: '6891'
+  div: M2029
+  div_place: '2'
+results_099:
+  race: 11_westwood
+  first_name: jeremy
+  last_name: lawrence
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '10'
+  overall_place: '5'
+  gun_time: '7039'
+  div: M3039
+  div_place: '2'
+results_100:
+  race: 11_westwood
+  first_name: jeremy
+  last_name: clegg
+  club: Westwood_Running_Club
+  age: '35'
+  gender: '10'
+  overall_place: '6'
+  gun_time: '7211'
+  div: M3039
+  div_place: '3'
+results_101:
+  race: 11_westwood
+  first_name: sean
+  last_name: reilly
+  club: Westwood_Running_Club
+  age: '35'
+  gender: '10'
+  overall_place: '7'
+  gun_time: '7227'
+  div: M3039
+  div_place: '4'
+results_102:
+  race: 11_westwood
+  first_name: mark
+  last_name: carolan
+  club: Westwood_Running_Club
+  age: '25'
+  gender: '10'
+  overall_place: '8'
+  gun_time: '7253'
+  div: M2029
+  div_place: '3'
+results_103:
+  race: 11_westwood
+  first_name: shawn
+  last_name: boyd
+  club: Runners_of_Compassion
+  age: '35'
+  gender: '10'
+  overall_place: '9'
+  gun_time: '7256'
+  div: M3039
+  div_place: '5'
+results_104:
+  race: 11_westwood
+  first_name: garth
+  last_name: campbell
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '10'
+  overall_place: '10'
+  gun_time: '7289'
+  div: M5059
+  div_place: '1'
+results_105:
+  race: 11_westwood
+  first_name: craig
+  last_name: payne
+  club: Prairie
+  age: '45'
+  gender: '10'
+  overall_place: '11'
+  gun_time: '7432'
+  div: M4049
+  div_place: '2'
+results_106:
+  race: 11_westwood
+  first_name: claire
+  last_name: morgan
+  club: Prairie_Inn_Harriers
+  age: '35'
+  gender: '11'
+  overall_place: '12'
+  gun_time: '7487'
+  div: F3039
+  div_place: '1'
+results_107:
+  race: 11_westwood
+  first_name: ben
+  last_name: forsyth
+  age: '35'
+  gender: '10'
+  overall_place: '13'
+  gun_time: '7583'
+  div: M3039
+  div_place: '6'
+results_108:
+  race: 11_westwood
+  first_name: gary
+  last_name: duncan
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '10'
+  overall_place: '14'
+  gun_time: '7611'
+  div: M5059
+  div_place: '2'
+results_109:
+  race: 11_westwood
+  first_name: dave
+  last_name: harvey
+  age: '35'
+  gender: '10'
+  overall_place: '15'
+  gun_time: '7637'
+  div: M3039
+  div_place: '7'
+results_110:
+  race: 11_westwood
+  first_name: mark
+  last_name: bate
+  age: '35'
+  gender: '10'
+  overall_place: '16'
+  gun_time: '7677'
+  div: M3039
+  div_place: '8'
+results_111:
+  race: 11_westwood
+  first_name: alex
+  last_name: counsell
+  club: Westwood_Running_Club
+  age: '25'
+  gender: '10'
+  overall_place: '17'
+  gun_time: '7785'
+  div: M2029
+  div_place: '4'
+results_112:
+  race: 11_westwood
+  first_name: kevin
+  last_name: frisch
+  age: '35'
+  gender: '10'
+  overall_place: '18'
+  gun_time: '7822'
+  div: M3039
+  div_place: '9'
+results_113:
+  race: 11_westwood
+  first_name: rafael
+  last_name: albert
+  club: Team_Lone_Wolf
+  age: '45'
+  gender: '10'
+  overall_place: '19'
+  gun_time: '7828'
+  div: M4049
+  div_place: '3'
+results_114:
+  race: 11_westwood
+  first_name: larry
+  last_name: nylen
+  club: Prairie_Inn_Harriers
+  age: '55'
+  gender: '10'
+  overall_place: '20'
+  gun_time: '7962'
+  div: M5059
+  div_place: '3'
+results_115:
+  race: 11_westwood
+  first_name: kaylee
+  last_name: beales
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '11'
+  overall_place: '21'
+  gun_time: '8029'
+  div: F2029
+  div_place: '1'
+results_116:
+  race: 11_westwood
+  first_name: antonia
+  last_name: harvey
+  age: '35'
+  gender: '11'
+  overall_place: '22'
+  gun_time: '8062'
+  div: F3039
+  div_place: '2'
+results_117:
+  race: 11_westwood
+  first_name: dominick
+  last_name: nadeau
+  club: Comox_Valley_Road_Runners
+  age: '19'
+  gender: '10'
+  overall_place: '23'
+  gun_time: '8163'
+  div: M0119
+  div_place: '1'
+results_118:
+  race: 11_westwood
+  first_name: ceri
+  last_name: jakobsen
+  club: RoC_and_Frontrunners
+  age: '25'
+  gender: '11'
+  overall_place: '24'
+  gun_time: '8230'
+  div: F2029
+  div_place: '2'
+results_119:
+  race: 11_westwood
+  first_name: richard
+  last_name: bellizz
+  club: Frontrunners_Westshore
+  age: '45'
+  gender: '10'
+  overall_place: '25'
+  gun_time: '8257'
+  div: M4049
+  div_place: '4'
+results_120:
+  race: 11_westwood
+  first_name: john
+  last_name: ingram
+  club: Comox_Valley_Road_Runners
+  age: '80'
+  gender: '10'
+  overall_place: '26'
+  gun_time: '8266'
+  div: M6099
+  div_place: '1'
+results_121:
+  race: 11_westwood
+  first_name: pete
+  last_name: langelo
+  club: Ceevacs_Road_Runners
+  age: '55'
+  gender: '10'
+  overall_place: '27'
+  gun_time: '8267'
+  div: M5059
+  div_place: '4'
+results_122:
+  race: 11_westwood
+  first_name: jim
+  last_name: romnaik
+  age: '35'
+  gender: '10'
+  overall_place: '28'
+  gun_time: '8333'
+  div: M3039
+  div_place: '10'
+results_123:
+  race: 11_westwood
+  first_name: normon
+  last_name: thibault
+  club: Frontrunners
+  age: '45'
+  gender: '10'
+  overall_place: '29'
+  gun_time: '8367'
+  div: M4049
+  div_place: '5'
+results_124:
+  race: 11_westwood
+  first_name: carey
+  last_name: sather
+  club: Steed_Cycle
+  age: '45'
+  gender: '11'
+  overall_place: '30'
+  gun_time: '8398'
+  div: F4049
+  div_place: '1'
+results_125:
+  race: 11_westwood
+  first_name: hagen
+  last_name: kluge
+  age: '25'
+  gender: '10'
+  overall_place: '31'
+  gun_time: '8422'
+  div: M2029
+  div_place: '5'
+results_126:
+  race: 11_westwood
+  first_name: p
+  last_name: d
+  club: A
+  age: '35'
+  gender: '10'
+  overall_place: '32'
+  gun_time: '8423'
+  div: M3039
+  div_place: '11'
+results_127:
+  race: 11_westwood
+  first_name: victoria
+  last_name: boyd
+  club: Runners_of_Compassion
+  age: '35'
+  gender: '11'
+  overall_place: '33'
+  gun_time: '8440'
+  div: F3039
+  div_place: '3'
+results_128:
+  race: 11_westwood
+  first_name: adam
+  last_name: mcquaig
+  club: Frontrunners_Victoria
+  age: '25'
+  gender: '10'
+  overall_place: '34'
+  gun_time: '8500'
+  div: M2029
+  div_place: '6'
+results_129:
+  race: 11_westwood
+  first_name: sean
+  last_name: windrum
+  club: Frontrunners_Westshore
+  age: '45'
+  gender: '10'
+  overall_place: '35'
+  gun_time: '8636'
+  div: M4049
+  div_place: '6'
+results_130:
+  race: 11_westwood
+  first_name: randy
+  last_name: humble
+  age: '45'
+  gender: '10'
+  overall_place: '36'
+  gun_time: '8675'
+  div: M4049
+  div_place: '7'
+results_131:
+  race: 11_westwood
+  first_name: franck
+  last_name: germain
+  age: '45'
+  gender: '10'
+  overall_place: '37'
+  gun_time: '8721'
+  div: M4049
+  div_place: '8'
+results_132:
+  race: 11_westwood
+  first_name: benjamin
+  last_name: thompson
+  age: '35'
+  gender: '10'
+  overall_place: '38'
+  gun_time: '8727'
+  div: M3039
+  div_place: '12'
+results_133:
+  race: 11_westwood
+  first_name: tami
+  last_name: beales
+  club: Westwood_Running_Club
+  age: '55'
+  gender: '11'
+  overall_place: '39'
+  gun_time: '8744'
+  div: F5059
+  div_place: '1'
+results_134:
+  race: 11_westwood
+  first_name: aviva
+  last_name: carter
+  club: Impossible2Possible
+  age: '35'
+  gender: '11'
+  overall_place: '40'
+  gun_time: '8780'
+  div: F3039
+  div_place: '4'
+results_135:
+  race: 11_westwood
+  first_name: rumon
+  last_name: carter
+  club: Impossible2Possible
+  age: '35'
+  gender: '10'
+  overall_place: '41'
+  gun_time: '8781'
+  div: M3039
+  div_place: '13'
+results_136:
+  race: 11_westwood
+  first_name: paula
+  last_name: shoemaker
+  age: '35'
+  gender: '11'
+  overall_place: '42'
+  gun_time: '8844'
+  div: F3039
+  div_place: '5'
+results_137:
+  race: 11_westwood
+  first_name: de
+  last_name: orrell
+  club: RoC_and_Frontrunners
+  age: '35'
+  gender: '11'
+  overall_place: '43'
+  gun_time: '8844'
+  div: F3039
+  div_place: '6'
+results_138:
+  race: 11_westwood
+  first_name: bre
+  last_name: chandler
+  club: Frontrunners_Westshore
+  age: '25'
+  gender: '11'
+  overall_place: '44'
+  gun_time: '8990'
+  div: F2029
+  div_place: '3'
+results_139:
+  race: 11_westwood
+  first_name: john
+  last_name: durkin
+  club: Westwood_Running_Club
+  age: '80'
+  gender: '10'
+  overall_place: '45'
+  gun_time: '9020'
+  div: M6099
+  div_place: '2'
+results_140:
+  race: 11_westwood
+  first_name: robin
+  last_name: dutton
+  club: Frontrunners
+  age: '35'
+  gender: '10'
+  overall_place: '46'
+  gun_time: '9076'
+  div: M3039
+  div_place: '14'
+results_141:
+  race: 11_westwood
+  first_name: shawn
+  last_name: daniels
+  age: '35'
+  gender: '11'
+  overall_place: '47'
+  gun_time: '9157'
+  div: F3039
+  div_place: '7'
+results_142:
+  race: 11_westwood
+  first_name: heidi
+  last_name: machnee
+  age: '25'
+  gender: '11'
+  overall_place: '48'
+  gun_time: '9639'
+  div: F2029
+  div_place: '4'
+results_143:
+  race: 11_westwood
+  first_name: lisa
+  last_name: perry
+  club: Comox_Valley_Road_Runners
+  age: '45'
+  gender: '11'
+  overall_place: '49'
+  gun_time: '9646'
+  div: F4049
+  div_place: '2'
+results_144:
+  race: 11_westwood
+  first_name: jaime
+  last_name: whaler
+  age: '55'
+  gender: '11'
+  overall_place: '50'
+  gun_time: '9700'
+  div: F5059
+  div_place: '2'
+results_145:
+  race: 11_westwood
+  first_name: jeanette
+  last_name: carlson
+  club: Frontrunners_Westshore
+  age: '45'
+  gender: '11'
+  overall_place: '51'
+  gun_time: '9715'
+  div: F4049
+  div_place: '3'
+results_146:
+  race: 11_westwood
+  first_name: frank
+  last_name: wille
+  age: '55'
+  gender: '10'
+  overall_place: '52'
+  gun_time: '9804'
+  div: M5059
+  div_place: '5'
+results_147:
+  race: 11_westwood
+  first_name: vee
+  last_name: dion
+  club: Comox_Valley_Road_Runners
+  age: '35'
+  gender: '11'
+  overall_place: '53'
+  gun_time: '10262'
+  div: F3039
+  div_place: '8'
+results_148:
+  race: 11_westwood
+  first_name: tina
+  last_name: hein
+  age: '45'
+  gender: '11'
+  overall_place: '54'
+  gun_time: '10262'
+  div: F4049
+  div_place: '4'
+results_149:
+  race: 11_westwood
+  first_name: cathie
+  last_name: dias
+  club: Victoria_Flatliners
+  age: '55'
+  gender: '11'
+  overall_place: '55'
+  gun_time: '10267'
+  div: F5059
+  div_place: '3'
+results_150:
+  race: 11_westwood
+  first_name: lisa
+  last_name: hoffner
+  age: '55'
+  gender: '11'
+  overall_place: '56'
+  gun_time: '10466'
+  div: F5059
+  div_place: '4'
+results_151:
+  race: 11_westwood
+  first_name: joanna
+  last_name: carson
+  age: '25'
+  gender: '11'
+  overall_place: '57'
+  gun_time: '10537'
+  div: F2029
+  div_place: '5'
+results_152:
+  race: 11_westwood
+  first_name: leo
+  last_name: rolfe
+  club: Comox_Valley_Road_Runners
+  age: '55'
+  gender: '10'
+  overall_place: '58'
+  gun_time: '11065'
+  div: M5059
+  div_place: '6'
+results_153:
+  race: 11_westwood
+  first_name: marilyn
+  last_name: funk
+  club: Runners_of_Compassion
+  age: '55'
+  gender: '11'
+  overall_place: '59'
+  gun_time: '11112'
+  div: F5059
+  div_place: '5'
+results_154:
+  race: 11_westwood
+  first_name: louis
+  last_name: nadeau
+  club: Comox_Valley-Road-Runners
+  age: '45'
+  gender: '10'
+  overall_place: '60'
+  gun_time: '11297'
+  div: M4049
+  div_place: '9'
+results_155:
+  race: 11_westwood
+  first_name: donna
+  last_name: jones
+  age: '45'
+  gender: '11'
+  overall_place: '61'
+  gun_time: '11323'
+  div: F4049
+  div_place: '5'
+results_156:
+  race: 11_westwood
+  first_name: jan
+  last_name: moller
+  club: Prairie_Inn_Harriers
+  age: '80'
+  gender: '10'
+  overall_place: '62'
+  gun_time: '11450'
+  div: M6099
+  div_place: '3'
+results_157:
+  race: 11_westwood
+  first_name: micki
+  last_name: keenliside
+  club: Apex_Runners
+  age: '35'
+  gender: '11'
+  overall_place: '63'
+  gun_time: '12054'
+  div: F3039
+  div_place: '9'
+results_158:
+  race: 11_westwood
+  first_name: anne
+  last_name: heyes
+  age: '45'
+  gender: '11'
+  overall_place: '64'
+  gun_time: '12117'
+  div: F4049
+  div_place: '6'
+results_159:
+  race: 11_westwood
+  first_name: sue
+  last_name: spencer
+  age: '45'
+  gender: '11'
+  overall_place: '65'
+  gun_time: '12526'
+  div: F4049
+  div_place: '7'
+results_160:
+  race: 11_westwood
+  first_name: arlene
+  last_name: halwa
+  club: River_Runners
+  age: '55'
+  gender: '11'
+  overall_place: '66'
+  gun_time: '12866'
+  div: F5059
+  div_place: '6'

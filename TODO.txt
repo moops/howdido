@@ -11,3 +11,6 @@ x 20110704 - bring authentication back in house
 x 20110706 - validation on create user popup form
 x 20110711 - authorization
 - 20110711 - how to handle race distance in a single field (int foreign key to lookup vs float)
+x 20110712 - add race and results test data fixtures (two 2011 gutbuster races)
+- 20110712 - add some participation fixtures for the gutbuster race fixtures
+- 20110712 - fix reusing of existing result records when loading results for a new race

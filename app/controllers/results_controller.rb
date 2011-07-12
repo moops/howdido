@@ -88,6 +88,7 @@ class ResultsController < ApplicationController
     first_name_index = params[:first_name_index].to_i unless params[:first_name_index].empty?
     last_name_index = params[:last_name_index].to_i unless params[:last_name_index].empty?
     city_index = params[:city_index].to_i unless params[:city_index].empty?
+    club_index = params[:club_index].to_i unless params[:club_index].empty?
     bib_index = params[:bib_index].to_i unless params[:bib_index].empty?
     div_index = params[:div_index].to_i unless params[:div_index].empty?
     overall_place_index = params[:overall_place_index].to_i unless params[:overall_place_index].empty?
@@ -122,6 +123,7 @@ class ResultsController < ApplicationController
         r.first_name = line[first_name_index].downcase
         r.last_name = line[last_name_index].downcase
         r.city = line[city_index] if city_index
+        r.club = line[club_index] if club_index
         if age_index
           r.age = line[age_index].to_i
         end

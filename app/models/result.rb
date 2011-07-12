@@ -102,7 +102,6 @@ class Result < ActiveRecord::Base
     end
     logger.info("guessed #{a} for div #{div}")
     self.age = a
-    a
   end
   
   def grade

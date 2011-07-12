@@ -19,3 +19,17 @@ stewart:
   location: Thetis Lake
   race_type: 3
   distance: 22
+  
+11_tzouhalem:
+  race_on: 2011-05-08
+  name: Gutbuster Trail Run 001
+  location: Mt Tzouhalem, Duncan BC
+  race_type: 3
+  distance: 20
+  
+11_westwood:
+  race_on: 2011-05-29
+  name: Gutbuster Trail Run 002
+  location: Westwood Lake, Nanaimo BC
+  race_type: 3
+  distance: 24

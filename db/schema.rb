@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "city"
+    t.string   "club"
     t.integer  "age"
     t.integer  "gender"
     t.integer  "overall_place"
