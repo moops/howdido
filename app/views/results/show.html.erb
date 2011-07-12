@@ -4,7 +4,7 @@
   var divWinnerTime = <%= @result.race.winner(@result.div).gun_time %>;
   var genderWinnerTime = <%= @result.race.gender_winner(@result.gender).gun_time %>;
   var gunTime = <%= @result.gun_time %>;
-  var distance = <%= @result.race.distance.code.to_f %>;
+  var distance = <%= Lookup.find(@result.race.distance.to_i).code.to_f if @result.race.distance %>;
   var maleWavaFactors = new Array();
   var femaleWavaFactors = new Array();
   <% for wava in @result.wavas %>
@@ -117,8 +117,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-	name: <b><%= @result.name %></b><br/>
-	race: <b><%= @result.race.name %></b><br/>
+  name: <b><%= @result.name %></b><br/>
+  race: <b><%= @result.race.name %></b><br/>
   time: <b><%= seconds_to_time(@result.gun_time) %></b><br/>
   age grade: <b><%= number_with_precision(@result.grade, :precision => 2) %></b><br/>
   points: <b><%= number_with_precision(@result.points, :precision => 2) %></b><br/>
@@ -130,7 +130,7 @@
   <div class="box_header">in <select id="future"></select> years</div>
   <div class="box_content">
     <ul>
-    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i need to run <div id="futureTime" style="display:inline;"></div><br/></li>
+    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
     <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
     </ul>
   </div>

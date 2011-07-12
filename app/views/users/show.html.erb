@@ -5,10 +5,12 @@
   var runs = [];
   var race_dates = [];
   var my_grades = [];
+  var my_points = [];
   var summaries = [];
   <% @run_summaries.each do |summary| %>
     race_dates.push('<%= "#{summary['date']}" %>');
     my_grades.push(<%= "{ name: '#{summary['name']}', y: #{summary['me']} }" %>);
+    my_points.push(<%= "{ name: '#{summary['name']}', y: #{summary['points']} }" %>);
     summaries.push(<%= "{ name: '#{summary['name']}', data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}" %>);
     runs.push(<%= "{ name:'#{summary['name']}', date:'#{summary['date']}', me:'#{summary['me']}', div:'#{summary['div']}', gender:'#{summary['gender']}', everyone:'#{summary['everyone']}'}" %>);
   <% end %>
@@ -38,6 +40,20 @@
       categories: ['everyone', 'gender', 'division', 'me'] },    
       yAxis: { title: { text: 'grade' }, min: 0, max: 100 },
       series: summaries
+    });
+    
+    var runPointsChart = new Highcharts.Chart({
+      chart: { defaultSeriesType: "line", renderTo: "run_points_chart" },
+      title: { text: '<%= "running points for #{@user.name}" %>' },
+      credits: { enabled: false },
+      legend: { enabled: false },
+      tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
+      xAxis: { 
+        title: { text: "race" },
+        categories: race_dates
+      },
+      yAxis: { title: { text: "points" }, min: 500, max: 1000  },
+      series: [{data: my_points}]
     });
     
     jQuery('#redraw').button().click(function() {
@@ -74,11 +90,10 @@
 
 
 <div id="run_grades_chart" style="width:700px; height:300px;"></div>
-
 <p/>
-
+<div id="run_points_chart" style="width:700px; height:300px;"></div>
+<p/>
 <div id="run_summaries" style="width:700px; height:300px;"></div>
-
 <p/>
 
 <div class="tabs">
@@ -91,7 +106,7 @@
   <% ['me', 'friend','rival','other'].each do |type| %>
     <div id="<%= type %>">        
       <% @user.participations_by_race(type).each do |race,p_list| %>
-      <b><%= "#{race.name} - #{race.race_on}" %></b>
+      <b><%= "#{race.display_name}" %></b>
       <table cellspacing="0" cellpadding="5">
         <tr><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th><th colspan="2">&nbsp;</th></tr></tr>
         <% p_list.each do |p| %>

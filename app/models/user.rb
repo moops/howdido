@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
     roles.map(&:to_sym)
   end
   
-  # returns: {race_name => {'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade,}, ...}
-  # example: {'Esquimalt 8km' => {'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90,}, ...}
+  # returns: [{'name' => race name, 'date' => race date, 'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade, 'points' => points}, ...]
+  # example: [{'name' => 'Esquimalt 8km' 'date' => 2009-07-16, 'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90, points => 650}, ...]
   def run_summaries(limit=25)
     summaries = Array.new
     run = Lookup.code_for('race_type', 'run')
@@ -83,8 +83,9 @@ class User < ActiveRecord::Base
     h['gender'] = h['gender'].to_i
     h['div'] = h['div'].to_i
     h['me'] = h['me'].to_i
+    h['points'] = my_result.points
     h['date'] = race.race_on
-    h['name'] = race.name
+    h['name'] = race.display_name
     h
   end
   

@@ -114,8 +114,8 @@ class Result < ActiveRecord::Base
   
   def points
     if race.distance
-      distance = Lookup.find_by_id(race.distance.to_i).code.to_f
-      return (141113 * (distance ** 1.0689) / gun_time);
+      distance = Lookup.find(race.distance.to_i).code.to_f
+      return (141113 * (distance ** 1.0689) / gun_time).round(1);
     end
   end
   

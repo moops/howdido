@@ -25,8 +25,8 @@ class Race < ActiveRecord::Base
   end
   
   def description
-    (race_type ? Lookup.find_by_id(race_type).description : '') << 
-    (distance ? '(' << Lookup.find_by_id(distance.to_i).description << ')' : '')  <<  
+    (race_type ? Lookup.find(race_type).description : '') << 
+    (distance ? '(' << Lookup.find(distance.to_i).description << ')' : '')  <<  
     (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
   end
   
@@ -46,6 +46,10 @@ class Race < ActiveRecord::Base
       winner_rank = results.male.minimum('overall_place')
     end
     results.where('overall_place = ?', winner_rank).first
+  end
+  
+  def display_name
+    race_on.year.to_s << ' ' << name
   end
   
 end
