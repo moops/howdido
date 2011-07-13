@@ -11,12 +11,18 @@ module ApplicationHelper
     end
   end
   
-  def seconds_to_time(s)
+  def seconds_to_time(t)
     val = ''
-    if (s)
-      m = s / 1.minutes
-      seconds_in_last_minute = s - m.to_i.minutes.seconds
-      val = "#{m.to_i}:#{number_with_precision(seconds_in_last_minute, :precision => 2)}"
+    if (t)
+      h = t / 1.hours
+      m = (t - h.hours) / 1.minutes
+      s = (t - (h.hours + m.minutes)) 
+      if (h > 0)
+        val << "#{h.to_i}:"
+      end
+      if (m > 0)
+        val << "#{m.to_s.rjust(2,'0')}:#{s}"
+       end
      end
      val
   end
