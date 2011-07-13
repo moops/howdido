@@ -13,7 +13,7 @@ x 20110711 - authorization
 - 20110711 - how to handle race distance in a single field (int foreign key to lookup vs float)
 x 20110712 - add race and results test data fixtures (two 2011 gutbuster races)
 - 20110712 - add some participation fixtures for the gutbuster race fixtures
-- 20110712 - fix reusing of existing result records when loading results for a new race
 x 20110713 - update age of result when claiming a result as me
 - 20110713 - prevent marking 2 results as me in the same race
 - 20110713 - prevent 2 people marking the same result as me
+x 20110713 - change edit race link to an icon
