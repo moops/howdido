@@ -101,10 +101,9 @@ function validate(form_id, rules) {
 
 jQuery(document).ready(function() {
 
-  //all non-GET requests will add the authenticity token in the data packet
+  //all non-GET requests will add the authenticity token
   jQuery(document).ajaxSend(function(event, request, settings) {
     if (typeof(window.AUTH_TOKEN) == "undefined") return;
-    // IE6 fix for http://dev.jquery.com/ticket/3155
     if (settings.type == 'GET' || settings.type == 'get') return;
 
     settings.data = settings.data || "";

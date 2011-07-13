@@ -123,13 +123,17 @@ class Result < ActiveRecord::Base
   end
   
   def future_time_for_same_grade(years = 1)
-    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
-    (w.factor / grade) * 100
+    if race.distance
+      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+      (w.factor / grade) * 100
+    end
   end
   
   def future_grade_with_same_time(years = 1)
-    w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
-    (w.factor / gun_time) * 100
+    if race.distance
+      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+      (w.factor / gun_time) * 100
+    end
   end
   
   def wavas

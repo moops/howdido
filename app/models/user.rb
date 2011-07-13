@@ -92,14 +92,14 @@ class User < ActiveRecord::Base
   def participations_by_race(participation_type='me')
     p_map = Hash.new
     p_list = Array.new
-    if participation_type == 'me'
-      p_list = participations.me
-    elsif participation_type == 'friend'
+    if participation_type == 'friend'
       p_list = participations.friend
     elsif participation_type == 'rival'
       p_list = participations.rival
     elsif participation_type == 'other'
       p_list = participations.other
+    else
+      p_list = participations.me
     end
     p_list.each do |p|
       race = p.result.race
@@ -116,8 +116,13 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
   
+  def age
+    a = Date.today.year - born_on.year
+    a -= 1 if Date.today < born_on + a.years
+    a
+  end
+  
   def self.authenticate(email, password)
-    logger.debug("trying to authenticate with email: #{email} password: #{password}")
     user = find_by_email(email)
     logger.debug("found user: #{user.inspect}")
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

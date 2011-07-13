@@ -43,6 +43,12 @@ class ParticipationsController < ApplicationController
   def create
     @participation = Participation.new(params[:participation])
     
+    if (Lookup.code_for('participation_type', 'me').id == @participation.type.id)
+      # update the age of the result to the age of the user
+      @participation.result.age = @participation.user.age
+      @participation.result.save
+    end
+    
     #result = Result.find(params[:participation][:result_id].to_i)
     #for p in Participation.where(:user_id => params[:participation][:user_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
     #  if p.result.race.id = result.race.id
