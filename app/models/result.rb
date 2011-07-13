@@ -110,10 +110,6 @@ class Result < ActiveRecord::Base
   def grade
     if race.distance
       w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
-      logger.info("grade() found wava #{w.inspect} with distance #{race.distance}, gender: #{gender} and age: #{age}")
-      if w == nil
-        logger.info("no wava, result: #{self.inspect}")
-      end
       (w.factor / gun_time) * 100
     end
   end
