@@ -89,6 +89,9 @@ class Result < ActiveRecord::Base
       if div[1,2].to_i < 2
         # M0119 use upper age
         a = div[3,2].to_i
+      elsif div[3,2].to_i == 99
+        # M6099 use lower age
+        a = div[1,2].to_i
       else
         # use mid point
         a = (div[1,2].to_i + (div[3,2].to_i + 1)) / 2
@@ -107,6 +110,10 @@ class Result < ActiveRecord::Base
   def grade
     if race.distance
       w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
+      logger.info("grade() found wava #{w.inspect} with distance #{race.distance}, gender: #{gender} and age: #{age}")
+      if w == nil
+        logger.info("no wava, result: #{self.inspect}")
+      end
       (w.factor / gun_time) * 100
     end
   end

@@ -483,7 +483,7 @@ results_044:
   race: 11_tzouhalem
   first_name: simon
   last_name: timmer
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '35'
   gun_time: '4778'
@@ -515,7 +515,7 @@ results_047:
   first_name: mark
   last_name: jackman
   club: Island_Road_Racers
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '38'
   gun_time: '4937'
@@ -546,7 +546,7 @@ results_050:
   first_name: john
   last_name: durkin
   club: Westwood_Running_Club
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '41'
   gun_time: '4984'
@@ -557,7 +557,7 @@ results_051:
   first_name: john
   last_name: ingram
   club: Comox_Valley_Road_Runners
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '42'
   gun_time: '4987'
@@ -1293,7 +1293,7 @@ results_120:
   first_name: john
   last_name: ingram
   club: Comox_Valley_Road_Runners
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '26'
   gun_time: '8266'
@@ -1496,7 +1496,7 @@ results_139:
   first_name: john
   last_name: durkin
   club: Westwood_Running_Club
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '45'
   gun_time: '9020'
@@ -1675,7 +1675,7 @@ results_156:
   first_name: jan
   last_name: moller
   club: Prairie_Inn_Harriers
-  age: '80'
+  age: '60'
   gender: '10'
   overall_place: '62'
   gun_time: '11450'
