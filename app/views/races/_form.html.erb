@@ -1,23 +1,26 @@
 <%= form_for(@race) do |f| %>
-  <% if @race.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@race.errors.count, "error") %> prohibited this race from being saved:</h2>
+  <%= form_errors(@race.errors) %>
+  <fieldset>   
+    <ol>   
+    <li><%= f.label :race_on %><%= f.text_field :race_on, :class => 'calendar' %></li>
+    <li><%= f.label :name %><%= f.text_field :name %></li>
+    <li><%= f.label :location %><%= f.text_field :location %></li>
+    <li><%= f.label :race_type %><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
+    <li><%= f.label :distance %><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
+    <li></li>
+    </ol>
+  </fieldset>
 
-      <ul>
-      <% @race.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.label :race_on %><%= f.text_field :race_on, :class => 'calendar' %><br/>
-  <%= f.label :name %><%= f.text_field :name %><br/>
-  <%= f.label :location %><%= f.text_field :location %><br/>
-  <%= f.label :race_type %><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %><br/>
-  <%= f.label :distance %><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %>
-
-  <div class="actions">
+  <fieldset class="submit">
     <%= f.submit %>
-  </div>
+  </fieldset>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function() {
+    validate('new_race', {
+      'race[name]': "required",
+      'race[race_on]': "required"
+    });
+  });
+</script>

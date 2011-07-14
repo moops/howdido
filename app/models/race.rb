@@ -2,6 +2,10 @@ class Race < ActiveRecord::Base
   
   has_many :results
   
+  validates_presence_of :name
+  validates_presence_of :race_on
+  validates_uniqueness_of :name
+  
   scope :running, where("race_type = 3")
   
   def self.search(search)

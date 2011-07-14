@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :create, User
       if user.role?(:athlete)
         can :manage, Participation do |p|
           p.try(:user) == user
