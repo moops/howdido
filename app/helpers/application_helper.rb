@@ -29,17 +29,18 @@ module ApplicationHelper
   
   
   def form_errors(errors)
-    val = ''
+    html  = ""
     if errors.any?
-      val << "<div id=\"error_explanation\">"
-      val << "  <h2>#{pluralize(errors.count, 'error')} prohibited this race from being saved:</h2>"
-      val << "<ul>"
+      html  << "<div id=\"error_explanation\">"
+      html  << "  <h2>#{pluralize(errors.count, 'error')} prohibited this race from being saved:</h2>"
+      html  << "<ul>"
       errors.full_messages.each do |msg|
-        val << "    <li>#{msg}</li>"
+        html  << "    <li>#{msg}</li>"
       end
-      val << "</ul>"
-      val << "</div>"
+      html  << "</ul>"
+      html  << "</div>"
     end
+    html.html_safe
   end
   
 end
