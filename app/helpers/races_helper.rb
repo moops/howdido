@@ -27,4 +27,16 @@ module RacesHelper
     return link_to('remove', participations_path(participation), :class => 'delete')
   end
   
+  def distance_description(race)
+    d = race.distance_in_km
+    if d and d > 42.1 and d < 42.3
+      desc = 'marathon'
+    elsif d and d > 21 and d < 21.2
+      desc = 'half marathon'
+    else
+      desc = "#{race.distance} #{race.distance_unit}"
+    end
+    desc
+  end
+  
 end

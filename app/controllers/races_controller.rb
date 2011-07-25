@@ -44,6 +44,17 @@ class RacesController < ApplicationController
   # POST /races
   # POST /races.xml
   def create
+    
+    if (params[:distance] == 'other')
+      @race.distance= params[:other_distance].to_f
+      @race.distance_unit= params[:other_distance_unit]
+    elsif params[:distance].end_with?('m')
+      @race.distance= params[:distance].to_f
+      @race.distance_unit= 'mi'
+    else
+      @race.distance= params[:distance].to_f
+      @race.distance_unit= 'km'
+    end
 
     respond_to do |format|
       if @race.save

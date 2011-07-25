@@ -6,6 +6,7 @@ class CreateRaces < ActiveRecord::Migration
       t.string :location
       t.integer :race_type
       t.float :distance
+      t.string :distance_unit
       t.timestamps
     end
   end

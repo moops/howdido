@@ -30,7 +30,7 @@ class Race < ActiveRecord::Base
   
   def description
     (race_type ? Lookup.find(race_type).description : '') << 
-    (distance ? '(' << Lookup.find(distance.to_i).description << ')' : '')  <<  
+    (distance ? " (#{distance.to_s} #{distance_unit})" : '')  <<  
     (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
   end
   
@@ -54,6 +54,10 @@ class Race < ActiveRecord::Base
   
   def display_name
     race_on.year.to_s << ' ' << name
+  end
+  
+  def distance_in_km
+    distance_unit == 'mi' ? (distance * 1.609344).round(2) : distance
   end
   
 end

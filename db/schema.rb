@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.string   "location"
     t.integer  "race_type"
     t.float    "distance"
+    t.string   "distance_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
