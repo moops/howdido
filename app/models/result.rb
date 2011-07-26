@@ -109,15 +109,14 @@ class Result < ActiveRecord::Base
   
   def grade
     if race.distance
-      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age, :gender => gender, :dist => race.distance}).first
+      w = Wava.find_for(age, gender, race.distance_in_km)
       (w.factor / gun_time) * 100
     end
   end
   
   def points
     if race.distance
-      distance = Lookup.find(race.distance.to_i).code.to_f
-      return (141113 * (distance ** 1.0689) / gun_time).round(1);
+      return (141113 * (race.distance_in_km ** 1.0689) / gun_time).round(1);
     end
   end
   
@@ -127,20 +126,16 @@ class Result < ActiveRecord::Base
   
   def future_time_for_same_grade(years = 1)
     if race.distance
-      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+      w = Wava.find_for(age + years, gender, race.distance_in_km)
       (w.factor / grade) * 100
     end
   end
   
   def future_grade_with_same_time(years = 1)
     if race.distance
-      w = Wava.where('age = :age and gender = :gender and distance = :dist', {:age => age + years, :gender => gender, :dist => race.distance}).first
+      w = Wava.find_for(age + years, gender, race.distance_in_km)
       (w.factor / gun_time) * 100
     end
-  end
-  
-  def wavas
-    Wava.where('distance = :dist', {:dist => race.distance}).all 
   end
   
   def name

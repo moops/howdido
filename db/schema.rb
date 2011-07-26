@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
   create_table "wavas", :force => true do |t|
     t.integer  "age"
     t.integer  "gender"
-    t.integer  "distance"
+    t.float    "distance"
     t.float    "factor"
     t.datetime "created_at"
     t.datetime "updated_at"

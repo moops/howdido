@@ -4,10 +4,10 @@
   var divWinnerTime = <%= @result.race.winner(@result.div).gun_time %>;
   var genderWinnerTime = <%= @result.race.gender_winner(@result.gender).gun_time %>;
   var gunTime = <%= @result.gun_time %>;
-  var distance = <%= Lookup.find(@result.race.distance.to_i).code.to_f if @result.race.distance %>;
+  var distance = <%= @result.race.distance_in_km if @result.race.distance %>;
   var maleWavaFactors = new Array();
   var femaleWavaFactors = new Array();
-  <% for wava in @result.wavas %>
+  <% for wava in Wava.list_for(@result.race.distance_in_km) %>
     <% if wava.gender == 10 %>
       maleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
     <% end %>

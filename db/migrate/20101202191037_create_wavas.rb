@@ -3,7 +3,7 @@ class CreateWavas < ActiveRecord::Migration
     create_table :wavas do |t|
       t.integer :age
       t.integer :gender
-      t.integer :distance
+      t.float :distance
       t.float :factor
       t.timestamps
     end
