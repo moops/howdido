@@ -6,7 +6,7 @@
     <li><%= f.label :name %><%= f.text_field :name %></li>
     <li><%= f.label :location %><%= f.text_field :location %></li>
     <li><%= f.label :race_type %><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
-    <li><%= f.label :distance %><%= select_tag(:distance, options_for_select(Lookup.list_for('race_dist').collect {|l| [ l.description, l.code ] }), { :include_blank => true }) %>
+    <li><%= f.label :distance %><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.code ] }, { :include_blank => true }) %>
     <span><%= text_field_tag :other_distance %> <%= select_tag :other_distance_unit, "<option value=\"km\">kilometers</option><option value=\"mi\">miles</option>".html_safe %></span></li>
     </ol>
   </fieldset>
@@ -16,31 +16,23 @@
   </fieldset>
 <% end %>
 
-<% if @race.id %>
-  <script type="text/javascript" charset="utf-8">
-    jQuery(document).ready(function() {
-      validate('edit_race', {
-        'race[name]': "required",
-        'race[race_on]': "required"
-      });
+<script type="text/javascript" charset="utf-8">
+  
+  $(document).ready(function() {
+    
+    validate('<%= @race.id ? 'edit_race' : 'new_race' %>', {
+      'race[name]': "required",
+      'race[race_on]': "required"
     });
-  </script>
-<% else %>
-	<script type="text/javascript" charset="utf-8">
-	  $(document).ready(function() {
-			$('#other_distance').parent().hide();
-			$('select#distance').change(function() {
-				var s = $('select#distance option:selected').text();
-				if (s === 'other') {
-					$('#other_distance').parent().show();
-				} else {
-					$('#other_distance').parent().hide();
-				}
-			});
-	    validate('new_race', {
-	      'race[name]': "required",
-	      'race[race_on]': "required"
-	    });
-	  });
-	</script>
-<% end %>
+      
+    $('#other_distance').parent().hide();
+    $('select#race_distance').change(function() {
+      var s = $('select#race_distance option:selected').text();
+      if (s === 'other') {
+        $('#other_distance').parent().show();
+      } else {
+        $('#other_distance').parent().hide();
+      }
+    });
+  });
+</script>
