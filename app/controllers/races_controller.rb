@@ -45,16 +45,7 @@ class RacesController < ApplicationController
   # POST /races.xml
   def create
     
-    if (params[:race][:distance] == 'other')
-      @race.distance= params[:other_distance].to_f
-      @race.distance_unit= params[:other_distance_unit]
-    elsif params[:race][:distance].end_with?('m')
-      @race.distance= params[:race][:distance].chop!.to_f
-      @race.distance_unit= 'mi'
-    else
-      @race.distance= params[:race][:distance].to_f
-      @race.distance_unit= 'km'
-    end
+    set_distance(params, @race)
 
     respond_to do |format|
       if @race.save
@@ -71,16 +62,8 @@ class RacesController < ApplicationController
   # PUT /races/1.xml
   def update
   
-    if (params[:race][:distance] == 'other')
-      @race.distance= params[:other_distance].to_f
-      @race.distance_unit= params[:other_distance_unit]
-    elsif params[:race][:distance].end_with?('m')
-      @race.distance= params[:race][:distance].chop!.to_f
-      @race.distance_unit= 'mi'
-    else
-      @race.distance= params[:race][:distance].to_f
-      @race.distance_unit= 'km'
-    end
+    set_distance(params, @race)
+    params[:race].delete('distance')
 
     respond_to do |format|
       if @race.update_attributes(params[:race])
@@ -122,5 +105,19 @@ class RacesController < ApplicationController
   
   def results_sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
+  def set_distance(params, race)
+    if (params[:race][:distance] == 'other')
+      race.distance= params[:other_distance].to_f
+      race.distance_unit= params[:other_distance_unit]
+    elsif params[:race][:distance].end_with?('m')
+      race.distance= params[:race][:distance].chop!.to_f
+      race.distance_unit= 'mi'
+    else
+      race.distance= params[:race][:distance].to_f
+      race.distance_unit= 'km'
+    end
+    
   end
 end
