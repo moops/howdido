@@ -116,11 +116,11 @@ gary_in_stewart:
   gun_time: 2948
 
 #
-# results for 11_11_tzouhalem
+# results for tzouhalem
 #
 
 results_010:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: shane
   last_name: ruljancich
   club: Prairie_Inn_Harriers
@@ -131,7 +131,7 @@ results_010:
   div: M3039
   div_place: '1'
 results_011:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: shawn
   last_name: nelson
   club: Frontrunners_Westshore
@@ -142,7 +142,7 @@ results_011:
   div: M2029
   div_place: '1'
 results_012:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: andrew
   last_name: pape-salmon
   club: Prairie_Inn_Harriers
@@ -153,7 +153,7 @@ results_012:
   div: M4049
   div_place: '1'
 results_013:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: logan
   last_name: roots
   age: '25'
@@ -163,7 +163,7 @@ results_013:
   div: M2029
   div_place: '2'
 results_014:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: byron
   last_name: trajan
   club: Westwood_Running_Club
@@ -174,7 +174,7 @@ results_014:
   div: M3039
   div_place: '2'
 results_015:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: james
   last_name: rolfe
   age: '25'
@@ -184,7 +184,7 @@ results_015:
   div: M2029
   div_place: '3'
 results_016:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: travis
   last_name: pirozzini
   club: Westwood_Running_Club
@@ -195,7 +195,7 @@ results_016:
   div: M2029
   div_place: '4'
 results_017:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: care
   last_name: wakely
   club: Frontrunners_Westshore
@@ -206,7 +206,7 @@ results_017:
   div: F2029
   div_place: '1'
 results_018:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: garth
   last_name: campbell
   club: Prairie
@@ -217,7 +217,7 @@ results_018:
   div: M5059
   div_place: '1'
 results_019:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jeremy
   last_name: lawrence
   club: Prairie
@@ -228,7 +228,7 @@ results_019:
   div: M3039
   div_place: '3'
 results_020:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jean-francois
   last_name: gagne
   club: Prairie
@@ -239,7 +239,7 @@ results_020:
   div: M3039
   div_place: '4'
 results_021:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: duncan
   last_name: coo
   age: '45'
@@ -249,7 +249,7 @@ results_021:
   div: M4049
   div_place: '2'
 results_022:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: sean
   last_name: chester
   club: Prairie_Inn_Harriers
@@ -260,7 +260,7 @@ results_022:
   div: M2029
   div_place: '5'
 results_023:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: dave
   last_name: harvey
   age: '35'
@@ -270,7 +270,7 @@ results_023:
   div: M3039
   div_place: '5'
 results_024:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: gary
   last_name: duncan
   club: Prairie_Inn_Harriers
@@ -281,7 +281,7 @@ results_024:
   div: M5059
   div_place: '2'
 results_025:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: sean
   last_name: reilly
   club: Westwood_Running_Club
@@ -292,7 +292,7 @@ results_025:
   div: M3039
   div_place: '6'
 results_026:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: andrea
   last_name: gibson
   age: '35'
@@ -302,7 +302,7 @@ results_026:
   div: F3039
   div_place: '1'
 results_027:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: john
   last_name: higgin
   age: '35'
@@ -312,7 +312,7 @@ results_027:
   div: M3039
   div_place: '7'
 results_028:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: christopher
   last_name: wood
   age: '35'
@@ -322,7 +322,7 @@ results_028:
   div: M3039
   div_place: '8'
 results_029:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jordan
   last_name: brietzke
   age: '25'
@@ -332,7 +332,7 @@ results_029:
   div: M2029
   div_place: '6'
 results_030:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: ben
   last_name: forsyth
   age: '35'
@@ -342,7 +342,7 @@ results_030:
   div: M3039
   div_place: '9'
 results_031:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: claire
   last_name: morgan
   club: Prairie_Inn_Harriers
@@ -353,7 +353,7 @@ results_031:
   div: F3039
   div_place: '2'
 results_032:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jessalyn
   last_name: o'donnell
   club: Aspire_Running
@@ -364,7 +364,7 @@ results_032:
   div: F3039
   div_place: '3'
 results_033:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: darbykai
   last_name: standrick
   age: '25'
@@ -374,7 +374,7 @@ results_033:
   div: F2029
   div_place: '2'
 results_034:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: alex
   last_name: counsell
   club: Westwood_Running_Club
@@ -385,7 +385,7 @@ results_034:
   div: M2029
   div_place: '7'
 results_035:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: antonia
   last_name: harvey
   age: '35'
@@ -395,7 +395,7 @@ results_035:
   div: F3039
   div_place: '4'
 results_036:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: larry
   last_name: nylen
   club: Prairie_Inn_Harriers
@@ -406,7 +406,7 @@ results_036:
   div: M5059
   div_place: '3'
 results_037:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: fraser
   last_name: rankin
   age: '25'
@@ -416,7 +416,7 @@ results_037:
   div: M2029
   div_place: '8'
 results_038:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: kerry
   last_name: marc
   age: '45'
@@ -426,7 +426,7 @@ results_038:
   div: M4049
   div_place: '3'
 results_039:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: norm
   last_name: olsen
   club: Bastion_Running_Club
@@ -437,7 +437,7 @@ results_039:
   div: M4049
   div_place: '4'
 results_040:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: adam
   last_name: mcquaig
   club: Frontrunners_Victoria
@@ -448,7 +448,7 @@ results_040:
   div: M2029
   div_place: '9'
 results_041:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: louise
   last_name: proulx
   club: Prairie_Inn_Harriers
@@ -459,7 +459,7 @@ results_041:
   div: F5059
   div_place: '1'
 results_042:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: richard
   last_name: bellizz
   club: Frontrunners_Westshore
@@ -470,7 +470,7 @@ results_042:
   div: M4049
   div_place: '5'
 results_043:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jenesa
   last_name: tomich
   age: '35'
@@ -480,7 +480,7 @@ results_043:
   div: F3039
   div_place: '5'
 results_044:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: simon
   last_name: timmer
   age: '60'
@@ -490,7 +490,7 @@ results_044:
   div: M6099
   div_place: '1'
 results_045:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: pete
   last_name: langelo
   club: CeeVacs_Road_Runners
@@ -501,7 +501,7 @@ results_045:
   div: M5059
   div_place: '4'
 results_046:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: dominick
   last_name: nadeau
   age: '19'
@@ -511,7 +511,7 @@ results_046:
   div: M0119
   div_place: '1'
 results_047:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: mark
   last_name: jackman
   club: Island_Road_Racers
@@ -522,7 +522,7 @@ results_047:
   div: M6099
   div_place: '2'
 results_048:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: nicole
   last_name: barrett
   age: '25'
@@ -532,7 +532,7 @@ results_048:
   div: F2029
   div_place: '3'
 results_049:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: brad
   last_name: coleman
   age: '45'
@@ -542,7 +542,7 @@ results_049:
   div: M4049
   div_place: '6'
 results_050:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: john
   last_name: durkin
   club: Westwood_Running_Club
@@ -553,7 +553,7 @@ results_050:
   div: M6099
   div_place: '3'
 results_051:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: john
   last_name: ingram
   club: Comox_Valley_Road_Runners
@@ -564,7 +564,7 @@ results_051:
   div: M6099
   div_place: '4'
 results_052:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: kaylee
   last_name: beales
   club: Frontrunners_Westshore
@@ -575,7 +575,7 @@ results_052:
   div: F2029
   div_place: '4'
 results_053:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: mark
   last_name: wyatt
   age: '55'
@@ -585,7 +585,7 @@ results_053:
   div: M5059
   div_place: '5'
 results_054:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: drew
   last_name: hopper
   club: Bon_Rouge_Bistro
@@ -596,7 +596,7 @@ results_054:
   div: M3039
   div_place: '10'
 results_055:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: benjamin
   last_name: thompson
   age: '35'
@@ -606,7 +606,7 @@ results_055:
   div: M3039
   div_place: '11'
 results_056:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: darren
   last_name: rinaldi
   club: Westwood_Running_Club
@@ -617,7 +617,7 @@ results_056:
   div: M3039
   div_place: '12'
 results_057:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: james
   last_name: langley
   age: '55'
@@ -627,7 +627,7 @@ results_057:
   div: M5059
   div_place: '6'
 results_058:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: tami
   last_name: beales
   club: ROC_Nanaimo
@@ -638,7 +638,7 @@ results_058:
   div: F5059
   div_place: '2'
 results_059:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: claire
   last_name: flewelling
   age: '35'
@@ -648,7 +648,7 @@ results_059:
   div: F3039
   div_place: '6'
 results_060:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: laura
   last_name: wear
   club: Prairie_Inn_Harriers
@@ -659,7 +659,7 @@ results_060:
   div: F3039
   div_place: '7'
 results_061:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: kirsten
   last_name: hagen
   club: Victoria_Flatliners
@@ -670,7 +670,7 @@ results_061:
   div: F3039
   div_place: '8'
 results_062:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: kevin
   last_name: lamport
   age: '45'
@@ -680,7 +680,7 @@ results_062:
   div: M4049
   div_place: '7'
 results_063:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: trevor
   last_name: fraser
   age: '35'
@@ -690,7 +690,7 @@ results_063:
   div: M3039
   div_place: '13'
 results_064:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: franck
   last_name: germain
   club: Prairie_Inn_Harriers
@@ -701,7 +701,7 @@ results_064:
   div: M4049
   div_place: '8'
 results_065:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: marion
   last_name: bryan
   club: Comox_Valley_Road_Runners
@@ -712,7 +712,7 @@ results_065:
   div: F3039
   div_place: '9'
 results_066:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: shawn
   last_name: daniels
   age: '35'
@@ -722,7 +722,7 @@ results_066:
   div: F3039
   div_place: '10'
 results_067:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: frank
   last_name: wille
   age: '55'
@@ -732,7 +732,7 @@ results_067:
   div: M5059
   div_place: '7'
 results_068:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: ben
   last_name: dezwart
   club: Frontrunners_Westshore
@@ -743,7 +743,7 @@ results_068:
   div: M2029
   div_place: '10'
 results_069:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: iain
   last_name: morrison
   age: '25'
@@ -753,7 +753,7 @@ results_069:
   div: M2029
   div_place: '11'
 results_070:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: robyn
   last_name: dicesare
   club: Comox_Valley_Roadrunners
@@ -764,7 +764,7 @@ results_070:
   div: F4049
   div_place: '1'
 results_071:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: valerie
   last_name: bell
   club: Prairie_Inn_Harriers
@@ -775,7 +775,7 @@ results_071:
   div: F4049
   div_place: '2'
 results_072:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: james
   last_name: strickland
   age: '45'
@@ -785,7 +785,7 @@ results_072:
   div: M4049
   div_place: '9'
 results_073:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jaime
   last_name: whaler
   age: '55'
@@ -795,7 +795,7 @@ results_073:
   div: F5059
   div_place: '3'
 results_074:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: lisa
   last_name: perry
   club: Comox_Valley_Road_Runners
@@ -806,7 +806,7 @@ results_074:
   div: F4049
   div_place: '3'
 results_075:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: karen
   last_name: sibley
   club: Comox_Valley_Road_Runners
@@ -817,7 +817,7 @@ results_075:
   div: F5059
   div_place: '4'
 results_076:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: tina
   last_name: hein
   age: '45'
@@ -827,7 +827,7 @@ results_076:
   div: F4049
   div_place: '4'
 results_077:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: cathie
   last_name: dias
   club: Victoria_Flatliners
@@ -838,7 +838,7 @@ results_077:
   div: F5059
   div_place: '5'
 results_078:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: ken
   last_name: armour
   age: '55'
@@ -848,7 +848,7 @@ results_078:
   div: M5059
   div_place: '8'
 results_079:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: jarrod
   last_name: rousseau
   age: '35'
@@ -858,7 +858,7 @@ results_079:
   div: M3039
   div_place: '14'
 results_080:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: vee
   last_name: dion
   club: Comox_Valley_Road_Runners
@@ -869,7 +869,7 @@ results_080:
   div: F3039
   div_place: '11'
 results_081:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: chris
   last_name: lamothe
   age: '35'
@@ -879,7 +879,7 @@ results_081:
   div: M3039
   div_place: '15'
 results_082:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: rachel
   last_name: moore
   club: Prairie_Inn_Harriers
@@ -890,7 +890,7 @@ results_082:
   div: F3039
   div_place: '12'
 results_083:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: louis
   last_name: nadeau
   age: '45'
@@ -900,7 +900,7 @@ results_083:
   div: M4049
   div_place: '10'
 results_084:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: mike
   last_name: simmons
   age: '35'
@@ -910,7 +910,7 @@ results_084:
   div: M3039
   div_place: '16'
 results_085:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: cam
   last_name: campbell
   age: '55'
@@ -920,7 +920,7 @@ results_085:
   div: M5059
   div_place: '9'
 results_086:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: colleen
   last_name: vanderheide
   club: Ceevacs_Road_Runners
@@ -931,7 +931,7 @@ results_086:
   div: F5059
   div_place: '6'
 results_087:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: leo
   last_name: rolfe
   club: Comox_Valley_Road_Runners
@@ -942,7 +942,7 @@ results_087:
   div: M5059
   div_place: '10'
 results_088:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: rosa
   last_name: mikaloff
   age: '35'
@@ -952,7 +952,7 @@ results_088:
   div: F3039
   div_place: '13'
 results_089:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: sue
   last_name: spencer
   age: '55'
@@ -962,7 +962,7 @@ results_089:
   div: F5059
   div_place: '7'
 results_090:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: kathleen
   last_name: birney
   club: Prairie_Inn_Harriers
@@ -973,7 +973,7 @@ results_090:
   div: F5059
   div_place: '8'
 results_091:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: wendy
   last_name: williams
   club: CeeVacs_Road_Runners
@@ -984,7 +984,7 @@ results_091:
   div: F4049
   div_place: '5'
 results_092:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: henry
   last_name: brilz
   age: '55'
@@ -994,7 +994,7 @@ results_092:
   div: M5059
   div_place: '11'
 results_093:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: debby
   last_name: funk
   age: '55'
@@ -1004,7 +1004,7 @@ results_093:
   div: F5059
   div_place: '9'
 results_094:
-  race: 11_tzouhalem
+  race: tzouhalem
   first_name: nancy
   last_name: chave
   age: '55'
@@ -1015,11 +1015,11 @@ results_094:
   div_place: '10'
 
 #
-# results for 11_westwood
+# results for westwood
 #
 
 results_095:
-  race: 11_westwood
+  race: westwood
   first_name: shawn
   last_name: nelson
   club: Frontrunners_Westshore
@@ -1030,18 +1030,18 @@ results_095:
   div: M2029
   div_place: '1'
 results_096:
-  race: 11_westwood
+  race: westwood
   first_name: stefan
   last_name: jakobsen
   club: RoC_and_Frontrunners
   age: '35'
   gender: '10'
   overall_place: '2'
-  gun_time: '6595'
+  gun_time: '6595' #1:49:55
   div: M3039
   div_place: '1'
 results_097:
-  race: 11_westwood
+  race: westwood
   first_name: andrew
   last_name: pape-salmon
   club: Prairie_Inn_Harriers
@@ -1052,7 +1052,7 @@ results_097:
   div: M4049
   div_place: '1'
 results_098:
-  race: 11_westwood
+  race: westwood
   first_name: travis
   last_name: pirozzini
   club: Westwood_Running_Club
@@ -1063,7 +1063,7 @@ results_098:
   div: M2029
   div_place: '2'
 results_099:
-  race: 11_westwood
+  race: westwood
   first_name: jeremy
   last_name: lawrence
   club: Prairie_Inn_Harriers
@@ -1074,7 +1074,7 @@ results_099:
   div: M3039
   div_place: '2'
 results_100:
-  race: 11_westwood
+  race: westwood
   first_name: jeremy
   last_name: clegg
   club: Westwood_Running_Club
@@ -1085,7 +1085,7 @@ results_100:
   div: M3039
   div_place: '3'
 results_101:
-  race: 11_westwood
+  race: westwood
   first_name: sean
   last_name: reilly
   club: Westwood_Running_Club
@@ -1096,7 +1096,7 @@ results_101:
   div: M3039
   div_place: '4'
 results_102:
-  race: 11_westwood
+  race: westwood
   first_name: mark
   last_name: carolan
   club: Westwood_Running_Club
@@ -1107,7 +1107,7 @@ results_102:
   div: M2029
   div_place: '3'
 results_103:
-  race: 11_westwood
+  race: westwood
   first_name: shawn
   last_name: boyd
   club: Runners_of_Compassion
@@ -1118,7 +1118,7 @@ results_103:
   div: M3039
   div_place: '5'
 results_104:
-  race: 11_westwood
+  race: westwood
   first_name: garth
   last_name: campbell
   club: Prairie_Inn_Harriers
@@ -1129,7 +1129,7 @@ results_104:
   div: M5059
   div_place: '1'
 results_105:
-  race: 11_westwood
+  race: westwood
   first_name: craig
   last_name: payne
   club: Prairie
@@ -1140,7 +1140,7 @@ results_105:
   div: M4049
   div_place: '2'
 results_106:
-  race: 11_westwood
+  race: westwood
   first_name: claire
   last_name: morgan
   club: Prairie_Inn_Harriers
@@ -1151,7 +1151,7 @@ results_106:
   div: F3039
   div_place: '1'
 results_107:
-  race: 11_westwood
+  race: westwood
   first_name: ben
   last_name: forsyth
   age: '35'
@@ -1161,7 +1161,7 @@ results_107:
   div: M3039
   div_place: '6'
 results_108:
-  race: 11_westwood
+  race: westwood
   first_name: gary
   last_name: duncan
   club: Prairie_Inn_Harriers
@@ -1172,7 +1172,7 @@ results_108:
   div: M5059
   div_place: '2'
 results_109:
-  race: 11_westwood
+  race: westwood
   first_name: dave
   last_name: harvey
   age: '35'
@@ -1182,7 +1182,7 @@ results_109:
   div: M3039
   div_place: '7'
 results_110:
-  race: 11_westwood
+  race: westwood
   first_name: mark
   last_name: bate
   age: '35'
@@ -1192,7 +1192,7 @@ results_110:
   div: M3039
   div_place: '8'
 results_111:
-  race: 11_westwood
+  race: westwood
   first_name: alex
   last_name: counsell
   club: Westwood_Running_Club
@@ -1203,7 +1203,7 @@ results_111:
   div: M2029
   div_place: '4'
 results_112:
-  race: 11_westwood
+  race: westwood
   first_name: kevin
   last_name: frisch
   age: '35'
@@ -1213,7 +1213,7 @@ results_112:
   div: M3039
   div_place: '9'
 results_113:
-  race: 11_westwood
+  race: westwood
   first_name: rafael
   last_name: albert
   club: Team_Lone_Wolf
@@ -1224,7 +1224,7 @@ results_113:
   div: M4049
   div_place: '3'
 results_114:
-  race: 11_westwood
+  race: westwood
   first_name: larry
   last_name: nylen
   club: Prairie_Inn_Harriers
@@ -1235,7 +1235,7 @@ results_114:
   div: M5059
   div_place: '3'
 results_115:
-  race: 11_westwood
+  race: westwood
   first_name: kaylee
   last_name: beales
   club: Frontrunners_Westshore
@@ -1246,7 +1246,7 @@ results_115:
   div: F2029
   div_place: '1'
 results_116:
-  race: 11_westwood
+  race: westwood
   first_name: antonia
   last_name: harvey
   age: '35'
@@ -1256,7 +1256,7 @@ results_116:
   div: F3039
   div_place: '2'
 results_117:
-  race: 11_westwood
+  race: westwood
   first_name: dominick
   last_name: nadeau
   club: Comox_Valley_Road_Runners
@@ -1267,7 +1267,7 @@ results_117:
   div: M0119
   div_place: '1'
 results_118:
-  race: 11_westwood
+  race: westwood
   first_name: ceri
   last_name: jakobsen
   club: RoC_and_Frontrunners
@@ -1278,7 +1278,7 @@ results_118:
   div: F2029
   div_place: '2'
 results_119:
-  race: 11_westwood
+  race: westwood
   first_name: richard
   last_name: bellizz
   club: Frontrunners_Westshore
@@ -1289,7 +1289,7 @@ results_119:
   div: M4049
   div_place: '4'
 results_120:
-  race: 11_westwood
+  race: westwood
   first_name: john
   last_name: ingram
   club: Comox_Valley_Road_Runners
@@ -1300,7 +1300,7 @@ results_120:
   div: M6099
   div_place: '1'
 results_121:
-  race: 11_westwood
+  race: westwood
   first_name: pete
   last_name: langelo
   club: Ceevacs_Road_Runners
@@ -1311,7 +1311,7 @@ results_121:
   div: M5059
   div_place: '4'
 results_122:
-  race: 11_westwood
+  race: westwood
   first_name: jim
   last_name: romnaik
   age: '35'
@@ -1321,7 +1321,7 @@ results_122:
   div: M3039
   div_place: '10'
 results_123:
-  race: 11_westwood
+  race: westwood
   first_name: normon
   last_name: thibault
   club: Frontrunners
@@ -1332,7 +1332,7 @@ results_123:
   div: M4049
   div_place: '5'
 results_124:
-  race: 11_westwood
+  race: westwood
   first_name: carey
   last_name: sather
   club: Steed_Cycle
@@ -1343,7 +1343,7 @@ results_124:
   div: F4049
   div_place: '1'
 results_125:
-  race: 11_westwood
+  race: westwood
   first_name: hagen
   last_name: kluge
   age: '25'
@@ -1353,7 +1353,7 @@ results_125:
   div: M2029
   div_place: '5'
 results_126:
-  race: 11_westwood
+  race: westwood
   first_name: p
   last_name: d
   club: A
@@ -1364,7 +1364,7 @@ results_126:
   div: M3039
   div_place: '11'
 results_127:
-  race: 11_westwood
+  race: westwood
   first_name: victoria
   last_name: boyd
   club: Runners_of_Compassion
@@ -1375,7 +1375,7 @@ results_127:
   div: F3039
   div_place: '3'
 results_128:
-  race: 11_westwood
+  race: westwood
   first_name: adam
   last_name: mcquaig
   club: Frontrunners_Victoria
@@ -1386,7 +1386,7 @@ results_128:
   div: M2029
   div_place: '6'
 results_129:
-  race: 11_westwood
+  race: westwood
   first_name: sean
   last_name: windrum
   club: Frontrunners_Westshore
@@ -1397,7 +1397,7 @@ results_129:
   div: M4049
   div_place: '6'
 results_130:
-  race: 11_westwood
+  race: westwood
   first_name: randy
   last_name: humble
   age: '45'
@@ -1407,7 +1407,7 @@ results_130:
   div: M4049
   div_place: '7'
 results_131:
-  race: 11_westwood
+  race: westwood
   first_name: franck
   last_name: germain
   age: '45'
@@ -1417,7 +1417,7 @@ results_131:
   div: M4049
   div_place: '8'
 results_132:
-  race: 11_westwood
+  race: westwood
   first_name: benjamin
   last_name: thompson
   age: '35'
@@ -1427,7 +1427,7 @@ results_132:
   div: M3039
   div_place: '12'
 results_133:
-  race: 11_westwood
+  race: westwood
   first_name: tami
   last_name: beales
   club: Westwood_Running_Club
@@ -1438,7 +1438,7 @@ results_133:
   div: F5059
   div_place: '1'
 results_134:
-  race: 11_westwood
+  race: westwood
   first_name: aviva
   last_name: carter
   club: Impossible2Possible
@@ -1449,7 +1449,7 @@ results_134:
   div: F3039
   div_place: '4'
 results_135:
-  race: 11_westwood
+  race: westwood
   first_name: rumon
   last_name: carter
   club: Impossible2Possible
@@ -1460,7 +1460,7 @@ results_135:
   div: M3039
   div_place: '13'
 results_136:
-  race: 11_westwood
+  race: westwood
   first_name: paula
   last_name: shoemaker
   age: '35'
@@ -1470,7 +1470,7 @@ results_136:
   div: F3039
   div_place: '5'
 results_137:
-  race: 11_westwood
+  race: westwood
   first_name: de
   last_name: orrell
   club: RoC_and_Frontrunners
@@ -1481,7 +1481,7 @@ results_137:
   div: F3039
   div_place: '6'
 results_138:
-  race: 11_westwood
+  race: westwood
   first_name: bre
   last_name: chandler
   club: Frontrunners_Westshore
@@ -1492,7 +1492,7 @@ results_138:
   div: F2029
   div_place: '3'
 results_139:
-  race: 11_westwood
+  race: westwood
   first_name: john
   last_name: durkin
   club: Westwood_Running_Club
@@ -1503,7 +1503,7 @@ results_139:
   div: M6099
   div_place: '2'
 results_140:
-  race: 11_westwood
+  race: westwood
   first_name: robin
   last_name: dutton
   club: Frontrunners
@@ -1514,7 +1514,7 @@ results_140:
   div: M3039
   div_place: '14'
 results_141:
-  race: 11_westwood
+  race: westwood
   first_name: shawn
   last_name: daniels
   age: '35'
@@ -1524,7 +1524,7 @@ results_141:
   div: F3039
   div_place: '7'
 results_142:
-  race: 11_westwood
+  race: westwood
   first_name: heidi
   last_name: machnee
   age: '25'
@@ -1534,7 +1534,7 @@ results_142:
   div: F2029
   div_place: '4'
 results_143:
-  race: 11_westwood
+  race: westwood
   first_name: lisa
   last_name: perry
   club: Comox_Valley_Road_Runners
@@ -1545,7 +1545,7 @@ results_143:
   div: F4049
   div_place: '2'
 results_144:
-  race: 11_westwood
+  race: westwood
   first_name: jaime
   last_name: whaler
   age: '55'
@@ -1555,7 +1555,7 @@ results_144:
   div: F5059
   div_place: '2'
 results_145:
-  race: 11_westwood
+  race: westwood
   first_name: jeanette
   last_name: carlson
   club: Frontrunners_Westshore
@@ -1566,7 +1566,7 @@ results_145:
   div: F4049
   div_place: '3'
 results_146:
-  race: 11_westwood
+  race: westwood
   first_name: frank
   last_name: wille
   age: '55'
@@ -1576,7 +1576,7 @@ results_146:
   div: M5059
   div_place: '5'
 results_147:
-  race: 11_westwood
+  race: westwood
   first_name: vee
   last_name: dion
   club: Comox_Valley_Road_Runners
@@ -1587,7 +1587,7 @@ results_147:
   div: F3039
   div_place: '8'
 results_148:
-  race: 11_westwood
+  race: westwood
   first_name: tina
   last_name: hein
   age: '45'
@@ -1597,7 +1597,7 @@ results_148:
   div: F4049
   div_place: '4'
 results_149:
-  race: 11_westwood
+  race: westwood
   first_name: cathie
   last_name: dias
   club: Victoria_Flatliners
@@ -1608,7 +1608,7 @@ results_149:
   div: F5059
   div_place: '3'
 results_150:
-  race: 11_westwood
+  race: westwood
   first_name: lisa
   last_name: hoffner
   age: '55'
@@ -1618,7 +1618,7 @@ results_150:
   div: F5059
   div_place: '4'
 results_151:
-  race: 11_westwood
+  race: westwood
   first_name: joanna
   last_name: carson
   age: '25'
@@ -1628,7 +1628,7 @@ results_151:
   div: F2029
   div_place: '5'
 results_152:
-  race: 11_westwood
+  race: westwood
   first_name: leo
   last_name: rolfe
   club: Comox_Valley_Road_Runners
@@ -1639,7 +1639,7 @@ results_152:
   div: M5059
   div_place: '6'
 results_153:
-  race: 11_westwood
+  race: westwood
   first_name: marilyn
   last_name: funk
   club: Runners_of_Compassion
@@ -1650,7 +1650,7 @@ results_153:
   div: F5059
   div_place: '5'
 results_154:
-  race: 11_westwood
+  race: westwood
   first_name: louis
   last_name: nadeau
   club: Comox_Valley-Road-Runners
@@ -1661,7 +1661,7 @@ results_154:
   div: M4049
   div_place: '9'
 results_155:
-  race: 11_westwood
+  race: westwood
   first_name: donna
   last_name: jones
   age: '45'
@@ -1671,7 +1671,7 @@ results_155:
   div: F4049
   div_place: '5'
 results_156:
-  race: 11_westwood
+  race: westwood
   first_name: jan
   last_name: moller
   club: Prairie_Inn_Harriers
@@ -1682,7 +1682,7 @@ results_156:
   div: M6099
   div_place: '3'
 results_157:
-  race: 11_westwood
+  race: westwood
   first_name: micki
   last_name: keenliside
   club: Apex_Runners
@@ -1693,7 +1693,7 @@ results_157:
   div: F3039
   div_place: '9'
 results_158:
-  race: 11_westwood
+  race: westwood
   first_name: anne
   last_name: heyes
   age: '45'
@@ -1703,7 +1703,7 @@ results_158:
   div: F4049
   div_place: '6'
 results_159:
-  race: 11_westwood
+  race: westwood
   first_name: sue
   last_name: spencer
   age: '45'
@@ -1713,7 +1713,7 @@ results_159:
   div: F4049
   div_place: '7'
 results_160:
-  race: 11_westwood
+  race: westwood
   first_name: arlene
   last_name: halwa
   club: River_Runners

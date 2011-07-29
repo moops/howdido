@@ -22,8 +22,8 @@ class Wava < ActiveRecord::Base
   end
   
   def self.find_for_previous_distance(age, gender, distance)
-      age_and_gender = 'age = :age and gender = :gender'
-      Wava.where(age_and_gender << ' and distance < :dist', {:age => age, :gender => gender, :dist => distance}).order('distance asc').last
+    age_and_gender = 'age = :age and gender = :gender'
+    Wava.where(age_and_gender << ' and distance < :dist', {:age => age, :gender => gender, :dist => distance}).order('distance asc').last
   end
   
   def self.list_for(distance)

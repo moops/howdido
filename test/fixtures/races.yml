@@ -22,7 +22,7 @@ stewart:
   distance: 15
   distance_unit: km
   
-11_tzouhalem:
+tzouhalem:
   race_on: 2011-05-08
   name: Gutbuster Trail Run 001
   location: Mt Tzouhalem, Duncan BC
@@ -30,7 +30,7 @@ stewart:
   distance: 12
   distance_unit: km
   
-11_westwood:
+westwood:
   race_on: 2011-05-29
   name: Gutbuster Trail Run 002
   location: Westwood Lake, Nanaimo BC

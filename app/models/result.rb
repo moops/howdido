@@ -80,6 +80,7 @@ class Result < ActiveRecord::Base
     else
       self.gender = Lookup.code_for('gender','o').id
     end
+    self.gender
   end
   
   def guess_age(div)
@@ -103,7 +104,6 @@ class Result < ActiveRecord::Base
     elsif div[/^[mMfF]-U[0-9]{2}$/]
       a = (div[3,2].to_i) - 1
     end
-    logger.info("guessed #{a} for div #{div}")
     self.age = a
   end
   
