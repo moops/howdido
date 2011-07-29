@@ -19,3 +19,6 @@ x 20110713 - update age of result when claiming a result as me
 x 20110713 - change edit race link to an icon
 x 20110713 - add form and model validation for races
 x 20110713 - add form_errors application helper method
+x 20110726 - add and edit races with non standard distances
+x 20110726 - calculate a wava factor for a non standard distance
+- 20110728 - fix unit tests
