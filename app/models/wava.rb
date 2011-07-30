@@ -16,17 +16,20 @@ class Wava < ActiveRecord::Base
     w
   end
   
+  def self.list_for(distance)
+    Wava.where('distance > :min and distance < :max', {:min => distance - 0.2, :max => distance + 0.2}).all
+  end
+  
+  private
+  
   def self.find_for_next_distance(age, gender, distance)
     age_and_gender = 'age = :age and gender = :gender'
     Wava.where(age_and_gender << ' and distance > :dist', {:age => age, :gender => gender, :dist => distance}).order('distance asc').first
   end
-  
+
   def self.find_for_previous_distance(age, gender, distance)
     age_and_gender = 'age = :age and gender = :gender'
     Wava.where(age_and_gender << ' and distance < :dist', {:age => age, :gender => gender, :dist => distance}).order('distance asc').last
   end
   
-  def self.list_for(distance)
-    Wava.where('distance > :min and distance < :max', {:min => distance - 0.2, :max => distance + 0.2}).all
-  end
 end
