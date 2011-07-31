@@ -1,7 +1,7 @@
 quinn:
   first_name: quinn
   last_name: lawrence
-  email: quinn
+  email: quinn@raceweb.ca
   # hashed from 'quinn_pass'
   password_hash: $2a$10$lerMXsbiT3Du5ovHHu5Y5eY0Pd8FlIgQKGAoFqKf57momjFgflipG
   password_salt: $2a$10$lerMXsbiT3Du5ovHHu5Y5e
@@ -13,7 +13,7 @@ quinn:
 adam:
   first_name: adam
   last_name: lawrence
-  email: adam
+  email: adam@raceweb.ca
   # hashed from 'adam_pass'
   password_hash: $2a$10$MuZ/FSYjDkIim0zFodiV1OjpgDRzKSpnHQtykmm.JQSVGq3JE7BJS
   password_salt: $2a$10$MuZ/FSYjDkIim0zFodiV1O
@@ -25,7 +25,7 @@ adam:
 bertrand:
   first_name: bertrand
   last_name: bozek
-  email: bertrand
+  email: bertrand@raceweb.ca
   # hashed from 'bertrand_pass'
   password_hash: $2a$10$lzFOAR.0Ztj1HBwvp.YblOvqnVi2aSJx4sJKVI5l.gmPeoqx3SJta
   password_salt: $2a$10$lzFOAR.0Ztj1HBwvp.YblO
@@ -37,7 +37,7 @@ bertrand:
 gary:
   first_name: gary
   last_name: duncan
-  email: gary
+  email: gary@raceweb.ca
   # hashed from 'gary_pass'
   password_hash: $2a$10$pUxncicY.4pl.xeYOCZ2NuMePPu2LfT6gw818JEUrQNFvFp13cKU2
   password_salt: $2a$10$pUxncicY.4pl.xeYOCZ2Nu

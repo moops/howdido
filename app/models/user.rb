@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
   # example: [{'name' => 'Esquimalt 8km' 'date' => 2009-07-16, 'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90, points => 650}, ...]
   def run_summaries(limit=25)
     summaries = Array.new
-    run = Lookup.code_for('race_type', 'run')
     for p in participations.me.run.limit(limit).all do
       summaries << run_summary(p.result)
     end
@@ -131,6 +130,8 @@ class User < ActiveRecord::Base
       nil
     end
   end
+  
+  private
   
   def encrypt_password
     if password.present?
