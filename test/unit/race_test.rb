@@ -40,4 +40,36 @@ class RaceTest < ActiveSupport::TestCase
     assert_equal 'carey sather', races(:westwood).winner('F4049',11).name
   end
   
+  test "distance description" do
+    r = Race.new({:distance => 42.1, :distance_unit => 'km'})
+    assert_equal 'marathon', r.distance_description, '42.1 is close enough to be a marathon'
+    
+    r = Race.new({:distance => 42.3, :distance_unit => 'km'})
+    assert_equal 'marathon', r.distance_description, '42.3 is close enough to be a marathon'
+    
+    r = Race.new({:distance => 26.2, :distance_unit => 'mi'})
+    assert_equal 'marathon', r.distance_description, '26 is close enough to be a marathon'
+    
+    r = Race.new({:distance => 42, :distance_unit => 'km'})
+    assert_equal '42.0 km', r.distance_description, '42 is not close enough to be a marathon'
+    
+    r = Race.new({:distance => 26, :distance_unit => 'mi'})
+    assert_equal '26.0 mi', r.distance_description, '26 is close enough to be a marathon'
+    
+    r = Race.new({:distance => 21, :distance_unit => 'km'})
+    assert_equal 'half marathon', r.distance_description, '21 is close enough to be a half marathon'
+    
+    r = Race.new({:distance => 21.2, :distance_unit => 'km'})
+    assert_equal 'half marathon', r.distance_description, '21.2 is close enough to be a half marathon'
+    
+    r = Race.new({:distance => 13.1, :distance_unit => 'mi'})
+    assert_equal 'half marathon', r.distance_description, '13.1 is close enough to be a half marathon'
+    
+    r = Race.new({:distance => 20.9, :distance_unit => 'km'})
+    assert_equal '20.9 km', r.distance_description, '20.9 is not close enough to be a half marathon'
+    
+    r = Race.new({:distance => 13, :distance_unit => 'mi'})
+    assert_equal '13.0 mi', r.distance_description, '13 is not close enough to be a half marathon'
+  end
+  
 end

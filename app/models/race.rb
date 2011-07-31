@@ -60,4 +60,16 @@ class Race < ActiveRecord::Base
     distance_unit == 'mi' ? (distance * 1.609344).round(2) : distance
   end
   
+  def distance_description
+    d = distance_in_km
+    if d and d >= 42.1 and d <= 42.3
+      desc = 'marathon'
+    elsif d and d >= 21 and d <= 21.2
+      desc = 'half marathon'
+    else
+      desc = "#{distance} #{distance_unit}"
+    end
+    desc
+  end
+  
 end

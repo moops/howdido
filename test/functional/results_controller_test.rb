@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ResultsControllerTest < ActionController::TestCase
   setup do
-    @result = results(:one)
+    @result = results(:results_010)
   end
 
   test "should get index" do
