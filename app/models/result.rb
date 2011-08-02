@@ -142,4 +142,10 @@ class Result < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
   
+  def claims_for_user(user)
+    return unless user and !user.participations.empty?
+    claims = participations.where(:user_id => user.id).all.collect { |p| p.type.description }
+    claims.join(' ')
+  end
+  
 end

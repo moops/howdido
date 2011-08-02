@@ -10,7 +10,7 @@
   <tr class="<%= cycle('normal', 'stripe') %>">
     <%= render(:partial => 'results/result_row', :locals => { :result => result }) %>
     <td><div id="claim_link_<%= result.id %>"><%= claim_result_link(result) %></div></td>
-    <td><div id="claims_<%= result.id %>"><%= result_claims(result) %></div></td>
+    <td><div id="claims_<%= result.id %>"><%= result.claims_for_user(current_user) %></div></td>
   </tr>
 <% end %>
 </table>

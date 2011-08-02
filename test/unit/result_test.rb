@@ -62,4 +62,13 @@ class ResultTest < ActiveSupport::TestCase
     #assert_equal ???, r.future_grade_with_same_time
   end
   
+  test "claims for user" do
+    r = Result.new
+    assert_nil r.claims_for_user(nil), 'user is nil'
+    
+    assert_nil r.claims_for_user(User.new), 'user has no participations'
+
+    assert_not_nil r.claims_for_user(users(:gary)), 'gary has participations'
+  end
+  
 end

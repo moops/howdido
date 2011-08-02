@@ -1,19 +1,10 @@
 class ResultsController < ApplicationController
-  # GET /results
-  # GET /results.xml
-  def index
-    @results = Result.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @results }
-    end
-  end
+  
+  load_and_authorize_resource
 
   # GET /results/1
   # GET /results/1.xml
   def show
-    @result = Result.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -160,6 +151,8 @@ class ResultsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
 
   def get_time(time_string)
     time = 0
