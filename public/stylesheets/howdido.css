@@ -28,12 +28,12 @@ ul { margin: 4px 0px; }
 #styleLinks { margin-right: 15px; float: left; }
 #user { float: left; } 
 #search form { margin: 2px; display: inline; }
+#user_session_form { display: inline; }
 #found_links { padding-bottom: 10px; }
 #copyright { width: 25%; float: right; text-align: right; }
 #notice { font-weight: bold; color: #930; text-align: center; padding: 10px 5px 10px 5px; }
 
 /* forms */
-.form { background: #f6f6f6; border: 1px solid #bbb; padding: 10px 5px 10px 5px; border-radius: 6px 6px; margin-bottom: 1em; }
 label {  text-align: right; float: left; vertical-align: top; width: 7em; margin-right: 1em; color: #666; clear: both; }
 label.inline { float: none; vertical-align: middle; }
 label.page { float: none; width: auto; color: #666; vertical-align: middle; }

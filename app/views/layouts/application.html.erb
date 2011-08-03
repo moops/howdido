@@ -40,7 +40,7 @@
     <div id="content">
       <% if flash[:notice] %>
         <script type='text/javascript'>
-          jQuery('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
+          $('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
         </script>
       <% end %>
       

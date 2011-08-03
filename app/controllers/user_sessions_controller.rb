@@ -15,14 +15,14 @@ class UserSessionsController < ApplicationController
       user.session.count= (user.session.count or 0) + 1
       user.session.save
       session[:user_session] = user.session.id
+      
+      go_to = session[:last_good_page] || user_path(user.to_param)
     else
       flash[:notice] = 'who are you talking about?'
-      session[:return_to] = root_url
+      go_to = session[:last_good_page] || root_url
     end
     
-    # where do we go after login?
-    session[:return_to] = user_path(user.id) unless session[:return_to]
-    redirect_to(session[:return_to])
+    redirect_to go_to
   end
   
   # logout

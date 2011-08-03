@@ -1,4 +1,4 @@
-<%= form_tag(user_sessions_path, :style => 'display:inline', :id => 'user_session_form') do %>
+<%= form_tag(user_sessions_path, :id => 'user_session_form') do %>
   <%= label_tag(:email, nil, :class => 'inline') %>
   <%= text_field_tag('email', '', :size => '15') %>
   <%= label_tag(:password, nil, :class => 'inline') %>
