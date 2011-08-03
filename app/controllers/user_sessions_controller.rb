@@ -17,6 +17,7 @@ class UserSessionsController < ApplicationController
       session[:user_session] = user.session.id
     else
       flash[:notice] = 'who are you talking about?'
+      session[:return_to] = root_url
     end
     
     # where do we go after login?

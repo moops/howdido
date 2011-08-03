@@ -6,12 +6,23 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
   
   test "should log in" do
-  #  @request.session[:return_to] = nil
-  #  assert_difference('UserSession.count') do
-  #    post :create, :user_session => @user_session.attributes
-  #  end
-
-  #  assert_redirected_to user_sessions_path(assigns(:participation))
+    @request.session[:return_to] = nil
+    @request.session[:user_session] = nil
+    post :create, {:email => 'adam@raceweb.ca', :password => 'adam_pass'}
+    assert_redirected_to user_path(users(:adam).to_param)
+    assert_not_nil session[:user_session]
+    
+    @request.session[:return_to] = nil
+    @request.session[:user_session] = nil
+    post :create, {:email => 'gary@raceweb.ca', :password => 'gary_pass'}, {:return_to => race_path(races(:westwood))}
+    assert_redirected_to race_path(races(:westwood))
+    assert_not_nil session[:user_session]
+    
+    @request.session[:return_to] = nil
+    @request.session[:user_session] = nil
+    post :create, {:email => 'adam@raceweb.ca', :password => 'bad_pass'}
+    assert_equal 'who are you talking about?', flash[:notice]
+  
   end
 
   test "should log out" do
