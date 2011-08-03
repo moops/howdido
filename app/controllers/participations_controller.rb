@@ -1,8 +1,9 @@
 class ParticipationsController < ApplicationController
 
+  load_and_authorize_resource
+  
   # GET /participations/new.js
   def new
-    @participation = Participation.new
     @participation.user = User.find(params[:user])
     @participation.result = Result.find(params[:result])
     @participation_types = Lookup.list_for('participation_type')
@@ -15,7 +16,6 @@ class ParticipationsController < ApplicationController
   # POST /participations.js
   # POST /participations.xml
   def create
-    @participation = Participation.new(params[:participation])
     
     if (Lookup.code_for('participation_type', 'me').id == @participation.type.id)
       # update the age of the result to the age of the user
@@ -47,11 +47,8 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1
   # DELETE /participations/1.xml
   def destroy
-    @participation = Participation.find(params[:id])
     @participation.destroy
     
-    logger.info("removing participation...")
-
     respond_to do |format|
       format.html { redirect_to(participations_url) }
       format.xml  { head :ok }
