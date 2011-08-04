@@ -21,8 +21,11 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
 
   test "should log out" do
-    delete :destroy, :id => @user_session.to_param, {:user_session => user_sessions(:gary).to_param}
+    s = user_sessions(:adam)
+    delete :destroy, {:id => s.to_param}, {:user_session => s.to_param}
     assert_redirected_to root_path, 'we went somewhere wierd'
-  #  assert_nil @request.session[:user_session], 'user session is still in the session hash'
+    assert_nil session[:user_session], 'user session is still in the session hash'
+    s = UserSession.find(s.id)
+    assert_not_nil s.logout_at
   end
 end
