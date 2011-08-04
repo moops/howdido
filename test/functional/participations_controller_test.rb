@@ -6,8 +6,15 @@ class ParticipationsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-  #  get :new
-  #  assert_response :success
+    xhr :get, :new, {:result => results(:results_010).to_param, :user => users(:adam).to_param}
+    #assert_response :success, 'not successfull'
+    #assert_not_nil assigns(:participation_types), '@participation_types not assigned'
+    #assert_equal 4, assigns(:participation_types).size, 'list of participation_types is wrong size'
+    assert_not_nil assigns(:participation), '@participation not assigned'
+    assert_not_nil assigns(:participation).user, '@participation.user not assigned'
+    #assert_equal 'adam', assigns(:participation).user.first_name, 'adam is not the user'
+    assert_not_nil assigns(:participation).result, '@participation.result not assigned'
+    #assert_equal 'shane', assigns(:participation).result.first_name, 'shane is not the result'
   end
 
   test "should create participation" do

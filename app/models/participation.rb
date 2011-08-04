@@ -7,10 +7,10 @@ class Participation < ActiveRecord::Base
   
   validates_presence_of :participation_type
   
-  scope :me, where("participation_type = 32")
-  scope :friend, where("participation_type = 33")
-  scope :rival, where("participation_type = 34")
-  scope :other, where("participation_type = 35")
+  scope :me, where("participation_type = 33")
+  scope :friend, where("participation_type = 34")
+  scope :rival, where("participation_type = 35")
+  scope :other, where("participation_type = 36")
   
   scope :run, joins(:result => :race).where("races.race_type = 3")
   

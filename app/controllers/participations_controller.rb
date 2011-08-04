@@ -7,6 +7,8 @@ class ParticipationsController < ApplicationController
     @participation.user = User.find(params[:user])
     @participation.result = Result.find(params[:result])
     @participation_types = Lookup.list_for('participation_type')
+    logger.info("user: #{@participation.user.inspect}")
+    logger.info("result: #{@participation.result.inspect}")
     respond_to do |format|
       format.js # new.js.erb
     end
