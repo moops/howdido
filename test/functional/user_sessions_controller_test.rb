@@ -13,11 +13,21 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_redirected_to race_path(races(:westwood))
     assert_not_nil session[:user_session]
   end
+  
+  test "increment login count" do
+    s = user_sessions(:gary)
+    assert_difference('s.count') do
+      post :create, {:email => 'gary@raceweb.ca', :password => 'gary_pass'}
+      s = UserSession.find(s.id)
+    end
+    assert_nil s.logout_at, 'logout_at not cleared on login'
+  end
     
   test "should not log in with bad password" do
     post :create, {:email => 'adam@raceweb.ca', :password => 'bad_pass'}
     assert_equal 'who are you talking about?', flash[:notice]
     assert_nil session[:user_session]
+    assert_redirected_to root_url
   end
 
   test "should log out" do
