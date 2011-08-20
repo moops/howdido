@@ -1,13 +1,14 @@
-Raphael.fn.speedometer = function(id,width,height){    
+Raphael.fn.speedometer = function(id,width,height,label){    
     //user accessible options
     var o = {
-        plateColor:"#555555", color1: "#ffffff", color2:  "#ffdd33", 
-        needleColor: "#ff6622",  needleHubColor: "#333333",
+        plateColor:"#999999", color1: "#ffffff", color2:  "#ff9933", 
+        needleColor: "#ff9933",  needleHubColor: "#333333",
         lightAngle:45, lightDistance:0.5,
         //start and endangles are a little buggy
         startNumber:0, endNumber:10, numNumbers:10, startAngle:-20, endAngle:200, 
         height:height, width:width,
-        rumbleMagnitude:1,rumble:false
+        rumbleMagnitude:1,rumble:false,
+				odometerText: label
     };
     //object scope options
     var h = width*0.5,
@@ -147,7 +148,7 @@ Raphael.fn.speedometer = function(id,width,height){
             display.attr({fill:"#000"});
             var numbers = [];
             
-            function displayNumber(x,white,value){
+            function displayNumber(x,white,value) {
                 var nextDigit; 
                 var number = paper.rect(displayX+x,displayY,digitWidth,displayHeight);
                 var numberText = paper.text(displayX+x+digitWidth*0.5,displayY+displayHeight*0.5,value);
@@ -197,21 +198,20 @@ Raphael.fn.speedometer = function(id,width,height){
                                     displayY+displayHeight-12*weight,
                                     4*weight);
             decimal.attr({fill:"#fff","stroke-width":4*weight,"stroke":"#000"});
+						
+						var text = paper.text(h,displayY + displayHeight + 20*weight,o.odometerText);
+            text.attr({"fill":o.color1,"font-size":30*weight});
 
-            return{
-                scrollTo:function(val){	
-                    val = Math.round(val*10)/10;
-										numbers[digitCount-1].value(Math.floor((val%10)/1));
-										numbers[digitCount-2].value(Math.floor((val%100)/10));
-										numbers[digitCount-3].value(Math.floor(val/100));
-										numbers[digitCount-4].value(Math.floor(val/1000));  
-                                   
+            return {
+                scrollTo:function(val) {	
+								    for (var i = 0; i < digitCount; i++) {
+											numbers[digitCount-(i+1)].value(Math.floor(val / (Math.pow(10, i)) % 10));
+										}         
                 }
             }
         }       
         odometer = display();
-        
-                
+           
         //-------- Needle and Needle Hub --------// 
         needleHubShadeColor = "#" + ((parseInt("0x"+o.needleHubColor.substr(1,6)) & 0xfefefe) >> 1).toString(16);
         needleHubHighlightColor ="#" + ( (parseInt("0x"+o.needleHubColor.substr(1,6)) & 0x7f7f7f) << 1).toString(16);

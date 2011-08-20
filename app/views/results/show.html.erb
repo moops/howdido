@@ -15,16 +15,20 @@
       femaleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
     <% end %>
   <% end %>
-  var futureAges = [];
+  var futureYears = [];
   for (var i=1; i<=(75-<%= @result.age %>); i++) {
+    futureYears.push(i);
+  }
+	var futureAges = [];
+  for (var i=<%= @result.age %>; i<=75; i++) {
     futureAges.push(i);
   }
 
-  jQuery(document).ready(function() {
+  $(document).ready(function() {
   
     //linear "where was i?" guage 
-    var paper = new Raphael(document.getElementById('winner_ratio'), 700, 44);
-    var container = paper.rect(2, 2, 696, 40);
+    var paper = new Raphael(document.getElementById('winner-ratio'), 688, 44);
+    var container = paper.rect(2, 2, 680, 40);
     container.attr({stroke: '#999', 'stroke-width': 4, 'stroke-linejoin': 'round'});
     
     var bar = paper.rect(4, 4, 250, 36);
@@ -32,61 +36,153 @@
     
     var ticks = paper.path("M88 4L88 10M175 4L175 15M263 4L263 10M350 4L350 20M438 4L438 10M525 4L525 15M613 4L613 10").attr({stroke: "#ddd"});
     
-    bar.animate({width: 650 * (oaWinnerTime / gunTime)}, 500, 'bounce');
-    var t = paper.text(100, 20, "you were at " + Math.round((oaWinnerTime / gunTime) * distance * 100) / 100 + " km").attr({fill: "#fff",'font-size': 16});
+    bar.animate({width: 676 * (oaWinnerTime / gunTime)}, 500, 'bounce');
+    var t = paper.text(150, 20, "you were at " + round((oaWinnerTime / gunTime) * distance, 100) + " km [" + round((oaWinnerTime / gunTime) * 100, 10) + "%]").attr({fill: "#fff",'font-size': 16});
     
-    jQuery("#winner_type").change(function( objEvent ) {
+    $("#winner-type").change(function( objEvent ) {
       var width;
       if (objEvent.target.value === 'oa') {
-        width = 650 * (oaWinnerTime / gunTime);
+        width = 676 * (oaWinnerTime / gunTime);
         dist = (oaWinnerTime / gunTime) * distance;
+				percent = round((oaWinnerTime / gunTime) * 100, 10);
       } else if (objEvent.target.value === 'div') {
-        width = 650 * (divWinnerTime / gunTime);
+        width = 676 * (divWinnerTime / gunTime);
         dist = (divWinnerTime / gunTime) * distance;
+				percent = round((divWinnerTime / gunTime) * 100, 10);
       } else if (objEvent.target.value === 'gender') {
-        width = 650 * (genderWinnerTime / gunTime);
+        width = 676 * (genderWinnerTime / gunTime);
         dist = (genderWinnerTime / gunTime) * distance;
+				percent = round((genderWinnerTime / gunTime) * 100, 10);
       }
       bar.animate({width: width}, 500, 'bounce');
-      t.attr({text: "you were at " + Math.round(dist * 100) / 100 + " km"});
+      t.attr({text: "you were at " + round(dist,100) + " km [" + percent + "%]"});
     });
     //end linear "where was i?" guage 
+		
+		//pie charts
+		var peopleBeat = new Highcharts.Chart({
+      chart: {
+         renderTo: 'people-i-beat',
+				 backgroundColor: '#fff',
+				 height: 200,
+         width: 200
+      },
+			credits: { enabled: false },
+			title: { 
+			   text: 'everyone',
+				 style: 'color: #333333' 
+			},
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.point.name +'</b>: '+ this.y;
+         }
+      },
+      plotOptions: {
+         pie: {
+				 	  allowPointSelect: true,
+            dataLabels: { enabled: false },
+						borderColor: "#aaa"
+         }
+      },
+      series: [{
+         type: 'pie',
+         name: 'all people',
+         data: [
+            ['people i beat',      <%= @result.people_beat_count %>],
+            ['people who beat me', <%= @result.finisher_count - @result.people_beat_count %>]
+         ]
+      }]
+   });
+	 
+	 var genderBeat = new Highcharts.Chart({
+      chart: {
+         renderTo: 'gender-i-beat',
+				 backgroundColor: '#fff',
+				 height: 200,
+				 width: 200
+      },
+      credits: { enabled: false },
+			title: { 
+			   text: '<%= Lookup.find(@result.gender).description %>',
+         style: 'color: #333333' 
+			},
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.point.name +'</b>: '+ this.y;
+         }
+      },
+			plotOptions: {
+         pie: {
+            allowPointSelect: true,
+            dataLabels: { enabled: false },
+            borderColor: "#aaa"
+         }
+      },
+      series: [{
+         type: 'pie',
+         name: '<%= Lookup.find(@result.gender).description %>',
+         data: [
+            ['<%= Lookup.find(@result.gender).description %> i beat',      <%= @result.people_beat_count('g') %>],
+            ['<%= Lookup.find(@result.gender).description %> who beat me', <%= @result.finisher_count('g') - @result.people_beat_count('g') %>]
+         ]
+      }]
+   });
+	 
+	 var divBeat = new Highcharts.Chart({
+      chart: {
+         renderTo: 'div-i-beat',
+				 backgroundColor: '#fff',
+         height: 200,
+         width: 200
+      },
+      credits: { enabled: false },
+			title: { 
+			   text: '<%= @result.div %>',
+         style: 'color: #333333' 
+			},
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.point.name +'</b>: '+ this.y;
+         }
+      },
+			plotOptions: {
+         pie: {
+            allowPointSelect: true,
+            dataLabels: { enabled: false },
+            borderColor: "#aaa"
+         }
+      },
+      series: [{
+         type: 'pie',
+         name: '<%= @result.div %>',
+         data: [
+            ['<%= @result.div %> i beat',      <%= @result.people_beat_count('d') %>],
+            ['<%= @result.div %> who beat me', <%= @result.finisher_count('d') - @result.people_beat_count('d') %>]
+         ]
+      }]
+   });
  
-    //spedometer guage
-    var my_guage = Raphael.fn.speedometer("my_guage",200,200);
-    my_guage.setOptions({
+    //spedometer guages
+    var gradeGuage = Raphael.fn.speedometer("grade-guage", 200, 200, "age grade");
+    gradeGuage.setOptions({
       startNumber:0,
-      endNumber:100,
-      numNumbers:10
+      endNumber:110,
+      numNumbers:11
     });
-    my_guage.accelerate(<%= number_with_precision(@result.grade, :precision => 2) %>);
-    my_guage.scrollTo(<%= number_with_precision(@result.grade, :precision => 2) %> * 10);
+    gradeGuage.accelerate(<%= number_with_precision(@result.grade, :precision => 1) %>);
+    gradeGuage.scrollTo(<%= number_with_precision(@result.grade, :precision => 1) %> * 10);
     
-    var winner_guage = Raphael.fn.speedometer("winner_guage",200,200);
-    winner_guage.setOptions({
+    var pointsGuage = Raphael.fn.speedometer("points-guage", 200, 200, "points");
+    pointsGuage.setOptions({
       startNumber:0,
-      endNumber:100,
-      numNumbers:10
+      endNumber:1100,
+      numNumbers:11
     });
-    winner_guage.accelerate(<%= number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %>);
-    winner_guage.scrollTo(<%= number_with_precision(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %> * 10);
-  
-    jQuery("#ageSlider").slider({
-      min: 8, 
-      max: 75,
-      value: <%= @result.age %>,
-      change: function(event, ui) {
-        jQuery("#age").val( ui.value );
-        my_guage.accelerate(maleWavaFactors[ui.value] / gunTime * 100);
-        my_guage.scrollTo(maleWavaFactors[ui.value] / gunTime * 100 * 10);
-        //winner_guage.accelerate(ui.value);
-        //winner_guage.scrollTo(ui.value * 10);
-      }
-    });
-    jQuery("#age").val($("#ageSlider").slider("value"));
-    //end spedometer guage
+    pointsGuage.accelerate(<%= number_with_precision(@result.points, :precision => 1) %>);
+    pointsGuage.scrollTo(<%= number_with_precision(@result.points, :precision => 1) %> * 10);
+    //end spedometer guages
     
-    //future box
+    //future-years box
     function future (years) {
       var gender = <%= @result.gender %>;
       var w;
@@ -97,64 +193,89 @@
       }
       var futureTime = seconds_to_time((w / <%= @result.grade %>) * 100);
       var futureGrade = round((w / <%= @result.gun_time %>) * 100, 100);
-      jQuery("#futureTime").html("<b>" + futureTime + "</b>");
-      jQuery("#futureGrade").html("<b>" + futureGrade + "</b>");
+      $("#futureTime").html("<b>" + futureTime + "</b>");
+      $("#futureGrade").html("<b>" + futureGrade + "</b>");
     }
     
-    jQuery("#future").change(function(event) {
+    $("#future-years").change(function(event) {
       future(parseInt(event.target.value));
     });
     future(1);
-    jQuery.each(futureAges, function(index, value) { 
-      jQuery('#future').append("<option>" + value + "</option>");
+    $.each(futureYears, function(index, value) { 
+      $('#future-years').append("<option>" + value + "</option>");
     });
-    //end future box
+		//end future-years box
+		
+		$("#future-ages").change(function(event) {
+      gradeGuage.accelerate(maleWavaFactors[event.target.value] / gunTime * 100);
+      gradeGuage.scrollTo(maleWavaFactors[event.target.value] / gunTime * 100 * 10);
+    });
+		$.each(futureAges, function(index, value) { 
+      $('#future-ages').append("<option>" + value + "</option>");
+    });
     
   });
     
 </script>
 
-<p>
-  name: <b><%= @result.name %></b><br/>
-  race: <b><%= @result.race.name %></b><br/>
-  time: <b><%= seconds_to_time(@result.gun_time) %></b><br/>
-  age grade: <b><%= number_with_precision(@result.grade, :precision => 2) %></b><br/>
-  points: <b><%= number_with_precision(@result.points, :precision => 2) %></b><br/>
-  <%=h @result.div %> winner finished in
-  <b><%= number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
-</p>
+<div class="box">
+  <div class="box_header">summary</div>
+  <div class="box_content">
+    name: <b><%= @result.name %></b><br/>
+	  race: <b><%= @result.race.name %></b><br/>
+	  time: <b><%= seconds_to_time(@result.gun_time) %></b><br/>
+	  age grade: <b><%= number_with_precision(@result.grade, :precision => 2) %></b><br/>
+	  points: <b><%= number_with_precision(@result.points, :precision => 2) %></b><br/>
+	  <%=h @result.div %> winner finished in
+	  <b><%= number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
+  </div>
+</div>
 
 <div class="box">
-  <div class="box_header">in <select id="future"></select> years</div>
+  <div class="box_header">people i beat</div>
   <div class="box_content">
-    <ul>
+    <div id="people-i-beat" class="left"></div>
+		<div id="gender-i-beat" class="left"></div>
+		<div id="div-i-beat" class="left"></div>
+		<div class="clear"></div>
+  </div>
+</div>
+
+
+
+<div class="box">
+  <div class="box_header">how will I do in the future?</div>
+  <div class="box_content">
+    in <select id="future-years"></select> years
+		<ul>
     <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
     <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
     </ul>
   </div>
 </div>
 
-where was I when the 
-  <select id="winner_type">
-    <option value="oa">overall winner</option>
-    <option value="gender">gender winner</option>
-    <option value="div"><%= @result.div %> winner</option>
-  </select> 
-finished?
-<div id="winner_ratio"></div>
+<div class="box">
+  <div class="box_header">where was I when...</div>
+  <div class="box_content">
+    where was I when the 
+	  <select id="winner-type">
+	    <option value="oa">overall winner</option>
+	    <option value="gender">gender winner</option>
+	    <option value="div"><%= @result.div %> winner</option>
+	  </select> 
+		finished?<p/>
+		<div id="winner-ratio"></div><p/>
+  </div>
+</div>
 
-<div id="my_guage" style="float:left;"></div>
-<div id="winner_guage" style="float:left;"></div>
-<div style="clear:both;"/>
-
-what if my age was:<input type="text" id="age" style="border:0; color:#f6931f; font-weight:bold;" /><br/>
-<div id="ageSlider"></div>
-what if my gender was:<br/>
-<input type="radio" name="gender" value="10" <%= @result.gender == 10 ? 'checked=\"true\"' : '' %>> male<br/>
-<input type="radio" name="gender" value="11" <%= @result.gender == 11 ? 'checked=\"true\"' : '' %>> female<br/>
-
-<div id="val"></div>
-
+<div class="box">
+  <div class="box_header">age grade</div>
+  <div class="box_content">
+		what if my age was: <select id="future-ages"></select><br/>
+		<div id="grade-guage" style="display:inline;"></div>
+		<div id="points-guage" style="display:inline;"></div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_result_path(@result) %> |
 <%= link_to 'Back', results_path %>

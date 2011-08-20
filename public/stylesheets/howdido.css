@@ -21,11 +21,7 @@ ul { margin: 4px 0px; }
 #header { margin-right: auto; margin-left: auto; width: 700px; }
 #user_session { margin-right: auto; margin-left: auto; width: 700px; }
 #content { margin-right: auto; margin-left: auto; margin-bottom: 10px; width: 700px; }
-#primary_panel { width: 73%; float: right; }
-#primary_panel_full { width: 100%; float: right; }
-#secondary_panel { width: 25%; float: left; }
 #footer { font-size: .9em; margin-right: auto; margin-left: auto; background: #fff; width: 690px; border: 1px solid #bbb; border-radius: 6px 6px; padding: 5px; }
-#styleLinks { margin-right: 15px; float: left; }
 #user { float: left; } 
 #search form { margin: 2px; display: inline; }
 #user_session_form { display: inline; }

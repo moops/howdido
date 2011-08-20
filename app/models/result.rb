@@ -124,6 +124,30 @@ class Result < ActiveRecord::Base
     Result.where(:race_id => race, :div => div).order(:overall_place).first
   end
   
+  def finisher_count(type = nil)
+    if (type == 'g')
+      race.results.where("gender = #{gender}").count
+    elsif(type == 'd')
+      race.results.where("div = '#{div}'").count
+    else
+      race.results.size
+    end
+  end
+  
+  def people_beat_count(type = nil)
+    if (type == 'g')
+      race.results.where("gender = #{gender} and overall_place > #{overall_place}").count
+    elsif (type == 'd')
+      race.results.where("div = '#{div}' and overall_place > #{overall_place}").count
+    else
+      race.results.where("overall_place > #{overall_place}").count
+    end
+  end
+  
+  def people_beat_percentage(type = nil)
+    people_beat_count(type).to_f / finisher_count(type) * 100
+  end
+  
   def future_time_for_same_grade(years = 1)
     if race.distance
       w = Wava.find_for(age + years, gender, race.distance_in_km)
