@@ -1,7 +1,9 @@
 /*
 *= require_self
+*= require_tree .
+*= require jquery-ui
+*= require jquery.tooltip
+*= require lavalamp
+*= require scaffold
 */
-@import "layout.css.scss";
-@import "races.css.scss";
-@import "results.css.scss";
 
