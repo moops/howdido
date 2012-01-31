@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.integer  "category"
     t.string   "code"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "result_id"
     t.integer  "participation_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "races", :force => true do |t|
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.integer  "race_type"
     t.float    "distance"
     t.string   "distance_unit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "results", :force => true do |t|
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.string   "bib"
     t.string   "div"
     t.integer  "div_place"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "user_sessions", :force => true do |t|
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.date     "born_on"
     t.string   "city"
     t.datetime "last_login_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "wavas", :force => true do |t|
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20110526193907) do
     t.integer  "gender"
     t.float    "distance"
     t.float    "factor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

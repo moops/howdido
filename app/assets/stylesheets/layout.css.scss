@@ -52,8 +52,8 @@ div.pagination span.disabled { padding: 2px 5px 2px 5px; margin-right: 2px; bord
 
 /* sorting header links */
 th .current { padding-right: 12px; background-repeat: no-repeat; background-position: right center; }
-th .asc { background-image: url(/images/up_arrow.gif); }
-th .desc { background-image: url(/images/down_arrow.gif); }
+th .asc { background-image: url(image-path('up_arrow.gif')); }
+th .desc { background-image: url(image-path('down_arrow.gif')); }
 
 div.links a { line-height: 140%; color: #3333ff; font-size: .9em; }
 div.links ul { list-style-type: circle; padding-left: 1em; margin-left: 1em; }
