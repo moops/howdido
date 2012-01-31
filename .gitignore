@@ -4,6 +4,8 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 *~
+.DS_Store
+
 vendor/gems/gems
 vendor/gems/specifications
 vendor/gems/doc
