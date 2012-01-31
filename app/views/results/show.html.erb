@@ -74,7 +74,7 @@
 			},
       tooltip: {
          formatter: function() {
-            return '<b>'+ this.point.name +'</b>: '+ this.y;
+            return  this.y;
          }
       },
       plotOptions: {
@@ -219,24 +219,40 @@
 </script>
 
 <div class="box">
-  <div class="box_header">summary</div>
-  <div class="box_content">
-    name: <b><%= @result.name %></b><br/>
-	  race: <b><%= @result.race.name %></b><br/>
-	  time: <b><%= seconds_to_time(@result.gun_time) %></b><br/>
-	  age grade: <b><%= number_with_precision(@result.grade, :precision => 2) %></b><br/>
-	  points: <b><%= number_with_precision(@result.points, :precision => 2) %></b><br/>
-	  <%=h @result.div %> winner finished in
-	  <b><%= number_to_percentage(@result.div_winner.gun_time.to_f / @result.gun_time * 100, :precision => 2) %></b> of my time.
+  <div class="box-header">
+  	summary
+		<div class="normal-label right"><%= link_to 'view all results', race_path(@result.race) %></div></div>
+  <div class="box-content">
+  	<table border="0" cellpadding="5" cellspacing="0">
+  		<tr>
+  			 <td><label>date</label></td>
+         <td><%= @result.race.race_on %></td>
+				 <td><label>race</label></td>
+				 <td><%= @result.race.display_name %></td>
+				 <td colspan="2">&nbsp;</td></tr>
+			<tr>
+         <td><label>name</label></td>
+         <td><%= @result.name %></td>
+         <td><label>time</label></td>
+         <td><%= seconds_to_time(@result.gun_time) %></td>
+				 <td colspan="2">&nbsp;</td></tr>
+			<tr>
+         <td><label>overall</label></td>
+         <td><%= @result.overall_place %> of <%= @result.finisher_count %></td>
+         <td><label><%= Lookup.find(@result.gender).description %></label></td>
+         <td>123 of <%= @result.finisher_count('g') %></td>
+				 <td><label><%= @result.div %></label></td>
+         <td><%= @result.div_place %> of <%= @result.finisher_count('d') %></td></tr>
+  	</table>
   </div>
 </div>
 
 <div class="box">
-  <div class="box_header">people i beat</div>
-  <div class="box_content">
-    <div id="people-i-beat" class="left"></div>
-		<div id="gender-i-beat" class="left"></div>
-		<div id="div-i-beat" class="left"></div>
+  <div class="box-header">people i beat</div>
+  <div class="box-content">
+    <div id="people-i-beat" class="left" style="border: 1px grey solid;"></div>
+		<div id="gender-i-beat" class="left" style="border: 1px grey solid;"></div>
+		<div id="div-i-beat" class="left" style="border: 1px grey solid;"></div>
 		<div class="clear"></div>
   </div>
 </div>
@@ -244,8 +260,8 @@
 
 
 <div class="box">
-  <div class="box_header">how will I do in the future?</div>
-  <div class="box_content">
+  <div class="box-header">how will I do in the future?</div>
+  <div class="box-content">
     in <select id="future-years"></select> years
 		<ul>
     <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
@@ -255,8 +271,8 @@
 </div>
 
 <div class="box">
-  <div class="box_header">where was I when...</div>
-  <div class="box_content">
+  <div class="box-header">where was I when...</div>
+  <div class="box-content">
     where was I when the 
 	  <select id="winner-type">
 	    <option value="oa">overall winner</option>
@@ -269,8 +285,8 @@
 </div>
 
 <div class="box">
-  <div class="box_header">age grade</div>
-  <div class="box_content">
+  <div class="box-header">age grade</div>
+  <div class="box-content">
 		what if my age was: <select id="future-ages"></select><br/>
 		<div id="grade-guage" style="display:inline;"></div>
 		<div id="points-guage" style="display:inline;"></div>
