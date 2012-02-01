@@ -1,6 +1,7 @@
 /*
 *= require jquery-ui
 *= require jquery.tooltip
+*= require bootstrap
 *= require lavalamp
 *= require_tree .
 */
