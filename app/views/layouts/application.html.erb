@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
-   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <title>how'd i do</title>
@@ -30,31 +29,37 @@
     <% end %>
     </div>
         
-    <ul id="lavaLamp">
+    <ul id="lavaLamp" class="span10">
         <li><%= link_to('races', races_path ) %></li>
         <li><%= link_to('users', users_path ) %></li>
     </ul>
     
-    <!-- main content -->
     
-    <div id="content">
-      <% if flash[:notice] %>
-        <script type='text/javascript'>
-          $('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
-        </script>
-      <% end %>
+	<div class="container">
+		<div class="row-fluid">
+			<!-- main content -->    
+            <div id="content" class="span10">
+            <% if flash[:notice] %>
+                <script type='text/javascript'>
+                    $('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
+                </script>
+            <% end %>
       
-      <%= yield %></div>
+            <%= yield %></div>
     
-    <!-- end main content -->
-    
-    <div id="footer">
-        <div id="copyright">
-            &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
-            all rights reserved<br>
-            email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a></div>
-        <div class="clear"></div>
-    </div>
+            <!-- end main content -->
+
+        </div> <!-- end row -->
+        
+        <footer>
+            <p>
+                &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
+                all rights reserved<br>
+                email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a>
+            </p>
+        </footer>
+        
+    </div> <!-- end container -->
 
 </body>
 </html>

@@ -3,6 +3,11 @@
 *= require jquery.tooltip
 *= require bootstrap
 *= require lavalamp
-*= require_tree .
+*= require races
+*= require results
+*= require_self
 */
 
+body {
+	padding: 20px;
+}
