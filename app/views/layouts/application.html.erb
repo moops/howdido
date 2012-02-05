@@ -21,20 +21,34 @@
     <div id="participation_form" style="display:none;"></div>
     <div id="notice" style="display:none;"><%= flash[:notice] %></div>
 	<div id="log-in-form" class="modal fade" style="display:none;"></div>
-
-    <div id="user_session">
-    <% if session[:user_session] %>
-      	<%= render(:partial => 'user_sessions/info') %>
-    <% else %>
-		<%= link_to('log in', new_user_session_path, :class => 'get') %>
-		<%= link_to('register', new_user_path, :class => 'get') %>	
-    <% end %>
-    </div>
-        
-    <ul id="lavaLamp" class="span10">
-        <li><%= link_to('races', races_path ) %></li>
-        <li><%= link_to('users', users_path ) %></li>
-    </ul>
+    
+    <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container-fluid">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">how'd i do?</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li class="active"><%= link_to('races', races_path ) %></li>
+                  <li><%= link_to('users', users_path ) %></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="navbar-text pull-right" id="user_session">
+                    <% if session[:user_session] %>
+                      	<%= render(:partial => 'user_sessions/info') %>
+                    <% else %>
+                		<%= link_to('log in', new_user_session_path, :class => 'get') %> |
+                		<%= link_to('register', new_user_path, :class => 'get') %>	
+                    <% end %>
+                </p>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
     
     
 	<div class="container">
