@@ -1,6 +1,13 @@
 class UserSessionsController < ApplicationController
   
   skip_after_filter :store_last_good_page
+  
+  # GET /user_sessions/new
+  def new
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+  end
 
   # login
   # POST /user_sessions.js

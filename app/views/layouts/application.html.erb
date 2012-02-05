@@ -20,12 +20,14 @@
     <div id="register_form" style="display:none;"></div>
     <div id="participation_form" style="display:none;"></div>
     <div id="notice" style="display:none;"><%= flash[:notice] %></div>
+	<div id="log-in-form" class="modal fade" style="display:none;"></div>
 
     <div id="user_session">
     <% if session[:user_session] %>
-      <%= render(:partial => 'user_sessions/info') %>
+      	<%= render(:partial => 'user_sessions/info') %>
     <% else %>
-      <%= render(:partial => 'user_sessions/form') %>
+		<%= link_to('log in', new_user_session_path, :class => 'get') %>
+		<%= link_to('register', new_user_path, :class => 'get') %>	
     <% end %>
     </div>
         

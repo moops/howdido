@@ -1,8 +1,15 @@
-<%= form_tag(user_sessions_path, :id => 'user-session-form', :class => 'form-inline') do %>
-  <%= label_tag(:email, nil, :class => 'inline') %>
-  <%= text_field_tag('email', '', :size => '15') %>
-  <%= label_tag(:password, nil, :class => 'inline') %>
-  <%= password_field_tag('password', '', :size => '15') %>
-  <%= submit_tag('sign in') %>
-  <%= link_to('register', new_user_path, :class => 'get') %>
+<%= form_tag(user_sessions_path, :id => 'user-session-form') do %>
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>log in here</h3>
+</div>
+<div class="modal-body">
+  	<%= label_tag(:email, nil, :class => 'inline') %>
+  	<%= text_field_tag('email', '', :size => '15') %>
+  	<%= label_tag(:password, nil, :class => 'inline') %>
+  	<%= password_field_tag('password', '', :size => '15') %>
+</div>
+<div class="modal-footer">
+    <%= submit_tag('log in', :class => 'btn btn-primary') %>
+</div>
 <% end %>
