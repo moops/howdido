@@ -1,36 +1,29 @@
-<h1>Listing races</h1>
-
-<%= form_tag(races_path, :method => 'get', :class => 'form-search') do %>
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
-  <%= search_field_tag(:search, params[:search], :size => 40, :class => 'search-query') %>
-  <%= submit_tag("Search", :name => nil) %>
-<% end %><p/>
+<h1><% params[:search].blank? ? 'found races' : 'recent races' %></h1>
 
 <table width="100%" class='table table-striped'>
-  <tr>
-    <th><%= sortable "name" %></th>
-    <th><%= sortable "location" %></th>
-    <th>distance</th>
-    <th><%= sortable "race_on" %></th>
-  </tr>
+    <tr>
+        <th><%= sortable "name" %></th>
+        <th><%= sortable "location" %></th>
+        <th>distance</th>
+        <th><%= sortable "race_on" %></th>
+    </tr>
 
-<% @races.each do |race| %>
-  <tr>
-    <td><%= link_to(race.name, race) %></td>
-    <td><%= race.location %></td>
-    <td><%= race.distance_description %></td>
-    <td><%= race.race_on %></td>
-    <% if can? :edit, race %>
-      <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race)) %></td>
+    <% @races.each do |race| %>
+    <tr>
+        <td><%= link_to(race.name, race) %></td>
+        <td><%= race.location %></td>
+        <td><%= race.distance_description %></td>
+        <td><%= race.race_on %></td>
+        <% if can? :edit, race %>
+        <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race)) %></td>
+        <% end %>
+    </tr>
     <% end %>
-  </tr>
-<% end %>
 </table>
 
 <%= paginate @races %>
 <br />
 
 <% if can? :create, @race %>
-  <%= link_to 'Add a race', new_race_path %>
+    <%= link_to 'Add a race', new_race_path %>
 <% end %>
