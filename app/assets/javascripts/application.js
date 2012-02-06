@@ -1,6 +1,21 @@
+//js in gems
 //= require jquery
 //= require jquery_ujs
+
+//js in lib/assets
+//= require jquery-ui
+//= require jquery.easing
+//= require jquery.tooltip
+//= require jquery.validate
+//= require jquery.visualize
+//= require excanvas
+//= require raphael
+//= require gauge
+//= require highcharts
+//= require gray
 //= require bootstrap
+
+//js in app/assets
 //= require_self
 //= require_tree .
 
@@ -118,7 +133,6 @@ jQuery(document).ready(function() {
 
   ajaxLinks(); 
       
-  jQuery("#lavaLamp").lavaLamp({ fx: "easeOutBack", speed: 700});
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
