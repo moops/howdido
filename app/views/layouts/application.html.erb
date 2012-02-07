@@ -17,9 +17,8 @@
 <body>
   
     <!-- hidden elements -->
-    <div id="register_form" style="display:none;"></div>
+    <div id="register-form" class="modal fade" style="display:none;"></div>
     <div id="participation_form" style="display:none;"></div>
-    <div id="notice" style="display:none;"><%= flash[:notice] %></div>
 	<div id="log-in-form" class="modal fade" style="display:none;"></div>
     
     <div class="navbar navbar-fixed-top">
@@ -30,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="#">how'd i do?</a>
+                <%= link_to("how'd i do?", root_path, :class => 'brand') %>
                 
                 <div class="nav-collapse">
                     <ul class="nav">
@@ -61,10 +60,13 @@
 		<div class="row-fluid">
 			<!-- main content -->    
             <div id="content" class="span10">
-            <% if flash[:notice] %>
-                <script type='text/javascript'>
-                    $('#notice').dialog({ autoOpen: true, width: 500, title: 'read this', modal: true, show: 'fade' });
-                </script>
+            <%= notice %>
+            <% if flash[:warning] %>
+                <div id="warning" class="alert alert-block alert-warning">
+                    <a class="close">×</a>
+                    <h4 class="alert-heading">warning:</h4>
+                    <%= flash[:warning] %>
+                </div>
             <% end %>
       
             <%= yield %></div>

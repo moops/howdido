@@ -43,4 +43,16 @@ module ApplicationHelper
     html.html_safe
   end
   
+  def notice
+    html = ''
+    if flash[:notice]
+        html << '<div id="notice" class="alert alert-block alert-success">'
+        html << '   <a class="close">×</a>'
+        html << '   <h4 class="alert-heading">note:</h4>'
+        html <<     flash[:notice]
+        html << '</div>'
+    end
+    html
+  end
+  
 end

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   
   def store_last_good_page
     session[:last_good_page] = request.fullpath
+    flash[:notice] = "last good page: #{session[:last_good_page]}"
   end
   
   private

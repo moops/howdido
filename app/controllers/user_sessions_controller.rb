@@ -44,6 +44,6 @@ class UserSessionsController < ApplicationController
     end
     
     reset_session 
-    redirect_to :root
+    redirect_to :root, :notice => "succesfully logged out."
   end
 end

@@ -5,7 +5,7 @@
 jQuery('#log-in-form')
     .html("<%= escape_javascript(render(:partial => 'form')) %>");
 
-	jQuery('#log-in-form').modal();
+jQuery('#log-in-form').modal();
 
 validate('user-session-form', {
     'email': "required",
