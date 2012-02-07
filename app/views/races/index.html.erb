@@ -6,6 +6,7 @@
         <th><%= sortable "location" %></th>
         <th>distance</th>
         <th><%= sortable "race_on" %></th>
+        <th>&nbsp;</th>
     </tr>
 
     <% @races.each do |race| %>
@@ -15,7 +16,9 @@
         <td><%= race.distance_description %></td>
         <td><%= race.race_on %></td>
         <% if can? :edit, race %>
-        <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race)) %></td>
+            <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race)) %></td>
+        <% else %>
+            <td>&nbsp;</td>
         <% end %>
     </tr>
     <% end %>
@@ -25,5 +28,5 @@
 <br />
 
 <% if can? :create, @race %>
-    <%= link_to 'Add a race', new_race_path %>
+    <%= link_to 'Add a race', new_race_path, :class => 'btn btn-large btn-primary' %>
 <% end %>

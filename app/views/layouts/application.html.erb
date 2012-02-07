@@ -21,6 +21,7 @@
     <div id="participation_form" style="display:none;"></div>
 	<div id="log-in-form" class="modal fade" style="display:none;"></div>
     
+    <!-- header -->
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -55,11 +56,10 @@
         </div>
     </div>
     
-    
-	<div class="container">
-		<div class="row-fluid">
-			<!-- main content -->    
-            <div id="content" class="span10">
+    <!-- main content -->
+	<div id="content" class="container">
+		<div class="row-fluid">   
+            <div class="span10">
             <%= notice %>
             <% if flash[:warning] %>
                 <div id="warning" class="alert alert-block alert-warning">
@@ -71,19 +71,16 @@
       
             <%= yield %></div>
     
-            <!-- end main content -->
-
         </div> <!-- end row -->
-        
-        <footer>
-            <p>
-                &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
-                all rights reserved<br>
-                email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a>
-            </p>
-        </footer>
-        
-    </div> <!-- end container -->
+    </div> <!-- end content -->
+    
+    <footer class="span10">
+        <p>
+            &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
+            all rights reserved<br>
+            email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a>
+        </p>
+    </footer>
 
 </body>
 </html>

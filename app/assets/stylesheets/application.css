@@ -17,3 +17,9 @@ body {
 .modal > form {
 	margin-bottom: 0px;
 }
+
+footer {
+	margin-top: 20px;
+	border-top: 1px solid #eee;
+	text-align: right;
+}

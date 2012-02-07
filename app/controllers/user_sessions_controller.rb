@@ -25,10 +25,11 @@ class UserSessionsController < ApplicationController
       
       go_to = session[:last_good_page] || user_path(user.to_param)
     else
-      flash[:notice] = 'who are you talking about?'
+      flash[:warning] = 'who are you talking about?'
       go_to = session[:last_good_page] || root_url
     end
     
+    flash[:notice] = "logged in as #{user.name}"
     redirect_to go_to
   end
   
