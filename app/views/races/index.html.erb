@@ -1,3 +1,6 @@
+<!-- hidden new race form -->
+<div id="race-form" class="modal fade" style="display:none;"></div>
+
 <h1><% params[:search].blank? ? 'found races' : 'recent races' %></h1>
 
 <table width="100%" class='table table-striped'>
@@ -16,7 +19,7 @@
         <td><%= race.distance_description %></td>
         <td><%= race.race_on %></td>
         <% if can? :edit, race %>
-            <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race)) %></td>
+            <td><%= link_to(image_tag('edit.png', :size => '20x20', :title => 'edit ' << race.name), edit_race_path(race), :class => 'get') %></td>
         <% else %>
             <td>&nbsp;</td>
         <% end %>
@@ -28,5 +31,5 @@
 <br />
 
 <% if can? :create, @race %>
-    <%= link_to 'Add a race', new_race_path, :class => 'btn btn-large btn-primary' %>
+    <%= link_to 'add a new race', new_race_path, :class => 'get btn btn-large btn-primary' %>
 <% end %>

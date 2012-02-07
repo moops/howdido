@@ -1,38 +1,21 @@
-<%= form_for(@race) do |f| %>
-  <%= form_errors(@race.errors) %>
-  <fieldset>   
-    <ol>   
-    <li><%= f.label :race_on %><%= f.text_field :race_on, :class => 'calendar' %></li>
-    <li><%= f.label :name %><%= f.text_field :name %></li>
-    <li><%= f.label :location %><%= f.text_field :location %></li>
-    <li><%= f.label :race_type %><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></li>
-    <li><%= f.label :distance %><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.code ] }, { :include_blank => true }) %>
-    <span><%= text_field_tag :other_distance %> <%= select_tag :other_distance_unit, "<option value=\"km\">kilometers</option><option value=\"mi\">miles</option>".html_safe %></span></li>
-    </ol>
-  </fieldset>
-
-  <fieldset class="submit">
-    <%= f.submit %>
-  </fieldset>
+<%= form_for(@race, {:html => {:class => 'form-horizontal'}}) do |f| %>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>new race</h3>
+    </div>
+    <div class="modal-body">
+        <%= form_errors(@race.errors) %>
+        <div class='control-group'>   
+            <%= f.label :race_on %><div class='controls'><%= f.text_field :race_on, :class => 'calendar' %></div>
+            <%= f.label :name %><div class='controls'><%= f.text_field :name %></div>
+            <%= f.label :location %><div class='controls'><%= f.text_field :location %></div>
+            <%= f.label :race_type %><div class='controls'><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></div>
+            <%= f.label :distance %><div class='controls'><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.code ] }, { :include_blank => true }) %></div>
+                    <span><%= text_field_tag :other_distance %> <%= select_tag :other_distance_unit, "<option value=\"km\">kilometers</option><option value=\"mi\">miles</option>".html_safe %></span>
+        </div>
+    </div> <!-- end modal-body -->
+    <div class="modal-footer">
+        <%= f.submit('add race', :class => 'btn btn-primary') %>
+    </div>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
-  
-  $(document).ready(function() {
-    
-    validate('<%= @race.id ? 'edit_race' : 'new_race' %>', {
-      'race[name]': "required",
-      'race[race_on]': "required"
-    });
-      
-    $('#other_distance').parent().hide();
-    $('select#race_distance').change(function() {
-      var s = $('select#race_distance option:selected').text();
-      if (s === 'other') {
-        $('#other_distance').parent().show();
-      } else {
-        $('#other_distance').parent().hide();
-      }
-    });
-  });
-</script>

@@ -30,15 +30,20 @@ class RacesController < ApplicationController
   # GET /races/new
   # GET /races/new.xml
   def new
-  
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @race }
+      format.js { render :layout => false }
     end
   end
 
   # GET /races/1/edit
   def edit
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @race }
+      format.js { render :layout => false }
+    end
   end
 
   # POST /races

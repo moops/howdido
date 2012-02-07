@@ -1,26 +1,22 @@
-
+<%= form_for(@user, {:html => {:class => 'form-horizontal'}}) do |f| %>
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
         <h3>register</h3>
     </div>
     <div class="modal-body">
-        <%= form_for(@user, {:html => {:class => 'form-horizontal'}}) do |f| %>
-            <%= form_errors(@user.errors) %>
+        <%= form_errors(@user.errors) %>
         <div class='control-group'>
-
-                <%= f.label(:first_name) %><div class="controls"><%= f.text_field :first_name %></div>
-                <%= f.label(:last_name) %><div class="controls"><%= f.text_field :last_name %></div>
-                <%= f.label(:email) %><div class="controls"><%= f.text_field :email %></div>
-                <%= f.label(:gender) %><div class="controls"><%= f.select(:gender, Lookup.list_for('gender').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></div>
-                <%= f.label(:city) %><div class="controls"><%= f.text_field :city %></div>
-                <%= f.label(:born_on) %><div class="controls"><%= f.text_field :born_on, :class => 'calendar' %></div>
-                <%= f.label(:password) %><div class="controls"><%= f.password_field :password %></div>
-                <%= f.label(:password_confirmation) %><div class="controls"><%= f.password_field :password_confirmation %></div>
-
+            <%= f.label(:first_name) %><div class="controls"><%= f.text_field :first_name %></div>
+            <%= f.label(:last_name) %><div class="controls"><%= f.text_field :last_name %></div>
+            <%= f.label(:email) %><div class="controls"><%= f.text_field :email %></div>
+            <%= f.label(:gender) %><div class="controls"><%= f.select(:gender, Lookup.list_for('gender').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></div>
+            <%= f.label(:city) %><div class="controls"><%= f.text_field :city %></div>
+            <%= f.label(:born_on) %><div class="controls"><%= f.text_field :born_on, :class => 'calendar' %></div>
+            <%= f.label(:password) %><div class="controls"><%= f.password_field :password %></div>
+            <%= f.label(:password_confirmation) %><div class="controls"><%= f.password_field :password_confirmation %></div>
         </div>
-<%= f.submit('register', :class => 'btn btn-primary') %>        
-<% end %>
     </div>
     <div class="modal-footer">
-        
+        <%= f.submit('register', :class => 'btn btn-primary') %>  
     </div>
+<% end %>
