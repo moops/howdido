@@ -31,5 +31,8 @@
 <br />
 
 <% if can? :create, @race %>
-    <%= link_to 'add a new race', new_race_path, :class => 'get btn btn-large btn-primary' %>
+    <%= link_to(new_race_path, :class => 'get btn btn-large btn-primary') do %>
+        <i class="icon-plus icon-white"></i>
+        add a new race
+    <% end %>
 <% end %>
