@@ -16,3 +16,8 @@ body {
 .modal > form {
 	margin-bottom: 0px;
 }
+
+/* override bottstrap height for button dropdowns in a table */
+td .btn-group .btn {
+	line-height: 13px;
+}

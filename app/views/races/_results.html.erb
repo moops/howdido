@@ -1,4 +1,5 @@
-<table width="100%" cellpadding="4" cellspacing="0">
+<table class="table table-striped table-condensed" width="100%">
+    <thead>
     <tr>
         <th><%= sortable('last_name', 'name', true) %></th>
         <th><%= sortable('overall_place', 'rank', true) %></th>
@@ -6,12 +7,14 @@
         <th><%= sortable('points', 'points', true) %></th>
         <th><%= sortable('grade', 'grade', true) %></th>
         <th colspan="2">&nbsp;</th></tr>
+    </thead>
+    <tbody>
 <% @results.each do |result| %>
     <tr class="<%= cycle('normal', 'stripe') %>">
         <%= render(:partial => 'results/result_row', :locals => { :result => result }) %>
         <td>
             <div class="btn-group">
-                <a class="btn" href="#">&nbsp;</a>
+                <a class="btn" href="#">...</a>
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     <span class="caret"></span>
                 </a>
@@ -28,6 +31,7 @@
         </td>
         <td><div id="claims_<%= result.id %>"><%= result.claims_for_user(current_user) %></div></td>
     </tr>
+    </tbody>
 <% end %>
 </table>
 <%= paginate @results %>
