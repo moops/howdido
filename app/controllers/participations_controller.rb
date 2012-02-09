@@ -7,8 +7,6 @@ class ParticipationsController < ApplicationController
     @participation.user = User.find(params[:user])
     @participation.result = Result.find(params[:result])
     @participation_types = Lookup.list_for('participation_type')
-    logger.info("user: #{@participation.user.inspect}")
-    logger.info("result: #{@participation.result.inspect}")
     respond_to do |format|
       format.js # new.js.erb
     end
@@ -18,8 +16,6 @@ class ParticipationsController < ApplicationController
   # POST /participations.js
   # POST /participations.xml
   def create
-    
-    logger.info("form_authenticity_token = #{form_authenticity_token}")
     
     if (Lookup.code_for('participation_type', 'me').id == @participation.type.id)
       # update the age of the result to the age of the user

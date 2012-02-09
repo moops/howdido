@@ -1,3 +1,7 @@
+<%= form_tag(participations_path, :remote => true, :id => 'claim-result-form') do |f| %>
+  <%= hidden_field_tag(:user, :value => current_user) %>
+<% end %>
+
 <table class="table table-striped table-condensed" width="100%">
     <thead>
     <tr>
@@ -8,8 +12,7 @@
         <th><%= sortable('grade', 'grade', true) %></th>
         <th colspan="2">&nbsp;</th></tr>
     </thead>
-    <tbody>
-<% @results.each do |result| %>
+    <% @results.each do |result| %>
     <tr class="<%= cycle('normal', 'stripe') %>">
         <%= render(:partial => 'results/result_row', :locals => { :result => result }) %>
         <td>
@@ -19,10 +22,9 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <%= link_to('this is me', participations_path(:user => current_user, :result => result, :type => 'me'), :class => 'post') %>
-                    <%= link_to('this is a friend', participations_path(:user => current_user, :result => result, :type => 'fr'), :class => 'post') %>
-                    <%= link_to('this is my rival', participations_path(:user => current_user, :result => result, :type => 'ri'), :class => 'post') %>
-                    <%= link_to('this is a teammate', participations_path(:user => current_user, :result => result, :type => 'tm'), :class => 'post') %>
+                    <% Lookup.list_for('participation_type').each do |ty| %>
+                        <%= link_to("this is #{ty.description}", '#', :class => 'claim-result-link', 'data-type' => ty.id, 'data-result' => result.id) %>
+                    <% end %>
                 </ul>
             </div>
             <!--
@@ -31,7 +33,17 @@
         </td>
         <td><div id="claims_<%= result.id %>"><%= result.claims_for_user(current_user) %></div></td>
     </tr>
-    </tbody>
-<% end %>
+    
+    <% end %>
 </table>
 <%= paginate @results %>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        //$("#claim-result-link").unbind('click', false);
+        $(".claim-result-link").click(function() {
+            alert('claim result link clicked. submit form with result: ' + $(this).attr('data-result') + ' and type: ' + $(this).attr('data-type'));
+            return false;
+        })
+    });
+</script>

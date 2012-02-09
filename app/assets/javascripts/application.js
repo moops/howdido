@@ -126,7 +126,7 @@ jQuery(document).ready(function() {
   jQuery(document).ajaxSend(function(event, request, settings) {
     if (typeof(window.AUTH_TOKEN) == "undefined") return;
     if (settings.type == 'GET' || settings.type == 'get') return;
-
+alert('adding ' + encodeURIComponent(window.AUTH_TOKEN) + ' to settings.data')
     settings.data = settings.data || "";
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
   });
