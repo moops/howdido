@@ -19,6 +19,8 @@ class ParticipationsController < ApplicationController
   # POST /participations.xml
   def create
     
+    logger.info("form_authenticity_token = #{form_authenticity_token}")
+    
     if (Lookup.code_for('participation_type', 'me').id == @participation.type.id)
       # update the age of the result to the age of the user
       @participation.result.age = @participation.user.age
@@ -40,6 +42,7 @@ class ParticipationsController < ApplicationController
         format.html { redirect_to(race_path(@participation.result.race), :notice => 'result has been claimed.') }
         format.xml  { render :xml => @participation, :status => :created, :location => @participation }
       else
+        format.js   { logger.info("did not create #{@participation} with JS") }
         format.html { render :action => "new" }
         format.xml  { render :xml => @participation.errors, :status => :unprocessable_entity }
       end

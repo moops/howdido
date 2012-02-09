@@ -19,10 +19,10 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <%= link_to('this is me', new_participation_path(:user => current_user.id, :result => result, :type => 'me'), :class => 'get') %>
-                    <%= link_to('this is a friend', new_participation_path(:user => current_user.id, :result => result, :type => 'fr'), :class => 'get') %>
-                    <%= link_to('this is my rival', new_participation_path(:user => current_user.id, :result => result, :type => 'ri'), :class => 'get') %>
-                    <%= link_to('this is a teammate', new_participation_path(:user => current_user.id, :result => result, :type => 'tm'), :class => 'get') %>
+                    <%= link_to('this is me', participations_path(:user => current_user, :result => result, :type => 'me'), :class => 'post') %>
+                    <%= link_to('this is a friend', participations_path(:user => current_user, :result => result, :type => 'fr'), :class => 'post') %>
+                    <%= link_to('this is my rival', participations_path(:user => current_user, :result => result, :type => 'ri'), :class => 'post') %>
+                    <%= link_to('this is a teammate', participations_path(:user => current_user, :result => result, :type => 'tm'), :class => 'post') %>
                 </ul>
             </div>
             <!--
