@@ -21,3 +21,29 @@ body {
 td .btn-group .btn {
 	line-height: 13px;
 }
+
+.panel-border {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#eee),  color-stop(0.75,#fff));
+	padding: 5px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.panel-border h3 {
+	background: #fff;
+	padding: 10px;
+	border: 1px solid #eee;
+	-webkit-border-radius: 6px 6px 0 0 ;
+	-moz-border-radius: 6px 6px 0 0 ;
+	border-radius: 6px 6px 0 0 ;
+}
+
+.panel-content {
+	background: #fff;
+	padding: 15px;
+	border: 1px solid #eee;
+	-webkit-border-radius: 0 0 6px 6px;
+	-moz-border-radius: 0 0 6px 6px;
+	border-radius: 0 0 6px 6px;
+}

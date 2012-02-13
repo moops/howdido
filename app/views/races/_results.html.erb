@@ -1,7 +1,17 @@
-<%= form_tag(participations_path, :remote => true, :id => 'claim-result-form') do |f| %>
-    <div id="test">
-        <%= text_field_tag(:user, :value => current_user) %>
-    </div>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $(".claim-result-link").click(function(event) {
+            $('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-type') + '"/>'));
+            $('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-result') + '"/>'));
+            $('#claim-result-form').submit();
+            //alert('claim result link clicked. submit form with result: ' + $(this).attr('data-result') + ' and type: ' + $(this).attr('data-type'));
+            event.preventDefault();
+        })
+    });
+</script>
+
+<%= form_tag(participations_path, :id => 'claim-result-form') do |f| %>
+    <%= hidden_field_tag(:user, :value => current_user) %>
 <% end %>
 
 <table class="table table-striped table-condensed" width="100%">
@@ -40,18 +50,3 @@
 </table>
 <%= paginate @results %>
 
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-        //$("#claim-result-link").unbind('click', false);
-        $(".claim-result-link").click(function() {
-            
-            var n = $('<input type=text name=type value=fuck off>');
-            n.appendTo($('test'));
-            
-            //$('test').appendTo($('<input name=type value=' + $(this).attr('data-type') + '>'));
-            //$('test').appendTo($('<input name=result value=' + $(this).attr('data-result') + '>'));
-            //$('claim-result-form').submit();
-            alert('claim result link clicked. submit form with result: ' + $(this).attr('data-result') + ' and type: ' + $(this).attr('data-type'));
-        })
-    });
-</script>

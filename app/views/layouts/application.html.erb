@@ -60,16 +60,17 @@
 	<div id="content" class="container">
 		<div class="row-fluid">   
             <div class="span10">
-            <%= notice %>
-            <% if flash[:warning] %>
-                <div id="warning" class="alert alert-block alert-warning">
-                    <a class="close">×</a>
-                    <h4 class="alert-heading">warning:</h4>
-                    <%= flash[:warning] %>
-                </div>
-            <% end %>
+                <%= notice %>
+                <% if flash[:warning] %>
+                    <div id="warning" class="alert alert-block alert-warning">
+                        <a class="close">×</a>
+                        <h4 class="alert-heading">warning:</h4>
+                        <%= flash[:warning] %>
+                    </div>
+                <% end %>
       
-            <%= yield %></div>
+                <%= yield %>
+            </div>
     
         </div> <!-- end row -->
         
