@@ -5,6 +5,8 @@ class Participation < ActiveRecord::Base
   
   belongs_to :type, :class_name => 'Lookup', :foreign_key => 'participation_type'
   
+  attr_accessible :user, :result, :type
+  
   validates_presence_of :participation_type
   
   scope :me, where("participation_type = 33")
