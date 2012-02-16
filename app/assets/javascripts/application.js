@@ -17,8 +17,8 @@
 
 //js in app/assets
 //= require_self
-//= require_tree .
 
+/*
 jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
 
 function _ajax_request(url, data, callback, type, method) {
@@ -99,6 +99,7 @@ function ajaxLinks(){
   jQuery('a.put').putWithAjax();
   jQuery('a.delete').deleteWithAjax();
 }
+*/
 
 //build a form dialog
 function buildFormDialog(name) {
@@ -121,7 +122,7 @@ function validate(form_id, rules) {
 }
 
 jQuery(document).ready(function() {
-
+/*
   //all non-GET requests will add the authenticity token
   jQuery(document).ajaxSend(function(event, request, settings) {
     if (typeof(window.AUTH_TOKEN) == "undefined") return;
@@ -131,8 +132,8 @@ alert('adding ' + encodeURIComponent(window.AUTH_TOKEN) + ' to settings.data')
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
   });
 
-  ajaxLinks(); 
-      
+  //ajaxLinks(); 
+*/     
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());

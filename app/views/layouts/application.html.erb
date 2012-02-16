@@ -42,8 +42,8 @@
                     <% if session[:user_session] %>
                       	<%= render(:partial => 'user_sessions/info') %>
                     <% else %>
-                		<%= link_to('log in', new_user_session_path, :class => 'get') %> |
-                		<%= link_to('register', new_user_path, :class => 'get') %>	
+                		<%= link_to('log in', new_user_session_path, :remote => 'true') %> |
+                		<%= link_to('register', new_user_path, :remote => 'true') %>	
                     <% end %>
                     </p>
                     <%= form_tag(races_path, :method => 'get', :class => 'navbar-search pull-left') do %>
