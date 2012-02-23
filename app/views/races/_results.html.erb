@@ -1,11 +1,12 @@
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $(".claim-result-link").click(function() {
+        $(".claim-result-link").click(function(e) {
             //$('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id %> + '"/>'));
             //$('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-type') + '"/>'));
             //$('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-result') + '"/>'));
             //$('#claim-result-form').submit();
             alert('claim result link clicked. submit form with result: ' + $(this).attr('data-result') + ' and type: ' + $(this).attr('data-type'));
+            e.preventDefault();
         })
     });
 </script>
@@ -58,4 +59,3 @@
     <% end %>
 </table>
 <%= paginate @results %>
-

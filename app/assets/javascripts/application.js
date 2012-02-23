@@ -17,7 +17,7 @@
 
 //js in app/assets
 //= require_self
-
+//= require_tree .
 /*
 jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
 
@@ -100,7 +100,6 @@ function ajaxLinks(){
   jQuery('a.delete').deleteWithAjax();
 }
 */
-
 //build a form dialog
 function buildFormDialog(name) {
   var f = jQuery('#' + name + '_form').dialog({ autoOpen: false, width: 600, title: name + ' form', modal: true, show: 'fade' });
@@ -132,8 +131,10 @@ alert('adding ' + encodeURIComponent(window.AUTH_TOKEN) + ' to settings.data')
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
   });
 
-  //ajaxLinks(); 
-*/     
+  ajaxLinks(); 
+
+*/
+      
   jQuery("input.calendar").datepicker();
   jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
   jQuery("input.today").datepicker('setDate', new Date());
