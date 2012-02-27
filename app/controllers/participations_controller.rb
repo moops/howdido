@@ -20,13 +20,9 @@ class ParticipationsController < ApplicationController
     @participation.user = User.find(params[:user])
     @participation.result = Result.find(params[:result])
     @participation.participation_type = Lookup.find(params[:type]).id
-    logger.info("type #{params[:type].inspect}...")
-    logger.info("creating #{Lookup.find(params[:type]).inspect}...")
-    logger.info("creating #{@participation.inspect}...")
     
     if (Lookup.code_for('participation_type', 'me').id == @participation.participation_type.id)
       # update the age of the result to the age of the user
-      logger.info('me chosen, updating age...')
       @participation.result.age = @participation.user.age
       @participation.result.save
     end

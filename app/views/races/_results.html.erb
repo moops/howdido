@@ -1,13 +1,43 @@
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
+    $(document).bind('ready', function() {
         $(".claim-result-link").click(function(e) {
-            //$('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id %> + '"/>'));
-            //$('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-type') + '"/>'));
-            //$('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-result') + '"/>'));
-            //$('#claim-result-form').submit();
-            alert('claim result link clicked. submit form with result: ' + $(this).attr('data-result') + ' and type: ' + $(this).attr('data-type'));
+            $('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id %> + '"/>'));
+            $('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-type') + '"/>'));
+            $('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-result') + '"/>'));
+            $('#claim-result-form').submit();
             e.preventDefault();
         })
+        
+        $("#results-list").hide();
+
+        $("#show-chart-btn").click(function(e) {
+            if (!$(this).hasClass('active')) {
+                toggleDivs();
+                $(this).addClass('active');
+                $("#show-list-btn").removeClass('active');
+            }
+            e.preventDefault();
+        });
+
+        $("#show-list-btn").click(function(e) {
+            if (!$(this).hasClass('active')) {
+                toggleDivs();
+                $(this).addClass('active');
+                $("#show-chart-btn").removeClass('active');
+            }
+            e.preventDefault();
+        });
+
+        // make the pagination links ajax
+        $("#results-list .pagination a").live("click", function() {
+          $.getScript(this.href);
+          return false;
+        });
+        }); // end ready()
+
+        function toggleDivs() {
+            $("#results-chart, #results-list").toggle('blind', {}, 300);
+        }
     });
 </script>
 
