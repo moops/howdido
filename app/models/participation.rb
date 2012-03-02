@@ -25,4 +25,10 @@ class Participation < ActiveRecord::Base
       a.result.race.race_on <=> b.result.race.race_on
     }
   end
+  
+  def self.find_or_build(options)
+    p = find_or_create_by_user_id_and_result_id_and_participation_type(options[:user], options[:result], options[:type])
+    p.touch
+    p.save
+  end
 end
