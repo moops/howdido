@@ -20,15 +20,21 @@ class Participation < ActiveRecord::Base
     "#{result.name}, race: #{result.race.name}, time #{result.gun_time} grade: #{result.grade}"
   end
   
+  # update the age of the result to the age of the user if the participation is 'me'
+  def update_result_age_if_me
+    if (Lookup.code_for('participation_type', 'me').id == participation_type)
+      result.age = user.age
+      result.save
+    end
+  end
+  
   def self.sort_by_race_on(participations)
     participations.sort! { |a,b|
       a.result.race.race_on <=> b.result.race.race_on
     }
   end
   
-  def self.find_or_build(options)
-    p = find_or_create_by_user_id_and_result_id_and_participation_type(options[:user], options[:result], options[:type])
-    p.touch
-    p.save
+  def self.find_or_build(user, result, type)
+    p = find_or_create_by_user_id_and_result_id_and_participation_type(user, result, type)
   end
 end

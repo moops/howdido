@@ -1,1 +1,3 @@
-jQuery('#claims_<%= @participation.result.id %>').append(" <%= Lookup.find(@participation.participation_type).description %>");
+if(!$("#claims_<%= @p.result.id %>:contains('<%= Lookup.find(@p.participation_type).description %>')").length) {
+  $('#claims_<%= @p.result.id %>').html("<% participations(@p.result, current_user) %>");
+}

@@ -16,19 +16,11 @@ class ParticipationsController < ApplicationController
   # POST /participations.js
   # POST /participations.xml
   def create
-    @participation = Participation.new
-    @participation.user = User.find(params[:user])
-    @participation.result = Result.find(params[:result])
-    @participation.participation_type = Lookup.find(params[:type]).id
-    
-    if (Lookup.code_for('participation_type', 'me').id == @participation.participation_type.id)
-      # update the age of the result to the age of the user
-      @participation.result.age = @participation.user.age
-      @participation.result.save
-    end
-    
-    #result = Result.find(params[:participation][:result_id].to_i)
-    #for p in Participation.where(:user_id => params[:participation][:user_id], :participation_type => Lookup.code_for('participation_type', 'me').id).all
+    @p = Participation.find_or_build(params[:user], params[:result], params[:type])
+    @p.update_result_age_if_me
+
+    #result = Result.find(params[:result])
+    #for p in Participation.where(:user_id => params[:user], :participation_type => Lookup.code_for('participation_type', 'me').id).all
     #  if p.result.race.id = result.race.id
         # you can't be 'me' in more than one result
     #    logger.info('you can\'t be \'me\' in more than one result')
@@ -37,14 +29,14 @@ class ParticipationsController < ApplicationController
     #end
 
     respond_to do |format|
-      if @participation.save
+      if @p.save
         format.js   { logger.info("creating participation with JS") }
-        format.html { redirect_to(race_path(@participation.result.race), :notice => 'result has been claimed.') }
-        format.xml  { render :xml => @participation, :status => :created, :location => @participation }
+        format.html { redirect_to(race_path(@p.result.race), :notice => 'result has been claimed.') }
+        format.xml  { render :xml => @p, :status => :created, :location => @participation }
       else
-        format.js   { logger.info("did not create #{@participation} with JS") }
+        format.js   { logger.info("did not create #{@p} with JS") }
         format.html { render :action => "new" }
-        format.xml  { render :xml => @participation.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @p.errors, :status => :unprocessable_entity }
       end
     end
   end
