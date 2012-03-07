@@ -44,9 +44,12 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1
   # DELETE /participations/1.xml
   def destroy
+    logger.info("before: #{@participation.inspect}")
     @participation.destroy
+    logger.info("after: #{@participation.inspect}")
         
     respond_to do |format|
+      format.js   { logger.info("destroying participation with JS") }
       format.html { redirect_to(participations_url) }
       format.xml  { head :ok }
     end

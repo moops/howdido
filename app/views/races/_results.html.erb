@@ -2,7 +2,7 @@
      $(document).bind('ready', function() {
     //$(document).ready(function() {
         $(".claim-result-link").click(function(e) {
-            $('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id %> + '"/>'));
+            $('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id if current_user %> + '"/>'));
             $('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-type') + '"/>'));
             $('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-result') + '"/>'));
             $('#claim-result-form').submit();

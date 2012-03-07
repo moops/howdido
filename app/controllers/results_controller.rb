@@ -12,6 +12,20 @@ class ResultsController < ApplicationController
     end
   end
   
+  # DELETE /results/1
+  # DELETE /results/1.xml
+  def destroy
+    logger.info("before: #{@result.inspect}")
+    @result.destroy
+    logger.info("after: #{@result.inspect}")
+        
+    respond_to do |format|
+      format.js   { logger.info("destroying result with JS") }
+      format.html { redirect_to(results_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
   # POST /results/load
   def load
 

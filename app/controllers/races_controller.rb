@@ -6,8 +6,6 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.xml
   def index
-    logger.info("request_forgery_protection_token = #{request_forgery_protection_token}")
-    logger.info("form_authenticity_token = #{form_authenticity_token}")
     @races = Race.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
     
     respond_to do |format|
