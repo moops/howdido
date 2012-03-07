@@ -1,3 +1,1 @@
-if(!$("#claims_<%= @participation.result.id %>:contains('<%= Lookup.find(@participation.participation_type).description %>')").length) {
-  $('#claims_<%= @participation.result.id %>').html('<%= escape_javascript(participations(@participation.result, current_user)) %>');
-}
+$('#claims_<%= @participation.result.id %>').html('<%= escape_javascript(participations(@participation.result, current_user)) %>');
