@@ -15,7 +15,7 @@
     runs.push(<%= "{ name:'#{summary['name']}', date:'#{summary['date']}', me:'#{summary['me']}', div:'#{summary['div']}', gender:'#{summary['gender']}', everyone:'#{summary['everyone']}'}" %>);
   <% end %>
   
-  jQuery(document).ready(function() {
+  $(function () {
     
     var runGradesChart = new Highcharts.Chart({
       chart: { defaultSeriesType: "line", renderTo: "run_grades_chart" },
@@ -75,6 +75,9 @@
       runGradesChart.series[0].remove(false);
       runGradesChart.addSeries({data: newGrades}, true);
     });
+    
+    $('.nav-pills a:first').tab('show')
+    
   });
 </script>
 
@@ -94,15 +97,14 @@
 <div id="run_summaries" style="width:700px; height:300px;"></div>
 <p/>
 
-<div class="tabs">
-  <ul>
+<ul class="nav nav-pills">
     <% ['me', 'friend','rival','other'].each do |type| %>
-    <li><a href="#<%= type %>"><%= type.pluralize %></a></li>
+    <li><a href="#<%= type %>" data-toggle="pill"><%= type.pluralize %></a></li>
     <% end %>
-  </ul>
-
-  <% ['me', 'friend','rival','other'].each do |type| %>
-    <div id="<%= type %>">        
+</ul>
+<div class="tab-content">
+    <% ['me', 'friend','rival','other'].each do |type| %>
+    <div class="tab-pane" id="<%= type %>">        
       <% @user.participations_by_race(type).each do |race,p_list| %>
       <b><%= "#{race.display_name}" %></b>
       <table cellspacing="0" cellpadding="5">
@@ -115,8 +117,7 @@
       </table>
       <% end %>
     </div>
-  <% end %>
-
+    <% end %>
 </div>
 
 <% else %>
