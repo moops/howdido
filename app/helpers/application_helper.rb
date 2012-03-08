@@ -46,8 +46,8 @@ module ApplicationHelper
   def notice
     html = ''
     if flash[:notice]
-        html << '<div id="notice" class="alert alert-block alert-success">'
-        html << '   <a class="close">×</a>'
+        html << '<div id="notice" class="alert alert-block alert-success fade in">'
+        html << '   <a class="close" data-dismiss="alert">×</a>'
         html << '   <strong>note: </strong>'
         html <<     flash[:notice]
         html << '</div>'
@@ -59,7 +59,7 @@ module ApplicationHelper
     html = ''
     if flash[:warning]
         html << '<div id="notice" class="alert alert-block alert-warning">'
-        html << '   <a class="close">×</a>'
+        html << '   <a class="close" data-dismiss="warning">×</a>'
         html << '   <strong>warning: </strong>'
         html <<     flash[:warning]
         html << '</div>'
