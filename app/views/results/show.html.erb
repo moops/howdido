@@ -27,30 +27,30 @@
   $(document).ready(function() {
   
     //linear "where was i?" guage 
-    var paper = new Raphael(document.getElementById('winner-ratio'), 688, 44);
-    var container = paper.rect(2, 2, 680, 40);
+    var paper = new Raphael(document.getElementById('winner-ratio'), 412, 44);
+    var container = paper.rect(2, 2, 408, 40, 6);
     container.attr({stroke: '#999', 'stroke-width': 4, 'stroke-linejoin': 'round'});
     
-    var bar = paper.rect(4, 4, 250, 36);
+    var bar = paper.rect(4, 4, 400, 36, 4);
     bar.attr({gradient: '90-#526c7a-#64a0c1', 'stroke-width': 0, 'stroke-opacity': 0});
     
-    var ticks = paper.path("M88 4L88 10M175 4L175 15M263 4L263 10M350 4L350 20M438 4L438 10M525 4L525 15M613 4L613 10").attr({stroke: "#ddd"});
+    //var ticks = paper.path("M88 4L88 10M175 4L175 15M263 4L263 10M350 4L350 20M438 4L438 10M525 4L525 15M613 4L613 10").attr({stroke: "#ddd"});
     
-    bar.animate({width: 676 * (oaWinnerTime / gunTime)}, 500, 'bounce');
-    var t = paper.text(150, 20, "you were at " + round((oaWinnerTime / gunTime) * distance, 100) + " km [" + round((oaWinnerTime / gunTime) * 100, 10) + "%]").attr({fill: "#fff",'font-size': 16});
+    bar.animate({width: 400 * (oaWinnerTime / gunTime)}, 500, 'bounce');
+    var t = paper.text(110, 20, "you were at " + round((oaWinnerTime / gunTime) * distance, 100) + " km [" + round((oaWinnerTime / gunTime) * 100, 10) + "%]").attr({fill: "#fff",'font-size': 14});
     
     $("#winner-type").change(function( objEvent ) {
       var width;
       if (objEvent.target.value === 'oa') {
-        width = 676 * (oaWinnerTime / gunTime);
+        width = 400 * (oaWinnerTime / gunTime);
         dist = (oaWinnerTime / gunTime) * distance;
 				percent = round((oaWinnerTime / gunTime) * 100, 10);
       } else if (objEvent.target.value === 'div') {
-        width = 676 * (divWinnerTime / gunTime);
+        width = 400 * (divWinnerTime / gunTime);
         dist = (divWinnerTime / gunTime) * distance;
 				percent = round((divWinnerTime / gunTime) * 100, 10);
       } else if (objEvent.target.value === 'gender') {
-        width = 676 * (genderWinnerTime / gunTime);
+        width = 400 * (genderWinnerTime / gunTime);
         dist = (genderWinnerTime / gunTime) * distance;
 				percent = round((genderWinnerTime / gunTime) * 100, 10);
       }
@@ -151,7 +151,7 @@
    });
  
     //spedometer guages
-    var gradeGuage = Raphael.fn.speedometer("grade-guage", 200, 200, "age grade");
+    var gradeGuage = Raphael.fn.speedometer("grade-guage", 180, 180, "age grade");
     gradeGuage.setOptions({
       startNumber:0,
       endNumber:110,
@@ -160,7 +160,7 @@
     gradeGuage.accelerate(<%= number_with_precision(@result.grade, :precision => 1) %>);
     gradeGuage.scrollTo(<%= number_with_precision(@result.grade, :precision => 1) %> * 10);
     
-    var pointsGuage = Raphael.fn.speedometer("points-guage", 200, 200, "points");
+    var pointsGuage = Raphael.fn.speedometer("points-guage", 180, 180, "points");
     pointsGuage.setOptions({
       startNumber:0,
       endNumber:1100,
@@ -181,8 +181,8 @@
       }
       var futureTime = seconds_to_time((w / <%= @result.grade %>) * 100);
       var futureGrade = round((w / <%= @result.gun_time %>) * 100, 100);
-      $("#futureTime").html("<b>" + futureTime + "</b>");
-      $("#futureGrade").html("<b>" + futureGrade + "</b>");
+      $("#future-time").html("<b>" + futureTime + "</b>");
+      $("#future-grade").html("<b>" + futureGrade + "</b>");
     }
     
     $("#future-years").change(function(event) {
@@ -201,6 +201,10 @@
 		$.each(futureAges, function(index, value) { 
       $('#future-ages').append("<option>" + value + "</option>");
     });
+    
+    //remove widths of select boxes
+    $('#future-years').width('auto');
+    $('#winner-type').width('auto');
     
   });
     
@@ -274,8 +278,10 @@
             <div class="panel-content">
                 in <select id="future-years"></select> years
             	<ul>
-                    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
-                    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
+                    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run 
+                        <span id="future-time"></span></li>
+                    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be 
+                        <span id="future-grade"></span></li>
                 </ul>
             </div>
         </div>
