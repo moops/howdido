@@ -14,10 +14,6 @@
       femaleWavaFactors[<%= wava.age %>] = <%= wava.factor %>;
     <% end %>
   <% end %>
-  var futureYears = [];
-  for (var i=1; i<=(75-<%= @result.age %>); i++) {
-    futureYears.push(i);
-  }
   var futureAges = [];
   for (var i=<%= @result.age %>; i<=75; i++) {
     futureAges.push(i);
@@ -56,24 +52,34 @@
     });
     // end linear "where was i?" guage 
 
-    // pie charts
-    var peopleBeat = new Highcharts.Chart({
+    // pie charts - default options
+    Highcharts.setOptions({
       chart: {
-        renderTo: 'people-i-beat',
         backgroundColor: '#fff',
         height: 200,
-        width: 200
+        width: 200,
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingRight: 0,
+        spacingLeft: 0
       },
       title: { text: null },
       credits: { enabled: false },
-      tooltip: { formatter: function() { return  this.y; } },
       plotOptions: {
         pie: {
           allowPointSelect: true,
           dataLabels: { enabled: false },
           borderColor: "#aaa"
         }
+      }
+    });
+
+    // pie charts
+    var peopleBeat = new Highcharts.Chart({
+      chart: {
+        renderTo: 'people-i-beat',
       },
+      tooltip: { formatter: function() { return  this.y; } },
       series: [{
         type: 'pie',
         name: 'all people',
@@ -87,20 +93,8 @@
     var genderBeat = new Highcharts.Chart({
       chart: {
         renderTo: 'gender-i-beat',
-        backgroundColor: '#fff',
-        height: 200,
-        width: 200
       },
-      title: { text: null },
-      credits: { enabled: false },
       tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y; } },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          dataLabels: { enabled: false },
-          borderColor: "#aaa"
-        }
-      },
       series: [{
         type: 'pie',
         name: '<%= Lookup.find(@result.gender).description %>',
@@ -114,20 +108,8 @@
     var divBeat = new Highcharts.Chart({
       chart: {
         renderTo: 'div-i-beat',
-        backgroundColor: '#fff',
-        height: 200,
-        width: 200
       },
-      title: { text: null },
-      credits: { enabled: false },
       tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y; } },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          dataLabels: { enabled: false },
-          borderColor: "#aaa"
-        }
-      },
       series: [{
         type: 'pie',
         name: '<%= @result.div %>',
@@ -160,13 +142,13 @@
     // end spedometer guages
 
     // future-years box
-    function future (years) {
+    function future (age) {
       var gender = <%= @result.gender %>;
       var w;
       if (gender == 10) {
-        w = maleWavaFactors[<%= @result.age %> + years];
+        w = maleWavaFactors[age];
       } else {
-        w = femaleWavaFactors[<%= @result.age %> + years];
+        w = femaleWavaFactors[age];
       }
       var futureTime = seconds_to_time((w / <%= @result.grade %>) * 100);
       var futureGrade = round((w / <%= @result.gun_time %>) * 100, 100);
@@ -177,8 +159,8 @@
     $("#future-years").change(function(event) {
       future(parseInt(event.target.value));
     });
-    future(1);
-    $.each(futureYears, function(index, value) { 
+    future(<%= @result.age %> + 1);
+    $.each(futureAges, function(index, value) { 
       $('#future-years').append("<option>" + value + "</option>");
     });
     // end future-years box
@@ -194,6 +176,7 @@
     //remove widths of select boxes
     $('#future-years').width('auto');
     $('#winner-type').width('auto');
+    $('#future-ages').width('auto');
   });
 </script>
 
@@ -202,27 +185,30 @@
         <div class="panel">
             <h3>summary</h3>
             <div class="panel-content">
-                <div class="normal-label right"><%= link_to 'view all results', race_path(@result.race) %></div>
+                <span class="right"><%= link_to 'view all results', race_path(@result.race) %></span>
                 <table border="0" cellpadding="5" cellspacing="0">
                     <tr>
-                        <td><label>date</label></td>
-                        <td><%= @result.race.race_on %></td>
-                        <td><label>race</label></td>
+                        <td><strong>race</strong></td>
                         <td><%= @result.race.display_name %></td>
+                        <td><strong>date</strong></td>
+                        <td><%= @result.race.race_on %></td>
                         <td colspan="2">&nbsp;</td></tr>
                     <tr>
-                        <td><label>name</label></td>
+                        <td><strong>name</strong></td>
                         <td><%= @result.name %></td>
-                        <td><label>time</label></td>
+                        <td><strong>time</strong></td>
                         <td><%= seconds_to_time(@result.gun_time) %></td>
                         <td colspan="2">&nbsp;</td></tr>
                     <tr>
-                        <td><label>overall</label></td>
-                        <td><%= @result.overall_place %> of <%= @result.finisher_count %></td>
-                        <td><label><%= Lookup.find(@result.gender).description %></label></td>
-                        <td>123 of <%= @result.finisher_count('g') %></td>
-                        <td><label><%= @result.div %></label></td>
-                        <td><%= @result.div_place %> of <%= @result.finisher_count('d') %></td></tr>
+                        <td><strong>rank</strong></td>
+                        <td colspan="5">
+                            <i>overall: </i>
+                            <%= @result.overall_place %> of <%= @result.finisher_count %>
+                            <i><%= Lookup.find(@result.gender).description %>: </i>
+                            123 of <%= @result.finisher_count('g') %>
+                            <i><%= @result.div %>: </i>
+                            <%= @result.div_place %> of <%= @result.finisher_count('d') %>
+                        </td></tr>
                 </table>
             </div>
         </div>
@@ -263,7 +249,7 @@
         <div class="panel">
             <h3>how will I do in the future?</h3>
             <div class="panel-content">
-                in <select id="future-years"></select> years
+                when I'm <select id="future-years"></select> years old
                 <ul>
                     <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run 
                         <span id="future-time"></span></li>
@@ -280,7 +266,7 @@
                 where was I when the 
                 <select id="winner-type">
                     <option value="oa">overall winner</option>
-                    <option value="gender">gender winner</option>
+                    <option value="gender"><%= Lookup.find(@result.gender).description %> winner</option>
                     <option value="div"><%= @result.div %> winner</option>
                 </select> 
                 finished?<p/>
