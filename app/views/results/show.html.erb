@@ -68,10 +68,6 @@
          width: 200
       },
 			credits: { enabled: false },
-			title: { 
-			   text: 'everyone',
-				 style: 'color: #333333' 
-			},
       tooltip: {
          formatter: function() {
             return  this.y;
@@ -102,10 +98,6 @@
 				 width: 200
       },
       credits: { enabled: false },
-			title: { 
-			   text: '<%= Lookup.find(@result.gender).description %>',
-         style: 'color: #333333' 
-			},
       tooltip: {
          formatter: function() {
             return '<b>'+ this.point.name +'</b>: '+ this.y;
@@ -136,10 +128,6 @@
          width: 200
       },
       credits: { enabled: false },
-			title: { 
-			   text: '<%= @result.div %>',
-         style: 'color: #333333' 
-			},
       tooltip: {
          formatter: function() {
             return '<b>'+ this.point.name +'</b>: '+ this.y;
@@ -218,80 +206,118 @@
     
 </script>
 
-<div class="box">
-  <div class="box-header">
-  	summary
-		<div class="normal-label right"><%= link_to 'view all results', race_path(@result.race) %></div></div>
-  <div class="box-content">
-  	<table border="0" cellpadding="5" cellspacing="0">
-  		<tr>
-  			 <td><label>date</label></td>
-         <td><%= @result.race.race_on %></td>
-				 <td><label>race</label></td>
-				 <td><%= @result.race.display_name %></td>
-				 <td colspan="2">&nbsp;</td></tr>
-			<tr>
-         <td><label>name</label></td>
-         <td><%= @result.name %></td>
-         <td><label>time</label></td>
-         <td><%= seconds_to_time(@result.gun_time) %></td>
-				 <td colspan="2">&nbsp;</td></tr>
-			<tr>
-         <td><label>overall</label></td>
-         <td><%= @result.overall_place %> of <%= @result.finisher_count %></td>
-         <td><label><%= Lookup.find(@result.gender).description %></label></td>
-         <td>123 of <%= @result.finisher_count('g') %></td>
-				 <td><label><%= @result.div %></label></td>
-         <td><%= @result.div_place %> of <%= @result.finisher_count('d') %></td></tr>
-  	</table>
-  </div>
-</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="panel">
+            <h3>summary</h3>
+            <div class="panel-content">
+                <div class="normal-label right"><%= link_to 'view all results', race_path(@result.race) %></div>
+                <table border="0" cellpadding="5" cellspacing="0">
+              		<tr>
+              			 <td><label>date</label></td>
+                     <td><%= @result.race.race_on %></td>
+            				 <td><label>race</label></td>
+            				 <td><%= @result.race.display_name %></td>
+            				 <td colspan="2">&nbsp;</td></tr>
+            			<tr>
+                     <td><label>name</label></td>
+                     <td><%= @result.name %></td>
+                     <td><label>time</label></td>
+                     <td><%= seconds_to_time(@result.gun_time) %></td>
+            				 <td colspan="2">&nbsp;</td></tr>
+            			<tr>
+                     <td><label>overall</label></td>
+                     <td><%= @result.overall_place %> of <%= @result.finisher_count %></td>
+                     <td><label><%= Lookup.find(@result.gender).description %></label></td>
+                     <td>123 of <%= @result.finisher_count('g') %></td>
+            				 <td><label><%= @result.div %></label></td>
+                     <td><%= @result.div_place %> of <%= @result.finisher_count('d') %></td></tr>
+              	</table>
+            </div>
+        </div>
+    </div>
+</div> <!-- end row -->
+<p/>
 
-<div class="box">
-  <div class="box-header">people i beat</div>
-  <div class="box-content">
-    <div id="people-i-beat" class="left" style="border: 1px grey solid;"></div>
-		<div id="gender-i-beat" class="left" style="border: 1px grey solid;"></div>
-		<div id="div-i-beat" class="left" style="border: 1px grey solid;"></div>
-		<div class="clear"></div>
-  </div>
-</div>
+<div class="row-fluid">
+    <div class="span4">
+        <div class="panel">
+            <h3>people i beat</h3>
+            <div class="panel-content">
+                <div id="people-i-beat"></div>
+            </div>
+        </div>
+    </div>
+    <div class="span4">
+        <div class="panel">
+            <h3><%= Lookup.find(@result.gender).description %></h3>
+            <div class="panel-content">
+                <div id="gender-i-beat"></div>
+            </div>
+        </div>
+    </div>
+    <div class="span4">
+        <div class="panel">
+            <h3><%= @result.div %></h3>
+            <div class="panel-content">
+                <div id="div-i-beat"></div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end row -->
+<p/>
 
+<div class="row-fluid">
+    <div class="span6">
+        <div class="panel">
+            <h3>how will I do in the future?</h3>
+            <div class="panel-content">
+                in <select id="future-years"></select> years
+            	<ul>
+                    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
+                    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="panel">
+            <h3>where was I when...</h3>
+            <div class="panel-content">
+                where was I when the 
+            	<select id="winner-type">
+            	    <option value="oa">overall winner</option>
+            	    <option value="gender">gender winner</option>
+            	    <option value="div"><%= @result.div %> winner</option>
+            	</select> 
+            	finished?<p/>
+            	<div id="winner-ratio"></div><p/>
+            </div>
+        </div>
+    </div>
+</div> <!-- end row -->
+<p/>
 
-
-<div class="box">
-  <div class="box-header">how will I do in the future?</div>
-  <div class="box-content">
-    in <select id="future-years"></select> years
-		<ul>
-    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run <div id="futureTime" style="display:inline;"></div><br/></li>
-    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be <div id="futureGrade" style="display:inline;"></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="box">
-  <div class="box-header">where was I when...</div>
-  <div class="box-content">
-    where was I when the 
-	  <select id="winner-type">
-	    <option value="oa">overall winner</option>
-	    <option value="gender">gender winner</option>
-	    <option value="div"><%= @result.div %> winner</option>
-	  </select> 
-		finished?<p/>
-		<div id="winner-ratio"></div><p/>
-  </div>
-</div>
-
-<div class="box">
-  <div class="box-header">age grade</div>
-  <div class="box-content">
-		what if my age was: <select id="future-ages"></select><br/>
-		<div id="grade-guage" style="display:inline;"></div>
-		<div id="points-guage" style="display:inline;"></div>
-  </div>
-</div>
+<div class="row-fluid">
+    <div class="span6">
+        <div class="panel">
+            <h3>age graded</h3>
+            <div class="panel-content">
+        		<div id="grade-guage" style="display:inline;"></div><br/>
+        		what if my age was: <select id="future-ages"></select>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="panel">
+            <h3>points</h3>
+            <div class="panel-content">
+        		<div id="points-guage" style="display:inline;"></div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end row -->
+<p/>
 
 <%= link_to 'Edit', edit_result_path(@result) %> |
 <%= link_to 'Back', results_path %>

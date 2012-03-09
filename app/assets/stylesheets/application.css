@@ -22,28 +22,27 @@ td .btn-group .btn {
 	line-height: 13px;
 }
 
-.panel-border {
-	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#eee));
-	background: -moz-linear-gradient(top, #eee, #f6f6f6);
-	padding: 5px;
+.panel {
+	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#f6f6f6));
+	background: -moz-linear-gradient(top, #ddd, #f6f6f6);
+	padding: 3px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
 
-.panel-border h3 {
-	background: #f3f3f3;
+.panel h3 {
+	background: #f6f6f6;
 	padding: 10px;
-	/*border: 1px solid #eee;*/
 	-webkit-border-radius: 6px 6px 0 0 ;
 	-moz-border-radius: 6px 6px 0 0 ;
 	border-radius: 6px 6px 0 0 ;
 }
 
 .panel-content {
-	background: #f3f3f3;
-	margin-top: 5px;
-	padding: 15px;
+	background: #fff;
+	margin-top: 1px;
+	padding: 10px;
 	/*border: 1px solid #eee;*/
 	-webkit-border-radius: 0 0 6px 6px;
 	-moz-border-radius: 0 0 6px 6px;
