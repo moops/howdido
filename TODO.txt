@@ -24,3 +24,4 @@ x 20110726 - calculate a wava factor for a non standard distance
 x 20110802 - fix unit tests
 x 20110802 - add functional tests
 - 20110802 - fix user session and participation functional tests
+x 20120402 - test new work@raceweb.ca github ssh key
