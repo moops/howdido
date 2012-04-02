@@ -5,6 +5,7 @@ log/*.log
 tmp/**/*
 *~
 .DS_Store
+*.dat
 
 vendor/gems/gems
 vendor/gems/specifications
