@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender, :roles
-  attr_accessor :password
   has_secure_password
+  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender, :roles
 
   has_many :participations
   has_many :results, :through => :participations
@@ -13,7 +12,6 @@ class User < ActiveRecord::Base
   validates_presence_of :born_on
   validates_presence_of :email
   validates_uniqueness_of :email
-  validates_presence_of :password, :on => :create
   validates_confirmation_of :password
 
   scope :male, where("gender = 10")

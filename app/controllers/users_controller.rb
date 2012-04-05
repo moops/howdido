@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -38,9 +38,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    
     @user.roles=(['athlete'])
     
+    logger.info('###saving###')
+    logger.info("#{@user.inspect}")
     if @user.save
+      logger.info('###saved###')
       # sign in
       @user.session= UserSession.create(:user_id => @user.id, :login_at => Time.now, :logout_at => nil, :count => 1)
       session[:user_session] = @user.session.id

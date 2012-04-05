@@ -12,6 +12,6 @@ end
 
 gem 'pg'
 gem 'kaminari'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
 gem 'jquery-rails'
