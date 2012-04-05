@@ -13,10 +13,10 @@ class UserSessionsController < ApplicationController
   # POST /user_sessions.js
   def create
     
-    user = User.authenticate(params[:email], params[:password])
+    user = User.find_by_email(params[:email])
 
-    if user
-      user.session= UserSession.new(:user_id => user.id) unless user.session
+    if user && user.authenticate(params[:password])
+      user.session = UserSession.new(:user_id => user.id) unless user.session
       user.session.login_at= Time.now
       user.session.logout_at= nil
       user.session.count= (user.session.count or 0) + 1

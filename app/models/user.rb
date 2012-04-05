@@ -2,12 +2,12 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender, :roles
   attr_accessor :password
-  before_save :encrypt_password
-  
+  has_secure_password
+
   has_many :participations
   has_many :results, :through => :participations
   has_one :session, :class_name => 'UserSession'
-      
+
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :born_on
@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  
+
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
   scope :with_role, lambda { |role| {:conditions => "authority & #{2**ROLES.index(role.to_s)} > 0"} }
-  
+
   ROLES = %w[admin athlete]
-  
+
   def roles=(roles)
     self.authority = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
@@ -33,11 +33,11 @@ class User < ActiveRecord::Base
   def role?(role)
     roles.include? role.to_s
   end
-  
+
   def role_symbols
     roles.map(&:to_sym)
   end
-  
+
   # returns: [{'name' => race name, 'date' => race date, 'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade, 'points' => points}, ...]
   # example: [{'name' => 'Esquimalt 8km' 'date' => 2009-07-16, 'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90, points => 650}, ...]
   def run_summaries(limit=25)
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     end
     summaries.sort { |a,b| a['date'] <=> b['date']}
   end
-  
+
   def run_summary(my_result)
     race = my_result.race
     h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
     h['name'] = race.display_name
     h
   end
-  
+
   def participations_by_race(participation_type='me')
     p_map = Hash.new
     p_list = Array.new
@@ -110,34 +110,14 @@ class User < ActiveRecord::Base
     end
     p_map
   end
-  
+
   def name
     "#{first_name} #{last_name}"
   end
-  
+
   def age
     a = Date.today.year - born_on.year
     a -= 1 if Date.today < born_on + a.years
     a
   end
-  
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    logger.debug("found user: #{user.inspect}")
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
-  
-  private
-  
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-  
 end

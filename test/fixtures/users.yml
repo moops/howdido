@@ -3,8 +3,7 @@ quinn:
   last_name: lawrence
   email: quinn@raceweb.ca
   # hashed from 'quinn_pass'
-  password_hash: $2a$10$lerMXsbiT3Du5ovHHu5Y5eY0Pd8FlIgQKGAoFqKf57momjFgflipG
-  password_salt: $2a$10$lerMXsbiT3Du5ovHHu5Y5e
+  password_digest: $2a$10$lerMXsbiT3Du5ovHHu5Y5eY0Pd8FlIgQKGAoFqKf57momjFgflipG
   gender: 10
   # admin
   authority: 1
@@ -15,8 +14,7 @@ adam:
   last_name: lawrence
   email: adam@raceweb.ca
   # hashed from 'adam_pass'
-  password_hash: $2a$10$MuZ/FSYjDkIim0zFodiV1OjpgDRzKSpnHQtykmm.JQSVGq3JE7BJS
-  password_salt: $2a$10$MuZ/FSYjDkIim0zFodiV1O
+  password_digest: $2a$10$MuZ/FSYjDkIim0zFodiV1OjpgDRzKSpnHQtykmm.JQSVGq3JE7BJS
   gender: 10
   # admin and athlete
   authority: 3
@@ -27,8 +25,7 @@ bertrand:
   last_name: bozek
   email: bertrand@raceweb.ca
   # hashed from 'bertrand_pass'
-  password_hash: $2a$10$lzFOAR.0Ztj1HBwvp.YblOvqnVi2aSJx4sJKVI5l.gmPeoqx3SJta
-  password_salt: $2a$10$lzFOAR.0Ztj1HBwvp.YblO
+  password_digest: $2a$10$lzFOAR.0Ztj1HBwvp.YblOvqnVi2aSJx4sJKVI5l.gmPeoqx3SJta
   gender: 10
   # athlete
   authority: 2
@@ -39,8 +36,7 @@ gary:
   last_name: duncan
   email: gary@raceweb.ca
   # hashed from 'gary_pass'
-  password_hash: $2a$10$pUxncicY.4pl.xeYOCZ2NuMePPu2LfT6gw818JEUrQNFvFp13cKU2
-  password_salt: $2a$10$pUxncicY.4pl.xeYOCZ2Nu
+  password_digest: $2a$10$pUxncicY.4pl.xeYOCZ2NuMePPu2LfT6gw818JEUrQNFvFp13cKU2
   gender: 10
   # athlete
   authority: 2

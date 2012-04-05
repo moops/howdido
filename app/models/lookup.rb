@@ -1,5 +1,7 @@
 class Lookup < ActiveRecord::Base
   
+  attr_accessible :category, :code, :description
+  
   def self.list_for(category)
     root = Lookup.find_by_code(category)
     Lookup.find_all_by_category(root.id)

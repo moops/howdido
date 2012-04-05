@@ -1,4 +1,6 @@
 class Wava < ActiveRecord::Base
+  
+  attr_accessible :age, :gender, :distance, :factor
 
   def self.find_for(age, gender, distance)
     age_and_gender = 'age = :age and gender = :gender'
