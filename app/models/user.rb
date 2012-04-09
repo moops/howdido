@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_secure_password
-  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender, :roles
+  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender
 
   has_many :participations
   has_many :results, :through => :participations

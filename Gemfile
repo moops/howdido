@@ -10,8 +10,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'pg'
-gem 'kaminari'
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'cancan'
-gem 'jquery-rails'
+gem 'pg'                      # postgres db
+gem 'json'                    # json api
+gem 'kaminari'                # pagination
+gem 'bcrypt-ruby', '~> 3.0.0' # password encryption
+gem 'cancan'                  # authorization
+gem 'jquery-rails'            # unobtrusive javascript
