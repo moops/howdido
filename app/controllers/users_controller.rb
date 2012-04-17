@@ -41,10 +41,7 @@ class UsersController < ApplicationController
     
     @user.roles=(['athlete'])
     
-    logger.info('###saving###')
-    logger.info("#{@user.inspect}")
     if @user.save
-      logger.info('###saved###')
       # sign in
       @user.session= UserSession.create(:user_id => @user.id, :login_at => Time.now, :logout_at => nil, :count => 1)
       session[:user_session] = @user.session.id
