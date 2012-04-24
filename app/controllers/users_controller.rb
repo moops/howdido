@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
   
-    @user = current_user
+    @user = @user = current_user
     @run_summaries = @user.run_summaries
     
     respond_to do |format|
