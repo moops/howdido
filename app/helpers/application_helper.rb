@@ -67,4 +67,11 @@ module ApplicationHelper
     raw(html)
   end
   
+  def series_data(data)
+    r = data.map do |result|
+      "{ name: \"#{result.name}\", x: #{result.age}, y: #{result.gun_time/60} }".html_safe
+    end
+    raw(r.join(', '))
+  end
+  
 end

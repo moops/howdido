@@ -8,12 +8,6 @@
             $('#claim-result-form').submit();
             e.preventDefault();
         })
-        
-        // make the pagination links ajax
-        $("#results-list .pagination a").live("click", function() {
-          $.getScript(this.href);
-          return false;
-        });
     }); // end ready()
 </script>
 
@@ -64,4 +58,4 @@
     
     <% end %>
 </table>
-<%= paginate @results %>
+<%= paginate @results, :remote => true %>

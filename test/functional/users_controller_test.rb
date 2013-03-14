@@ -23,7 +23,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should show user" do
-    @request.session[:user_session] = user_sessions(:gary)
+    @request.session[:user_session] = sessions(:gary)
     get :show, :id => @user.to_param
     assert_response :success
     
@@ -35,7 +35,7 @@ class UsersControllerTest < ActionController::TestCase
     
     #a user with no participations should be redirected to the root url
     #TODO - not working
-    #@request.session[:user_session] = user_sessions(:adam)
+    #@request.session[:user_session] = sessions(:adam)
     #get :show, :id => users(:adam).to_param
     #assert_redirected_to root_url
   end

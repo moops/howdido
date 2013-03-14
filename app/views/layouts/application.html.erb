@@ -8,7 +8,6 @@
 </head>
 
 <body>
-  
     <!-- hidden elements -->
     <div id="register-form" class="modal fade" style="display:none;"></div>
     <div id="participation_form" style="display:none;"></div>
@@ -33,9 +32,9 @@
                     </ul>
                     <p class="navbar-text pull-right" id="user_session">
                     <% if session[:user_session] %>
-                      	<%= render(:partial => 'user_sessions/info') %>
+                      	<%= render(:partial => 'sessions/info') %>
                     <% else %>
-                		<%= link_to('log in', new_user_session_path, :remote => 'true') %> |
+                		<%= link_to('log in', new_session_path, :remote => 'true') %> |
                 		<%= link_to('register', new_user_path, :remote => 'true') %>	
                     <% end %>
                     </p>

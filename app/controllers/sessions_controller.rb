@@ -1,22 +1,19 @@
-class UserSessionsController < ApplicationController
+class SessionsController < ApplicationController
   
   skip_after_filter :store_last_good_page
   
-  # GET /user_sessions/new
+  # GET /sessions/new.js
   def new
-    respond_to do |format|
-      format.js { render :layout => false }
-    end
   end
 
   # login
-  # POST /user_sessions.js
+  # POST /sessions.js
   def create
     
     user = User.find_by_email(params[:email])
 
     if user && user.authenticate(params[:password])
-      user.session = UserSession.new(:user_id => user.id) unless user.session
+      user.session = Session.new(user_id: user.id) unless user.session
       user.session.login_at= Time.now
       user.session.logout_at= nil
       user.session.count= (user.session.count or 0) + 1
@@ -34,17 +31,17 @@ class UserSessionsController < ApplicationController
   end
   
   # logout
-  # DELETE /user_sessions/1
-  # DELETE /user_sessions/1.js
+  # DELETE /sessions/1
+  # DELETE /sessions/1.js
   def destroy
     begin
-      @user_session = UserSession.find(params[:id])
-      @user_session.logout_at = Time.now
-      @user_session.save
+      @session = Session.find(params[:id])
+      @session.logout_at = Time.now
+      @session.save
     rescue ActiveRecord::RecordNotFound
     end
     
     reset_session 
-    redirect_to :root, :notice => "succesfully logged out."
+    redirect_to :root, notice: 'succesfully logged out.'
   end
 end

@@ -24,7 +24,7 @@ ul { margin: 4px 0px; }
 #footer { font-size: .9em; margin-right: auto; margin-left: auto; background: #fff; width: 690px; border: 1px solid #bbb; border-radius: 6px 6px; padding: 5px; }
 #user { float: left; } 
 #search form { margin: 2px; display: inline; }
-#user_session_form { display: inline; }
+#session_form { display: inline; }
 #found_links { padding-bottom: 10px; }
 #copyright { width: 25%; float: right; text-align: right; }
 #notice { font-weight: bold; color: #930; text-align: center; padding: 10px 5px 10px 5px; }
@@ -40,13 +40,6 @@ fieldset li { padding-bottom: 1em; }
 fieldset.submit { border-style: none; background: #fff; }
 legend { margin-left: 1em; color: #333; font-weight: bold; } 
 input[type="text"], input[type="password"], textarea, select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 1em; color: #333; }
-
-/* pagination */
-div.pagination { padding:3px; margin:3px; text-align:center; }
-div.pagination a { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #ddd; text-decoration: none; color: #aaa; }
-div.pagination a:hover, div.pagination a:active { margin-right: 2px; border: 1px solid #f93; }
-div.pagination span.current { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #e0e0e0; font-weight: bold; background-color: #f0f0f0; color: #aaa; }
-div.pagination span.disabled { padding: 2px 5px 2px 5px; margin-right: 2px; border: 1px solid #f3f3f3; color: #ccc; }
 
 #errors li { font-weight: bold; color: #930; text-align: center; }
 

@@ -3,7 +3,7 @@
 
 <h1><% params[:search].blank? ? 'found races' : 'recent races' %></h1>
 
-<table width="100%" class='table table-striped'>
+<table width="100%" class='table table-hover'>
     <tr>
         <th><%= sortable "name" %></th>
         <th><%= sortable "location" %></th>
@@ -27,7 +27,7 @@
     <% end %>
 </table>
 
-<%= paginate @races %>
+<%= paginate @races, :remote => true %>
 <br />
 
 <% if can? :create, @race %>

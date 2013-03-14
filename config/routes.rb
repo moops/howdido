@@ -1,10 +1,10 @@
 Howdido::Application.routes.draw do
   root :to => "races#index"
   get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'user_sessions#new', as: 'login'
-  get 'logout', to: 'user_sessions#destroy', as: 'logout'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :participations
-  resources :user_sessions
+  resources :sessions
   resources :results
   resources :races
   resources :users

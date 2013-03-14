@@ -1,0 +1,27 @@
+<%= form_tag(sessions_path, html: { id: 'session-form', class: 'form-horizontal'}) do %>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>log in</h3>
+    </div>
+    <div class="modal-body">
+        <div class="control-group">
+            <div class="controls">
+      	        <div class="input-prepend">
+                    <span class="add-on">@</span>
+                    <%= text_field_tag('email', '', placeholder: 'email') %>
+                </div>
+    	    </div>
+        </div>
+      	<div class="control-group">
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">#</span>
+                    <%= password_field_tag('password', '', placeholder: 'password') %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <%= submit_tag 'log in', class: 'btn btn-primary' %>
+    </div>
+<% end %>
