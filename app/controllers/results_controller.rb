@@ -1,35 +1,23 @@
 class ResultsController < ApplicationController
   
   load_and_authorize_resource
+  skip_authorize_resource only: :load
+  skip_load_resource only: :load
 
   # GET /results/1
-  # GET /results/1.xml
   def show
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @result }
-    end
   end
   
   # DELETE /results/1
-  # DELETE /results/1.xml
   def destroy
-    logger.info("before: #{@result.inspect}")
     @result.destroy
-    logger.info("after: #{@result.inspect}")
-        
-    respond_to do |format|
-      format.js   { logger.info("destroying result with JS") }
-      format.html { redirect_to(results_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to results_path
   end
   
   # POST /results/load
   def load
 
-    race = Race.find(params[:race_id])
+    race = Race.find(params[:id])
     first_name_index = params[:first_name_index].to_i unless params[:first_name_index].empty?
     last_name_index = params[:last_name_index].to_i unless params[:last_name_index].empty?
     city_index = params[:city_index].to_i unless params[:city_index].empty?

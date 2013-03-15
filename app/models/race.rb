@@ -1,6 +1,6 @@
 class Race < ActiveRecord::Base
   
-  has_many :results
+  has_many :results, dependent: :destroy
   
   validates_presence_of :name
   validates_presence_of :race_on

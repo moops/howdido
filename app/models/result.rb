@@ -1,7 +1,7 @@
 class Result < ActiveRecord::Base
   
   belongs_to :race
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :users, through: :participations
   
   # belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'

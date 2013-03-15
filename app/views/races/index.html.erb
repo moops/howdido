@@ -23,6 +23,17 @@
         <% else %>
             <td>&nbsp;</td>
         <% end %>
+        
+        <% if can? :manage, race %>
+            <td>
+                <%= link_to(race_path(race), method: :delete, confirm: "really delete #{race.name}?") do %>
+                    <i class="icon-remove"></i>
+                <% end %>
+            </td>
+        <% else %>
+            <td>&nbsp;</td>
+        <% end %>
+        
     </tr>
     <% end %>
 </table>
