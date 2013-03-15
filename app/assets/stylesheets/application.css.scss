@@ -18,17 +18,6 @@ div.datepicker.dropdown-menu {
     z-index: 1051;
 }
 
-
-
-
-
-
-body {
-  padding-top: 90px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .modal > form {
   margin-bottom: 0px;
 }
@@ -38,6 +27,11 @@ td .btn-group .btn {
   line-height: 13px;
 }
 
+/*
+ ************************************************
+ panels
+ ************************************************
+ */
 .panel {
   background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#f6f6f6));
   background: -moz-linear-gradient(top, #ddd, #f6f6f6);
@@ -66,10 +60,20 @@ td .btn-group .btn {
   border-radius: 0 0 6px 6px;
 }
 
+/*
+ ************************************************
+ other
+ ************************************************
+ */
+body {
+  padding-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .left { float: left; }
 .right { float: right; }
 .clear { clear: both; }
-
 
 form.condensed .control-group {
     margin-bottom: 6px;    
