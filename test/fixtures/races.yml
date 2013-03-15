@@ -1,16 +1,17 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% tri = Lookup.where(category: 2, code: 'tri').first.id %>
+<% run = Lookup.where(category: 2, code: 'run').first.id %>
 
 compassion:
   race_on: 2009-07-12
   name: Tri of Compassion
   location: Esquimalt
-  race_type: 6
+  race_type: <%= tri %>
 
 chemainus:
   race_on: 2009-06-16
   name: Chemainus Twilight Shuffle
   location: Chemainus
-  race_type: 3
+  race_type: <%= run %>
   distance: 15
   distance_unit: km
   
@@ -18,7 +19,7 @@ stewart:
   race_on: 2009-11-28
   name: Stewart Mountain Cross Country
   location: Thetis Lake
-  race_type: 3
+  race_type: <%= run %>
   distance: 15
   distance_unit: km
   
@@ -26,7 +27,7 @@ tzouhalem:
   race_on: 2011-05-08
   name: Gutbuster Trail Run 001
   location: Mt Tzouhalem, Duncan BC
-  race_type: 3
+  race_type: <%= run %>
   distance: 12
   distance_unit: km
   
@@ -34,6 +35,6 @@ westwood:
   race_on: 2011-05-29
   name: Gutbuster Trail Run 002
   location: Westwood Lake, Nanaimo BC
-  race_type: 3
+  race_type: <%= run %>
   distance: 13.1
   distance_unit: mi

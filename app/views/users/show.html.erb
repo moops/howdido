@@ -9,10 +9,10 @@
   var summaries = [];
   <% @run_summaries.each do |summary| %>
     race_dates.push('<%= "#{summary['date']}" %>');
-    my_grades.push(<%= "{ name: '#{summary['name']}', y: #{summary['me']} }" %>);
-    my_points.push(<%= "{ name: '#{summary['name']}', y: #{summary['points']} }" %>);
-    summaries.push(<%= "{ name: '#{summary['name']}', data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}" %>);
-    runs.push(<%= "{ name:'#{summary['name']}', date:'#{summary['date']}', me:'#{summary['me']}', div:'#{summary['div']}', gender:'#{summary['gender']}', everyone:'#{summary['everyone']}'}" %>);
+    my_grades.push(<%= "{ name: \"#{summary['name']}\", y: #{summary['me']} }".html_safe %>);
+    my_points.push(<%= "{ name: \"#{summary['name']}\", y: #{summary['points']} }".html_safe %>);
+    summaries.push(<%= "{ name: \"#{summary['name']}\", data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}".html_safe %>);
+    runs.push(<%= "{ name:\"#{summary['name']}\", date:\"#{summary['date']}\", me:\"#{summary['me']}\", div:\"#{summary['div']}\", gender:\"#{summary['gender']}\", everyone:\"#{summary['everyone']}\"}".html_safe %>);
   <% end %>
   
   $(function () {
@@ -56,11 +56,11 @@
       series: [{data: my_points}]
     });
     
-    jQuery('#redraw').button().click(function() {
+    $('#redraw').button().click(function() {
       var newGrades = [];
       var newCategories = [];
       //iterate selected options
-      jQuery("select#races option:selected").each(function () {
+      $("select#races option:selected").each(function () {
         var selectedOption = $(this).text();
         //find the grade for the current selected option
         jQuery.each(runs, function(index, value) {
@@ -76,47 +76,68 @@
       runGradesChart.addSeries({data: newGrades}, true);
     });
     
-    $('.nav-pills a:first').tab('show')
+    $('#btn-show-lists').click(function() {
+          $('#results-lists').show();
+          $('#results-charts').hide();
+      });
+      $('#btn-show-charts').click(function() {
+          $('#results-lists').hide();
+          $('#results-charts').show();
+      });
   });
 </script>
 
-<p>
-  <b>name:</b>
-  <%=h @user.name %>
-</p>
+<div class="btn-group" data-toggle="buttons-radio">
+  <button type="button" id="btn-show-charts" class="btn btn-primary active">charts</button>
+  <button type="button" id="btn-show-lists" class="btn btn-primary">list</button>
+</div><p>
 
-<%= select_tag(:races, participation_options_in_race_order(@user), { :multiple => true, :id => 'races'}) %>
-<button id="redraw">redraw chart</button>
+<div id="results-charts">
+    <p>
+      <b>name:</b>
+      <%=h @user.name %>
+    </p>
+
+    <%= select_tag(:races, participation_options_in_race_order(@user), { multiple: true, id: 'races'}) %>
+    <a id="redraw" class="btn">redraw chart</a>
 
 
-<div id="run_grades_chart" style="width:700px; height:300px;"></div>
-<p/>
-<div id="run_points_chart" style="width:700px; height:300px;"></div>
-<p/>
-<div id="run_summaries" style="width:700px; height:300px;"></div>
-<p/>
+    <div id="run_grades_chart" style="width:700px; height:300px;"></div>
+    <p/>
+    <div id="run_points_chart" style="width:700px; height:300px;"></div>
+    <p/>
+    <div id="run_summaries" style="width:700px; height:300px;"></div>
+    <p/>
+</div>
 
-<ul class="nav nav-pills">
-    <% ['me', 'friend','rival','other'].each do |type| %>
-    <li><a href="#<%= type %>" data-toggle="pill"><%= type.pluralize %></a></li>
-    <% end %>
-</ul>
-<div class="tab-content">
-    <% ['me', 'friend','rival','other'].each do |type| %>
-    <div class="tab-pane" id="<%= type %>">        
-      <% @user.participations_by_race(type).each do |race,p_list| %>
-      <b><%= "#{race.display_name}" %></b>
-      <table cellspacing="0" cellpadding="5">
-        <tr><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th><th colspan="2">&nbsp;</th></tr></tr>
-        <% p_list.each do |p| %>
-          <tr>
-            <%= render(:partial => 'results/result_row', :locals => { :result => p.result }) %>
-          </tr>
+<div id="results-lists" class="well hide">
+    <ul class="nav nav-pills">
+        <% ['me', 'friend','rival','other'].each do |type| %>
+        <li><a href="#<%= type %>" data-toggle="pill"><%= type %></a></li>
         <% end %>
-      </table>
-      <% end %>
+    </ul>
+
+    <div class="tab-content">
+        <% ['me', 'friend','rival','other'].each do |type| %>
+            <div class="tab-pane <%= 'active' if type.eql?('me') %>" id="<%= type %>">        
+                <% @user.participations_by_race(type).each do |race,p_list| %>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr><th>race</th><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th></tr>
+                    </thead>
+                    <tbody>
+                        <% p_list.each do |p| %>
+                            <tr>
+                                <td><%= "#{race.display_name}" %></td>
+                                <%= render(partial: 'results/result_row', locals: { result: p.result }) %>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                <% end %>
+            </div>
+        <% end %>
     </div>
-    <% end %>
 </div>
 
 <% else %>

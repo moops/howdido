@@ -6,6 +6,8 @@ class Race < ActiveRecord::Base
   validates_presence_of :race_on
   validates_uniqueness_of :name
   
+  attr_accessible :race_on, :name, :location, :race_type, :distance
+  
   scope :running, where("race_type = 3")
   
   def self.search(search)

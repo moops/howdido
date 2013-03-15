@@ -69,3 +69,22 @@ td .btn-group .btn {
 .left { float: left; }
 .right { float: right; }
 .clear { clear: both; }
+
+
+form.condensed .control-group {
+    margin-bottom: 6px;    
+}
+
+form.condensed legend {
+    margin-bottom: 0px;
+    line-height: 25px;
+}
+
+label.required:after {
+    color: red;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 50%;
+	content: " *";
+	vertical-align: bottom;
+} 

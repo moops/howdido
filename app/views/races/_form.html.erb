@@ -1,21 +1,21 @@
-<%= form_for(@race, {:html => {:class => 'form-horizontal'}}) do |f| %>
+<%= simple_form_for(@race, html: {class: 'form-horizontal'}) do |f| %>
     <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>new race</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3><%= @race.new_record? ? 'new' : 'update' %> race</h3>
     </div>
     <div class="modal-body">
-        <%= form_errors(@race.errors) %>
-        <div class='control-group'>   
-            <%= f.label :race_on %><div class='controls'><%= f.text_field :race_on, :class => 'calendar' %></div>
-            <%= f.label :name %><div class='controls'><%= f.text_field :name %></div>
-            <%= f.label :location %><div class='controls'><%= f.text_field :location %></div>
-            <%= f.label :race_type %><div class='controls'><%= f.select(:race_type, Lookup.list_for('race_type').collect {|l| [ l.description, l.id ] }, { :include_blank => true }) %></div>
-            <%= f.label :distance %><div class='controls'><%= f.select(:distance, Lookup.list_for('race_dist').collect {|l| [ l.description, l.code ] }, { :include_blank => true }) %></div>
-                    <span><%= text_field_tag :other_distance %> <%= select_tag :other_distance_unit, "<option value=\"km\">kilometers</option><option value=\"mi\">miles</option>".html_safe %></span>
-        </div>
-    </div> <!-- end modal-body -->
+        <%= f.input(:race_on, as: :string, input_html: {class: 'calendar', value: Date.today.strftime("%Y-%m-%d"), 'data-date-format' => "yyyy-mm-dd"}) %>
+        <%= f.input :name %>
+        <%= f.input :location %>
+        <%= f.input :race_type, collection: @race_types, value_method: 'id', label_method: 'description' %>
+        <%= f.input :distance, collection: @race_distances, value_method: 'code', label_method: 'description' %>
+        <fieldset>
+            <legend>other distance</legend>
+            <%= text_field_tag :other_distance %> 
+            <%= select_tag :other_distance_unit, "<option value=\"km\">kilometers</option><option value=\"mi\">miles</option>".html_safe %>
+        </fieldset>
+    </div>
     <div class="modal-footer">
-        <%= f.submit('add race', :class => 'btn btn-primary') %>
+        <%= f.button :submit, :class => 'btn btn-primary' %>
     </div>
 <% end %>
-

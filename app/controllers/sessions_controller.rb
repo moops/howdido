@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-  
+
   skip_after_filter :store_last_good_page
-  
+
   # GET /sessions/new.js
   def new
   end
@@ -19,17 +19,17 @@ class SessionsController < ApplicationController
       user.session.count= (user.session.count or 0) + 1
       user.session.save
       session[:user_session] = user.session.id
-      
+
       go_to = session[:last_good_page] || user_path(user.to_param)
     else
       flash[:warning] = 'who are you talking about?'
       go_to = session[:last_good_page] || root_url
     end
-    
+
     flash[:notice] = "logged in as #{user.name}"
     redirect_to go_to
   end
-  
+
   # logout
   # DELETE /sessions/1
   # DELETE /sessions/1.js
@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
       @session.save
     rescue ActiveRecord::RecordNotFound
     end
-    
+
     reset_session 
     redirect_to :root, notice: 'succesfully logged out.'
   end

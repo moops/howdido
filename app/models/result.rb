@@ -2,7 +2,7 @@ class Result < ActiveRecord::Base
   
   belongs_to :race
   has_many :participations
-  has_many :users, :through => :participations
+  has_many :users, through: :participations
   
   # belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
   
@@ -121,7 +121,7 @@ class Result < ActiveRecord::Base
   end
   
   def div_winner
-    Result.where(:race_id => race, :div => div).order(:overall_place).first
+    Result.where(race_id: race, div: div).order(:overall_place).first
   end
   
   def finisher_count(type = nil)
@@ -168,7 +168,7 @@ class Result < ActiveRecord::Base
   
   def claims_for_user(user)
     return unless user and !user.participations.empty?
-    claims = participations.where(:user_id => user.id).all.collect { |p| p.type.description }
+    claims = participations.where(user_id: user.id).all.collect { |p| p.type.description }
     claims.join(' ')
   end
   

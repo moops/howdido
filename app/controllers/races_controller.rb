@@ -19,22 +19,16 @@ class RacesController < ApplicationController
     end
   end
 
-  # GET /races/new
   # GET /races/new.js
   def new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @race_types = Lookup.list_for('race_type')
+    @race_distances = Lookup.list_for('race_dist')
   end
 
-  # GET /races/1/edit
   # GET /races/1/edit.js
   def edit
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @race_types = Lookup.list_for('race_type')
+    @race_distances = Lookup.list_for('race_dist')
   end
 
   # POST /races

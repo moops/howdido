@@ -36,10 +36,13 @@
                     </a>
                     <ul class="dropdown-menu">
                         <% Lookup.list_for('participation_type').each do |ty| %>
-                            <%= link_to("this is #{ty.description}", '#', :class => 'claim-result-link', 'data-type' => ty.id, 'data-result' => result.id) %>
+                            <li>
+                                <%= link_to("this is #{ty.description}", '#', :class => 'claim-result-link', 'data-type' => ty.id, 'data-result' => result.id) %>
+                            </li>
                         <% end %>
                     </ul>
                 </div>
+
                 <!--
                 <div id="claim_link_<%= result.id %>"><%= claim_result_link(result) %></div>
                 -->

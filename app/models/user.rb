@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender
 
   has_many :participations
-  has_many :results, :through => :participations
-  has_one :session, :class_name => 'UserSession'
+  has_many :results, through: :participations
+  has_one :session
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   scope :male, where("gender = 10")
   scope :female, where("gender = 11")
-  scope :with_role, lambda { |role| {:conditions => "authority & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :with_role, lambda { |role| {conditions: "authority & #{2**ROLES.index(role.to_s)} > 0"} }
 
   ROLES = %w[admin athlete]
 
