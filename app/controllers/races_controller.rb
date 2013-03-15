@@ -12,7 +12,7 @@ class RacesController < ApplicationController
   # GET /races/1.js
   def show
     @user_participations = current_user ? current_user.participations : nil
-    @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page]).per(25)
+    @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page])
     respond_to do |format|
       format.html
       format.js
