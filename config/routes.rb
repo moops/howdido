@@ -6,7 +6,9 @@ Howdido::Application.routes.draw do
   resources :participations
   resources :sessions
   resources :results
-  resources :races
+  resources :races do
+    resources :results
+  end
   resources :users
   post 'races/:id/load' => 'results#load', as: :load_results
 end

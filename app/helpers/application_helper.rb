@@ -5,29 +5,25 @@ module ApplicationHelper
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     if(remote)
-      link_to(title, params.merge(:sort => column, :direction => direction, :page => nil, :remote => true), {:class => css_class})
+      link_to(title, params.merge(sort: column, direction: direction, page: nil, remote: true), {class: css_class})
     else
-      link_to(title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class})
+      link_to(title, params.merge(sort: column, direction: direction, page: nil), {class: css_class})
     end
   end
   
   def seconds_to_time(t)
     val = ''
-    if (t)
-      h = t / 1.hours
-      m = (t - h.hours) / 1.minutes
-      s = (t - (h.hours + m.minutes)) 
-      if (h > 0)
-        val << "#{h.to_i}:"
-      end
-      if (m > 0)
-        val << "#{m.to_s.rjust(2,'0')}:#{s}"
-       end
-     end
-     val
+    seconds = t % 60
+    minutes = (t / 60) % 60
+    hours = t / (60 * 60)
+    if (hours > 0)
+      val = format("%02d:%02d:%02d", hours, minutes, seconds)
+    else
+      val = format("%02d:%02d", minutes, seconds)
+    end
+    val
   end
-  
-  
+
   def form_errors(errors)
     html  = ""
     if errors.any?
@@ -42,7 +38,7 @@ module ApplicationHelper
     end
     html.html_safe
   end
-  
+
   def notice
     html = ''
     if flash[:notice]

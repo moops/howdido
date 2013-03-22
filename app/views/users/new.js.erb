@@ -1,15 +1,5 @@
-//jQuery('#register_form')
-//    .html("<%= escape_javascript(render(:partial => 'form')) %>")
-//    .dialog({ autoOpen: true, width: 500, title: 'register', modal: true, show: 'fade' });
-
-jQuery('#register-form')
-    .html("<%= escape_javascript(render(:partial => 'form')) %>");
-
-jQuery('#register-form').modal();
-
-jQuery("input.calendar").datepicker();
-jQuery("input.calendar").datepicker("option", "dateFormat", "yy-mm-dd");
-
+$('#register-form').html("<%= escape_javascript(render(partial: 'form')) %>").modal('show');
+$('#user_born_on').datepicker();
 
 validate('new_user', {
     'user[first_name]': "required",
@@ -28,4 +18,3 @@ validate('new_user', {
       equalTo: '#user_password'
     }
 });
-

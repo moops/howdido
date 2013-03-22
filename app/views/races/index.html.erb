@@ -1,7 +1,7 @@
 <!-- hidden new race form -->
 <div id="race-form" class="modal fade" style="display:none;"></div>
 
-<h1><% params[:search].blank? ? 'found races' : 'recent races' %></h1>
+<h1><% params[:q].blank? ? 'found races' : 'recent races' %></h1>
 
 <table width="100%" class='table table-hover'>
     <tr>
@@ -38,7 +38,7 @@
     <% end %>
 </table>
 
-<%= paginate @races, :remote => true %>
+<%= paginate @races, remote: true %>
 <br />
 
 <% if can? :create, @race %>

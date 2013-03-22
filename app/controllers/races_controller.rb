@@ -5,14 +5,14 @@ class RacesController < ApplicationController
 
   # GET /races
   def index
-    @races = Race.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
+    @races = Race.search(params[:q]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
   end
 
   # GET /races/1
   # GET /races/1.js
   def show
     @user_participations = current_user ? current_user.participations : nil
-    @results = @race.results.order(results_sort_column + " " + results_sort_direction).page(params[:page])
+    @results = @race.results.page(params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -67,15 +67,6 @@ class RacesController < ApplicationController
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
-  # used in show action to sort results list
-  def results_sort_column
-    Result.column_names.include?(params[:sort]) ? params[:sort] : "overall_place"
-  end
-
-  def results_sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 

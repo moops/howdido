@@ -8,7 +8,7 @@ class Race < ActiveRecord::Base
   
   attr_accessible :race_on, :name, :location, :race_type, :distance
   
-  scope :running, where("race_type = 3")
+  scope :running, where(race_type: Lookup.where(category: 2, code: 'run'))
   
   def self.search(search)
     if search
@@ -21,7 +21,7 @@ class Race < ActiveRecord::Base
   def results_by_division
     h = Hash.new
     for r in results do
-      h[r.div] = { "gun" => r.gun_time, "ath" => r.user.first_name }
+      h[r.div] = { 'gun' => r.gun_time, 'ath' => r.user.first_name }
     end
     h
   end

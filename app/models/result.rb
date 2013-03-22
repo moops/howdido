@@ -3,11 +3,11 @@ class Result < ActiveRecord::Base
   belongs_to :race
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
-  
+
   # belongs_to :gender, :class_name => 'Lookup', :foreign_key => 'gender'
-  
-  scope :male, where('gender = 10')
-  scope :female, where('gender = 11')
+
+  scope :male, where(gender: Lookup.where(category: 9, code: 'm').first.id)
+  scope :female, where(gender: Lookup.where(category: 9, code: 'f').first.id)
   
   attr_accessor :grade
 

@@ -3,6 +3,17 @@ class ResultsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource only: :load
   skip_load_resource only: :load
+  
+  # GET /results.js
+  def index
+    @race = Race.find(params[:race_id])
+    @results = @race.results
+    if params[:q]
+      q = "%#{params[:q]}%"
+      @results = @results.where('first_name like ? or last_name like ?', q, q)
+    end
+    @results = @results.page(params[:page])
+  end
 
   # GET /results/1
   def show

@@ -1,5 +1,6 @@
 <td><%= link_to(result.name, result_path(result)) %></td>
 <td><%= result.overall_place %></td>
+<td><%= seconds_to_time(result.gun_time) %></td>
 <td><%= result.div %></td>
 <td><%= number_with_precision(result.points, precision: 2) %></td>
 <td><%= number_with_precision(result.grade, precision: 2) %></td>

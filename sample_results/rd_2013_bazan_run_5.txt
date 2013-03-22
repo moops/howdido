@@ -58,7 +58,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
    47   3/34  M3539   16:51   772 Jerry Loeb                _                            16:50 
    48  11/19  M1619   16:53   770 Carsten Lapointe          Vancouver_RTC                16:51 
    49   2/23  F2024   16:58   878 Alex Coates               National_Triathlon_Trainin   16:56 
-   50   7/37  M3034   16:59   766 Cobus De Klerk            _                            16:55 
+   50   7/37  M3034   16:59   766 Cobus DeKlerk             _                            16:55 
    51   9/32  M2529   16:59   766 Clay Ward                 PT_Performance_Training      16:58 
    52   8/37  M3034   17:02   764 Chris Callendar           Prairie_Inn_Harriers_Runni   17:01 
    53  11/26  M2024   17:03   763 James Cook                Mercury_Rising_Triathlon_C   17:03 
@@ -151,7 +151,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   140  19/37  M3034   18:59   685 Owen Peebles              _                            18:54 
   141   5/23  M0115   19:01   684 Finn Battersby            Peninsula_Track              18:51 
   142  11/33  M4549   19:02   683 Franck Germain            Prairie_Inn_Harriers_Runni   18:58 
-  143   3/38  F3539   19:04   782 Julie Van Veelen          Prairie_Inn_Harriers_Runni   19:00 
+  143   3/38  F3539   19:04   782 Julie VanVeelen           Prairie_Inn_Harriers_Runni   19:00 
   144   7/33  M5054   19:04   682 Larry Nylen               Prairie_Inn_Harriers_Runni   19:00 
   145  12/33  M4549   19:06   681 Randy Humble              _                            19:03 
   146   4/38  F3539   19:07   780 Cheryl Davies             Bastion_Running_Club         19:04 
@@ -260,7 +260,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   249  16/33  M5054   21:03   618 Paul Spencer              _                            20:49 
   250  23/37  M4044   21:05   617 Mike Bridges              _                            20:45 
   251  27/37  M3034   21:07   616 Dom Church                _                            21:04 
-  252  10/23  F2024   21:10   704 Melanie Van Soeren        Salt_Spring_Sneakers         20:54 
+  252  10/23  F2024   21:10   704 Melanie VanSoeren         Salt_Spring_Sneakers         20:54 
   253  11/23  F2024   21:11   703 Jane Noonan               Prairie_Inn_Harriers_Runni   21:05 
   254   7/45  F4044   21:12   703 Pamela Posein             _                            21:05 
   255  11/40  M5559   21:15   612 John Weber                CeeVacs_Road_Runners         21:10 
@@ -308,7 +308,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   297  32/37  M3034   22:18   583 Steve Forland             Wounded_Gazelles             21:53 
   298  12/18  F1619   22:18   668 Laura Ferreira            _                            22:00 
   299  24/26  M2024   22:21   582 Nick Patenaude            _                            22:07 
-  300   1/37  F5559   22:21   667 Donna De Bellefeuille     Oceanside_Running_Club_Ass   22:12 
+  300   1/37  F5559   22:21   667 Donna DeBellefeuille      Oceanside_Running_Club_Ass   22:12 
   301  10/40  F2529   22:22   666 Erin Booth                _                            22:07 
   302  11/40  F2529   22:24   665 Carlin Lindsay            Frontrunners_Victoria        22:11 
   303   5/17  F0115   22:25   665 Robyn Noel                Prairie_Inn_Harriers_Runni   22:15 
@@ -332,7 +332,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   321  16/43  F3034   22:37   659 Caroline McGaw            Every_Step_Counts            22:31 
   322   5/37  F5054   22:39   658 Nancy Carleton            Human_Powered_Racing         22:21 
   323  17/40  M5559   22:41   573 Martin Gavin              Prairie_Inn_Harriers_Runni   22:26 
-  324   9/23  M6064   22:42   573 Eric Van Soeren           Salt_Spring_Sneakers         22:35 
+  324   9/23  M6064   22:42   573 Eric VanSoeren            Salt_Spring_Sneakers         22:35 
   325   6/37  F5054   22:42   656 Natalie Nobert            Oceanside_Running_Club_Ass   22:25 
   326  25/32  M2529   22:44   572 Ryan Jarratt              _                            22:27 
   327  10/45  F4044   22:45   655 Fiona Peters              Prairie_Inn_Harriers_Runni   22:32 
@@ -364,7 +364,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   353   8/37  F5054   23:11   643 Cathie Dias               Victoria_Flatliners          22:54 
   354   5/19  M6569   23:13   560 John Crow                 Lakeside_Trail_Runners       23:00 
   355   3/37  F5559   23:14   641 Wendy Davies              Prairie_Inn_Harriers_Runni   23:07 
-  356  17/40  F2529   23:15   641 Cristina L�pez morton     _                            22:42 
+  356  17/40  F2529   23:15   641 Cristina Lopez_morton     _                            22:42 
   357   4/37  F5559   23:15   641 Sandra Buyze              Salt_Spring_Sneakers         23:03 
   358  18/43  F3034   23:16   640 Katy Wallington           Bastion_Running_Club         23:10 
   359  18/40  F2529   23:16   640 Lisanne Naeth             Bin_Tri'n                    23:07 
@@ -457,7 +457,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   446  24/38  F3539   25:12   591 Shawna Lyttle             _                            24:54 
   447  15/45  F4044   25:14   591 Lisa Borovica             _                            25:04 
   448  25/38  F3539   25:18   589 Cindy Parker              _                            25:00 
-  449  24/43  F3034   25:19   589 Krista Rae Gutowski       Frontrunners_Victoria        25:11 
+  449  24/43  F3034   25:19   589 Krista Gutowski           Frontrunners_Victoria        25:11 
   450  26/33  M5054   25:20   513 Gilbert Richir            Arrowsmith_Radical_Runners   24:45 
   451  17/37  F5054   25:24   587 Selina Lew                _                            24:52 
   452  11/37  F5559   25:25   586 Laurel Szasz              Ladysmith_Striders           25:19 
@@ -574,7 +574,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   563  23/45  F4044   28:26   524 Tammy Miles               _                            27:53 
   564  30/40  F2529   28:28   523 Danica Bevan              _                            28:00 
   565  10/15  F6064   28:29   523 Jillian Robertson         _                            28:05 
-  566  30/43  F3034   28:29   523 Carli Van Maurik          Victoria_Flatliners          28:00 
+  566  30/43  F3034   28:29   523 Carli VanMaurik           Victoria_Flatliners          28:00 
   567  15/17  F0115   28:30   523 Nicole Gonin              _                            28:09 
   568  32/33  M5054   28:30   456 Shawn Porter              Juan_de_Fuca_Funrunners      28:09 
   569  19/23  F2024   28:30   523 Brianna Guptill           _                            28:05 
@@ -612,7 +612,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   601  32/43  F3034   30:02   496 Denise McLean             Royal_Roads_Running_Club_(   29:30 
   602  20/23  F2024   30:04   496 Amy Francoeur             _                            29:15 
   603  18/23  M6064   30:11   431 Terry Parkes              Frontrunners_Athletic_Club   29:35 
-  604  22/37  F5559   30:11   494 Julie Van Soeren          Salt_Spring_Sneakers         29:47 
+  604  22/37  F5559   30:11   494 Julie VanSoeren           Salt_Spring_Sneakers         29:47 
   605  28/45  F4044   30:12   493 Andrea Grimmer            _                            29:56 
   606  29/45  F4044   30:15   493 Shannon Wilson            _                            29:46 
   607  32/43  F4549   30:15   493 Colleen Lauder            Juan_de_Fuca_Funrunners      29:55 
@@ -676,7 +676,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   665  27/37  F5559   32:16   462 Susan Turcotte            Prairie_Inn_Harriers         32:03 
   666   4/5   M7579   32:17   403 Jack Smith                _                            31:55 
   667  39/43  F3034   32:17   462 Valerie McKnight          _                            31:54 
-  668  18/18  F1619   32:18   461 Sabrina Diaz-Barriga Estr _                            32:06 
+  668  18/18  F1619   32:18   461 Sabrina Diaz-Barriga-Estr _                            32:06 
   669  35/40  F2529   32:18   461 Cristina Luengo           _                            31:44 
   670  37/43  F4549   32:34   458 Dolores Correia           _                            32:08 
   671  35/45  F4044   32:36   457 Samantha Quinn            _                            32:18 
@@ -700,7 +700,7 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   689  36/38  F3539   34:16   435 Erin Brown                _                            33:42 
   690  16/17  F0115   34:16   435 Elsa Quinlan              _                            33:58 
   691  41/43  F4549   34:18   434 Dianne Kenny              Frontrunners_Victoria        33:38 
-  692  37/38  F3539   34:19   434 Oana Madalina Lintea      _                            33:58 
+  692  37/38  F3539   34:19   434 Oana M.Lintea             _                            33:58 
   693  40/43  F3034   34:20   434 Zia Ali                   _                            33:58 
   694  37/40  F2529   34:28   432 Alison Cassidy            _                            34:01 
   695  23/23  M6064   34:28   377 Ole Jorgensen             Prairie_Inn_Harriers_Runni   34:01 
@@ -710,30 +710,30 @@ Place Div/Tot Div   Guntime  PerF Name                      Club                
   699  36/37  F5054   34:46   429 Sheila Buzash             _                            34:23 
   700  38/45  F4044   34:46   429 Kristina Popejoy          TriStars_Training            34:08 
   701  39/45  F4044   34:47   428 Nadine Thompson           _                            34:08 
-  702  12/15  F6064   34:50   428 Mary Lou Page             _                            34:27 
+  702  12/15  F6064   34:50   428 MaryLou Page              _                            34:27 
   703  40/45  F4044   34:58   426 Lisa Makar                _                            34:35 
   704  21/23  M0115   35:01   371 Bret Schuurman            Frontrunners_Athletic_Club   34:32 
   705  41/45  F4044   35:02   425 Cindy Todd                Frontrunners_Athletic_Club   34:31 
   706  28/37  F5559   35:10   424 Dorothea Haeussler        _                            34:36 
   707  32/32  M2529   35:24   367 Davide Loggia             _                            34:48 
-  708  29/37  F5559   35:30   420 Carol Van Acker           Ladysmith_Striders           34:55 
+  708  29/37  F5559   35:30   420 Carol VanAcker            Ladysmith_Striders           34:55 
   709  22/23  M0115   35:39   365 Cassidy Richir            Arrowsmith_Radical_Runners   35:01 
   710  42/45  F4044   35:41   418 Karen Richir              _                            35:05 
   711  30/37  F5559   35:44   417 Christine Harker          _                            35:09 
   712  42/43  F4549   35:45   417 Janet Lovell              _                            35:09 
   713  31/37  F5559   35:49   416 Colleen Grace             _                            35:31 
-  714  22/23  F2024   35:58   414 Elizabeth Van Grootheest  _                            35:23 
+  714  22/23  F2024   35:58   414 Elizabeth VanGrootheest   _                            35:23 
   715  43/45  F4044   35:58   414 Stacey L Jones            _                            35:30 
   716  41/43  F3034   36:07   413 Lara Eichhorn             _                            35:30 
   717  42/43  F3034   36:10   412 Lindsay Pearmain          _                            35:48 
-  718   5/7   F7074   36:19   410 Jo Ann Guiguet-Miles      _                            35:39 
+  718   5/7   F7074   36:19   410 JoAnn Guiguet-Miles       _                            35:39 
   719  40/40  M5559   36:22   358 Don Cameron               Want2B                       35:44 
   720  32/37  F5559   36:22   410 Ingrid Cameron            Want2B                       35:44 
   721   6/7   F7074   36:38   407 Lillah Sadler             _                            36:12 
   722  39/40  F2529   36:42   406 Amber Struck              _                            36:19 
   723  44/45  F4044   36:42   406 Shellayne Vos             _                            36:19 
   724  33/37  F5559   36:45   405 Loretta Hanson            _                            36:23 
-  725  13/15  F6064   37:15   400 Aaltje Van Grootheest     _                            36:40 
+  725  13/15  F6064   37:15   400 Aaltje VanGrootheest      _                            36:40 
   726  17/17  F0115   37:18   400 Charley Bridges           _                            36:58 
   727  45/45  F4044   37:37   396 Penny Collins             _                            37:06 
   728  34/37  F5559   37:49   394 Susan Middlemiss          _                            37:09 

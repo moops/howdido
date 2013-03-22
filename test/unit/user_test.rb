@@ -2,35 +2,35 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "save without first name" do
-    u = User.new(:last_name => 'last', :born_on => '2000-01-01', :email => 'test@example.com', :password => 'test_password')
+    u = User.new(last_name: 'last', born_on: '2000-01-01', :email => 'test@example.com', password: 'test_password')
     assert !u.save, "saved the user without a first name"
     u.first_name= 'first'
     assert u.save, "failed to save the user with a first_name"
   end
   
   test "save without last name" do
-    u = User.new(:first_name => 'first', :born_on => '2000-01-01', :email => 'test@example.com', :password => 'test_password')
+    u = User.new(:first_name => 'first', born_on: '2000-01-01', :email => 'test@example.com', password: 'test_password')
     assert !u.save, "saved the user without a last name"
     u.last_name= 'last'
     assert u.save, "failed to save the user with a last_name"
   end
   
   test "save without born_on" do
-    u = User.new(:first_name => 'first', :last_name => 'last', :email => 'test@example.com', :password => 'test_password')
+    u = User.new(:first_name => 'first', last_name: 'last', :email => 'test@example.com', password: 'test_password')
     assert !u.save, "saved the user without a birth date"
     u.born_on= '2000-01-01'
     assert u.save, "failed to save the user with a birth date"
   end
   
   test "save without email" do
-    u = User.new(:first_name => 'first', :last_name => 'last', :born_on => '2000-01-01', :password => 'test_password')
+    u = User.new(:first_name => 'first', last_name: 'last', born_on: '2000-01-01', password: 'test_password')
     assert !u.save, "saved the user without an email"
     u.email= 'test@example.com'
     assert u.save, "failed to save the user with an email"
   end
   
   test "name" do
-    u = User.new({:first_name => 'gary', :last_name => 'duncan'})
+    u = User.new({:first_name => 'gary', last_name: 'duncan'})
     assert_equal 'gary duncan', u.name
   end
   
@@ -43,7 +43,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "age" do
-    u = User.new(:born_on => Date.today - 41.years)
+    u = User.new(born_on: Date.today - 41.years)
     assert_equal 41, u.age, 'birthday today'
     u.born_on= u.born_on + 1.day
     assert_equal 40, u.age, 'birthday tomorrow'

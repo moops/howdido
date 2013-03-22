@@ -128,8 +128,8 @@
       endNumber:110,
       numNumbers:11
     });
-    gradeGuage.accelerate(<%= number_with_precision(@result.grade, :precision => 1) %>);
-    gradeGuage.scrollTo(<%= number_with_precision(@result.grade, :precision => 1) %> * 10);
+    gradeGuage.accelerate(<%= number_with_precision(@result.grade, precision: 1) %>);
+    gradeGuage.scrollTo(<%= number_with_precision(@result.grade, precision: 1) %> * 10);
 
     var pointsGuage = Raphael.fn.speedometer("points-guage", 180, 180, "points");
     pointsGuage.setOptions({
@@ -137,8 +137,8 @@
       endNumber:1100,
       numNumbers:11
     });
-    pointsGuage.accelerate(<%= number_with_precision(@result.points, :precision => 1) %>);
-    pointsGuage.scrollTo(<%= number_with_precision(@result.points, :precision => 1) %> * 10);
+    pointsGuage.accelerate(<%= number_with_precision(@result.points, precision: 1) %>);
+    pointsGuage.scrollTo(<%= number_with_precision(@result.points, precision: 1) %> * 10);
     // end spedometer guages
 
     // future-years box
@@ -251,9 +251,9 @@
             <div class="panel-content">
                 when I'm <select id="future-years"></select> years old
                 <ul>
-                    <li>in order to get an age grade of <%=number_with_precision(@result.grade, :precision => 2) %> again, i will need to run 
+                    <li>in order to get an age grade of <%= number_with_precision(@result.grade, precision: 2) %> again, i will need to run 
                         <span id="future-time"></span></li>
-                    <li>if i run <%=seconds_to_time(@result.gun_time) %> again, my age grade will be 
+                    <li>if i run <%= seconds_to_time(@result.gun_time) %> again, my age grade will be 
                         <span id="future-grade"></span></li>
                 </ul>
             </div>

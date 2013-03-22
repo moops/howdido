@@ -1,4 +1,4 @@
-$('#race-form').html("<%= escape_javascript(render(:partial => 'form')) %>").modal('show');
+$('#race-form').html("<%= escape_javascript(render(partial: 'form')) %>").modal('show');
 $('#race_race_on').datepicker();
 
 validate('race-form', {
