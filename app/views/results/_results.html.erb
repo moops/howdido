@@ -11,8 +11,11 @@
     }); // end ready()
 </script>
 
-<%= form_tag(race_results_path(race), {:method => 'get', remote: true}) do %>
-    <%= search_field_tag(:q, params[:q], :placeholder => 'find an athlete', :class => 'search-query') %>
+<%= form_tag(race_results_path(race), {:method => 'get', remote: true, class: 'form-search'}) do %>
+    <%= search_field_tag(:q, params[:q], placeholder: 'find an athlete', class: 'search-query') %>
+    <%= link_to( race_results_path(race), remote: true, class: 'search-clear') do %>
+        <i class="icon-remove-sign"></i>
+    <% end %>
 <% end %>
 
 <%= form_tag(participations_path, remote: true, id: 'claim-result-form') do |f| %>
@@ -31,7 +34,12 @@
     </thead>
     <% @results.each do |result| %>
     <tr class="<%= cycle('normal', 'stripe') %>">
-        <%= render(partial: 'results/result_row', locals: { result: result }) %>
+        <td><%= link_to(result.name, result_path(result)) %></td>
+        <td><%= result.overall_place %></td>
+        <td><%= seconds_to_time(result.gun_time) %></td>
+        <td><%= result.div %></td>
+        <td><%= number_with_precision(result.points, precision: 2) %></td>
+        <td><%= number_with_precision(result.grade, precision: 2) %></td>
         <td>
             <% if current_user %>
                 <div class="btn-group">
