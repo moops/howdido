@@ -1,82 +1,73 @@
-<%= form_tag(load_results_path(id: race), multipart: true, class: 'form-horizontal') do %>
-    <div class="control-group">
-        <label class="control-label" for="race_datafile">Select File</label>
-        <div class="controls">
-            <%= file_field_tag('datafile') %>
+<%= form_with(url: load_results_path(@race), local: true, html: { multipart: true }) do |f| %>
+    <div class="form-group row">
+        <%= f.label(:datafile, 'from', class: 'col-sm-2 text-right') %>
+        <div class="col-sm-10">
+            <%= f.file_field(:datafile, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="first_name_index">first name</label>
-        <div class="controls">
-            <%= text_field_tag('first_name_index') %>
+    <div class="form-group row">
+        <%= f.label(:first_name_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:first_name_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:last_name_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:last_name_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="last_name_index">last name</label>
-        <div class="controls">
-            <%= text_field_tag('last_name_index') %>
+    <div class="form-group row">
+        <%= f.label(:city_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:city_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:club_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:club_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="city_index">city</label>
-        <div class="controls">
-            <%= text_field_tag('city_index') %>
+    <div class="form-group row">
+        <%= f.label(:age_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:age_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:bib_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:bib_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="club_index">club</label>
-        <div class="controls">
-            <%= text_field_tag('club_index') %>
+    <div class="form-group row">
+        <%= f.label(:div_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:div_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:div_place_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:div_place_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="age_index">age</label>
-        <div class="controls">
-            <%= text_field_tag('age_index') %>
+    <div class="form-group row">
+        <%= f.label(:overall_place_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:overall_place_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:gun_time_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:gun_time_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="bib_index">bib</label>
-        <div class="controls">
-            <%= text_field_tag('bib_index') %>
+    <div class="form-group row">
+        <%= f.label(:chip_time_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:chip_time_index, class: 'form-control') %>
+        </div>
+        <%= f.label(:penalty_time_index, class: 'col-sm-2 text-right') %>
+        <div class="col-sm-4">
+            <%= f.text_field(:penalty_time_index, class: 'form-control') %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="div_index">div</label>
-        <div class="controls">
-            <%= text_field_tag('div_index') %>
+    <div class="form-group row text-right">
+        <div class="col">
+            <%= submit_tag 'upload', class: 'btn btn-primary' %>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="div_place_index">div place</label>
-        <div class="controls">
-            <%= text_field_tag('div_place_index') %>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="overall_place_index">overall place</label>
-        <div class="controls">
-            <%= text_field_tag('overall_place_index') %>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="gun_time_index">gun time</label>
-        <div class="controls">
-            <%= text_field_tag('gun_time_index') %>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="chip_time_index">chip time</label>
-        <div class="controls">
-            <%= text_field_tag('chip_time_index') %>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="penalty_time_index">penalty time</label>
-        <div class="controls">
-            <%= text_field_tag('penalty_time_index') %>
-        </div>
-    </div>
-    <%= submit_tag 'upload', class: 'btn btn-primary pull-right' %>
-    <div class="clear"></div>
 <% end %>

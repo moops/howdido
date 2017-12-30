@@ -1,24 +1,24 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  has_secure_password
-  attr_accessible :email, :password, :password_confirmation, :city, :first_name, :last_name, :born_on, :authority, :gender
+  before_create do
+    self.roles = ['athlete'] unless authority
+  end
 
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :results, through: :participations
-  has_one :session
 
-  validates_presence_of :first_name
-  validates_presence_of :last_name
-  validates_presence_of :born_on
-  validates_presence_of :email
-  validates_uniqueness_of :email
-  validates_confirmation_of :password
+  validates :first_name, :last_name, :born_on, :email, presence: true
+  validates :email, uniqueness: true
 
-  scope :male, where("gender = 10")
-  scope :female, where("gender = 11")
-  scope :with_role, lambda { |role| {conditions: "authority & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :male, -> { where(gender: 10) }
+  scope :female, -> { where(gender: 11) }
+  scope :with_role, lambda { |role| { conditions: "authority & #{2**ROLES.index(role.to_s)} > 0" } }
 
-  ROLES = %w[admin athlete]
+  ROLES = %w[admin athlete].freeze
 
   def roles=(roles)
     self.authority = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
@@ -32,29 +32,32 @@ class User < ActiveRecord::Base
     roles.include? role.to_s
   end
 
+  def admin?
+    role?(:admin)
+  end
+
   def role_symbols
     roles.map(&:to_sym)
   end
 
   # returns: [{'name' => race name, 'date' => race date, 'everyone' => grade, 'gender' => grade, 'div' => grade, 'me' => grade, 'points' => points}, ...]
   # example: [{'name' => 'Esquimalt 8km' 'date' => 2009-07-16, 'everyone' => 56, 'gender' => 59, 'div' => 68, 'me' => 90, points => 650}, ...]
-  def run_summaries(limit=25)
-    summaries = Array.new
-    for p in participations.me.run.limit(limit).all do
+  def run_summaries(limit = 25)
+    summaries = []
+    participations.me.run.limit(limit).each do |p|
       summaries << run_summary(p.result)
     end
-    summaries.sort { |a,b| a['date'] <=> b['date']}
+    summaries.sort { |a, b| a['date'] <=> b['date'] }
   end
 
   def run_summary(my_result)
     race = my_result.race
-    h = {'everyone' => 0, 'gender' => 0, 'div' => 0, 'me' => 0}
+    h = { everyone: 0, gender: 0, div: 0, me: 0 }
     num_results = 0
     num_results_in_gender = 0
     num_results_in_div = 0
 
-    for result in race.results do
-
+    race.results.each do |result|
       if result.grade
         num_results += 1
         h['everyone'] += result.grade
@@ -75,7 +78,7 @@ class User < ActiveRecord::Base
     h['everyone'] /= num_results if num_results > 0
     h['gender'] /= num_results_in_gender if num_results_in_gender > 0
     h['div'] /= num_results_in_div if num_results_in_div > 0
-    
+
     h['everyone'] = h['everyone'].to_i
     h['gender'] = h['gender'].to_i
     h['div'] = h['div'].to_i
@@ -87,8 +90,8 @@ class User < ActiveRecord::Base
   end
 
   def participations_by_race(participation_type='me')
-    p_map = Hash.new
-    p_list = Array.new
+    p_map = {}
+    p_list = []
     if participation_type == 'friend'
       p_list = participations.friend
     elsif participation_type == 'rival'
@@ -114,8 +117,8 @@ class User < ActiveRecord::Base
   end
 
   def age
-    a = Date.today.year - born_on.year
-    a -= 1 if Date.today < born_on + a.years
+    a = Time.zone.today.year - born_on.year
+    a -= 1 if Time.zone.today < born_on + a.years
     a
   end
 end

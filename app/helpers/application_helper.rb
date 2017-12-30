@@ -1,6 +1,6 @@
 module ApplicationHelper
-  
-  def sortable(column, title = nil, remote = false)
+
+  def sortable(params, column, title = nil, remote = false)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
@@ -10,7 +10,7 @@ module ApplicationHelper
       link_to(title, params.merge(sort: column, direction: direction, page: nil), {class: css_class})
     end
   end
-  
+
   def seconds_to_time(t)
     val = ''
     seconds = t % 60
@@ -50,7 +50,7 @@ module ApplicationHelper
     end
     raw(html)
   end
-  
+
   def warning
     html = ''
     if flash[:warning]
@@ -62,12 +62,12 @@ module ApplicationHelper
     end
     raw(html)
   end
-  
+
   def series_data(data)
     r = data.map do |result|
       "{ name: \"#{result.name}\", x: #{result.age}, y: #{result.gun_time/60} }".html_safe
     end
     raw(r.join(', '))
   end
-  
+
 end

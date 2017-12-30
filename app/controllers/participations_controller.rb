@@ -1,7 +1,12 @@
 class ParticipationsController < ApplicationController
+  before_action :set_participation, only: %i[show edit update destroy]
 
-  load_and_authorize_resource
-  
+  # GET /participations
+  def index
+    authorize Participation
+    @participations = current_user.participations
+  end
+
   # GET /participations/new.js
   def new
     @participation.user = User.find(params[:user])
@@ -11,11 +16,11 @@ class ParticipationsController < ApplicationController
 
   # POST /participations.js
   def create
-    @participation = Participation.find_or_build(params[:user], params[:result], params[:type])
+    @participation = Participation.find_or_build(participation_params)
     @participation.update_result_age_if_me
 
     if @participation.save
-      logger.info("creating participation with JS")
+      logger.info('creating participation with JS')
     else
       logger.info("did not create #{@participation} with JS")
     end
@@ -26,8 +31,18 @@ class ParticipationsController < ApplicationController
   def destroy
     @participation.destroy
     respond_to do |format|
-      format.js   { logger.info("destroying participation with JS") }
+      format.js   { logger.info('destroying participation with JS') }
       format.html { redirect_to participations_path }
     end
+  end
+
+  private
+
+  def set_participation
+    @participation = Participation.find(params[:id])
+  end
+
+  def participation_params
+    params.require(:participation).permit(:user, :result, :type)
   end
 end

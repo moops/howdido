@@ -1,15 +1,11 @@
-class Lookup < ActiveRecord::Base
-  
-  attr_accessible :category, :code, :description
-  
+class Lookup < ApplicationRecord
   def self.list_for(category)
-    root = Lookup.find_by_code(category)
-    Lookup.find_all_by_category(root.id)
+    root = Lookup.find_by(code: category)
+    Lookup.where(category: root.id)
   end
-  
+
   def self.code_for(category, code)
-    root = Lookup.find_by_code(category)
-    Lookup.find_by_category_and_code(root, code)
+    root = Lookup.find_by(code: category)
+    Lookup.find_by(category: root, code: code)
   end
-  
 end

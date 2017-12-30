@@ -1,74 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>how'd i do</title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %>
+    <title>raceweb - how'd i do</title>
+    <meta name="description" content="raceweb photo galleries"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="shortcut icon" href="/favicon.ico" />
     <%= csrf_meta_tags %>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag 'application' %>
+    <% if Rails.env.production? %>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83838015-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-83838015-2');
+        </script>
+    <% end %>
 </head>
-
 <body>
-    <!-- hidden elements -->
-    <div id="register-form" class="modal fade hide"></div>
-	<div id="log-in-form" class="modal fade hide"></div>
-    
-    <!-- header -->
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <%= link_to("how'd i do?", root_path, :class => 'brand') %>
-                
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><%= link_to('races', races_path ) %></li>
-                        <li><%= link_to('users', users_path ) %></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                    <p class="navbar-text pull-right" id="user_session">
-                    <% if session[:user_session] %>
-                      	<%= render(:partial => 'sessions/info') %>
-                    <% else %>
-                		<%= link_to('log in', new_session_path, :remote => 'true') %> |
-                		<%= link_to('register', new_user_path, :remote => 'true') %>	
-                    <% end %>
-                    </p>
-                    <%= form_tag(races_path, :method => 'get', :class => 'navbar-search pull-left') do %>
-                        <%= hidden_field_tag :direction, params[:direction] %>
-                        <%= hidden_field_tag :sort, params[:sort] %>
-                        <%= search_field_tag(:q, params[:q], :placeholder => 'find a race', :class => 'search-query') %>
-                    <% end %>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- main content -->
-	<div id="content" class="container">
-		<div class="row-fluid">   
-            <div class="span12">
-                <%= notice %>
-                <%= warning %>
-                <%= yield %>
-            </div>
-        </div> <!-- end row -->
-        
-        <hr>
-        <footer>
-            <p>
-                &copy <%= Date.today.year %> raceweb.ca victoria bc<br>
-                all rights reserved<br>
-                email: <a href="mailto:info@raceweb.ca">info@raceweb.ca</a>
-            </p>
-        </footer>
-        
-    </div> <!-- end content -->
-    
-    
+    <%= render 'layouts/navbar' %>
 
+    <div class="container-fluid">
+        <% flash.each do |key, value| %>
+            <% type = 'success' if key == 'notice'; type = 'danger' if key == 'alert'; %>
+            <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+                <strong><%= key.capitalize %>:</strong> <%= value %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% end %>
+        <!-- MAIN CONTENT -->
+        <%= yield %>
+        <!-- END MAIN CONTENT -->
+    </div> <!-- end container-fluid -->
+
+    <!-- hidden modal forms -->
+    <div id="modal-dialog" class="modal"></div>
+
+    <footer>
+        <div>
+            <!--
+            <script type="text/javascript">
+            google_ad_client = "ca-pub-2435759852249095";
+            google_ad_slot = "2751979843";
+            google_ad_width = 468;
+            google_ad_height = 60;
+            </script>
+            <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            -->
+        </div>
+        <div class="text-right mr-5">
+            &copy; <%= Date.today.year %> <a href="mailto:info@raceweb.ca" rel="tooltip" title="email address">raceweb.ca</a>
+        </div>
+    </footer> <!-- end footer -->
 </body>
 </html>

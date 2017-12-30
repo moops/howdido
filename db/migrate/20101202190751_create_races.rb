@@ -1,4 +1,4 @@
-class CreateRaces < ActiveRecord::Migration
+class CreateRaces < ActiveRecord::Migration[5.2]
   def self.up
     create_table :races do |t|
       t.date :race_on

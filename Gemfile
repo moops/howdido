@@ -1,19 +1,32 @@
-source 'http://rubygems.org'
-ruby '1.9.3'
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '3.2.12'
+ruby '2.4.1'
+gem 'rails', '~> 5.2.0.beta2'
 
-#group :assets do
-  gem 'sass-rails', "  ~> 3.2.3"
-  gem 'coffee-rails', "~> 3.2.1"
-  gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
-#end
+gem 'bootstrap'
+gem 'pg'                        # postgres as the database for Active Record
 
-gem 'pg'                      # postgres db
-gem 'kaminari'                # pagination
-gem 'bcrypt-ruby'             # password encryption
-gem 'cancan'                  # authorization
-gem 'jquery-rails'            # unobtrusive javascript
-gem 'simple_form'             # form builder
-gem 'debugger', group: [:development, :test]
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'devise'
+gem 'jbuilder'                  # https://github.com/rails/jbuilder
+gem 'jquery-rails'
+gem 'json'                      # json api
+gem 'kaminari'                  # pagination
+gem 'uglifier'                  # javascript compressor
+
+gem 'bcrypt'                    # needed for has_secure_password
+gem 'pundit'                    # authorization
+
+gem 'byebug',             group: %i[development test]
+gem 'factory_bot_rails',  group: %i[development test]
+gem 'rspec-rails',        group: %i[development test]
+
+group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'rubocop', require: false
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end

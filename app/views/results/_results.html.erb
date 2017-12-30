@@ -1,7 +1,9 @@
-<script type="text/javascript" charset="utf-8">     
-     $(document).bind('ready', function() {
-    //$(document).ready(function() {
+<script type="text/javascript" charset="utf-8">
+     // $(document).bind('ready', function() {
+    $(document).ready(function() {
+        console.log('ready');
         $(".claim-result-link").click(function(e) {
+            console.log('clicked');
             $('#claim-result-form').append($('<input type="hidden" name="user" value="' + <%= current_user.id if current_user %> + '"/>'));
             $('#claim-result-form').append($('<input type="hidden" name="type" value="' + $(this).attr('data-type') + '"/>'));
             $('#claim-result-form').append($('<input type="hidden" name="result" value="' + $(this).attr('data-result') + '"/>'));
@@ -67,7 +69,7 @@
             <% end %>
         </td>
     </tr>
-    
+
     <% end %>
 </table>
 <%= paginate @results, remote: true %>

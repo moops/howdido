@@ -1,4 +1,4 @@
-class CreateLookups < ActiveRecord::Migration
+class CreateLookups < ActiveRecord::Migration[5.2]
   def self.up
     create_table :lookups do |t|
       t.integer :category

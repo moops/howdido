@@ -1,4 +1,4 @@
-class CreateWavas < ActiveRecord::Migration
+class CreateWavas < ActiveRecord::Migration[5.2]
   def self.up
     create_table :wavas do |t|
       t.integer :age

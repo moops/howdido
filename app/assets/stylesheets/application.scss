@@ -1,0 +1,143 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+@import "races";
+@import "results";
+
+/*
+ ************************************************
+ bootstrap fixes
+ ************************************************
+ */
+div.modal form {
+    margin-bottom: 0px;
+}
+
+// bootstrap datepicker dropdown fix for appearing in modal divs
+div.datepicker.dropdown-menu {
+    z-index: 1051;
+}
+
+.modal > form {
+  margin-bottom: 0px;
+}
+
+/* override bottstrap height for button dropdowns in a table */
+td .btn-group .btn {
+  line-height: 13px;
+}
+
+/*
+ ************************************************
+ sticky footer
+ ************************************************
+ */
+
+body {
+  margin-bottom: 60px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  border-top: 1px solid #000;
+  line-height: 50px;
+  background-color: #ddd;
+}
+
+.copy {
+  margin-left: auto;
+  display: inline-bock;
+}
+
+/*
+ ************************************************
+ panels
+ ************************************************
+ */
+.panel {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#f6f6f6));
+  background: -moz-linear-gradient(top, #ddd, #f6f6f6);
+  padding: 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.panel h3 {
+	font-size: 1.2em;
+  margin: 0px;
+  background: #f6f6f6;
+  padding: 5px;
+  -webkit-border-radius: 6px 6px 0 0 ;
+  -moz-border-radius: 6px 6px 0 0 ;
+  border-radius: 6px 6px 0 0 ;
+}
+
+.panel-content {
+  background: #fff;
+  margin-top: 1px;
+  padding: 10px;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+}
+
+/*
+ ************************************************
+ other
+ ************************************************
+ */
+body {
+  padding-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form.condensed .control-group {
+    margin-bottom: 6px;
+}
+
+form.condensed legend {
+    margin-bottom: 0px;
+    line-height: 25px;
+}
+
+label.required:after {
+    color: red;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 50%;
+	content: " *";
+	vertical-align: bottom;
+}
+
+form a.search-clear {
+	border: 0px;
+	background-color: transparent;
+	position: relative;
+	left: -23px;
+	top: 2px;
+}
+
+.card-form {
+  margin: 0 auto;
+  max-width: 540px;
+  margin-top: 30px;
+}
+
+.split-2 {
+  display: inline-block;
+  width: 49%;
+}
+
+.split-2-label {
+  display: block;
+}

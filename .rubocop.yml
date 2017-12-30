@@ -1,0 +1,18 @@
+AllCops:
+  Excludes:
+    - db/schema.rb
+    - bin/**
+    - test/**/*
+    - spec/**/*
+Metrics/LineLength:
+  Max: 120
+Metrics/AbcSize:
+  Max: 20
+Metrics/MethodLength:
+  Max: 15
+Metrics/ClassLength:
+  Max: 120
+Documentation:
+    Enabled: false
+Rails:
+  Enabled: true

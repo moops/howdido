@@ -1,42 +1,38 @@
-class Race < ActiveRecord::Base
-  
+class Race < ApplicationRecord
   has_many :results, dependent: :destroy
-  
-  validates_presence_of :name
-  validates_presence_of :race_on
-  validates_uniqueness_of :name
-  
-  attr_accessible :race_on, :name, :location, :race_type, :distance
-  
-  scope :running, where(race_type: Lookup.where(category: 2, code: 'run'))
-  
+
+  validates :name, :race_on, presence: true
+  validates :name, uniqueness: true
+
+  scope :running, -> { where(race_type: Lookup.where(category: 2, code: 'run')) }
+
   def self.search(search)
     if search
       where('UPPER(name) LIKE ? or UPPER(location) LIKE ?', "%#{search.upcase}%", "%#{search.upcase}%")
     else
-      scoped
+      Race.all
     end
   end
-  
+
   def results_by_division
-    h = Hash.new
-    for r in results do
-      h[r.div] = { 'gun' => r.gun_time, 'ath' => r.user.first_name }
+    h = {}
+    results.each do |r|
+      h[r.div] = { gun: r.gun_time, ath: r.user.first_name }
     end
     h
   end
-  
+
   def finisher_count
     results.size
   end
-  
+
   def description
-    (race_type ? Lookup.find(race_type).description : '') << 
-    (distance ? " (#{distance.to_s} #{distance_unit})" : '')  <<  
+    (race_type ? Lookup.find(race_type).description : '') <<
+    (distance ? " (#{distance.to_s} #{distance_unit})" : '')  <<
     (race_on ? ' on ' << race_on.strftime('%A %b %d %Y') : '') << (location ? ' at ' << location : '')
   end
-  
-  def winner(div = nil, gender = 10)
+
+  def winner(div = nil, _gender = 10)
     if div
       winner_rank = results.where('div = ?', div).minimum('overall_place')
     else
@@ -44,7 +40,7 @@ class Race < ActiveRecord::Base
     end
     results.where('overall_place = ?', winner_rank).first
   end
-  
+
   def gender_winner(gender = 10)
     if gender
       winner_rank = results.where('gender = ?', gender).minimum('overall_place')
@@ -53,25 +49,24 @@ class Race < ActiveRecord::Base
     end
     results.where('overall_place = ?', winner_rank).first
   end
-  
+
   def display_name
     race_on.year.to_s << ' ' << name
   end
-  
+
   def distance_in_km
     distance_unit == 'mi' ? (distance * 1.609344).round(2) : distance
   end
-  
+
   def distance_description
     d = distance_in_km
-    if d and d >= 42.1 and d <= 42.3
+    if d && d >= 42.1 && d <= 42.3
       desc = 'marathon'
-    elsif d and d >= 21 and d <= 21.2
+    elsif d && d >= 21 && d <= 21.2
       desc = 'half marathon'
     else
       desc = "#{distance} #{distance_unit}"
     end
     desc
   end
-  
 end

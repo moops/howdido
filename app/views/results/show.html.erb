@@ -20,18 +20,18 @@
   }
 
   $(document).ready(function() {
-  
-    // linear "where was i?" guage 
+
+    // linear "where was i?" guage
     var paper = new Raphael(document.getElementById('winner-ratio'), 412, 44);
     var container = paper.rect(2, 2, 408, 40, 6);
     container.attr({stroke: '#999', 'stroke-width': 4, 'stroke-linejoin': 'round'});
-    
+
     var bar = paper.rect(4, 4, 400, 36, 4);
     bar.attr({gradient: '90-#526c7a-#64a0c1', 'stroke-width': 0, 'stroke-opacity': 0});
-        
+
     bar.animate({width: 400 * (oaWinnerTime / gunTime)}, 500, 'bounce');
     var t = paper.text(110, 20, "you were at " + round((oaWinnerTime / gunTime) * distance, 100) + " km [" + round((oaWinnerTime / gunTime) * 100, 10) + "%]").attr({fill: "#fff",'font-size': 14});
-    
+
     $("#winner-type").change(function( objEvent ) {
       var width;
       if (objEvent.target.value === 'oa') {
@@ -50,96 +50,7 @@
       bar.animate({width: width}, 500, 'bounce');
       t.attr({text: "you were at " + round(dist,100) + " km [" + percent + "%]"});
     });
-    // end linear "where was i?" guage 
-
-    // pie charts - default options
-    Highcharts.setOptions({
-      chart: {
-        backgroundColor: '#fff',
-        height: 200,
-        width: 200,
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingRight: 0,
-        spacingLeft: 0
-      },
-      title: { text: null },
-      credits: { enabled: false },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          dataLabels: { enabled: false },
-          borderColor: "#aaa"
-        }
-      }
-    });
-
-    // pie charts
-    var peopleBeat = new Highcharts.Chart({
-      chart: {
-        renderTo: 'people-i-beat',
-      },
-      tooltip: { formatter: function() { return  this.y; } },
-      series: [{
-        type: 'pie',
-        name: 'all people',
-        data: [
-          ['people i beat',      <%= @result.people_beat_count %>],
-          ['people who beat me', <%= @result.finisher_count - @result.people_beat_count %>]
-        ]
-      }]
-    });
-
-    var genderBeat = new Highcharts.Chart({
-      chart: {
-        renderTo: 'gender-i-beat',
-      },
-      tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y; } },
-      series: [{
-        type: 'pie',
-        name: '<%= Lookup.find(@result.gender).description %>',
-        data: [
-          ['<%= Lookup.find(@result.gender).description %> i beat',      <%= @result.people_beat_count('g') %>],
-          ['<%= Lookup.find(@result.gender).description %> who beat me', <%= @result.finisher_count('g') - @result.people_beat_count('g') %>]
-        ]
-      }]
-    });
-
-    var divBeat = new Highcharts.Chart({
-      chart: {
-        renderTo: 'div-i-beat',
-      },
-      tooltip: { formatter: function() { return '<b>'+ this.point.name +'</b>: '+ this.y; } },
-      series: [{
-        type: 'pie',
-        name: '<%= @result.div %>',
-        data: [
-          ['<%= @result.div %> i beat',      <%= @result.people_beat_count('d') %>],
-          ['<%= @result.div %> who beat me', <%= @result.finisher_count('d') - @result.people_beat_count('d') %>]
-        ]
-      }]
-    });
-    // end pie charts
-
-    // spedometer guages
-    var gradeGuage = Raphael.fn.speedometer("grade-guage", 180, 180, "age grade");
-    gradeGuage.setOptions({
-      startNumber:0,
-      endNumber:110,
-      numNumbers:11
-    });
-    gradeGuage.accelerate(<%= number_with_precision(@result.grade, precision: 1) %>);
-    gradeGuage.scrollTo(<%= number_with_precision(@result.grade, precision: 1) %> * 10);
-
-    var pointsGuage = Raphael.fn.speedometer("points-guage", 180, 180, "points");
-    pointsGuage.setOptions({
-      startNumber:0,
-      endNumber:1100,
-      numNumbers:11
-    });
-    pointsGuage.accelerate(<%= number_with_precision(@result.points, precision: 1) %>);
-    pointsGuage.scrollTo(<%= number_with_precision(@result.points, precision: 1) %> * 10);
-    // end spedometer guages
+    // end linear "where was i?" guage
 
     // future-years box
     function future (age) {
@@ -157,19 +68,18 @@
     }
 
     $("#future-years").change(function(event) {
-      future(parseInt(event.target.value));
+        future(parseInt(event.target.value));
     });
     future(<%= @result.age %> + 1);
-    $.each(futureAges, function(index, value) { 
+    $.each(futureAges, function(index, value) {
       $('#future-years').append("<option>" + value + "</option>");
     });
     // end future-years box
 
     $("#future-ages").change(function(event) {
-      gradeGuage.accelerate(maleWavaFactors[event.target.value] / gunTime * 100);
-      gradeGuage.scrollTo(maleWavaFactors[event.target.value] / gunTime * 100 * 10);
+        gradeGauge.refresh(maleWavaFactors[event.target.value] / gunTime * 100);
     });
-    $.each(futureAges, function(index, value) { 
+    $.each(futureAges, function(index, value) {
       $('#future-ages').append("<option>" + value + "</option>");
     });
 
@@ -177,123 +87,185 @@
     $('#future-years').width('auto');
     $('#winner-type').width('auto');
     $('#future-ages').width('auto');
+
+    new Chart($("#chart-rank-div"), {
+        type: "pie",
+        data: {
+            datasets: [{
+                data: [<%= @result.finisher_count('d') - @result.people_beat_count('d') %>, <%= @result.people_beat_count('d') %>],
+                backgroundColor: ["rgb(200, 15, 35)", "rgb(15, 175, 3)"]
+            }],
+            labels: ["ahead of me", "behind me"]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "<%= "#{@result.div}: #{@result.finisher_count('d') - @result.people_beat_count('d')} of #{@result.finisher_count('d')}" %>"
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+    new Chart($("#chart-rank-gender"), {
+        type: "pie",
+        data: {
+            datasets: [{
+                data: [<%= @result.finisher_count('g') - @result.people_beat_count('g') %>, <%= @result.people_beat_count('g') %>],
+                backgroundColor: ["rgb(200, 15, 35)", "rgb(15, 175, 3)"]
+            }],
+            labels: ["ahead of me", "behind me"]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "<%= "#{Lookup.find(@result.gender).description}: #{@result.finisher_count('g') - @result.people_beat_count('g')} of #{@result.finisher_count('g')}" %>"
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+    new Chart($("#chart-rank-overall"), {
+        type: "pie",
+        data: {
+            datasets: [{
+                data: [<%= @result.finisher_count - @result.people_beat_count %>, <%= @result.people_beat_count %>],
+                backgroundColor: ["rgb(200, 15, 35)", "rgb(15, 175, 3)"]
+            }],
+            labels: ["ahead of me", "behind me"]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "<%= "overall: #{@result.overall_place} of #{@result.finisher_count}" %>"
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+
+    // guages
+    var gradeGauge = new JustGage({
+        id: "grade-gauge",
+        value: <%= @result.grade %>,
+        min: 0,
+        max: 100,
+        pointer: true,
+        noGradient: false,
+        title: "age grade"
+    });
+
+    var pointGauge = new JustGage({
+        id: "points-gauge",
+        value: <%= @result.points %>,
+        min: 0,
+        max: 1000,
+        pointer: true,
+        levelColorsGradient: true,
+        title: "points"
+    });
   });
 </script>
 
-<div class="row-fluid">
-    <div class="span12">
-        <div class="panel">
-            <h3>summary</h3>
-            <div class="panel-content">
-                <span class="right"><%= link_to 'view all results', race_path(@result.race) %></span>
-                <table border="0" cellpadding="5" cellspacing="0">
-                    <tr>
-                        <td><strong>race</strong></td>
-                        <td><%= @result.race.display_name %></td>
-                        <td><strong>date</strong></td>
-                        <td><%= @result.race.race_on %></td>
-                        <td colspan="2">&nbsp;</td></tr>
-                    <tr>
-                        <td><strong>name</strong></td>
-                        <td><%= @result.name %></td>
-                        <td><strong>time</strong></td>
-                        <td><%= seconds_to_time(@result.gun_time) %></td>
-                        <td colspan="2">&nbsp;</td></tr>
-                    <tr>
-                        <td><strong>rank</strong></td>
-                        <td colspan="5">
-                            <i>overall: </i>
-                            <%= @result.overall_place %> of <%= @result.finisher_count %>
-                            <i><%= Lookup.find(@result.gender).description %>: </i>
-                            123 of <%= @result.finisher_count('g') %>
-                            <i><%= @result.div %>: </i>
-                            <%= @result.div_place %> of <%= @result.finisher_count('d') %>
-                        </td></tr>
-                </table>
+<div class="row mb-2 mt-2">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <div class="result-summary-value-sm"><%= @result.race.display_name %></div>
+                <%= @result.race.race_on %> | <%= @result.race.location %><br>
+                <strong><%= @result.name %></strong> age: <strong><%= @result.age %></strong> bib: <strong><%= @result.bib %></strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="result-summary-label">time</div>
+                        <div class="result-summary-value"><%= seconds_to_time(@result.gun_time) %></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="result-summary-label">distance [km]</div>
+                        <div class="result-summary-value"><%= @result.race.distance_in_km %></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="result-summary-label">pace [min/km]</div>
+                        <div class="result-summary-value"><%= @result.pace %></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div> <!-- end row -->
-<p/>
 
-<div class="row-fluid">
-    <div class="span4">
-        <div class="panel">
-            <h3>people i beat</h3>
-            <div class="panel-content">
-                <div id="people-i-beat"></div>
-            </div>
-        </div>
-    </div>
-    <div class="span4">
-        <div class="panel">
-            <h3><%= Lookup.find(@result.gender).description %></h3>
-            <div class="panel-content">
-                <div id="gender-i-beat"></div>
-            </div>
-        </div>
-    </div>
-    <div class="span4">
-        <div class="panel">
-            <h3><%= @result.div %></h3>
-            <div class="panel-content">
-                <div id="div-i-beat"></div>
+<div class="row mb-2">
+    <div class="col">
+        <div class="card">
+            <div class="card-header"><strong>rankings</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mr-5">
+                        <canvas id="chart-rank-div" width="220" height="220"></canvas>
+                    </div>
+                    <div class="mr-5">
+                        <canvas id="chart-rank-gender" width="220" height="220"></canvas>
+                    </div>
+                    <div>
+                        <canvas id="chart-rank-overall" width="220" height="220"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div> <!-- end row -->
-<p/>
 
-<div class="row-fluid">
-    <div class="span6">
-        <div class="panel">
-            <h3>how will I do in the future?</h3>
-            <div class="panel-content">
+<div class="row mb-2">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header"><strong>how will I do in the future?</strong></div>
+            <div class="card-body">
                 when I'm <select id="future-years"></select> years old
                 <ul>
-                    <li>in order to get an age grade of <%= number_with_precision(@result.grade, precision: 2) %> again, i will need to run 
+                    <li>in order to get an age grade of <%= number_with_precision(@result.grade, precision: 2) %> again, i will need to run
                         <span id="future-time"></span></li>
-                    <li>if i run <%= seconds_to_time(@result.gun_time) %> again, my age grade will be 
+                    <li>if i run <%= seconds_to_time(@result.gun_time) %> again, my age grade will be
                         <span id="future-grade"></span></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="span6">
-        <div class="panel">
-            <h3>where was I when...</h3>
-            <div class="panel-content">
-                where was I when the 
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header"><strong>where was I when...</strong></div>
+            <div class="card-body">
+                the
                 <select id="winner-type">
                     <option value="oa">overall winner</option>
                     <option value="gender"><%= Lookup.find(@result.gender).description %> winner</option>
                     <option value="div"><%= @result.div %> winner</option>
-                </select> 
+                </select>
                 finished?<p/>
                 <div id="winner-ratio"></div><p/>
             </div>
         </div>
     </div>
 </div> <!-- end row -->
-<p/>
 
-<div class="row-fluid">
-    <div class="span6">
-        <div class="panel">
-            <h3>age graded</h3>
-            <div class="panel-content">
-                <div id="grade-guage" style="display:inline;"></div><br/>
+<div class="row mb-2">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header"><strong>age graded</strong></div>
+            <div class="card-body">
+                <div id="grade-gauge" class="200x160px"></div>
                 what if my age was: <select id="future-ages"></select>
             </div>
         </div>
     </div>
-    <div class="span6">
-        <div class="panel">
-            <h3>points</h3>
-            <div class="panel-content">
-                <div id="points-guage" style="display:inline;"></div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header"><strong>series points</strong></div>
+            <div class="card-body">
+                <div id="points-gauge" class="200x160px"></div>
             </div>
         </div>
     </div>
 </div> <!-- end row -->
-<p/>

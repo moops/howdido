@@ -1,4 +1,4 @@
-class CreateResults < ActiveRecord::Migration
+class CreateResults < ActiveRecord::Migration[5.2]
   def self.up
     create_table :results do |t|
       t.references :race
@@ -9,7 +9,7 @@ class CreateResults < ActiveRecord::Migration
       t.integer :age
       t.integer :gender
       t.integer :overall_place
-      t.integer :gun_time 
+      t.integer :gun_time
       t.integer :chip_time
       t.integer :penalty_time
       t.string :bib

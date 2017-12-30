@@ -5,10 +5,10 @@
 
 <table width="100%" class='table table-hover'>
     <tr>
-        <th><%= sortable "name" %></th>
-        <th><%= sortable "location" %></th>
+        <th><%= sortable @race_search_params, 'name' %></th>
+        <th><%= sortable @race_search_params, 'location' %></th>
         <th>distance</th>
-        <th><%= sortable "race_on" %></th>
+        <th><%= sortable @race_search_params, 'race_on' %></th>
         <th colspan="2">&nbsp;</th>
     </tr>
 
@@ -18,13 +18,13 @@
         <td><%= race.location %></td>
         <td><%= race.distance_description %></td>
         <td><%= race.race_on %></td>
-        <% if can? :edit, race %>
-            <td><%= link_to(image_tag('edit.png', size: '20x20', title: 'edit ' << race.name), edit_race_path(race), remote: 'true') %></td>
+        <% if policy(race).edit? %>
+            <td><%= link_to(image_tag('edit.png', size: '20x20', title: 'edit ' << race.name), edit_race_path(race)) %></td>
         <% else %>
             <td>&nbsp;</td>
         <% end %>
-        
-        <% if can? :manage, race %>
+
+        <% if policy(race).destroy? %>
             <td>
                 <%= link_to(race_path(race), method: :delete, confirm: "really delete #{race.name}?") do %>
                     <i class="icon-remove"></i>
@@ -33,7 +33,7 @@
         <% else %>
             <td>&nbsp;</td>
         <% end %>
-        
+
     </tr>
     <% end %>
 </table>
@@ -41,9 +41,9 @@
 <%= paginate @races, remote: true %>
 <br />
 
-<% if can? :create, @race %>
-    <%= link_to(new_race_path, remote: true, class: 'btn btn-large btn-primary') do %>
-        <i class="icon-plus icon-white"></i>
+<% if policy(Race).create? %>
+    <%= link_to(new_race_path, class: 'btn btn-primary') do %>
+        <span class="icon-plus"></span>
         add a new race
     <% end %>
 <% end %>

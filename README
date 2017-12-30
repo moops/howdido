@@ -1,44 +1,21 @@
-install rvm:
+urls
+----
+http://www.howardgrubb.co.uk/athletics/wmaroad15.html
+http://www.runscore.com/Alan/AgeGrade.html
 
-bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-
-source /Users/adam/.rvm/scripts/rvm
-
-check version:
-
-rvm -v
-
-install ruby 1.9.3
-
-rvm install 1.9.3
-
-
-
-update heroku command line client
-cd howdido
-heroku update
-heroku version
-may have to install netrc gem (gem install netrc)
-
-
-wava table taken from the js source at http://www.pinebeltpacers.org/AgeGrade/newwava.html
-
-jquery visualize plugin
-http://www.filamentgroup.com/lab/update_to_jquery_visualize_accessible_charts_with_html5_from_designing_with/
-
-highcharts
-http://highcharts.com/
-
-good icons:
-http://dryicons.com/icon/blue-velvet/accept/
+charts
+https://github.com/chartjs/Chart.js
 
 javascript gauge:
-http://dejapong.com/?p=138
+http://justgage.com
+
+results vis
+http://andrewgaidus.com/Analyzing_Race_Results_Part_2/
 
 
-work flow:
-
-admin: 
+work flow
+---------
+admin:
 -login
 -create races
 -upload results
@@ -58,6 +35,22 @@ user:
 -add comments for a result
 
 
+2017
+----
+- dec 14 - add icons like photo app
+x dec 04 - devise login
+x dec 04 - devise sign up
+x dec 04 - sticky footer css like photo app
+x dec 04 - replace highcharts scatter plot on race show page with chart.js chart
+- dec 04 - fix tests
+- dec 04 - log in as admin and load race results
+- dec 04 - rake task to load results
+- dec 04 - table sorting
+- dec 04 - fix paginaton on race index and race show pages
+x nov 30 - update rails to 5.2 and ruby to 2.4.1
+
+2013
+----
 - 20130315 - get rid of hardcoded lookup ids (race_type)
 x 20130315 - show race -> summary, average times not showing
 x 20130315 - guages not responding
