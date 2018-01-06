@@ -8,4 +8,12 @@ module ParticipationsHelper
     end
     list.html_safe
   end
+
+  def participation_options_in_race_order(user)
+    options = Array.new
+    Participation.for_user_ordered_by_race(user).each do |p|
+      options << [p.result.race.display_name, p.result.race.id]
+    end
+    options_for_select(options)
+  end
 end

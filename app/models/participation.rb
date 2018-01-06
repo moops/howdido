@@ -25,10 +25,8 @@ class Participation < ApplicationRecord
     end
   end
 
-  def self.sort_by_race_on(participations)
-    participations.sort! do |a, b|
-      a.result.race.race_on <=> b.result.race.race_on
-    end
+  def self.for_user_ordered_by_race(user)
+    user.participations.me.includes(result: [:race]).order('races.race_on asc')
   end
 
   def self.find_or_build(user, result, type)

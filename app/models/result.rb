@@ -19,7 +19,7 @@ class Result < ApplicationRecord
     num_div = 0
     perc_to_oa_winner = -1
     perc_to_div_winner = -1
-    logger.debug('self: ' + self.inspect)
+    logger.debug('self: ' + inspect)
 
     results.each do |r|
       logger.debug('result: ' + r.inspect)
@@ -41,7 +41,7 @@ class Result < ApplicationRecord
 
     xml = Builder::XmlMarkup.new
     xml.instruct! :xml, version: '1.0'
-    xml.result {
+    xml.result do
       xml.athlete(athlete.first_name + ' ' + athlete.last_name)
       xml.race(race.name)
       xml.num_race(num_oa)
@@ -52,20 +52,20 @@ class Result < ApplicationRecord
       xml.num_oa_faster(num_oa_faster)
       xml.perc_oa_faster(num_oa_faster.to_f / num_oa * 100)
       xml.num_oa_slower(num_oa_slower)
-      xml.results {
+      xml.results do
         results.each do |r|
-          xml.result { |x|
+          xml.result do |x|
             x.athlete_id(r.athlete.id)
             x.div(r.div)
             x.bib(r.bib)
             x.overall_place(r.overall_place)
             x.div_place(r.div_place)
             x.gun_time(r.gun_time)
-          }
+          end
         end
-      }
+      end
       # xml.perc_div_faster(num_div_faster.to_f / num_div * 100)
-    }
+    end
   end
 
   def guess_gender(div)
@@ -116,7 +116,7 @@ class Result < ApplicationRecord
 
   def pace(units = false)
     seconds_per_km = (gun_time / race.distance_in_km).round
-    pace = "#{seconds_per_km/60}:#{seconds_per_km % 60}"
+    pace = "#{seconds_per_km / 60}:#{seconds_per_km % 60}"
     pace += ' min/km' if units
     pace
   end

@@ -1,1 +1,164 @@
-<%= @participations.inspect %>
+<% if current_user.participations.present? %>
+    you have <%= current_user.participations.count %> participations
+
+<script type="text/javascript" charset="utf-8">
+
+  var runs = [];
+  var race_dates = [];
+  var my_grades = [];
+  var my_points = [];
+  var summaries = [];
+  <% @run_summaries.each do |summary| %>
+    race_dates.push('<%= "#{summary['date']}" %>');
+    my_grades.push(<%= "{ name: \"#{summary['name']}\", y: #{summary['me']} }".html_safe %>);
+    my_points.push(<%= "{ name: \"#{summary['name']}\", y: #{summary['points']} }".html_safe %>);
+    summaries.push(<%= "{ name: \"#{summary['name']}\", data: [#{summary['everyone']}, #{summary['gender']}, #{summary['div']}, #{summary['me']}]}".html_safe %>);
+    runs.push(<%= "{ name:\"#{summary['name']}\", date:\"#{summary['date']}\", me:\"#{summary['me']}\", div:\"#{summary['div']}\", gender:\"#{summary['gender']}\", everyone:\"#{summary['everyone']}\"}".html_safe %>);
+  <% end %>
+
+  $(function () {
+
+    var data = {"labels":["January","February","March","April","May","June","July"],"datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]};
+
+    var runGradesChart = new Chart($('#run-grades-chart'), {
+        type: 'line',
+        data: data
+    });
+
+    //     new Highcharts.Chart({
+    //   chart: { defaultSeriesType: "line", renderTo: "run_grades_chart" },
+    //   title: { text: '<%= "running grades for #{current_user.name}" %>' },
+    //   credits: { enabled: false },
+    //   legend: { enabled: false },
+    //   tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
+    //   xAxis: {
+    //     title: { text: "race" },
+    //     //labels: { rotation: 90, align: 'left'},
+    //     categories: race_dates
+    //   },
+    //   yAxis: { title: { text: "grade" }, min: 0, max: 100  },
+    //   series: [{data: my_grades}]
+    // });
+
+    var runSummariesChart = new Chart($('#run-summaries'), {
+        type: 'line',
+        data: data
+    });
+
+    // new Highcharts.Chart({
+    //   chart: { defaultSeriesType: "column", renderTo: "run_summaries" },
+    //   title: { text: '<%= "running races for #{current_user.name}" %>' },
+    //   credits: { enabled: false },
+    //   xAxis: {
+    //   categories: ['everyone', 'gender', 'division', 'me'] },
+    //   yAxis: { title: { text: 'grade' }, min: 0, max: 100 },
+    //   series: summaries
+    // });
+
+    var runPointsChart = new Chart($('#run-points-chart'), {
+        type: 'line',
+        data: data
+    });
+
+    // new Highcharts.Chart({
+    //   chart: { defaultSeriesType: "line", renderTo: "run_points_chart" },
+    //   title: { text: '<%= "running points for #{current_user.name}" %>' },
+    //   credits: { enabled: false },
+    //   legend: { enabled: false },
+    //   tooltip: { formatter: function() { return this.point.name + ': ' + this.y; } },
+    //   xAxis: {
+    //     title: { text: "race" },
+    //     categories: race_dates
+    //   },
+    //   yAxis: { title: { text: "points" }, min: 500, max: 1000  },
+    //   series: [{data: my_points}]
+    // });
+
+    // $('#redraw').button().click(function() {
+    //   var newGrades = [];
+    //   var newCategories = [];
+    //   //iterate selected options
+    //   $("select#races option:selected").each(function () {
+    //     var selectedOption = $(this).text();
+    //     //find the grade for the current selected option
+    //     jQuery.each(runs, function(index, value) {
+    //       if(selectedOption == value.name) {
+    //         //put it in the new series for the chart
+    //         newGrades.push({name: value.name, y: value.me});
+    //         newCategories.push(value.date);
+    //       }
+    //     });
+    //   });
+    //   runGradesChart.xAxis[0].setCategories(newCategories, false);
+    //   runGradesChart.series[0].remove(false);
+    //   runGradesChart.addSeries({data: newGrades}, true);
+    // });
+
+    // $('#btn-show-lists').click(function() {
+    //       $('#results-lists').show();
+    //       $('#results-charts').hide();
+    //   });
+    //   $('#btn-show-charts').click(function() {
+    //       $('#results-lists').hide();
+    //       $('#results-charts').show();
+    //   });
+  });
+</script>
+
+<div class="row">
+    <div class="col">
+        <ul class="nav nav-pills mb-3" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#results-charts-container" role="tab">charts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#results-list-container" role="tab">list</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="results-charts-container" role="tabpanel" aria-labelledby="pills-home-tab">
+                <%= select_tag(:races, participation_options_in_race_order(current_user), { multiple: true, id: 'races'}) %>
+                <a id="redraw" class="btn">redraw chart</a>
+                <canvas id="run-grades-chart" style="border: 1px solid green; width:700px; height:300px;">run_grades_chart</canvas>
+                <canvas id="run-points-chart" style="border: 1px solid green; width:700px; height:300px;">run_points_chart</canvas>
+                <canvas id="run-summaries" style="border: 1px solid green; width:700px; height:300px;">run_summaries</canvas>
+            </div> <!-- end #results-charts-container -->
+            <div class="tab-pane fade" id="results-list-container" role="tabpanel">
+                <ul class="nav nav-pills">
+                    <% ['me', 'friend','rival','other'].each do |type| %>
+                    <li class="nav-item">
+                        <a href="#<%= type %>" class="nav-link" data-toggle="pill" role="tab"><%= type %></a>
+                    </li>
+                    <% end %>
+                </ul>
+
+                <div class="tab-content">
+                    <% ['me', 'friend','rival','other'].each do |type| %>
+                        <div class="tab-pane <%= 'active' if type.eql?('me') %>" id="<%= type %>">
+                            <% current_user.participations_by_race(type).each do |race,p_list| %>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr><th>race</th><th>name</th><th>rank</th><th>div</th><th>points</th><th>grade</th></tr>
+                                </thead>
+                                <tbody>
+                                    <% p_list.each do |p| %>
+                                        <tr>
+                                            <td><%= "#{race.display_name}" %></td>
+                                            <%= render(partial: 'results/result_row', locals: { result: p.result }) %>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+
+            </div> <!-- end #results-list-container -->
+        </div>
+    </div>
+</div>
+
+<% else %>
+    you have no participations
+<% end %>

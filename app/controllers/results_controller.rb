@@ -15,7 +15,7 @@ class ResultsController < ApplicationController
 
   # GET /results/1
   def show
-    authorize @result
+    # authorize @result
   end
 
   # DELETE /results/1

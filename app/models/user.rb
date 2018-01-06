@@ -91,16 +91,15 @@ class User < ApplicationRecord
 
   def participations_by_race(participation_type='me')
     p_map = {}
-    p_list = []
-    if participation_type == 'friend'
-      p_list = participations.friend
-    elsif participation_type == 'rival'
-      p_list = participations.rival
-    elsif participation_type == 'other'
-      p_list = participations.other
-    else
-      p_list = participations.me
-    end
+    p_list = if participation_type == 'friend'
+               participations.friend
+             elsif participation_type == 'rival'
+               participations.rival
+             elsif participation_type == 'other'
+               participations.other
+             else
+               participations.me
+             end
     p_list.each do |p|
       race = p.result.race
       if p_map.include?(race)

@@ -4,6 +4,7 @@ class ParticipationsController < ApplicationController
   # GET /participations
   def index
     authorize Participation
+    @run_summaries = []
     @participations = current_user.participations
   end
 
